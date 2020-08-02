@@ -25,12 +25,70 @@ public class LuaApiParser {
 					LuaApiParser.typePattern
 			)
 	);
+
+	public static class FunctionResult {
+		public String name;
+		public String params;
+		public String _return;
+	}
+
+	public static FunctionResult parseFunctionRegex(String toParse) {
+		Matcher matcher = functionPattern.matcher(toParse);
+		if (matcher.find()) {
+			FunctionResult functionResult = new FunctionResult();
+			functionResult.name = matcher.group("name");
+			functionResult._return = matcher.group("return");
+			functionResult.params = matcher.group("param");
+			return functionResult;
+		}
+
+		return null;
+	}
+
 	public static Pattern fieldPattern = Pattern.compile(
 			String.format(
 					"^(?<name>\\w*) :: (?<type>%s)(?: (?<optional>\\(optional\\)))?:?(?: (?<desc>[^\\[\\n]*)?(?:\\[(?<rw>[RW]{0,2})\\])?)?()",
 					LuaApiParser.typePattern
 			)
 	);
+
+	public static class FieldResult {
+		public String name;
+		public String type;
+		public boolean optional;
+		public String description;
+		public boolean readOnly;
+		public boolean writeOnly;
+	}
+
+	public static FieldResult parseFieldRegex(String toParse) {
+		Matcher matcher = fieldPattern.matcher(toParse);
+
+		if (matcher.find()) {
+			FieldResult fieldResult = new FieldResult();
+			fieldResult.name = matcher.group("name");
+			fieldResult.type = matcher.group("type");
+
+			String modeText = matcher.group("rw");
+			if (modeText != null && !modeText.isEmpty()) {
+				if (!modeText.contains("R")) {
+					fieldResult.writeOnly = true;
+				} else if (!modeText.contains("W")) {
+					fieldResult.readOnly = true;
+				}
+			}
+
+			String optional = matcher.group("optional");
+			if (optional != null && !optional.isEmpty()) {
+				fieldResult.optional = true;
+			}
+
+			fieldResult.description = matcher.group("desc");
+
+			return fieldResult;
+		}
+		return null;
+	}
 
 	public static String replaceUntilOneLine(String s) {
 		return s.replace("\n", "").replaceAll(" +", " ").trim();
@@ -48,7 +106,6 @@ public class LuaApiParser {
 		} while (!s.equals(old));
 
 		// replace alternatives
-//        s.replaceAll(" or ((?:(?! or ).)*)", "|$1");
 		s = s.replaceAll(" or ", "|");
 		return s;
 	}
@@ -78,6 +135,7 @@ public class LuaApiParser {
 		Element briefListingOuter = page.selectFirst(".brief-listing");
 		Elements briefListingElements = briefListingOuter.children();
 
+		// Parse the "upper" part, This has the basic information about each function
 		for (Element briefListingElement : briefListingElements) {
 			if (!briefListingElement.hasClass("brief-listing")) {
 				continue;
@@ -115,12 +173,12 @@ public class LuaApiParser {
 					// is method
 					Method luaMethod = new Method();
 
-					Matcher matcher = functionPattern.matcher(elementName);
-					if (matcher.find()) {
-						luaMethod.name = matcher.group("name");
-						luaMethod.returnType = matcher.group("return");
+					FunctionResult functionResult = parseFunctionRegex(elementName);
+					if (functionResult != null) {
+						luaMethod.name = functionResult.name;
+						luaMethod.returnType = functionResult._return;
 
-						String params = matcher.group("param");
+						String params = functionResult.params;
 						for (String param : params.split(", ")) {
 							if (!param.isEmpty()) {
 								MethodParameter parameter = new MethodParameter();
@@ -139,12 +197,12 @@ public class LuaApiParser {
 					Method method = new Method();
 					method.paramTable = true;
 
-					Matcher matcher = functionPattern.matcher(elementName);
-					if (matcher.find()) {
-						method.name = matcher.group("name");
-						method.returnType = matcher.group("return");
+					FunctionResult functionResult = parseFunctionRegex(elementName);
+					if (functionResult != null) {
+						method.name = functionResult.name;
+						method.returnType = functionResult._return;
 
-						String params = matcher.group("param");
+						String params = functionResult.params;
 						params = params.replace("=…", "");
 
 						// add new class for these parameters
@@ -171,24 +229,14 @@ public class LuaApiParser {
 					String fullElement = member.selectFirst(".header").text();
 					fullElement = replaceTypes(fullElement);
 
-					Matcher matcher = fieldPattern.matcher(fullElement);
-
-					if (matcher.find()) {
+					FieldResult fieldResult = parseFieldRegex(fullElement);
+					if (fieldResult != null) {
 						Attribute attribute = new Attribute();
-						attribute.name = matcher.group("name");
-						attribute.type = matcher.group("type");
-
-						String modeText = matcher.group("rw");
-						if (!modeText.isEmpty()) {
-							if (!modeText.contains("R")) {
-								attribute.writeOnly = true;
-							} else if (!modeText.contains("W")) {
-								attribute.readOnly = true;
-							}
-						}
-
-						String desc = matcher.group("desc");
-						attribute.description = (desc != null) ? desc : description;
+						attribute.name = fieldResult.name;
+						attribute.type = fieldResult.type;
+						attribute.readOnly = fieldResult.readOnly;
+						attribute.writeOnly = fieldResult.writeOnly;
+						attribute.description = (fieldResult.description != null) ? fieldResult.description : description;
 
 						luaClass.attributes.put(attribute.name, attribute);
 					}
@@ -197,7 +245,7 @@ public class LuaApiParser {
 			classes.put(luaClass.name, luaClass);
 		}
 
-		// get all upper "elements"
+		// Parse the lower part of the page (elements have more information about each function)
 		Elements elements = page.select("body > .element");
 		for (Element element : elements) {
 			Elements subElements = element.children();
@@ -233,22 +281,19 @@ public class LuaApiParser {
 									String singleLineText = singleLine.text();
 									singleLineText = replaceUntilOneLine(singleLineText);
 									singleLineText = replaceTypes(singleLineText);
-									Matcher matcher = fieldPattern.matcher(singleLineText);
 
-									if (matcher.find()) {
-										String paramName = matcher.group("name");
+									FieldResult fieldResult = parseFieldRegex(singleLineText);
+									if (fieldResult != null) {
+										String paramName = fieldResult.name;
 										MethodParameter parameter = luaMethod.parameters.get(paramName);
-										parameter.type = matcher.group("type");
+										parameter.type = fieldResult.type;
 
-										String desc = matcher.group("desc");
+										String desc = fieldResult.description;
 										if (desc != null) {
 											parameter.description = desc.trim();
 										}
 
-										String optional = matcher.group("optional");
-										if (optional != null && !optional.isEmpty()) {
-											parameter.optional = true;
-										}
+										parameter.optional = fieldResult.optional;
 									}
 								}
 							} else if (luaMethod != null && luaMethod.paramTable) {
@@ -260,10 +305,10 @@ public class LuaApiParser {
 										liText = replaceTypes(liText);
 
 										// parse liText with regex
-										Matcher matcher = fieldPattern.matcher(liText);
+										FieldResult fieldResult = parseFieldRegex(liText);
 
-										if (matcher.find()) {
-											String paramName = matcher.group("name");
+										if (fieldResult != null) {
+											String paramName = fieldResult.name;
 											String fullClassName = luaClass.name + "_" + luaMethod.name;
 											Class additionalClass = classes.get(fullClassName);
 											Attribute attribute = additionalClass.attributes.get(paramName);
@@ -273,17 +318,14 @@ public class LuaApiParser {
 												attribute.name = paramName;
 												additionalClass.attributes.put(paramName, attribute);
 											}
-											attribute.type = matcher.group("type");
+											attribute.type = fieldResult.type;
 
-											String desc = matcher.group("desc");
+											String desc = fieldResult.description;
 											if (desc != null) {
 												attribute.description = desc.trim();
 											}
 
-											String optional = matcher.group("optional");
-											if (optional != null && !optional.isEmpty()) {
-												attribute.optional = true;
-											}
+											attribute.optional = fieldResult.optional;
 
 											// set string liberals from <code>
 											Elements codeElements = li.select("code");
@@ -305,22 +347,15 @@ public class LuaApiParser {
 							String paramText = param.text();
 							paramText = replaceTypes(paramText);
 
-							Matcher matcher = fieldPattern.matcher(paramText);
+							FieldResult fieldResult = parseFieldRegex(paramText);
 
-							if (matcher.find()) {
+							if (fieldResult != null) {
 								Attribute attribute = new Attribute();
-								attribute.name = matcher.group("name");
-								attribute.type = matcher.group("type");
-								attribute.description = matcher.group("desc");
-
-								String modeText = matcher.group("rw");
-								if (modeText != null) {
-									if (!modeText.contains("R")) {
-										attribute.writeOnly = true;
-									} else if (!modeText.contains("W")) {
-										attribute.readOnly = true;
-									}
-								}
+								attribute.name = fieldResult.name;
+								attribute.type = fieldResult.type;
+								attribute.description = fieldResult.description;
+								attribute.writeOnly = fieldResult.writeOnly;
+								attribute.readOnly = fieldResult.readOnly;
 
 								newClass.attributes.put(attribute.name, attribute);
 							}
