@@ -34,6 +34,9 @@ public class LuaApiParser {
 		public String _return;
 	}
 
+	/**
+	 * run the functionRegex onto the given string and return the result in the custom class
+	 */
 	public static FunctionResult parseFunctionRegex(String toParse) {
 		Matcher matcher = functionPattern.matcher(toParse);
 		if (matcher.find()) {
@@ -63,6 +66,9 @@ public class LuaApiParser {
 		public boolean writeOnly;
 	}
 
+	/**
+	 * run the fieldRegex onto the given string and return the result as the custom class
+	 */
 	public static FieldResult parseFieldRegex(String toParse) {
 		Matcher matcher = fieldPattern.matcher(toParse);
 
@@ -92,10 +98,25 @@ public class LuaApiParser {
 		return null;
 	}
 
+	/**
+	 * Remove every new line, remove multispaces
+	 *
+	 * @param s the string to clean
+	 * @return the cleaned string
+	 */
 	public static String replaceUntilOneLine(String s) {
 		return s.replace("\n", "").replaceAll(" +", " ").trim();
 	}
 
+	/**
+	 * Replace every occurrence, that seems like it is a type, with its proper LUA representation
+	 * - `array of type` -> `type[]`
+	 * - `dictionary key → value` ->  `table<key, value>`
+	 * - `type1 or type2` -> `type1|type2`
+	 *
+	 * @param s The string to replace on
+	 * @return The newly created string, where everything is replaced (no side-effects)
+	 */
 	public static String replaceTypes(String s) {
 		// replace array types
 		s = s.replaceAll("array of (\\w*)", "$1[]");
@@ -112,6 +133,115 @@ public class LuaApiParser {
 		return s;
 	}
 
+	/**
+	 * Parse one single standard method
+	 *
+	 * @param element The content of a single line
+	 * @param description The description that is used (at the right of the table)
+	 * @return the parsed method, with all its parameters
+	 */
+	public static Method parseBriefListingMethod(String element, String description) {
+		Method luaMethod = new Method();
+
+		FunctionResult functionResult = parseFunctionRegex(element);
+		if (functionResult != null) {
+			luaMethod.name = functionResult.name;
+			luaMethod.returnType = functionResult._return;
+
+			String params = functionResult.params;
+			for (String param : params.split(", ")) {
+				if (!param.isEmpty()) {
+					MethodParameter parameter = new MethodParameter();
+					parameter.name = param;
+					luaMethod.parameters.put(parameter.name, parameter);
+				}
+			}
+
+			luaMethod.description = description;
+			return luaMethod;
+		}
+		return null;
+	}
+
+	/**
+	 * Parse one single Method, that only has a Table as parameter. Syntax for such function: `function{param = value}`.
+	 * As side-effect a new class will be generated and put into the classList given.
+	 *
+	 * @param element The content of the single line
+	 * @param description The description to use (at the right of the table)
+	 * @param upperClassName The name of the class where this Method is part of
+	 * @param classList All the classes that are yet parsed and will be parsed (this will be used to store a new Class for
+	 * @return the method, that has as only parameter the newly created class
+	 */
+	public static Method parseBriefListingMethodTableParam(String element, String description, String upperClassName, List<Class> classList) {
+		// is method with table as only param
+		Method method = new Method();
+		method.paramTable = true;
+
+		FunctionResult functionResult = parseFunctionRegex(element);
+		if (functionResult != null) {
+			method.name = functionResult.name;
+			method.returnType = functionResult._return;
+
+			String params = functionResult.params;
+			params = params.replace("=…", "");
+
+			// add new class for these parameters
+			Class newClass = new Class();
+			newClass.name = upperClassName + "_" + method.name;
+			classList.add(newClass);
+
+			for (String param : params.split(", ")) {
+				Attribute attribute = new Attribute();
+				attribute.name = param;
+				newClass.attributes.put(attribute.name, attribute);
+			}
+			MethodParameter methodParameter = new MethodParameter();
+			methodParameter.name = newClass.name + "_param";
+			methodParameter.type = newClass.name;
+			method.parameters.put(methodParameter.name, methodParameter);
+
+			method.description = description;
+
+			return method;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Parse one single Field/Attribute out of a brief-listing.
+	 *
+	 * @param member This is the JSoup Element of the single line inside the listing
+	 * @param description The description for this attribute (if no other is found)
+	 * @return the fully parsed Attribute
+	 */
+	public static Attribute parseBriefListingField(Element member, String description) {
+		String fullElement = member.selectFirst(".header").text();
+		fullElement = replaceTypes(fullElement);
+
+		FieldResult fieldResult = parseFieldRegex(fullElement);
+		if (fieldResult != null) {
+			Attribute attribute = new Attribute();
+			attribute.name = fieldResult.name;
+			attribute.type = fieldResult.type;
+			attribute.readOnly = fieldResult.readOnly;
+			attribute.writeOnly = fieldResult.writeOnly;
+			attribute.description = (fieldResult.description != null) ? fieldResult.description : description;
+
+			return attribute;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Parse one briefListing table on the top of the page
+	 *
+	 * @param briefListingElement The JSoup Element of the complete table (".brief-listing")
+	 * @param overallDescriptionHtml The description of the class (is normally written over the brief-listing element
+	 * @return a list of classes, that are represent for this brief-listing (overall class and subclasses for table-functions and table return values)
+	 */
 	public static List<Class> parseBriefListingElement(Element briefListingElement, String overallDescriptionHtml) {
 		// create return List
 		List<Class> returnList = new ArrayList<>();
@@ -149,73 +279,23 @@ public class LuaApiParser {
 
 			if (elementName.contains("(")) {
 				// is method
-				Method luaMethod = new Method();
+				Method method = parseBriefListingMethod(elementName, description);
 
-				FunctionResult functionResult = parseFunctionRegex(elementName);
-				if (functionResult != null) {
-					luaMethod.name = functionResult.name;
-					luaMethod.returnType = functionResult._return;
-
-					String params = functionResult.params;
-					for (String param : params.split(", ")) {
-						if (!param.isEmpty()) {
-							MethodParameter parameter = new MethodParameter();
-							parameter.name = param;
-							luaMethod.parameters.put(parameter.name, parameter);
-						}
-					}
-
-					luaMethod.description = description;
-
+				if (method != null) {
 					// Add finished method to class-list
-					luaClass.methods.put(luaMethod.name, luaMethod);
+					luaClass.methods.put(method.name, method);
 				}
 			} else if (elementName.contains("{")) {
-				// is method with table as only param
-				Method method = new Method();
-				method.paramTable = true;
+				Method method = parseBriefListingMethodTableParam(elementName, description, luaClass.name, returnList);
 
-				FunctionResult functionResult = parseFunctionRegex(elementName);
-				if (functionResult != null) {
-					method.name = functionResult.name;
-					method.returnType = functionResult._return;
-
-					String params = functionResult.params;
-					params = params.replace("=…", "");
-
-					// add new class for these parameters
-					Class newClass = new Class();
-					newClass.name = luaClass.name + "_" + method.name;
-					returnList.add(newClass);
-
-					for (String param : params.split(", ")) {
-						Attribute attribute = new Attribute();
-						attribute.name = param;
-						newClass.attributes.put(attribute.name, attribute);
-					}
-					MethodParameter methodParameter = new MethodParameter();
-					methodParameter.name = newClass.name + "_param";
-					methodParameter.type = newClass.name;
-					method.parameters.put(methodParameter.name, methodParameter);
-
-					method.description = description;
-
+				if (method != null) {
 					luaClass.methods.put(method.name, method);
 				}
 			} else {
 				// is field
-				String fullElement = member.selectFirst(".header").text();
-				fullElement = replaceTypes(fullElement);
+				Attribute attribute = parseBriefListingField(member, description);
 
-				FieldResult fieldResult = parseFieldRegex(fullElement);
-				if (fieldResult != null) {
-					Attribute attribute = new Attribute();
-					attribute.name = fieldResult.name;
-					attribute.type = fieldResult.type;
-					attribute.readOnly = fieldResult.readOnly;
-					attribute.writeOnly = fieldResult.writeOnly;
-					attribute.description = (fieldResult.description != null) ? fieldResult.description : description;
-
+				if (attribute != null) {
 					luaClass.attributes.put(attribute.name, attribute);
 				}
 			}
