@@ -467,16 +467,18 @@ public class LuaApiParser {
 			}
 		}
 
-		boolean isArray = false;
 		if (luaMethod != null) {
-			isArray = luaMethod.returnType.contains("[]");
+			boolean isArray = luaMethod.returnType.contains("[]");
 			luaMethod.returnType = newClass.name;
+			if (isArray) {
+				luaMethod.returnType += "[]";
+			}
 		} else if (luaAttribute != null) {
-			isArray = luaAttribute.type.contains("[]");
+			boolean isArray = luaAttribute.type.contains("[]");
 			luaAttribute.type = newClass.name;
-		}
-		if (isArray) {
-			luaAttribute.type += "[]";
+			if (isArray) {
+				luaAttribute.type += "[]";
+			}
 		}
 
 		classes.put(newClass.name, newClass);
