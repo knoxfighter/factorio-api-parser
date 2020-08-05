@@ -10,6 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -404,30 +405,42 @@ public class LuaApiParser {
 	 * @param luaMethod      The method to save the information to
 	 * @param upperClassName The name of the class, that the method of this parameter belongs to
 	 */
-	public static void parseDetails(Element element, Method luaMethod, String upperClassName, Map<String, Class> classes) {
+	public static void parseDetails(Element element, Method luaMethod, Attribute luaAttribute, String upperClassName, Map<String, Class> classes) {
 		// parse header, see if we have to do things
 		Element detailHeader = element.selectFirst(".detail-header");
 
-		String headerText = detailHeader.text();
-		Element detailContent = element.selectFirst(".detail-content");
+		if (detailHeader != null && luaMethod != null) {
+			String headerText = detailHeader.text();
+			Element detailContent = element.selectFirst(".detail-content");
 
-		if (headerText.equals("Parameters")) {
-			// parse details with Parameter information
-			if (luaMethod != null && !luaMethod.paramTable) {
-				for (Element singleLine : detailContent.children()) {
-					// parse param and add information to already defined once
-					parseDetailsSingleParam(singleLine.text(), luaMethod);
+			if (headerText.equals("Parameters")) {
+				// parse details with Parameter information
+				if (luaMethod != null && !luaMethod.paramTable) {
+					for (Element singleLine : detailContent.children()) {
+						// parse param and add information to already defined once
+						parseDetailsSingleParam(singleLine.text(), luaMethod);
+					}
+				} else if (luaMethod != null && luaMethod.paramTable) {
+					Elements allLi = detailContent.select("li");
+					for (Element li : allLi) {
+						// parse param single param with class
+						parseDetailsSingleParamWitchClass(li, upperClassName, luaMethod, classes);
+					}
 				}
-			} else if (luaMethod != null && luaMethod.paramTable) {
-				Elements allLi = detailContent.select("li");
-				for (Element li : allLi) {
-					// parse param single param with class
-					parseDetailsSingleParamWitchClass(li, upperClassName, luaMethod, classes);
-				}
+			} else if (headerText.equals("Return value")) {
+				// parse details with return value description
+				luaMethod.returnTypeDesc = replaceUntilOneLine(detailContent.html());
 			}
-		} else if (headerText.equals("Return value")) {
-			// parse details with return value description
-			luaMethod.returnTypeDesc = replaceUntilOneLine(detailContent.html());
+		} else {
+			// no header found, add it to description
+			String html = element.html();
+			html = replaceUntilOneLine(html);
+
+			if (luaMethod != null) {
+				luaMethod.description += "<p>" + html + "</p>";
+			} else if (luaAttribute != null) {
+				luaAttribute.description += "<p>" + html + "</p>";
+			}
 		}
 	}
 
@@ -507,7 +520,7 @@ public class LuaApiParser {
 		Element elementContent = subElement.selectFirst(".element-content");
 		for (Element contentChild : elementContent.children()) {
 			if (contentChild.hasClass("detail")) {
-				parseDetails(contentChild, luaMethod, className, classes);
+				parseDetails(contentChild, luaMethod, luaAttribute, className, classes);
 			} else if (contentChild.hasClass("field-list")) {
 				// override type with this new class
 				parseFieldList(luaClass.name, luaMethod, luaAttribute, contentChild, classes);
@@ -570,7 +583,7 @@ public class LuaApiParser {
 			Document page = Jsoup.connect(link).get();
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
 			return parseClass(page);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.out.println("error downloading the class API page");
 			System.out.println(e.getMessage());
 		}
