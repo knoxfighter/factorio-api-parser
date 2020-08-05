@@ -315,10 +315,13 @@ public class LuaApiParser {
 	// ==========================
 
 	/**
+	 * Parse a single parameter out of the single elements.
+	 * This parses only a single line with one parameter and NOT a whole list.
+	 *
 	 * Side-effect in luaMethod!
 	 *
-	 * @param text
-	 * @param luaMethod
+	 * @param text the text to parse
+	 * @param luaMethod the method to update with the additional information
 	 */
 	public static void parseDetailsSingleParam(String text, Method luaMethod) {
 		text = replaceUntilOneLine(text);
@@ -340,12 +343,16 @@ public class LuaApiParser {
 	}
 
 	/**
+	 * Parse a single parameter out of the single elements
+	 * This parses only a single line with one parameter and NOT a whole list.
+	 * This will add the parsed line into the attribute's additional class.
+	 *
 	 * Side-effect in classes!
 	 *
-	 * @param element
-	 * @param upperClassName
-	 * @param luaMethod
-	 * @param classes
+	 * @param element The JSoup element to parse
+	 * @param upperClassName The name of the class, that the method of this parameter belongs to
+	 * @param luaMethod The method, where this parameter belongs to.
+	 * @param classes The result classes Map, where every class is saved.
 	 */
 	public static void parseDetailsSingleParamWitchClass(Element element, String upperClassName, Method luaMethod, Map<String, Class> classes) {
 		String text = element.text();
@@ -388,11 +395,14 @@ public class LuaApiParser {
 	}
 
 	/**
+	 * Parse the `detail` css-class element.
+	 * This mostly has information about Parameters and ReturnTypes and their description
+	 *
 	 * Side-effects in luaMethod!
 	 *
-	 * @param element
-	 * @param luaMethod
-	 * @param upperClassName
+	 * @param element The element to parse
+	 * @param luaMethod The method to save the information to
+	 * @param upperClassName The name of the class, that the method of this parameter belongs to
 	 */
 	public static void parseDetails(Element element, Method luaMethod, String upperClassName, Map<String, Class> classes) {
 		// parse header, see if we have to do things
@@ -419,15 +429,19 @@ public class LuaApiParser {
 	}
 
 	/**
+	 * Parse a field-list of a single-table-method.
+	 * This will add all found information (and all optional fields) to the existing method-class.
+	 * luaMethod OR luaAttribute can be null. If both are null, a NullPointerException is thrown.
+	 *
 	 * classes has side-effects!
 	 * luaMethod has side-effects!
 	 * luaAttribute has side-effects!
 	 *
-	 * @param upperClassName
-	 * @param luaMethod
-	 * @param luaAttribute
-	 * @param element
-	 * @param classes
+	 * @param upperClassName The name of the class, that the method of this parameter belongs to
+	 * @param luaMethod The method to change
+	 * @param luaAttribute The attribute to change
+	 * @param element The element to parse
+	 * @param classes The upper classes Map, where all classes are stored.
 	 */
 	public static void parseFieldList(String upperClassName, Method luaMethod, Attribute luaAttribute, Element element, Map<String, Class> classes) {
 		Class newClass = new Class();
@@ -465,6 +479,15 @@ public class LuaApiParser {
 		classes.put(newClass.name, newClass);
 	}
 
+	/**
+	 * Parse a `.element` on the lower part of the html page.
+	 * All the information gathered will be saved into the classes map directly.
+	 *
+	 * side-effect in classes!
+	 *
+	 * @param subElement The `.element` to parse
+	 * @param classes The global classes map, where all classes are saved
+	 */
 	public static void parseSingleElement(Element subElement, Map<String, Class> classes) {
 		String name = subElement.id();
 		String[] nameSplit = name.split("\\.");
@@ -509,6 +532,12 @@ public class LuaApiParser {
 		}
 	}
 
+	/**
+	 * Download and parse the page of a single class (will also parse multiple classes, if they are on the page)
+	 *
+	 * @param fileLink The http-link to the page to parse
+	 * @return a map of all the parsed classes
+	 */
 	public static Map<String, Class> parseClass(String fileLink) {
 		// Download class page
 		Document page;
@@ -517,7 +546,6 @@ public class LuaApiParser {
 			File file = new File(fileLink);
 			page = Jsoup.parse(file, "utf-8");
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			page.select("li").before("\\n");
 		} catch (Exception e) {
 			System.out.println("error downloading the class API page");
 			System.out.println(e.getMessage());
