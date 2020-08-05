@@ -133,6 +133,11 @@ public class LuaApiParser {
 		return s;
 	}
 
+
+	// =========================
+	// ===== Brief Listing =====
+	// =========================
+
 	/**
 	 * Parse one single standard method
 	 *
@@ -286,6 +291,7 @@ public class LuaApiParser {
 					luaClass.methods.put(method.name, method);
 				}
 			} else if (elementName.contains("{")) {
+				// is method with single table as param
 				Method method = parseBriefListingMethodTableParam(elementName, description, luaClass.name, returnList);
 
 				if (method != null) {
@@ -304,6 +310,161 @@ public class LuaApiParser {
 		return returnList;
 	}
 
+	// ==========================
+	// ===== Single Element =====
+	// ==========================
+
+	/**
+	 * Side-effect in luaMethod!
+	 *
+	 * @param text
+	 * @param luaMethod
+	 */
+	public static void parseDetailsSingleParam(String text, Method luaMethod) {
+		text = replaceUntilOneLine(text);
+		text = replaceTypes(text);
+
+		FieldResult fieldResult = parseFieldRegex(text);
+		if (fieldResult != null) {
+			String paramName = fieldResult.name;
+			MethodParameter parameter = luaMethod.parameters.get(paramName);
+			parameter.type = fieldResult.type;
+
+			String desc = fieldResult.description;
+			if (desc != null) {
+				parameter.description = desc.trim();
+			}
+
+			parameter.optional = fieldResult.optional;
+		}
+	}
+
+	/**
+	 * Side-effect in classes!
+	 *
+	 * @param element
+	 * @param upperClassName
+	 * @param luaMethod
+	 * @param classes
+	 */
+	public static void parseDetailsSingleParamWitchClass(Element element, String upperClassName, Method luaMethod, Map<String, Class> classes) {
+		String text = element.text();
+		if (text.contains("::")) {
+			text = replaceUntilOneLine(text);
+			text = replaceTypes(text);
+
+			// parse liText with regex
+			FieldResult fieldResult = parseFieldRegex(text);
+
+			if (fieldResult != null) {
+				String paramName = fieldResult.name;
+				String fullClassName = upperClassName + "_" + luaMethod.name;
+				Class additionalClass = classes.get(fullClassName);
+				Attribute attribute = additionalClass.attributes.get(paramName);
+				if (attribute == null) {
+					//create attribute if it doesnt exist yet
+					attribute = new Attribute();
+					attribute.name = paramName;
+					additionalClass.attributes.put(paramName, attribute);
+				}
+				attribute.type = fieldResult.type;
+
+				String desc = fieldResult.description;
+				if (desc != null) {
+					attribute.description = desc.trim();
+				}
+
+				attribute.optional = fieldResult.optional;
+
+				// set string liberals from <code>
+				Elements codeElements = element.select("code");
+				for (Element code : codeElements) {
+					String codeText = code.text();
+					codeText = codeText.replace("\"", "");
+					attribute.type += "|'\"" + codeText + "\"'";
+				}
+			}
+		}
+	}
+
+	/**
+	 * Side-effects in luaMethod!
+	 *
+	 * @param element
+	 * @param luaMethod
+	 * @param upperClassName
+	 */
+	public static void parseDetails(Element element, Method luaMethod, String upperClassName, Map<String, Class> classes) {
+		// parse header, see if we have to do things
+		Element detailHeader = element.selectFirst(".detail-header");
+
+		String headerText = detailHeader.text();
+		if (headerText.equals("Parameters")) {
+			// parse details
+			Element detailContent = element.selectFirst(".detail-content");
+
+			if (luaMethod != null && !luaMethod.paramTable) {
+				for (Element singleLine : detailContent.children()) {
+					// parse param and add information to already defined once
+					parseDetailsSingleParam(singleLine.text(), luaMethod);
+				}
+			} else if (luaMethod != null && luaMethod.paramTable) {
+				Elements allLi = detailContent.select("li");
+				for (Element li : allLi) {
+					// parse param single param with class
+					parseDetailsSingleParamWitchClass(li, upperClassName, luaMethod, classes);
+				}
+			}
+		}
+	}
+
+	/**
+	 * classes has side-effects!
+	 * luaMethod has side-effects!
+	 * luaAttribute has side-effects!
+	 *
+	 * @param upperClassName
+	 * @param luaMethod
+	 * @param luaAttribute
+	 * @param element
+	 * @param classes
+	 */
+	public static void parseFieldList(String upperClassName, Method luaMethod, Attribute luaAttribute, Element element, Map<String, Class> classes) {
+		Class newClass = new Class();
+		newClass.name = upperClassName + "_" + (luaMethod != null ? luaMethod.name : luaAttribute.name);
+		for (Element param : element.children()) {
+			String paramText = param.text();
+			paramText = replaceTypes(paramText);
+
+			FieldResult fieldResult = parseFieldRegex(paramText);
+
+			if (fieldResult != null) {
+				Attribute attribute = new Attribute();
+				attribute.name = fieldResult.name;
+				attribute.type = fieldResult.type;
+				attribute.description = fieldResult.description;
+				attribute.writeOnly = fieldResult.writeOnly;
+				attribute.readOnly = fieldResult.readOnly;
+
+				newClass.attributes.put(attribute.name, attribute);
+			}
+		}
+
+		boolean isArray = false;
+		if (luaMethod != null) {
+			isArray = luaMethod.returnType.contains("[]");
+			luaMethod.returnType = newClass.name;
+		} else if (luaAttribute != null) {
+			isArray = luaAttribute.type.contains("[]");
+			luaAttribute.type = newClass.name;
+		}
+		if (isArray) {
+			luaAttribute.type += "[]";
+		}
+
+		classes.put(newClass.name, newClass);
+	}
+
 	public static void parseSingleElement(Element subElement, Map<String, Class> classes) {
 		String name = subElement.id();
 		String[] nameSplit = name.split("\\.");
@@ -318,113 +479,10 @@ public class LuaApiParser {
 		Element elementContent = subElement.selectFirst(".element-content");
 		for (Element contentChild : elementContent.children()) {
 			if (contentChild.hasClass("detail")) {
-				// parse header, see if we have to do things
-				Element detailHeader = contentChild.selectFirst(".detail-header");
-
-				String headerText = detailHeader.text();
-				if (headerText.equals("Parameters")) {
-					// parse details
-					Element detailContent = contentChild.selectFirst(".detail-content");
-
-					if (luaMethod != null && !luaMethod.paramTable) {
-						for (Element singleLine : detailContent.children()) {
-							// parse param and add information to already defined once
-							String singleLineText = singleLine.text();
-							singleLineText = replaceUntilOneLine(singleLineText);
-							singleLineText = replaceTypes(singleLineText);
-
-							FieldResult fieldResult = parseFieldRegex(singleLineText);
-							if (fieldResult != null) {
-								String paramName = fieldResult.name;
-								MethodParameter parameter = luaMethod.parameters.get(paramName);
-								parameter.type = fieldResult.type;
-
-								String desc = fieldResult.description;
-								if (desc != null) {
-									parameter.description = desc.trim();
-								}
-
-								parameter.optional = fieldResult.optional;
-							}
-						}
-					} else if (luaMethod != null && luaMethod.paramTable) {
-						Elements allLi = detailContent.select("li");
-						for (Element li : allLi) {
-							String liText = li.text();
-							if (liText.contains("::")) {
-								liText = replaceUntilOneLine(liText);
-								liText = replaceTypes(liText);
-
-								// parse liText with regex
-								FieldResult fieldResult = parseFieldRegex(liText);
-
-								if (fieldResult != null) {
-									String paramName = fieldResult.name;
-									String fullClassName = luaClass.name + "_" + luaMethod.name;
-									Class additionalClass = classes.get(fullClassName);
-									Attribute attribute = additionalClass.attributes.get(paramName);
-									if (attribute == null) {
-										//create attribute if it doesnt exist yet
-										attribute = new Attribute();
-										attribute.name = paramName;
-										additionalClass.attributes.put(paramName, attribute);
-									}
-									attribute.type = fieldResult.type;
-
-									String desc = fieldResult.description;
-									if (desc != null) {
-										attribute.description = desc.trim();
-									}
-
-									attribute.optional = fieldResult.optional;
-
-									// set string liberals from <code>
-									Elements codeElements = li.select("code");
-									for (Element code : codeElements) {
-										String codeText = code.text();
-										codeText = codeText.replace("\"", "");
-										attribute.type += "|'\"" + codeText + "\"'";
-									}
-								}
-							}
-						}
-					}
-				}
+				parseDetails(contentChild, luaMethod, className, classes);
 			} else if (contentChild.hasClass("field-list")) {
 				// override type with this new class
-				Class newClass = new Class();
-				newClass.name = luaClass.name + "_" + (luaMethod != null ? luaMethod.name : luaAttribute.name);
-				for (Element param : contentChild.children()) {
-					String paramText = param.text();
-					paramText = replaceTypes(paramText);
-
-					FieldResult fieldResult = parseFieldRegex(paramText);
-
-					if (fieldResult != null) {
-						Attribute attribute = new Attribute();
-						attribute.name = fieldResult.name;
-						attribute.type = fieldResult.type;
-						attribute.description = fieldResult.description;
-						attribute.writeOnly = fieldResult.writeOnly;
-						attribute.readOnly = fieldResult.readOnly;
-
-						newClass.attributes.put(attribute.name, attribute);
-					}
-				}
-
-				boolean isArray = false;
-				if (luaMethod != null) {
-					isArray = luaMethod.returnType.contains("[]");
-					luaMethod.returnType = newClass.name;
-				} else if (luaAttribute != null) {
-					isArray = luaAttribute.type.contains("[]");
-					luaAttribute.type = newClass.name;
-				}
-				if (isArray) {
-					luaAttribute.type += "[]";
-				}
-
-				classes.put(newClass.name, newClass);
+				parseFieldList(luaClass.name, luaMethod, luaAttribute, contentChild, classes);
 			} else if (contentChild.hasClass("example")) {
 				// TODO IGNORE EXAMPLES FOR NOW
 			} else {
