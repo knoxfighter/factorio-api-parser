@@ -141,7 +141,7 @@ public class LuaApiParser {
 	/**
 	 * Parse one single standard method
 	 *
-	 * @param element The content of a single line
+	 * @param element     The content of a single line
 	 * @param description The description that is used (at the right of the table)
 	 * @return the parsed method, with all its parameters
 	 */
@@ -172,10 +172,10 @@ public class LuaApiParser {
 	 * Parse one single Method, that only has a Table as parameter. Syntax for such function: `function{param = value}`.
 	 * As side-effect a new class will be generated and put into the classList given.
 	 *
-	 * @param element The content of the single line
-	 * @param description The description to use (at the right of the table)
+	 * @param element        The content of the single line
+	 * @param description    The description to use (at the right of the table)
 	 * @param upperClassName The name of the class where this Method is part of
-	 * @param classList All the classes that are yet parsed and will be parsed (this will be used to store a new Class for
+	 * @param classList      All the classes that are yet parsed and will be parsed (this will be used to store a new Class for
 	 * @return the method, that has as only parameter the newly created class
 	 */
 	public static Method parseBriefListingMethodTableParam(String element, String description, String upperClassName, List<Class> classList) {
@@ -217,7 +217,7 @@ public class LuaApiParser {
 	/**
 	 * Parse one single Field/Attribute out of a brief-listing.
 	 *
-	 * @param member This is the JSoup Element of the single line inside the listing
+	 * @param member      This is the JSoup Element of the single line inside the listing
 	 * @param description The description for this attribute (if no other is found)
 	 * @return the fully parsed Attribute
 	 */
@@ -243,7 +243,7 @@ public class LuaApiParser {
 	/**
 	 * Parse one briefListing table on the top of the page
 	 *
-	 * @param briefListingElement The JSoup Element of the complete table (".brief-listing")
+	 * @param briefListingElement    The JSoup Element of the complete table (".brief-listing")
 	 * @param overallDescriptionHtml The description of the class (is normally written over the brief-listing element
 	 * @return a list of classes, that are represent for this brief-listing (overall class and subclasses for table-functions and table return values)
 	 */
@@ -317,10 +317,10 @@ public class LuaApiParser {
 	/**
 	 * Parse a single parameter out of the single elements.
 	 * This parses only a single line with one parameter and NOT a whole list.
-	 *
+	 * <p>
 	 * Side-effect in luaMethod!
 	 *
-	 * @param text the text to parse
+	 * @param text      the text to parse
 	 * @param luaMethod the method to update with the additional information
 	 */
 	public static void parseDetailsSingleParam(String text, Method luaMethod) {
@@ -346,13 +346,13 @@ public class LuaApiParser {
 	 * Parse a single parameter out of the single elements
 	 * This parses only a single line with one parameter and NOT a whole list.
 	 * This will add the parsed line into the attribute's additional class.
-	 *
+	 * <p>
 	 * Side-effect in classes!
 	 *
-	 * @param element The JSoup element to parse
+	 * @param element        The JSoup element to parse
 	 * @param upperClassName The name of the class, that the method of this parameter belongs to
-	 * @param luaMethod The method, where this parameter belongs to.
-	 * @param classes The result classes Map, where every class is saved.
+	 * @param luaMethod      The method, where this parameter belongs to.
+	 * @param classes        The result classes Map, where every class is saved.
 	 */
 	public static void parseDetailsSingleParamWitchClass(Element element, String upperClassName, Method luaMethod, Map<String, Class> classes) {
 		String text = element.text();
@@ -397,11 +397,11 @@ public class LuaApiParser {
 	/**
 	 * Parse the `detail` css-class element.
 	 * This mostly has information about Parameters and ReturnTypes and their description
-	 *
+	 * <p>
 	 * Side-effects in luaMethod!
 	 *
-	 * @param element The element to parse
-	 * @param luaMethod The method to save the information to
+	 * @param element        The element to parse
+	 * @param luaMethod      The method to save the information to
 	 * @param upperClassName The name of the class, that the method of this parameter belongs to
 	 */
 	public static void parseDetails(Element element, Method luaMethod, String upperClassName, Map<String, Class> classes) {
@@ -435,16 +435,16 @@ public class LuaApiParser {
 	 * Parse a field-list of a single-table-method.
 	 * This will add all found information (and all optional fields) to the existing method-class.
 	 * luaMethod OR luaAttribute can be null. If both are null, a NullPointerException is thrown.
-	 *
+	 * <p>
 	 * classes has side-effects!
 	 * luaMethod has side-effects!
 	 * luaAttribute has side-effects!
 	 *
 	 * @param upperClassName The name of the class, that the method of this parameter belongs to
-	 * @param luaMethod The method to change
-	 * @param luaAttribute The attribute to change
-	 * @param element The element to parse
-	 * @param classes The upper classes Map, where all classes are stored.
+	 * @param luaMethod      The method to change
+	 * @param luaAttribute   The attribute to change
+	 * @param element        The element to parse
+	 * @param classes        The upper classes Map, where all classes are stored.
 	 */
 	public static void parseFieldList(String upperClassName, Method luaMethod, Attribute luaAttribute, Element element, Map<String, Class> classes) {
 		Class newClass = new Class();
@@ -487,11 +487,11 @@ public class LuaApiParser {
 	/**
 	 * Parse a `.element` on the lower part of the html page.
 	 * All the information gathered will be saved into the classes map directly.
-	 *
+	 * <p>
 	 * side-effect in classes!
 	 *
 	 * @param subElement The `.element` to parse
-	 * @param classes The global classes map, where all classes are saved
+	 * @param classes    The global classes map, where all classes are saved
 	 */
 	public static void parseSingleElement(Element subElement, Map<String, Class> classes) {
 		String name = subElement.id();
@@ -538,25 +538,53 @@ public class LuaApiParser {
 	}
 
 	/**
-	 * Download and parse the page of a single class (will also parse multiple classes, if they are on the page)
+	 * Load the file and parse it
 	 *
-	 * @param fileLink The http-link to the page to parse
+	 * @param fileName The fileName of the html file to parse
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClass(String fileLink) {
-		// Download class page
-		Document page;
+	public static Map<String, Class> parseClassFromFile(String fileName) {
+		// Open class page
 		try {
-//            page = Jsoup.connect(fileLink).get();
-			File file = new File(fileLink);
-			page = Jsoup.parse(file, "utf-8");
+			File file = new File(fileName);
+			Document page = Jsoup.parse(file, "utf-8");
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
+			return parseClass(page);
+		} catch (Exception e) {
+			System.out.println("error opening the class API page");
+			System.out.println(e.getMessage());
+		}
+
+		return null;
+	}
+
+	/**
+	 * Download the page from the link and then parse it.
+	 *
+	 * @param link The link to the page
+	 * @return a map of all the parsed classes
+	 */
+	public static Map<String, Class> parseClassFromDownload(String link) {
+		// Download class page
+		try {
+			Document page = Jsoup.connect(link).get();
+			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
+			return parseClass(page);
 		} catch (Exception e) {
 			System.out.println("error downloading the class API page");
 			System.out.println(e.getMessage());
-			return null;
 		}
 
+		return null;
+	}
+
+	/**
+	 * Parse the JSoup document of a single class (will also parse multiple classes, if they are on that page)
+	 *
+	 * @param page The JSoup document to parse
+	 * @return a map of all the parsed classes
+	 */
+	public static Map<String, Class> parseClass(Document page) {
 		// create returned class-list
 		Map<String, Class> classes = new HashMap<>();
 

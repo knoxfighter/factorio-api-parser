@@ -17,7 +17,7 @@ class LuaApiParserTest {
 	@Test
 	void parseClass() {
 		String classTestFile = getClass().getClassLoader().getResource("ClassTest.html").getFile();
-		Map<String, Class> actual = LuaApiParser.parseClass(classTestFile);
+		Map<String, Class> actual = LuaApiParser.parseClassFromFile(classTestFile);
 		Map<String, Class> expected = new HashMap<>() {
 			{
 				put("LuaControl", new Class() {
