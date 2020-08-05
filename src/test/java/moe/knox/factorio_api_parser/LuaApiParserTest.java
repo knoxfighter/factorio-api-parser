@@ -29,8 +29,9 @@ class LuaApiParserTest {
 								put("get_inventory", new Method() {
 									{
 										name = "get_inventory";
-										returnType = "LuaInventory";
 										description = "<p>Get an inventory belonging to this entity. This can be either the \"main\" inventory or some auxiliary one, like the module slots or logistic trash slots.</p><p><div class=\"note\"><strong>Note: </strong> A given <a href=\"defines.html#defines.inventory\">defines.inventory</a> is only meaningful for the corresponding LuaObject type. EG: get_inventory(defines.inventory.character_main) is only meaningful if 'this' is a player character. You may get a value back but if the type of 'this' isn't the type referred to by the <a href=\"defines.html#defines.inventory\">defines.inventory</a> it's almost guaranteed to not be the inventory asked for.</div></p>";
+										returnType = "LuaInventory";
+										returnTypeDesc = "or <code>nil</code> if this entity doesn't have an inventory with the given index.";
 										parameters = new HashMap<>() {
 											{
 												put("inventory", new MethodParameter() {
@@ -47,8 +48,9 @@ class LuaApiParserTest {
 								put("get_main_inventory", new Method() {
 									{
 										name = "get_main_inventory";
-										returnType = "LuaInventory";
 										description = "<p>Gets the main inventory for this character or player if this is a character or player.</p>";
+										returnType = "LuaInventory";
+										returnTypeDesc = "or <code>nil</code> if this entity is not a character or player.";
 									}
 								});
 
@@ -79,8 +81,9 @@ class LuaApiParserTest {
 								put("teleport", new Method() {
 									{
 										name = "teleport";
-										returnType = "boolean";
 										description = "<p>Teleport the entity to a given position, possibly on another surface.</p><p><div class=\"note\"><strong>Note: </strong> Some entities may not be teleported. For instance, transport belts won't allow teleportation and this method will always return <code>false</code> when used on any such entity.</div><div class=\"note\"><strong>Note: </strong> You can also pass 1 or 2 numbers as the parameters and they will be used as relative teleport coordinates <code>'teleport(0, 1)'</code> to move the entity 1 tile positive y. <code>'teleport(4)'</code> to move the entity 4 tiles to the positive x.</div></p>";
+										returnType = "boolean";
+										returnTypeDesc = "<code>true</code> when the entity was successfully teleported.";
 										parameters = new HashMap<>() {
 											{
 												put("position", new MethodParameter() {
@@ -125,8 +128,9 @@ class LuaApiParserTest {
 								put("begin_crafting", new Method() {
 									{
 										name = "begin_crafting";
-										returnType = "uint";
 										description = "<p>Begins crafting the given count of the given recipe</p>";
+										returnType = "uint";
+										returnTypeDesc = "The count that was actually started crafting.";
 										parameters = new HashMap<>() {
 											{
 												put("LuaControl_begin_crafting_param", new MethodParameter() {

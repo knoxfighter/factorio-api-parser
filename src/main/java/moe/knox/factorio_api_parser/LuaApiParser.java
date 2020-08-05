@@ -409,10 +409,10 @@ public class LuaApiParser {
 		Element detailHeader = element.selectFirst(".detail-header");
 
 		String headerText = detailHeader.text();
-		if (headerText.equals("Parameters")) {
-			// parse details
-			Element detailContent = element.selectFirst(".detail-content");
+		Element detailContent = element.selectFirst(".detail-content");
 
+		if (headerText.equals("Parameters")) {
+			// parse details with Parameter information
 			if (luaMethod != null && !luaMethod.paramTable) {
 				for (Element singleLine : detailContent.children()) {
 					// parse param and add information to already defined once
@@ -425,6 +425,9 @@ public class LuaApiParser {
 					parseDetailsSingleParamWitchClass(li, upperClassName, luaMethod, classes);
 				}
 			}
+		} else if (headerText.equals("Return value")) {
+			// parse details with return value description
+			luaMethod.returnTypeDesc = replaceUntilOneLine(detailContent.html());
 		}
 	}
 
