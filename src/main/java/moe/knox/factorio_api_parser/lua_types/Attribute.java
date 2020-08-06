@@ -52,7 +52,7 @@ public class Attribute {
 	}
 
 	public void saveToFile(FileOutputStream outputStream, String parentClass) throws IOException {
-		if (description != null) {
+		if (description != null && !description.isEmpty()) {
 			for (String s : description.split("\n")) {
 				outputStream.write(("---" + s + "\n").getBytes());
 			}
