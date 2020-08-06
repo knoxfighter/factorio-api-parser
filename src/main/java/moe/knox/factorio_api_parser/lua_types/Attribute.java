@@ -1,5 +1,7 @@
 package moe.knox.factorio_api_parser.lua_types;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -47,5 +49,16 @@ public class Attribute {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name, type, description, readOnly, writeOnly);
+	}
+
+	public void saveToFile(FileOutputStream outputStream, String parentClass) throws IOException {
+		if (description != null) {
+			for (String s : description.split("\n")) {
+				outputStream.write(("---" + s + "\n").getBytes());
+			}
+		}
+		outputStream.write(("---@type " + type + "\n").getBytes());
+		outputStream.write((parentClass + "." + name + " = nil\n\n").getBytes());
+		outputStream.flush();
 	}
 }

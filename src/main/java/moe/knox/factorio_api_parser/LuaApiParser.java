@@ -340,6 +340,19 @@ public class LuaApiParser {
 			}
 
 			parameter.optional = fieldResult.optional;
+		} else {
+			// suggest, this is only the type, without name
+			String type = text.split(" ")[0];
+			MethodParameter methodParameter = luaMethod.parameters.get(type);
+
+			// only do it, if parameter found
+			if (methodParameter != null) {
+				// rebuild it, so it has name and type separated
+				methodParameter.type = type;
+				methodParameter.name = "param";
+				luaMethod.parameters.put(methodParameter.name, methodParameter);
+				luaMethod.parameters.remove(type);
+			}
 		}
 	}
 

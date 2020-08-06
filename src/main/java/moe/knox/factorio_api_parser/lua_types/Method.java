@@ -1,5 +1,7 @@
 package moe.knox.factorio_api_parser.lua_types;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 public class Method {
@@ -41,5 +43,46 @@ public class Method {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name, returnType, returnTypeDesc, description, parameters);
+	}
+
+	public void saveToFile(FileOutputStream outputStream, String parentClass) throws IOException {
+		// description
+		for (String s : description.split("\\n")) {
+			outputStream.write(("---" + s + "\n").getBytes());
+		}
+
+		// parameter
+		String paramList = "";
+		boolean first = true;
+		for (Map.Entry<String, MethodParameter> entry : parameters.entrySet()) {
+			MethodParameter methodParameter = entry.getValue();
+			outputStream.write(("---@param " + methodParameter.name).getBytes());
+			if (methodParameter.type != null && !methodParameter.type.isEmpty()) {
+				outputStream.write((" " + methodParameter.type).getBytes());
+			}
+			if (methodParameter.description != null && !methodParameter.description.isEmpty()) {
+				outputStream.write((" " + methodParameter.description).getBytes());
+			}
+			outputStream.write(("\n").getBytes());
+
+			if (!first) {
+				paramList += ", ";
+			}
+			paramList += methodParameter.name;
+			first = false;
+		}
+
+		// return
+		if (returnType != null && !returnType.isEmpty()) {
+			outputStream.write(("---@return " + returnType).getBytes());
+			if (returnTypeDesc != null && !returnTypeDesc.isEmpty()) {
+				outputStream.write((" " + returnTypeDesc).getBytes());
+			}
+			outputStream.write("\n".getBytes());
+		}
+
+		// signature
+		outputStream.write(("function " + parentClass + "." + name + "(" + paramList + ") end\n\n").getBytes());
+		outputStream.flush();
 	}
 }

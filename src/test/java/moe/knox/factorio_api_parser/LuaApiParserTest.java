@@ -29,7 +29,7 @@ class LuaApiParserTest {
 								put("get_inventory", new Method() {
 									{
 										name = "get_inventory";
-										description = "<p>Get an inventory belonging to this entity. This can be either the \"main\" inventory or some auxiliary one, like the module slots or logistic trash slots.</p><p><div class=\"note\"><strong>Note: </strong> A given <a href=\"defines.html#defines.inventory\">defines.inventory</a> is only meaningful for the corresponding LuaObject type. EG: get_inventory(defines.inventory.character_main) is only meaningful if 'this' is a player character. You may get a value back but if the type of 'this' isn't the type referred to by the <a href=\"defines.html#defines.inventory\">defines.inventory</a> it's almost guaranteed to not be the inventory asked for.</div></p>";
+										description = "<p>Get an inventory belonging to this entity. This can be either the \"main\" inventory or some auxiliary one, like the module slots or logistic trash slots.</p><p><div class=\"note\"><strong>Note: </strong> A given <a href=\"defines.html#defines.inventory\">defines.inventory</a> is only meaningful for the corresponding LuaObject type. EG: get_inventory(defines.inventory.character_main) is only meaningful if 'this' is a player character. You may get a value back but if the type of 'this' isn't the type referred to by the <a href=\"defines.html#defines.inventory\">defines.inventory</a> it's almost guaranteed to not be the inventory asked for. </div></p>";
 										returnType = "LuaInventory";
 										returnTypeDesc = "or <code>nil</code> if this entity doesn't have an inventory with the given index.";
 										parameters = new HashMap<>() {
@@ -81,7 +81,7 @@ class LuaApiParserTest {
 								put("teleport", new Method() {
 									{
 										name = "teleport";
-										description = "<p>Teleport the entity to a given position, possibly on another surface.</p><p><div class=\"note\"><strong>Note: </strong> Some entities may not be teleported. For instance, transport belts won't allow teleportation and this method will always return <code>false</code> when used on any such entity.</div><div class=\"note\"><strong>Note: </strong> You can also pass 1 or 2 numbers as the parameters and they will be used as relative teleport coordinates <code>'teleport(0, 1)'</code> to move the entity 1 tile positive y. <code>'teleport(4)'</code> to move the entity 4 tiles to the positive x.</div></p>";
+										description = "<p>Teleport the entity to a given position, possibly on another surface.</p><p><div class=\"note\"><strong>Note: </strong> Some entities may not be teleported. For instance, transport belts won't allow teleportation and this method will always return <code>false</code> when used on any such entity. </div> <div class=\"note\"><strong>Note: </strong> You can also pass 1 or 2 numbers as the parameters and they will be used as relative teleport coordinates <code>'teleport(0, 1)'</code> to move the entity 1 tile positive y. <code>'teleport(4)'</code> to move the entity 4 tiles to the positive x. </div></p>";
 										returnType = "boolean";
 										returnTypeDesc = "<code>true</code> when the entity was successfully teleported.";
 										parameters = new HashMap<>() {
@@ -151,6 +151,24 @@ class LuaApiParserTest {
 										description = "<p>When <code>true</code> control adapter is a LuaPlayer object, <code>false</code> for entities including characters with players</p>";
 									}
 								});
+
+								put("get_logistic_point", new Method() {
+									{
+										name = "get_logistic_point";
+										returnType = "LuaLogisticPoint|LuaLogisticPoint[]";
+										description = "<p>Gets the <a href=\"LuaLogisticPoint.html\">LuaLogisticPoint</a> specified by the given index or if not given returns all of the points this entity owns.</p><p><div class=\"note\"><strong>Note: </strong> When the index is not given for most entities this will be a single entry. For some (such as the player character) this can be zero or more. </div></p>";
+										parameters = new HashMap<>() {
+											{
+												put("param", new MethodParameter() {
+													{
+														name = "param";
+														type = "defines.logistic_member_index";
+													}
+												});
+											}
+										};
+									}
+								});
 							}
 						};
 
@@ -177,7 +195,7 @@ class LuaApiParserTest {
 									{
 										name = "opened";
 										type = "LuaEntity|LuaItemStack|LuaEquipment|LuaEquipmentGrid|LuaPlayer|LuaGuiElement|defines.gui_type";
-										description = "<p>The GUI target the player currently has open; <code>nil</code> if none.</p><p><div class=\"note\"><strong>Note: </strong> Write supports any of the types. Read will return the entity, equipment, element or nil.</div></p>";
+										description = "<p>The GUI target the player currently has open; <code>nil</code> if none.</p><p><div class=\"note\"><strong>Note: </strong> Write supports any of the types. Read will return the entity, equipment, element or nil. </div></p>";
 									}
 								});
 
@@ -202,7 +220,7 @@ class LuaApiParserTest {
 									{
 										name = "auto_trash_filters";
 										type = "table<string, uint>";
-										description = "<p>The auto-trash filters. The keys are item prototype names, the values are the slot values.</p><p><div class=\"note\"><strong>Note: </strong> When called on a <a href=\"LuaPlayer.html\">LuaPlayer</a>, it must be associated with a character (see <a href=\"LuaPlayer.html#LuaPlayer.character\">LuaPlayer::character</a>).</div></p>";
+										description = "<p>The auto-trash filters. The keys are item prototype names, the values are the slot values.</p><p><div class=\"note\"><strong>Note: </strong> When called on a <a href=\"LuaPlayer.html\">LuaPlayer</a>, it must be associated with a character (see <a href=\"LuaPlayer.html#LuaPlayer.character\">LuaPlayer::character</a>). </div></p>";
 									}
 								});
 
