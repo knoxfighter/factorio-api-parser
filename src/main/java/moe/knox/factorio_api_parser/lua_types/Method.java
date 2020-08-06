@@ -9,7 +9,7 @@ public class Method {
 	public String returnType;
 	public String returnTypeDesc;
 	public String description;
-	public Map<String, MethodParameter> parameters = new HashMap<>();
+	public LinkedHashMap<String, MethodParameter> parameters = new LinkedHashMap<>();
 	public boolean paramTable;
 
 	@Override

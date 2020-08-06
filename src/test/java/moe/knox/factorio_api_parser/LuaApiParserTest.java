@@ -8,6 +8,7 @@ import moe.knox.factorio_api_parser.lua_types.MethodParameter;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,7 +33,7 @@ class LuaApiParserTest {
 										description = "<p>Get an inventory belonging to this entity. This can be either the \"main\" inventory or some auxiliary one, like the module slots or logistic trash slots.</p><p><div class=\"note\"><strong>Note: </strong> A given <a href=\"defines.html#defines.inventory\">defines.inventory</a> is only meaningful for the corresponding LuaObject type. EG: get_inventory(defines.inventory.character_main) is only meaningful if 'this' is a player character. You may get a value back but if the type of 'this' isn't the type referred to by the <a href=\"defines.html#defines.inventory\">defines.inventory</a> it's almost guaranteed to not be the inventory asked for. </div></p>";
 										returnType = "LuaInventory";
 										returnTypeDesc = "or <code>nil</code> if this entity doesn't have an inventory with the given index.";
-										parameters = new HashMap<>() {
+										parameters = new LinkedHashMap<>() {
 											{
 												put("inventory", new MethodParameter() {
 													{
@@ -58,7 +59,7 @@ class LuaApiParserTest {
 									{
 										name = "set_gui_arrow";
 										description = "<p>Create an arrow which points at this entity. This is used in the tutorial. For examples, see <code>control.lua</code> in the campaign missions.</p>";
-										parameters = new HashMap<>() {
+										parameters = new LinkedHashMap<>() {
 											{
 												put("LuaControl_set_gui_arrow_param", new MethodParameter() {
 													{
@@ -84,7 +85,7 @@ class LuaApiParserTest {
 										description = "<p>Teleport the entity to a given position, possibly on another surface.</p><p><div class=\"note\"><strong>Note: </strong> Some entities may not be teleported. For instance, transport belts won't allow teleportation and this method will always return <code>false</code> when used on any such entity. </div> <div class=\"note\"><strong>Note: </strong> You can also pass 1 or 2 numbers as the parameters and they will be used as relative teleport coordinates <code>'teleport(0, 1)'</code> to move the entity 1 tile positive y. <code>'teleport(4)'</code> to move the entity 4 tiles to the positive x. </div></p>";
 										returnType = "boolean";
 										returnTypeDesc = "<code>true</code> when the entity was successfully teleported.";
-										parameters = new HashMap<>() {
+										parameters = new LinkedHashMap<>() {
 											{
 												put("position", new MethodParameter() {
 													{
@@ -111,7 +112,7 @@ class LuaApiParserTest {
 									{
 										name = "update_selected_entity";
 										description = "<p>Select an entity, as if by hovering the mouse above it.</p>";
-										parameters = new HashMap<>() {
+										parameters = new LinkedHashMap<>() {
 											{
 												put("position", new MethodParameter() {
 													{
@@ -131,7 +132,7 @@ class LuaApiParserTest {
 										description = "<p>Begins crafting the given count of the given recipe</p>";
 										returnType = "uint";
 										returnTypeDesc = "The count that was actually started crafting.";
-										parameters = new HashMap<>() {
+										parameters = new LinkedHashMap<>() {
 											{
 												put("LuaControl_begin_crafting_param", new MethodParameter() {
 													{
@@ -157,7 +158,7 @@ class LuaApiParserTest {
 										name = "get_logistic_point";
 										returnType = "LuaLogisticPoint|LuaLogisticPoint[]";
 										description = "<p>Gets the <a href=\"LuaLogisticPoint.html\">LuaLogisticPoint</a> specified by the given index or if not given returns all of the points this entity owns.</p><p><div class=\"note\"><strong>Note: </strong> When the index is not given for most entities this will be a single entry. For some (such as the player character) this can be zero or more. </div></p>";
-										parameters = new HashMap<>() {
+										parameters = new LinkedHashMap<>() {
 											{
 												put("param", new MethodParameter() {
 													{
