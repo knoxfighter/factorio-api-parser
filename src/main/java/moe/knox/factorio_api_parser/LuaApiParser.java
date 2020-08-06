@@ -120,7 +120,7 @@ public class LuaApiParser {
 	 */
 	public static String replaceTypes(String s) {
 		// replace array types
-		s = s.replaceAll("array of (\\w*)", "$1[]");
+		s = s.replaceAll("array of ([\\w\\.]*)", "$1[]");
 
 		// replace function types
 		s = s.replaceAll("function\\((.*?)\\)", "fun($1)");
