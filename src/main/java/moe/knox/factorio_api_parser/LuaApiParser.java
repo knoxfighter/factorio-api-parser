@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public class LuaApiParser {
 	public static String factorioApiBaseLink = "https://lua-api.factorio.com/latest/index.html";
 	//language=RegExp
-	public static String typePattern = "[\\w\\[\\].|]*(?:<[\\w\\[\\]<>.,| ]*>)?[\\w\\[\\]>]*";
+	public static String typePattern = "[\\w\\[\\].|]*(?:<[\\w\\[\\]<>.,| ]*>)?[\\w\\[\\]>\\)\\(]*";
 	public static Pattern functionPattern = Pattern.compile(
 			String.format(
 					"^(?<name>\\w*)[{(](?<param>.*)[)}](?: → (?<return>%s))?",
@@ -121,6 +121,9 @@ public class LuaApiParser {
 	public static String replaceTypes(String s) {
 		// replace array types
 		s = s.replaceAll("array of (\\w*)", "$1[]");
+
+		// replace function types
+		s = s.replaceAll("function\\((.*?)\\)", "fun($1)");
 
 		// replace dictionary types
 		String old;
@@ -656,9 +659,15 @@ public class LuaApiParser {
 		return classes;
 	}
 
+	/**
+	 * print the current progress with a pretty progress bar
+	 *
+	 * @param current
+	 * @param max
+	 */
 	public static void printCurrentProgress(int current, int max) {
 		StringBuilder stringBuilder = new StringBuilder("|");
-		int amountOfEquals = current / max * 20;
+		int amountOfEquals = ((int) (((float) current) / ((float) max) * 20));
 		int amountOfSpaces = 20 - amountOfEquals;
 		for (int i = 0; i < amountOfEquals; i++) {
 			stringBuilder.append("=");
@@ -666,8 +675,8 @@ public class LuaApiParser {
 		for (int i = 0; i < amountOfSpaces; i++) {
 			stringBuilder.append(" ");
 		}
-		stringBuilder.append("|\r");
-		System.out.println(stringBuilder);
+		stringBuilder.append(String.format("| %d/%d  %d%%\r", current, max, ((int) (((float) current) / ((float) max) * 100))));
+		System.out.println(stringBuilder.toString());
 	}
 
 	public static Map<String, Class> parseOverviewPageFromDownload(String link) {
@@ -698,7 +707,10 @@ public class LuaApiParser {
 		} while (!briefListing.hasClass("brief-listing"));
 
 		Element tbody = briefListing.selectFirst("tbody");
-		for (Element tr : tbody.children()) {
+		Elements children = tbody.children();
+		for (int i = 0; i < children.size(); i++) {
+			printCurrentProgress(i, children.size());
+			Element tr = children.get(i);
 			Element trLink = tr.selectFirst(".header > a");
 			String classPageLink = trLink.attr("href");
 			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
