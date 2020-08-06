@@ -493,13 +493,13 @@ public class LuaApiParser {
 			}
 		}
 
-		if (luaMethod != null) {
+		if (luaMethod != null && luaMethod.returnType != null) {
 			boolean isArray = luaMethod.returnType.contains("[]");
 			luaMethod.returnType = newClass.name;
 			if (isArray) {
 				luaMethod.returnType += "[]";
 			}
-		} else if (luaAttribute != null) {
+		} else if (luaAttribute != null && luaAttribute.type != null) {
 			boolean isArray = luaAttribute.type.contains("[]");
 			luaAttribute.type = newClass.name;
 			if (isArray) {
@@ -563,19 +563,23 @@ public class LuaApiParser {
 		}
 	}
 
+	// ==========================
+	// ===== Parser Entries =====
+	// ==========================
+
 	/**
 	 * Load the file and parse it
 	 *
 	 * @param fileName The fileName of the html file to parse
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClassFromFile(String fileName) {
+	public static Map<String, Class> parseClassPageFromFile(String fileName) {
 		// Open class page
 		try {
 			File file = new File(fileName);
 			Document page = Jsoup.parse(file, "utf-8");
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClass(page);
+			return parseClassPage(page);
 		} catch (Exception e) {
 			System.out.println("error opening the class API page");
 			System.out.println(e.getMessage());
@@ -590,12 +594,12 @@ public class LuaApiParser {
 	 * @param link The link to the page
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClassFromDownload(String link) {
+	public static Map<String, Class> parseClassPageFromDownload(String link) {
 		// Download class page
 		try {
 			Document page = Jsoup.connect(link).get();
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClass(page);
+			return parseClassPage(page);
 		} catch (IOException e) {
 			System.out.println("error downloading the class API page");
 			System.out.println(e.getMessage());
@@ -610,13 +614,16 @@ public class LuaApiParser {
 	 * @param page The JSoup document to parse
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClass(Document page) {
+	public static Map<String, Class> parseClassPage(Document page) {
 		// create returned class-list
 		Map<String, Class> classes = new HashMap<>();
 
 		// parse class description
 		Element descElement = page.selectFirst(".brief-description");
-		String overallDescriptionHtml = replaceUntilOneLine(descElement.html());
+		String overallDescriptionHtml = "";
+		if (descElement != null) {
+			overallDescriptionHtml = replaceUntilOneLine(descElement.html());
+		}
 
 		Element briefListingOuter = page.selectFirst(".brief-listing");
 		Elements briefListingElements = briefListingOuter.children();
@@ -647,5 +654,57 @@ public class LuaApiParser {
 		}
 
 		return classes;
+	}
+
+	public static void printCurrentProgress(int current, int max) {
+		StringBuilder stringBuilder = new StringBuilder("|");
+		int amountOfEquals = current / max * 20;
+		int amountOfSpaces = 20 - amountOfEquals;
+		for (int i = 0; i < amountOfEquals; i++) {
+			stringBuilder.append("=");
+		}
+		for (int i = 0; i < amountOfSpaces; i++) {
+			stringBuilder.append(" ");
+		}
+		stringBuilder.append("|\r");
+		System.out.println(stringBuilder);
+	}
+
+	public static Map<String, Class> parseOverviewPageFromDownload(String link) {
+		// TODO parse globals
+		// TODO parse events
+		// TODO parse defines
+		// TODO hardcoded types/functions
+
+		// Download overview page
+		Document page;
+		try {
+			page = Jsoup.connect(link).get();
+			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
+		} catch (IOException e) {
+			System.out.println("error downloading the class API page");
+			System.out.println(e.getMessage());
+			return null;
+		}
+
+		// parse classes
+		Map<String, Class> returnClasses = new HashMap<>();
+		Element classesHeader = page.selectFirst("#Classes");
+
+		// find next element with .brief-listing
+		Element briefListing = classesHeader.nextElementSibling();
+		do {
+			briefListing = briefListing.nextElementSibling();
+		} while (!briefListing.hasClass("brief-listing"));
+
+		Element tbody = briefListing.selectFirst("tbody");
+		for (Element tr : tbody.children()) {
+			Element trLink = tr.selectFirst(".header > a");
+			String classPageLink = trLink.attr("href");
+			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
+			returnClasses.putAll(parsedClasses);
+		}
+
+		return returnClasses;
 	}
 }

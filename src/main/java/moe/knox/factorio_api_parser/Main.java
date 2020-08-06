@@ -9,14 +9,13 @@ import java.util.Map;
 public class Main {
 	public static void main(String[] args) {
 		// Download and parse a single page
-		Map<String, Class> stringClassMap = LuaApiParser.parseClassFromDownload("https://lua-api.factorio.com/latest/LuaEntity.html");
-		System.out.println(stringClassMap);
+		Map<String, Class> stringClassMap = LuaApiParser.parseOverviewPageFromDownload("https://lua-api.factorio.com/latest/");
 
 		// save the file
-		stringClassMap.forEach((s, aClass) -> {
+		stringClassMap.forEach((className, aClass) -> {
 			// open file to write to!
 			try {
-				FileOutputStream outputStream = new FileOutputStream("test/" + s + ".lua");
+				FileOutputStream outputStream = new FileOutputStream("test/" + className + ".lua");
 				aClass.saveToFile(outputStream);
 			} catch (IOException e) {
 				e.printStackTrace();

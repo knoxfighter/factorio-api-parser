@@ -2,8 +2,6 @@ package moe.knox.factorio_api_parser.lua_types;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Attribute {

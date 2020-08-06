@@ -49,7 +49,11 @@ public class Class {
 		if (description != null && !description.isEmpty()) {
 			outputStream.write(("---" + description + "\n").getBytes());
 		}
-		outputStream.write(("---@class " + name + "\n").getBytes());
+		outputStream.write(("---@class " + name + "").getBytes());
+		if (parentClass != null && !parentClass.isEmpty()) {
+			outputStream.write((" : " + parentClass).getBytes());
+		}
+		outputStream.write("\n".getBytes());
 		outputStream.write(("local " + name + " = {}\n\n").getBytes());
 		outputStream.flush();
 
