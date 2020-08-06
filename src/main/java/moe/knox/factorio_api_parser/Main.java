@@ -1,18 +1,17 @@
 package moe.knox.factorio_api_parser;
 
-import moe.knox.factorio_api_parser.lua_types.Class;
+import moe.knox.factorio_api_parser.lua_types.Attribute;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Map;
 
 public class Main {
 	public static void main(String[] args) {
 		// Download and parse a single page
-		Map<String, Class> stringClassMap = LuaApiParser.parseOverviewPageFromDownload("https://lua-api.factorio.com/latest/");
+		LuaApiParser.ParseOverviewResult parseOverviewResult = LuaApiParser.parseOverviewPageFromDownload("https://lua-api.factorio.com/latest/");
 
 		// save the file
-		stringClassMap.forEach((className, aClass) -> {
+		parseOverviewResult.classes.forEach((className, aClass) -> {
 			// open file to write to!
 			try {
 				FileOutputStream outputStream = new FileOutputStream("test/" + className + ".lua");
@@ -21,5 +20,14 @@ public class Main {
 				e.printStackTrace();
 			}
 		});
+
+		try {
+			FileOutputStream outputStream = new FileOutputStream("test/globals.lua");
+			for (Attribute global : parseOverviewResult.globals) {
+				global.saveToFile(outputStream, "");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

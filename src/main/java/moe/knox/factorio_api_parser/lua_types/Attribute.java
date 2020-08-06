@@ -56,7 +56,10 @@ public class Attribute {
 			}
 		}
 		outputStream.write(("---@type " + type + "\n").getBytes());
-		outputStream.write((parentClass + "." + name + " = nil\n\n").getBytes());
+		if (parentClass != null && !parentClass.isEmpty()) {
+			outputStream.write((parentClass + ".").getBytes());
+		}
+		outputStream.write((name + " = nil\n\n").getBytes());
 		outputStream.flush();
 	}
 }

@@ -221,12 +221,11 @@ public class LuaApiParser {
 	/**
 	 * Parse one single Field/Attribute out of a brief-listing.
 	 *
-	 * @param member      This is the JSoup Element of the single line inside the listing
+	 * @param fullElement This is the text of the element to parse
 	 * @param description The description for this attribute (if no other is found)
 	 * @return the fully parsed Attribute
 	 */
-	public static Attribute parseBriefListingField(Element member, String description) {
-		String fullElement = member.selectFirst(".header").text();
+	public static Attribute parseBriefListingField(String fullElement, String description) {
 		fullElement = replaceTypes(fullElement);
 
 		FieldResult fieldResult = parseFieldRegex(fullElement);
@@ -303,7 +302,8 @@ public class LuaApiParser {
 				}
 			} else {
 				// is field
-				Attribute attribute = parseBriefListingField(member, description);
+				String fullElement = member.selectFirst(".header").text();
+				Attribute attribute = parseBriefListingField(fullElement, description);
 
 				if (attribute != null) {
 					luaClass.attributes.put(attribute.name, attribute);
@@ -668,7 +668,7 @@ public class LuaApiParser {
 	public static void printCurrentProgress(int current, int max) {
 		StringBuilder stringBuilder = new StringBuilder("|");
 		int amountOfEquals = ((int) (((float) current) / ((float) max) * 20));
-		int amountOfSpaces = 20 - amountOfEquals;
+		int amountOfSpaces = 20 - amountOfEquals - 1;
 		for (int i = 0; i < amountOfEquals; i++) {
 			stringBuilder.append("=");
 		}
@@ -679,10 +679,20 @@ public class LuaApiParser {
 		System.out.println(stringBuilder.toString());
 	}
 
-	public static Map<String, Class> parseOverviewPageFromDownload(String link) {
-		// TODO parse globals
+	public static class ParseOverviewResult {
+		Map<String, Class> classes;
+		List<Attribute> globals;
+
+		public ParseOverviewResult() {
+			classes = new HashMap<>();
+			globals = new ArrayList<>();
+		}
+	}
+
+	public static ParseOverviewResult parseOverviewPageFromDownload(String link) {
 		// TODO parse events
 		// TODO parse defines
+		// TODO parse Concepts
 		// TODO hardcoded types/functions
 
 		// Download overview page
@@ -696,8 +706,10 @@ public class LuaApiParser {
 			return null;
 		}
 
+		// create result object
+		ParseOverviewResult result = new ParseOverviewResult();
+
 		// parse classes
-		Map<String, Class> returnClasses = new HashMap<>();
 		Element classesHeader = page.selectFirst("#Classes");
 
 		// find next element with .brief-listing
@@ -709,14 +721,21 @@ public class LuaApiParser {
 		Element tbody = briefListing.selectFirst("tbody");
 		Elements children = tbody.children();
 		for (int i = 0; i < children.size(); i++) {
-			printCurrentProgress(i, children.size());
+			printCurrentProgress(i + 1, children.size());
 			Element tr = children.get(i);
 			Element trLink = tr.selectFirst(".header > a");
 			String classPageLink = trLink.attr("href");
 			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
-			returnClasses.putAll(parsedClasses);
+			result.classes.putAll(parsedClasses);
 		}
 
-		return returnClasses;
+		// parse globals
+		Element globalsList = page.selectFirst(".field-list");
+		for (Element global : globalsList.children()) {
+			Attribute attribute = parseBriefListingField(global.text(), null);
+			result.globals.add(attribute);
+		}
+
+		return result;
 	}
 }
