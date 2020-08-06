@@ -47,8 +47,10 @@ public class Method {
 
 	public void saveToFile(FileOutputStream outputStream, String parentClass) throws IOException {
 		// description
-		for (String s : description.split("\\n")) {
-			outputStream.write(("---" + s + "\n").getBytes());
+		if (description != null && !description.isEmpty()) {
+			for (String s : description.split("\\n")) {
+				outputStream.write(("---" + s + "\n").getBytes());
+			}
 		}
 
 		// parameter
