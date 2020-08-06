@@ -1,9 +1,7 @@
 package moe.knox.factorio_api_parser;
 
-import moe.knox.factorio_api_parser.lua_types.Attribute;
+import moe.knox.factorio_api_parser.lua_types.*;
 import moe.knox.factorio_api_parser.lua_types.Class;
-import moe.knox.factorio_api_parser.lua_types.Method;
-import moe.knox.factorio_api_parser.lua_types.MethodParameter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -682,6 +680,7 @@ public class LuaApiParser {
 	public static class ParseOverviewResult {
 		Map<String, Class> classes;
 		List<Attribute> globals;
+		Defines defines;
 
 		public ParseOverviewResult() {
 			classes = new HashMap<>();
@@ -690,8 +689,6 @@ public class LuaApiParser {
 	}
 
 	public static ParseOverviewResult parseOverviewPageFromDownload(String link) {
-		// TODO parse events
-		// TODO parse defines
 		// TODO parse Concepts
 		// TODO hardcoded types/functions
 
@@ -736,6 +733,75 @@ public class LuaApiParser {
 			result.globals.add(attribute);
 		}
 
+		// parse defines
+		result.defines = parseDefines(link);
+		parseEvents(link, result.defines);
+
 		return result;
+	}
+
+	public static Defines parseDefines(String baseLink) {
+		Document definesPage;
+		try {
+			definesPage = Jsoup.connect(baseLink + "defines.html").get();
+		} catch (IOException e) {
+			System.out.println("error downloading the defines page");
+			System.out.println(e.getMessage());
+			return null;
+		}
+
+		Defines defines = new Defines();
+		Elements allDefines = definesPage.select(".element");
+		for (Element define : allDefines) {
+			String valueId = define.id();
+			if (valueId.contains("events")) {
+				continue;
+			}
+			if (define.is("tr")) {
+				// is value
+				String desc = define.selectFirst(".description").html();
+				defines.values.add(new Define(valueId, desc));
+			} else {
+				// is class
+				defines.classes.add(valueId);
+			}
+		}
+
+		return defines;
+	}
+
+	/**
+	 * side-effects in defines!
+	 *
+	 * @param baseLink
+	 * @param defines
+	 */
+	public static void parseEvents(String baseLink, Defines defines) {
+		// parse event page here too
+		Document eventsPage;
+		String eventsLink = baseLink + "events.html";
+
+		try {
+			eventsPage = Jsoup.connect(eventsLink).get();
+		} catch (IOException e) {
+			System.out.println("error downloading the events page");
+			e.printStackTrace();
+			return;
+		}
+
+		for (Element event : eventsPage.select(".element")) {
+			if (event.id().equals("All events")) {
+				continue;
+			}
+
+			String eventName = event.id();
+			if (!eventName.isEmpty()) {
+				eventName = "defines.events." + eventName;
+				String desc = event.selectFirst(".element-content").html();
+				desc = replaceUntilOneLine(desc);
+				defines.values.add(new Define(eventName, desc));
+			}
+		}
+		defines.classes.add("defines.events");
 	}
 }

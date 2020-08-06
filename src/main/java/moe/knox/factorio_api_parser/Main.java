@@ -29,5 +29,12 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		try {
+			FileOutputStream outputStream = new FileOutputStream("test/defines.lua");
+			parseOverviewResult.defines.saveToFile(outputStream);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
