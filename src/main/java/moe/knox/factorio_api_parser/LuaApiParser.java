@@ -325,9 +325,13 @@ public class LuaApiParser {
 	 * @param text      the text to parse
 	 * @param luaMethod the method to update with the additional information
 	 */
-	public static void parseDetailsSingleParam(String text, Method luaMethod) {
+	public static void parseDetailsMethodParams(String text, Method luaMethod) {
 		text = replaceUntilOneLine(text);
 		text = replaceTypes(text);
+
+		if (text.isEmpty()) {
+			return;
+		}
 
 		FieldResult fieldResult = parseFieldRegex(text);
 		if (fieldResult != null) {
@@ -369,7 +373,7 @@ public class LuaApiParser {
 	 * @param luaMethod      The method, where this parameter belongs to.
 	 * @param classes        The result classes Map, where every class is saved.
 	 */
-	public static void parseDetailsSingleParamWitchClass(Element element, String upperClassName, Method luaMethod, Map<String, Class> classes) {
+	public static void parseDetailsMethodParamWithClass(Element element, String upperClassName, Method luaMethod, Map<String, Class> classes) {
 		String text = element.text();
 		if (text.contains("::")) {
 			text = replaceUntilOneLine(text);
@@ -432,13 +436,13 @@ public class LuaApiParser {
 				if (luaMethod != null && !luaMethod.paramTable) {
 					for (Element singleLine : detailContent.children()) {
 						// parse param and add information to already defined once
-						parseDetailsSingleParam(singleLine.text(), luaMethod);
+						parseDetailsMethodParams(singleLine.text(), luaMethod);
 					}
 				} else if (luaMethod != null && luaMethod.paramTable) {
 					Elements allLi = detailContent.select("li");
 					for (Element li : allLi) {
 						// parse param single param with class
-						parseDetailsSingleParamWitchClass(li, upperClassName, luaMethod, classes);
+						parseDetailsMethodParamWithClass(li, upperClassName, luaMethod, classes);
 					}
 				}
 			} else if (headerText.equals("Return value")) {
