@@ -277,7 +277,13 @@ public class LuaApiParser {
 		// read all members
 		Elements members = briefListingElement.select(".brief-members > tbody > tr");
 		for (Element member : members) {
-			String description = member.selectFirst(".description").html().strip();
+			Element descriptionElement = member.selectFirst(".description");
+			// skip member if it doesnt has a description subelement
+			if (descriptionElement == null) {
+				continue;
+			}
+
+			String description = descriptionElement.html().strip();
 
 			// member name and description
 			String elementName = member.selectFirst(".element-name").text();
@@ -823,7 +829,7 @@ public class LuaApiParser {
 			Element link = allLinks.get(i);
 			String versionName = link.text();
 			printCurrentProgress(i + 1, allLinks.size());
-			if (!versionName.equals("Latest version")) {
+			if (!versionName.equals("Latest version") && !versionName.equals("0.12.35")) {
 				String href = link.attr("href");
 				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href);
 				result.put(versionName, overviewResult);
