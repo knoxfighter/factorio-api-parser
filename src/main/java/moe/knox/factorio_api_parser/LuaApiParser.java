@@ -706,31 +706,23 @@ public class LuaApiParser {
 		// create result object
 		ParseOverviewResult result = new ParseOverviewResult();
 
-		// find all field-lists, first one are globals, second one are classes
-		Elements briefListings = page.select(".brief-listing");
-		for (int i = 0; i < briefListings.size(); i++) {
-			Element briefListing = briefListings.get(i);
+		// find first element with .brief-listing, its the list of classes
+		Element briefListing = page.selectFirst(".brief-listing");
+		Element tbody = briefListing.selectFirst("tbody");
+		Elements children = tbody.children();
+		for (int i = 0; i < children.size(); i++) {
+			Element tr = children.get(i);
+			Element trLink = tr.selectFirst(".header > a");
+			String classPageLink = trLink.attr("href");
+			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
+			result.classes.putAll(parsedClasses);
+		}
 
-			// first one global
-			if (i == 0) {
-				// parse globals
-				Element globalsList = page.selectFirst(".field-list");
-				for (Element global : globalsList.children()) {
-					Attribute attribute = parseBriefListingField(global.text(), null);
-					result.globals.add(attribute);
-				}
-			} else if (i == 1) {
-				// parse classes
-				Element tbody = briefListing.selectFirst("tbody");
-				Elements children = tbody.children();
-				for (int j = 0; j < children.size(); j++) {
-					Element tr = children.get(j);
-					Element trLink = tr.selectFirst(".header > a");
-					String classPageLink = trLink.attr("href");
-					Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
-					result.classes.putAll(parsedClasses);
-				}
-			}
+		// parse globals
+		Element globalsList = page.selectFirst(".field-list");
+		for (Element global : globalsList.children()) {
+			Attribute attribute = parseBriefListingField(global.text(), null);
+			result.globals.add(attribute);
 		}
 
 		// parse defines
