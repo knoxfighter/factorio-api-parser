@@ -706,31 +706,31 @@ public class LuaApiParser {
 		// create result object
 		ParseOverviewResult result = new ParseOverviewResult();
 
-		// parse classes
-		Element classesHeader = page.selectFirst("#Classes");
+		// find all field-lists, first one are globals, second one are classes
+		Elements briefListings = page.select(".brief-listing");
+		for (int i = 0; i < briefListings.size(); i++) {
+			Element briefListing = briefListings.get(i);
 
-		// find next element with .brief-listing
-		Element briefListing = classesHeader.nextElementSibling();
-		do {
-			briefListing = briefListing.nextElementSibling();
-		} while (!briefListing.hasClass("brief-listing"));
-
-		Element tbody = briefListing.selectFirst("tbody");
-		Elements children = tbody.children();
-		for (int i = 0; i < children.size(); i++) {
-			printCurrentProgress(i + 1, children.size());
-			Element tr = children.get(i);
-			Element trLink = tr.selectFirst(".header > a");
-			String classPageLink = trLink.attr("href");
-			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
-			result.classes.putAll(parsedClasses);
-		}
-
-		// parse globals
-		Element globalsList = page.selectFirst(".field-list");
-		for (Element global : globalsList.children()) {
-			Attribute attribute = parseBriefListingField(global.text(), null);
-			result.globals.add(attribute);
+			// first one global
+			if (i == 0) {
+				// parse globals
+				Element globalsList = page.selectFirst(".field-list");
+				for (Element global : globalsList.children()) {
+					Attribute attribute = parseBriefListingField(global.text(), null);
+					result.globals.add(attribute);
+				}
+			} else if (i == 1) {
+				// parse classes
+				Element tbody = briefListing.selectFirst("tbody");
+				Elements children = tbody.children();
+				for (int j = 0; j < children.size(); j++) {
+					Element tr = children.get(j);
+					Element trLink = tr.selectFirst(".header > a");
+					String classPageLink = trLink.attr("href");
+					Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
+					result.classes.putAll(parsedClasses);
+				}
+			}
 		}
 
 		// parse defines
@@ -739,6 +739,10 @@ public class LuaApiParser {
 
 		return result;
 	}
+
+	// =============================
+	// ===== Additional Parser =====
+	// =============================
 
 	public static Defines parseDefines(String baseLink) {
 		Document definesPage;
@@ -803,5 +807,33 @@ public class LuaApiParser {
 			}
 		}
 		defines.classes.add("defines.events");
+	}
+
+	public static Map<String, ParseOverviewResult> parseVersionList() {
+		// Download version list page
+		Document versionsPage;
+		try {
+			versionsPage = Jsoup.connect("https://lua-api.factorio.com/").get();
+		} catch (IOException e) {
+			System.out.println("error downloading the events page");
+			e.printStackTrace();
+			return null;
+		}
+
+		Map<String, ParseOverviewResult> result = new HashMap<>();
+
+		Elements allLinks = versionsPage.select("a");
+		for (int i = 0; i < allLinks.size(); i++) {
+			Element link = allLinks.get(i);
+			String versionName = link.text();
+			printCurrentProgress(i + 1, allLinks.size());
+			if (!versionName.equals("Latest version")) {
+				String href = link.attr("href");
+				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href);
+				result.put(versionName, overviewResult);
+			}
+		}
+
+		return result;
 	}
 }
