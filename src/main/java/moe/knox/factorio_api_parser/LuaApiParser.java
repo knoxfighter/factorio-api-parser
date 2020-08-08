@@ -51,7 +51,7 @@ public class LuaApiParser {
 
 	public static Pattern fieldPattern = Pattern.compile(
 			String.format(
-					"^(?<name>\\w*) :: (?<type>%s)(?: (?<optional>\\(optional\\)))?:?(?: (?<desc>[^\\[\\n]*)?(?:\\[(?<rw>[RW]{0,2})\\])?)?()",
+					"^(?<name>\\w*)(?: :: )?(?<type>%s)(?: (?<optional>\\(optional\\)))?:?(?: (?<desc>[^\\[\\n]*)?(?:\\[(?<rw>[RW]{0,2})\\])?)?()",
 					LuaApiParser.typePattern
 			)
 	);
