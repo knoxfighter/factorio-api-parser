@@ -20,7 +20,7 @@ public class Main {
 			String basePath = "luaOutput/" + versionName + "/";
 
 			try {
-				Files.createDirectories(Paths.get("basePath"));
+				Files.createDirectories(Paths.get(basePath));
 			} catch (IOException e) {
 				e.printStackTrace();
 				return;
