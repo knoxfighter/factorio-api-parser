@@ -8,6 +8,7 @@ public class Class {
 	public String name;
 	public String parentClass;
 	public String description;
+	public String since;
 	public Map<String, Method> methods = new HashMap<>();
 	public Map<String, Attribute> attributes = new HashMap<>();
 
@@ -46,22 +47,34 @@ public class Class {
 	}
 
 	public void saveToFile(FileOutputStream outputStream) throws IOException {
+		// description
 		if (description != null && !description.isEmpty()) {
 			outputStream.write(("---" + description + "\n").getBytes());
 		}
+
+		// @since
+		if (since != null && !since.isEmpty()) {
+			outputStream.write(("---@since " + since + "\n").getBytes());
+		}
+
+		// @class
 		outputStream.write(("---@class " + name + "").getBytes());
 		if (parentClass != null && !parentClass.isEmpty()) {
 			outputStream.write((" : " + parentClass).getBytes());
 		}
 		outputStream.write("\n".getBytes());
+
+		// definition
 		outputStream.write(("local " + name + " = {}\n\n").getBytes());
 		outputStream.flush();
 
+		// all methods
 		for (Map.Entry<String, Method> entry : methods.entrySet()) {
 			Method method = entry.getValue();
 			method.saveToFile(outputStream, name);
 		}
 
+		// all attributes
 		for (Map.Entry<String, Attribute> entry : attributes.entrySet()) {
 			Attribute attribute = entry.getValue();
 			attribute.saveToFile(outputStream, name);

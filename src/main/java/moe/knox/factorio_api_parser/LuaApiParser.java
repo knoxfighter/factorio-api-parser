@@ -248,7 +248,7 @@ public class LuaApiParser {
 	 * @param overallDescriptionHtml The description of the class (is normally written over the brief-listing element
 	 * @return a list of classes, that are represent for this brief-listing (overall class and subclasses for table-functions and table return values)
 	 */
-	public static List<Class> parseBriefListingElement(Element briefListingElement, String overallDescriptionHtml) {
+	public static List<Class> parseBriefListingElement(Element briefListingElement, String overallDescriptionHtml, String currentVersion, ParseOverviewResult lastResult) {
 		// create return List
 		List<Class> returnList = new ArrayList<>();
 
@@ -264,6 +264,20 @@ public class LuaApiParser {
 		// parse Class Name
 		Element className = briefListingElement.selectFirst(".type-name");
 		luaClass.name = className.text();
+
+		// add since (see if class existed before)
+		if (lastResult != null) {
+			Class lastClass = lastResult.classes.get(luaClass.name);
+
+			// this class already existed, copy its since
+			if (lastClass != null) {
+				luaClass.since = lastClass.since;
+			} else {
+				luaClass.since = currentVersion;
+			}
+		} else {
+			luaClass.since = currentVersion;
+		}
 
 		// parse parent class
 		String briefListingText = briefListingElement.text();
@@ -590,7 +604,7 @@ public class LuaApiParser {
 			File file = new File(fileName);
 			Document page = Jsoup.parse(file, "utf-8");
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClassPage(page);
+			return parseClassPage(page, null, null);
 		} catch (Exception e) {
 			System.out.println("error opening the class API page");
 			System.out.println(e.getMessage());
@@ -603,14 +617,16 @@ public class LuaApiParser {
 	 * Download the page from the link and then parse it.
 	 *
 	 * @param link The link to the page
+	 * @param currentVersion
+	 * @param lastResult
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClassPageFromDownload(String link) {
+	public static Map<String, Class> parseClassPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
 		// Download class page
 		try {
 			Document page = Jsoup.connect(link).get();
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClassPage(page);
+			return parseClassPage(page, currentVersion, lastResult);
 		} catch (IOException e) {
 			System.out.println("error downloading the class API page");
 			System.out.println(e.getMessage());
@@ -623,9 +639,10 @@ public class LuaApiParser {
 	 * Parse the JSoup document of a single class (will also parse multiple classes, if they are on that page)
 	 *
 	 * @param page The JSoup document to parse
+	 * @param lastResult
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClassPage(Document page) {
+	public static Map<String, Class> parseClassPage(Document page, String currentVersion, ParseOverviewResult lastResult) {
 		// create returned class-list
 		Map<String, Class> classes = new HashMap<>();
 
@@ -645,7 +662,7 @@ public class LuaApiParser {
 				continue;
 			}
 
-			List<Class> classList = parseBriefListingElement(briefListingElement, overallDescriptionHtml);
+			List<Class> classList = parseBriefListingElement(briefListingElement, overallDescriptionHtml, currentVersion, lastResult);
 			for (Class c : classList) {
 				classes.put(c.name, c);
 			}
@@ -698,9 +715,8 @@ public class LuaApiParser {
 		}
 	}
 
-	public static ParseOverviewResult parseOverviewPageFromDownload(String link) {
+	public static ParseOverviewResult parseOverviewPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
 		// TODO parse Concepts
-		// TODO hardcoded types/functions
 
 		// Download overview page
 		Document page;
@@ -724,7 +740,7 @@ public class LuaApiParser {
 			Element tr = children.get(i);
 			Element trLink = tr.selectFirst(".header > a");
 			String classPageLink = trLink.attr("href");
-			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink);
+			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink, currentVersion, lastResult);
 			result.classes.putAll(parsedClasses);
 		}
 
@@ -825,14 +841,19 @@ public class LuaApiParser {
 		Map<String, ParseOverviewResult> result = new HashMap<>();
 
 		Elements allLinks = versionsPage.select("a");
-		for (int i = 0; i < allLinks.size(); i++) {
+		String lastVersion = "";
+		for (int i = allLinks.size() - 1, j = 1; i >= 0; i--, j++) {
 			Element link = allLinks.get(i);
 			String versionName = link.text();
-			printCurrentProgress(i + 1, allLinks.size());
+			printCurrentProgress(j + 1, allLinks.size());
 			if (!versionName.equals("Latest version") && !versionName.equals("0.12.35")) {
 				String href = link.attr("href");
-				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href);
+				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href, versionName, result.get(lastVersion));
 				result.put(versionName, overviewResult);
+			}
+
+			if (j != 1) {
+				lastVersion = versionName;
 			}
 		}
 
