@@ -310,6 +310,8 @@ public class LuaApiParser {
 				if (method != null) {
 					// Add finished method to class-list
 					luaClass.methods.put(method.name, method);
+
+					addSince(luaClass.name, lastResult, currentVersion, method);
 				}
 			} else if (elementName.contains("{")) {
 				// is method with single table as param
@@ -317,6 +319,8 @@ public class LuaApiParser {
 
 				if (method != null) {
 					luaClass.methods.put(method.name, method);
+
+					addSince(luaClass.name, lastResult, currentVersion, method);
 				}
 			} else {
 				// is field
@@ -325,11 +329,51 @@ public class LuaApiParser {
 
 				if (attribute != null) {
 					luaClass.attributes.put(attribute.name, attribute);
+
+					addSince(luaClass.name, lastResult, currentVersion, attribute);
 				}
 			}
 		}
 
 		return returnList;
+	}
+
+	public static void addSince(String luaClassName, ParseOverviewResult lastResult, String currentVersion, Attribute attribute) {
+		// add @since to attribute
+		// add since (see if class existed before)
+		if (lastResult != null) {
+			Class lastClass = lastResult.classes.get(luaClassName);
+
+			// this class already existed, copy its since
+			if (lastClass != null) {
+				// get old attribute
+				Attribute lastAttribute = lastClass.attributes.get(attribute.name);
+				if (lastAttribute != null) {
+					attribute.since = lastAttribute.since;
+					return;
+				}
+			}
+		}
+		attribute.since = currentVersion;
+	}
+
+	public static void addSince(String luaClassName, ParseOverviewResult lastResult, String currentVersion, Method method) {
+		// add @since to method
+		// add since (see if class existed before)
+		if (lastResult != null) {
+			Class lastClass = lastResult.classes.get(luaClassName);
+
+			// this class already existed, copy its since
+			if (lastClass != null) {
+				// get old attribute
+				Method lastMethod = lastClass.methods.get(method.name);
+				if (lastMethod != null) {
+					method.since = lastMethod.since;
+					return;
+				}
+			}
+		}
+		method.since = currentVersion;
 	}
 
 	// ==========================
@@ -691,7 +735,7 @@ public class LuaApiParser {
 	 * @param max
 	 */
 	public static void printCurrentProgress(int current, int max) {
-		StringBuilder stringBuilder = new StringBuilder("|");
+		StringBuilder stringBuilder = new StringBuilder("\r|");
 		int amountOfEquals = ((int) (((float) current) / ((float) max) * 20));
 		int amountOfSpaces = 20 - amountOfEquals - 1;
 		for (int i = 0; i < amountOfEquals; i++) {
@@ -701,7 +745,8 @@ public class LuaApiParser {
 			stringBuilder.append(" ");
 		}
 		stringBuilder.append(String.format("| %d/%d  %d%%\r", current, max, ((int) (((float) current) / ((float) max) * 100))));
-		System.out.println(stringBuilder.toString());
+		System.out.print(stringBuilder.toString());
+		System.out.flush();
 	}
 
 	public static class ParseOverviewResult {

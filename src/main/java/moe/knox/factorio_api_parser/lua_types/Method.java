@@ -9,6 +9,7 @@ public class Method {
 	public String returnType;
 	public String returnTypeDesc;
 	public String description;
+	public String since;
 	public LinkedHashMap<String, MethodParameter> parameters = new LinkedHashMap<>();
 	public boolean paramTable;
 
@@ -51,6 +52,11 @@ public class Method {
 			for (String s : description.split("\\n")) {
 				outputStream.write(("---" + s + "\n").getBytes());
 			}
+		}
+
+		// @since
+		if (since != null && !since.isEmpty()) {
+			outputStream.write(("---@since " + since + "\n").getBytes());
 		}
 
 		// parameter

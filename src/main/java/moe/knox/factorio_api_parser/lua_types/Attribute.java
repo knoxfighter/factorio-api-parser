@@ -8,6 +8,7 @@ public class Attribute {
 	public String name;
 	public String type;
 	public String description;
+	public String since;
 	public boolean readOnly;
 	public boolean writeOnly;
 	public boolean optional;
@@ -50,15 +51,25 @@ public class Attribute {
 	}
 
 	public void saveToFile(FileOutputStream outputStream, String parentClass) throws IOException {
+		// description
 		if (description != null && !description.isEmpty()) {
 			for (String s : description.split("\n")) {
 				outputStream.write(("---" + s + "\n").getBytes());
 			}
 		}
+
+		// since
+		if (since != null && !since.isEmpty()) {
+			outputStream.write(("---@type " + since + "\n").getBytes());
+		}
+
+		// type
 		outputStream.write(("---@type " + type + "\n").getBytes());
 		if (parentClass != null && !parentClass.isEmpty()) {
 			outputStream.write((parentClass + ".").getBytes());
 		}
+
+		// definition
 		outputStream.write((name + " = nil\n\n").getBytes());
 		outputStream.flush();
 	}
