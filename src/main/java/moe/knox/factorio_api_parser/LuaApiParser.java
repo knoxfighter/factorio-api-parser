@@ -264,20 +264,7 @@ public class LuaApiParser {
 		// parse Class Name
 		Element className = briefListingElement.selectFirst(".type-name");
 		luaClass.name = className.text();
-
-		// add since (see if class existed before)
-		if (lastResult != null) {
-			Class lastClass = lastResult.classes.get(luaClass.name);
-
-			// this class already existed, copy its since
-			if (lastClass != null) {
-				luaClass.since = lastClass.since;
-			} else {
-				luaClass.since = currentVersion;
-			}
-		} else {
-			luaClass.since = currentVersion;
-		}
+		addSince(lastResult, currentVersion, luaClass);
 
 		// parse parent class
 		String briefListingText = briefListingElement.text();
@@ -394,6 +381,20 @@ public class LuaApiParser {
 			}
 		}
 		method.since = currentVersion;
+	}
+
+	public static void addSince(ParseOverviewResult lastResult, String currentVersion, Class luaClass) {
+		// add since (see if class existed before)
+		if (lastResult != null) {
+			Class lastClass = lastResult.classes.get(luaClass.name);
+
+			// this class already existed, copy its since
+			if (lastClass != null) {
+				luaClass.since = lastClass.since;
+				return;
+			}
+		}
+		luaClass.since = currentVersion;
 	}
 
 	// ==========================
@@ -564,23 +565,7 @@ public class LuaApiParser {
 	public static void parseFieldList(String upperClassName, Method luaMethod, Attribute luaAttribute, Element element, Map<String, Class> classes) {
 		Class newClass = new Class();
 		newClass.name = upperClassName + "_" + (luaMethod != null ? luaMethod.name : luaAttribute.name);
-		for (Element param : element.children()) {
-			String paramText = param.text();
-			paramText = replaceTypes(paramText);
-
-			FieldResult fieldResult = parseFieldRegex(paramText);
-
-			if (fieldResult != null) {
-				Attribute attribute = new Attribute();
-				attribute.name = fieldResult.name;
-				attribute.type = fieldResult.type;
-				attribute.description = fieldResult.description;
-				attribute.writeOnly = fieldResult.writeOnly;
-				attribute.readOnly = fieldResult.readOnly;
-
-				newClass.attributes.put(attribute.name, attribute);
-			}
-		}
+		parseSingleAttribute(newClass, element);
 
 		if (luaMethod != null && luaMethod.returnType != null) {
 			boolean isArray = luaMethod.returnType.contains("[]");
@@ -652,6 +637,63 @@ public class LuaApiParser {
 		}
 	}
 
+	public static void parseConceptElement(Element element, Map<String, Class> classes) {
+		String name = element.id();
+		Class luaClass = classes.get(name);
+
+		boolean first = true;
+		Element elementContent = element.selectFirst(".element-content");
+		for (Element contentChild : elementContent.children()) {
+			if (contentChild.hasClass("field-list")) {
+				parseSingleAttribute(luaClass, contentChild);
+			} else if (contentChild.hasClass("example")) {
+				// TODO IGNORE EXAMPLES FOR NOW
+			} else if (contentChild.hasClass("element")) {
+				parseSingleElement(contentChild, classes);
+			} else {
+				// add to description of class
+				String text = contentChild.html();
+				if (text != null && !text.isEmpty()) {
+					if (first) {
+						luaClass.description = "";
+						first = false;
+					} else {
+						luaClass.description += "\n";
+					}
+					luaClass.description += replaceUntilOneLine(text);
+				}
+			}
+		}
+	}
+
+	/**
+	 * parses a brief-listing of attributes used e.g. as list of parameters of methods
+	 *
+	 * side-effects in luaClass!
+	 *
+	 * @param luaClass the class to append the attributes to
+	 * @param contentChild the element that contains all the attributes
+	 */
+	private static void parseSingleAttribute(Class luaClass, Element contentChild) {
+		for (Element param : contentChild.children()) {
+			String paramText = param.text();
+			paramText = replaceTypes(paramText);
+
+			FieldResult fieldResult = parseFieldRegex(paramText);
+
+			if (fieldResult != null) {
+				Attribute attribute = new Attribute();
+				attribute.name = fieldResult.name;
+				attribute.type = fieldResult.type;
+				attribute.description = fieldResult.description;
+				attribute.writeOnly = fieldResult.writeOnly;
+				attribute.readOnly = fieldResult.readOnly;
+
+				luaClass.attributes.put(attribute.name, attribute);
+			}
+		}
+	}
+
 	// ==========================
 	// ===== Parser Entries =====
 	// ==========================
@@ -668,7 +710,7 @@ public class LuaApiParser {
 			File file = new File(fileName);
 			Document page = Jsoup.parse(file, "utf-8");
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClassPage(page, null, null);
+			return parseClassPage(page, null, null, false);
 		} catch (Exception e) {
 			System.out.println("error opening the class API page");
 			System.out.println(e.getMessage());
@@ -683,14 +725,15 @@ public class LuaApiParser {
 	 * @param link The link to the page
 	 * @param currentVersion the current parsed version number
 	 * @param lastResult the result of the previous parsed version
+	 * @param concepts different parsing for concepts page
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClassPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
+	public static Map<String, Class> parseClassPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult, boolean concepts) {
 		// Download class page
 		try {
 			Document page = Jsoup.connect(link).get();
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClassPage(page, currentVersion, lastResult);
+			return parseClassPage(page, currentVersion, lastResult, concepts);
 		} catch (IOException e) {
 			System.out.println("error downloading the class API page");
 			System.out.println(e.getMessage());
@@ -705,9 +748,10 @@ public class LuaApiParser {
 	 * @param page The JSoup document to parse
 	 * @param currentVersion the current parsed version number
 	 * @param lastResult the result of the previous parsed version
+	 * @param concepts different parsings for concepts page
 	 * @return a map of all the parsed classes
 	 */
-	public static Map<String, Class> parseClassPage(Document page, String currentVersion, ParseOverviewResult lastResult) {
+	public static Map<String, Class> parseClassPage(Document page, String currentVersion, ParseOverviewResult lastResult, boolean concepts) {
 		// create returned class-list
 		Map<String, Class> classes = new HashMap<>();
 
@@ -723,26 +767,34 @@ public class LuaApiParser {
 
 		// Parse the "upper" part, This has the basic information about each function
 		for (Element briefListingElement : briefListingElements) {
-			if (!briefListingElement.hasClass("brief-listing")) {
-				continue;
-			}
-
-			List<Class> classList = parseBriefListingElement(briefListingElement, overallDescriptionHtml, currentVersion, lastResult);
-			for (Class c : classList) {
-				classes.put(c.name, c);
+			if (briefListingElement.hasClass("brief-listing")) {
+				List<Class> classList = parseBriefListingElement(briefListingElement, overallDescriptionHtml, currentVersion, lastResult);
+				for (Class c : classList) {
+					classes.put(c.name, c);
+				}
+			} else if (briefListingElement.hasClass("brief-listing-empty")) {
+				String className = briefListingElement.selectFirst(".type-name").text();
+				Class luaClass = new Class();
+				luaClass.name = className;
+				addSince(lastResult, currentVersion, luaClass);
+				classes.put(className, luaClass);
 			}
 		}
 
 		// Parse the lower part of the page (elements have more information about each function)
 		Elements elements = page.select("body > .element");
 		for (Element element : elements) {
-			Elements subElements = element.children();
-			for (Element subElement : subElements) {
-				if (!subElement.hasClass("element")) {
-					continue;
-				}
+			if (concepts) {
+				parseConceptElement(element, classes);
+			} else {
+				Elements subElements = element.children();
+				for (Element subElement : subElements) {
+					if (!subElement.hasClass("element")) {
+						continue;
+					}
 
-				parseSingleElement(subElement, classes);
+					parseSingleElement(subElement, classes);
+				}
 			}
 		}
 
@@ -791,8 +843,6 @@ public class LuaApiParser {
 	 * @return result of this parsed version
 	 */
 	public static ParseOverviewResult parseOverviewPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
-		// TODO parse Concepts
-
 		// Download overview page
 		Document page;
 		try {
@@ -815,7 +865,7 @@ public class LuaApiParser {
 			Element tr = children.get(i);
 			Element trLink = tr.selectFirst(".header > a");
 			String classPageLink = trLink.attr("href");
-			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink, currentVersion, lastResult);
+			Map<String, Class> parsedClasses = parseClassPageFromDownload(link + classPageLink, currentVersion, lastResult, false);
 			result.classes.putAll(parsedClasses);
 		}
 
@@ -829,6 +879,10 @@ public class LuaApiParser {
 		// parse defines
 		result.defines = parseDefines(link);
 		parseEvents(link, result.defines);
+
+		// parse Concepts
+		Map<String, Class> conceptsResult = parseClassPageFromDownload(link + "Concepts.html", currentVersion, lastResult, true);
+		result.classes.putAll(conceptsResult);
 
 		return result;
 	}
@@ -922,7 +976,7 @@ public class LuaApiParser {
 		try {
 			versionsPage = Jsoup.connect("https://lua-api.factorio.com/").get();
 		} catch (IOException e) {
-			System.out.println("error downloading the events page");
+			System.out.println("error downloading the versionsList page");
 			e.printStackTrace();
 			return null;
 		}
@@ -934,7 +988,7 @@ public class LuaApiParser {
 		for (int i = allLinks.size() - 1, j = 1; i >= 0; i--, j++) {
 			Element link = allLinks.get(i);
 			String versionName = link.text();
-			printCurrentProgress(j + 1, allLinks.size());
+			printCurrentProgress(j, allLinks.size());
 			if (!versionName.equals("Latest version") && !versionName.equals("0.12.35")) {
 				String href = link.attr("href");
 				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href, versionName, result.get(lastVersion));

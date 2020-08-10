@@ -49,7 +49,11 @@ public class Class {
 	public void saveToFile(FileOutputStream outputStream) throws IOException {
 		// description
 		if (description != null && !description.isEmpty()) {
-			outputStream.write(("---" + description + "\n").getBytes());
+			for (String s : description.split("\n")) {
+				if (!s.isEmpty()) {
+					outputStream.write(("---" + s + "\n").getBytes());
+				}
+			}
 		}
 
 		// @since
