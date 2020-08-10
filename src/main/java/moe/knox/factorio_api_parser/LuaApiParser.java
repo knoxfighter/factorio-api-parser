@@ -338,6 +338,16 @@ public class LuaApiParser {
 		return returnList;
 	}
 
+	/**
+	 * copy the since field of the last result into the current attribute or use the currentVersion.
+	 *
+	 * side-effects in attribute!
+	 *
+	 * @param luaClassName the name of the class, this attribute belongs to
+	 * @param lastResult The result of the last-parsed-version
+	 * @param currentVersion The current parsed version number
+	 * @param attribute fill since field of this attribute
+	 */
 	public static void addSince(String luaClassName, ParseOverviewResult lastResult, String currentVersion, Attribute attribute) {
 		// add @since to attribute
 		// add since (see if class existed before)
@@ -357,6 +367,16 @@ public class LuaApiParser {
 		attribute.since = currentVersion;
 	}
 
+	/**
+	 * copy the since field of the last result into the current attribute or use the currentVersion.
+	 *
+	 * side-effects in method!
+	 *
+	 * @param luaClassName the name of the class, this attribute belongs to
+	 * @param lastResult The result of the last-parsed-version
+	 * @param currentVersion The current parsed version number
+	 * @param method fill since field of this method
+	 */
 	public static void addSince(String luaClassName, ParseOverviewResult lastResult, String currentVersion, Method method) {
 		// add @since to method
 		// add since (see if class existed before)
@@ -661,8 +681,8 @@ public class LuaApiParser {
 	 * Download the page from the link and then parse it.
 	 *
 	 * @param link The link to the page
-	 * @param currentVersion
-	 * @param lastResult
+	 * @param currentVersion the current parsed version number
+	 * @param lastResult the result of the previous parsed version
 	 * @return a map of all the parsed classes
 	 */
 	public static Map<String, Class> parseClassPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
@@ -683,7 +703,8 @@ public class LuaApiParser {
 	 * Parse the JSoup document of a single class (will also parse multiple classes, if they are on that page)
 	 *
 	 * @param page The JSoup document to parse
-	 * @param lastResult
+	 * @param currentVersion the current parsed version number
+	 * @param lastResult the result of the previous parsed version
 	 * @return a map of all the parsed classes
 	 */
 	public static Map<String, Class> parseClassPage(Document page, String currentVersion, ParseOverviewResult lastResult) {
@@ -760,6 +781,15 @@ public class LuaApiParser {
 		}
 	}
 
+	/**
+	 * Download and parse the overview page of a single version.
+	 * This will start the parsing of everything, that is part of the api.
+	 *
+	 * @param link the link to the overview page to download
+	 * @param currentVersion the name of the version currently parsed
+	 * @param lastResult the result of the last parsed version
+	 * @return result of this parsed version
+	 */
 	public static ParseOverviewResult parseOverviewPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
 		// TODO parse Concepts
 
@@ -807,6 +837,12 @@ public class LuaApiParser {
 	// ===== Additional Parser =====
 	// =============================
 
+	/**
+	 * Download and parse the defines page.
+	 *
+	 * @param baseLink The link to a versions overview page
+	 * @return all the parsed defines available in the downloaded version
+	 */
 	public static Defines parseDefines(String baseLink) {
 		Document definesPage;
 		try {
@@ -838,10 +874,12 @@ public class LuaApiParser {
 	}
 
 	/**
+	 * Download and parse the events page. The events page has more information about the event based defines.
+	 *
 	 * side-effects in defines!
 	 *
-	 * @param baseLink
-	 * @param defines
+	 * @param baseLink the link to a versions overview page
+	 * @param defines the previously parsed defines, that will be updated
 	 */
 	public static void parseEvents(String baseLink, Defines defines) {
 		// parse event page here too
@@ -872,6 +910,12 @@ public class LuaApiParser {
 		defines.classes.add("defines.events");
 	}
 
+	/**
+	 * Download and parse the page with all the versions on it.
+	 * This will start a parse of all the found versions on the page.
+	 *
+	 * @return A map with the version as key and the parse-results of that version as value
+	 */
 	public static Map<String, ParseOverviewResult> parseVersionList() {
 		// Download version list page
 		Document versionsPage;
