@@ -801,27 +801,6 @@ public class LuaApiParser {
 		return classes;
 	}
 
-	/**
-	 * print the current progress with a pretty progress bar
-	 *
-	 * @param current
-	 * @param max
-	 */
-	public static void printCurrentProgress(int current, int max) {
-		StringBuilder stringBuilder = new StringBuilder("\r|");
-		int amountOfEquals = ((int) (((float) current) / ((float) max) * 20));
-		int amountOfSpaces = 20 - amountOfEquals - 1;
-		for (int i = 0; i < amountOfEquals; i++) {
-			stringBuilder.append("=");
-		}
-		for (int i = 0; i < amountOfSpaces; i++) {
-			stringBuilder.append(" ");
-		}
-		stringBuilder.append(String.format("| %d/%d  %d%%\r", current, max, ((int) (((float) current) / ((float) max) * 100))));
-		System.out.print(stringBuilder.toString());
-		System.out.flush();
-	}
-
 	public static class ParseOverviewResult {
 		Map<String, Class> classes;
 		List<Attribute> globals;
@@ -985,10 +964,11 @@ public class LuaApiParser {
 
 		Elements allLinks = versionsPage.select("a");
 		String lastVersion = "";
+		System.out.println("Parse all versions:");
 		for (int i = allLinks.size() - 1, j = 1; i >= 0; i--, j++) {
 			Element link = allLinks.get(i);
 			String versionName = link.text();
-			printCurrentProgress(j, allLinks.size());
+			Main.printCurrentProgress(j, allLinks.size(), versionName);
 			if (!versionName.equals("Latest version") && !versionName.equals("0.12.35")) {
 				String href = link.attr("href");
 				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href, versionName, result.get(lastVersion));

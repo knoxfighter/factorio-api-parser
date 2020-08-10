@@ -9,15 +9,41 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
+	/**
+	 * print the current progress with a pretty progress bar
+	 *
+	 * @param current
+	 * @param max
+	 */
+	public static void printCurrentProgress(int current, int max, String additionalName) {
+		StringBuilder stringBuilder = new StringBuilder("\r|");
+		int amountOfEquals = ((int) (((float) current) / ((float) max) * 20));
+		int amountOfSpaces = 20 - amountOfEquals - 1;
+		for (int i = 0; i < amountOfEquals; i++) {
+			stringBuilder.append("=");
+		}
+		for (int i = 0; i < amountOfSpaces; i++) {
+			stringBuilder.append(" ");
+		}
+		stringBuilder.append(String.format("| %d/%d  %d%% - %s\r", current, max, ((int) (((float) current) / ((float) max) * 100)), additionalName));
+		System.out.print(stringBuilder.toString());
+		System.out.flush();
+	}
+
 	public static void main(String[] args) {
 		// Download and parse a single page
 		Map<String, LuaApiParser.ParseOverviewResult> overviewResultMap = LuaApiParser.parseVersionList();
 
-		// save the file
+		// save the files
+		System.out.println("Save everything to lua files:");
+		AtomicInteger current = new AtomicInteger();
 		overviewResultMap.forEach((versionName, parseOverviewResult) -> {
 			String basePath = "luaOutput/" + versionName + "/";
+
+			printCurrentProgress(current.incrementAndGet(), overviewResultMap.size(), versionName);
 
 			try {
 				Files.createDirectories(Paths.get(basePath));
