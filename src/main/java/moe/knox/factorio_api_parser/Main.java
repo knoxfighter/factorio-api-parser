@@ -87,5 +87,6 @@ public class Main {
 				e.printStackTrace();
 			}
 		});
+		printCurrentProgress(current.get(), current.get(), "Done!\n");
 	}
 }

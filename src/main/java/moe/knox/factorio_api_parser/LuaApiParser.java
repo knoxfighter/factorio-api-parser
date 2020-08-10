@@ -979,6 +979,7 @@ public class LuaApiParser {
 				lastVersion = versionName;
 			}
 		}
+		Main.printCurrentProgress(allLinks.size(), allLinks.size(), "Done!\n");
 
 		return result;
 	}
