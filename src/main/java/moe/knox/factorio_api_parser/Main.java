@@ -34,7 +34,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		String saveLocation = (args.length >= 1) ? args[0] : "luaOutput";
+		String saveLocation = (args.length >= 1) ? args[0] : "../files";
 
 		// Download and parse a single page
 		Map<String, LuaApiParser.ParseOverviewResult> overviewResultMap = LuaApiParser.parseVersionList();
