@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="969eab1c-5e6f-4dc4-934d-6a30a625b6c0" name="Default Changelist" comment="changed default directory to new layout">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/knox.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/moe.knox.factorio_api_parser.LuaApiParserTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/moe.knox.factorio_api_parser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/TEST-moe.knox.factorio_api_parser.LuaApiParserTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/hardcoded.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/ClassTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/$CACHE_FILE$" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/$CACHE_FILE$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/intellij-javadocs-4.0.1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/LuaApiParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/LuaApiParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/lua_types/Attribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/lua_types/Attribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/lua_types/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/lua_types/Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/lua_types/Define.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/lua_types/Define.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/lua_types/Defines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/lua_types/Defines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/lua_types/Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/lua_types/Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/lua_types/MethodParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/lua_types/MethodParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/moe/knox/factorio_api_parser/test.lua" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moe/knox/factorio_api_parser/test.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/hardcoded.lua" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/hardcoded.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/moe/knox/factorio_api_parser/LuaApiParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/moe/knox/factorio_api_parser/LuaApiParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/resources/ClassTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/test/ClassTest.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="factorio-api-parser" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="factorio-api-parser" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="factorio-api-parser" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="factorio-api-parser" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="NewLua" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1Zs6vFUDDzZ7bTJNuO4dvCRW42j" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="junit.framework.TestCase" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="junit.framework.TestCase" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last.edited.regexp" value="^(?&lt;name&gt;\\w*)(?: :: (?&lt;type&gt;[%s]*))?:? \\[(?&lt;rw&gt;[RW]{0,2})\\]()" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/bin/node" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2866995" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="PsiViewer.ProjectComponent">
+    <option name="HIGHLIGHT" value="false" />
+    <option name="FILTER_WHITESPACE" value="false" />
+    <option name="SHOW_PROPERTIES" value="true" />
+    <option name="SPLIT_DIVIDER_POSITION" value="300" />
+    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="moe.knox.factorio_api_parser" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="moe.knox.factorio_api_parser.Main" />
+      <module name="factorio-api-parser.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="moe.knox.factorio_api_parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LuaApiParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;moe.knox.factorio_api_parser.LuaApiParserTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="factorio-api-parser [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="factorio-api-parser [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildNeeded" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="factorio-api-parser [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.factorio-api-parser [compileJava]" />
+        <item itemvalue="Gradle.factorio-api-parser [buildNeeded]" />
+        <item itemvalue="Gradle.factorio-api-parser [buildDependents]" />
+        <item itemvalue="Gradle.LuaApiParserTest" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="969eab1c-5e6f-4dc4-934d-6a30a625b6c0" name="Default Changelist" comment="" />
+      <created>1585615682288</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585615682288</updated>
+      <workItem from="1585615683880" duration="4249000" />
+      <workItem from="1585672751967" duration="5682000" />
+      <workItem from="1591996850001" duration="3039000" />
+      <workItem from="1592060481274" duration="13612000" />
+      <workItem from="1592081709243" duration="2979000" />
+      <workItem from="1592085180139" duration="2554000" />
+      <workItem from="1592168219331" duration="130000" />
+      <workItem from="1592233355738" duration="16425000" />
+      <workItem from="1592318659013" duration="10951000" />
+      <workItem from="1592408432657" duration="18696000" />
+      <workItem from="1592578880588" duration="44000" />
+      <workItem from="1592579038233" duration="3082000" />
+      <workItem from="1592617894445" duration="6399000" />
+      <workItem from="1592669320028" duration="5775000" />
+      <workItem from="1593733420830" duration="59000" />
+      <workItem from="1594039575301" duration="83000" />
+      <workItem from="1594039673022" duration="630000" />
+      <workItem from="1595279161986" duration="2000" />
+      <workItem from="1595965524125" duration="6126000" />
+      <workItem from="1596012566388" duration="16366000" />
+      <workItem from="1596125482873" duration="9871000" />
+      <workItem from="1596362368294" duration="1402000" />
+      <workItem from="1596365279290" duration="844000" />
+      <workItem from="1596366678838" duration="93000" />
+      <workItem from="1596366789819" duration="25714000" />
+      <workItem from="1596472880081" duration="107000" />
+      <workItem from="1596472999228" duration="11252000" />
+      <workItem from="1596588087176" duration="4398000" />
+      <workItem from="1596643677053" duration="21000" />
+      <workItem from="1596643708739" duration="3874000" />
+      <workItem from="1596659643311" duration="18148000" />
+      <workItem from="1596737087058" duration="21000" />
+      <workItem from="1596737125263" duration="18737000" />
+      <workItem from="1596818116840" duration="10205000" />
+      <workItem from="1596996628912" duration="16302000" />
+      <workItem from="1597066042534" duration="20521000" />
+      <workItem from="1597110508846" duration="10000" />
+      <workItem from="1597110737228" duration="1928000" />
+      <workItem from="1597115524197" duration="389000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1585616046697</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585616046697</updated>
+    </task>
+    <task id="LOCAL-00002" summary="made basic setup">
+      <created>1585616869805</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585616869805</updated>
+    </task>
+    <task id="LOCAL-00003" summary="rewrite of the old parser (still really bad code)">
+      <created>1596375812892</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596375812892</updated>
+    </task>
+    <task id="LOCAL-00004" summary="use functions to run regexes">
+      <created>1596403398553</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596403398553</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create functions for parsing a &quot;top&quot; and a &quot;bottom&quot; element">
+      <created>1596474284893</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596474284893</updated>
+    </task>
+    <task id="LOCAL-00006" summary="create subfunctions for brief-listing parsing &amp;&amp; added JavaDoc">
+      <created>1596500531812</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596500531812</updated>
+    </task>
+    <task id="LOCAL-00007" summary="created subfunctions for Single elements">
+      <created>1596592484440</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1596592484440</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added javaDoc for missing functions">
+      <created>1596646411543</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1596646411543</updated>
+    </task>
+    <task id="LOCAL-00009" summary="also parse return type description">
+      <created>1596647434680</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596647434680</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fixed nullpointer if method has array returnType">
+      <created>1596660004289</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596660004289</updated>
+    </task>
+    <task id="LOCAL-00011" summary="split parseClass into parser for files and with download">
+      <created>1596661968214</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1596661968214</updated>
+    </task>
+    <task id="LOCAL-00012" summary="parse details only if header is found, else add it to description">
+      <created>1596668356923</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1596668356923</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added output creation &amp;&amp; fixed parameters, that only contain the type">
+      <created>1596679153423</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1596679153423</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fixed empty message description is shown">
+      <created>1596737614187</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1596737614187</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fixed empty attribute description is shown">
+      <created>1596737724449</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1596737724449</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fixed luaClass output: missing parentClass &amp;&amp; fixed exception: method/attribute types null">
+      <created>1596742551470</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1596742551470</updated>
+    </task>
+    <task id="LOCAL-00017" summary="use LinkedHashMap instead of HashMap, so the insertion order is preserved">
+      <created>1596744646951</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1596744646951</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fixed function type not parsed &amp;&amp; fixed currentProgress not shown">
+      <created>1596745420904</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1596745420904</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fixed wrong replacing of array types, `defines.events` no parsed correctly">
+      <created>1596745891695</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1596745891695</updated>
+    </task>
+    <task id="LOCAL-00020" summary="also parse globals">
+      <created>1596752495194</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1596752495194</updated>
+    </task>
+    <task id="LOCAL-00021" summary="parse defines and events">
+      <created>1596756706725</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1596756706725</updated>
+    </task>
+    <task id="LOCAL-00022" summary="added hardcoded.lua for internal stuff, that is not parsed">
+      <created>1596845014206</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1596845014206</updated>
+    </task>
+    <task id="LOCAL-00023" summary="parse versionList (main page) &amp;&amp; parse overview based on .brief-listing instead of theader">
+      <created>1596845132894</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1596845132894</updated>
+    </task>
+    <task id="LOCAL-00024" summary="parse whole page(all versions) and save it to a directory each">
+      <created>1596845312529</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1596845312529</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ignore luaOutput (we dont want it the repo)">
+      <created>1596845363682</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1596845363682</updated>
+    </task>
+    <task id="LOCAL-00026" summary="revert changes to select classes and globals &amp;&amp; use first brief-listing occurrence as classes">
+      <created>1596846219268</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1596846219268</updated>
+    </task>
+    <task id="LOCAL-00027" summary="make ` :: ` optional for attributes">
+      <created>1596846607683</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1596846607683</updated>
+    </task>
+    <task id="LOCAL-00028" summary="dont parse methodParam if text is empty">
+      <created>1596847097892</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1596847097892</updated>
+    </task>
+    <task id="LOCAL-00029" summary="allow dots in paramName">
+      <created>1596847176518</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1596847176518</updated>
+    </task>
+    <task id="LOCAL-00030" summary="skip method params, if they are invalid &amp;&amp; skip factorio version 0.12.35">
+      <created>1596849024473</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1596849024473</updated>
+    </task>
+    <task id="LOCAL-00031" summary="use table as alias for Table">
+      <created>1596849488954</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1596849488954</updated>
+    </task>
+    <task id="LOCAL-00032" summary="parse and add @since to luaClasses">
+      <created>1597003186794</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1597003186794</updated>
+    </task>
+    <task id="LOCAL-00033" summary="updated gradle">
+      <created>1597012881512</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1597012881512</updated>
+    </task>
+    <task id="LOCAL-00034" summary="create @since for every method/attribute">
+      <created>1597013695638</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1597013695638</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add JavaDocs">
+      <created>1597068146006</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1597068146006</updated>
+    </task>
+    <task id="LOCAL-00036" summary="also parse Concept.html">
+      <created>1597092112057</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1597092112057</updated>
+    </task>
+    <task id="LOCAL-00037" summary="also show progress on saving LUA files">
+      <created>1597094544587</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1597094544587</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Print done if finished">
+      <created>1597094762082</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1597094762082</updated>
+    </task>
+    <task id="LOCAL-00039" summary="format code">
+      <created>1597109577738</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1597109577738</updated>
+    </task>
+    <task id="LOCAL-00040" summary="first param is used as directory, where to put the files to">
+      <created>1597110407666</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1597110407666</updated>
+    </task>
+    <task id="LOCAL-00041" summary="changed default directory to new layout">
+      <created>1597110842608</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1597110842609</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="use LinkedHashMap instead of HashMap, so the insertion order is preserved" />
+    <MESSAGE value="fixed function type not parsed &amp;&amp; fixed currentProgress not shown" />
+    <MESSAGE value="fixed wrong replacing of array types, `defines.events` no parsed correctly" />
+    <MESSAGE value="also parse globals" />
+    <MESSAGE value="parse defines and events" />
+    <MESSAGE value="added hardcoded.lua for internal stuff, that is not parsed" />
+    <MESSAGE value="parse versionList (main page) &amp;&amp; parse overview based on .brief-listing instead of theader" />
+    <MESSAGE value="parse whole page(all versions) and save it to a directory each" />
+    <MESSAGE value="ignore luaOutput (we dont want it the repo)" />
+    <MESSAGE value="revert changes to select classes and globals &amp;&amp; use first brief-listing occurrence as classes" />
+    <MESSAGE value="make ` :: ` optional for attributes" />
+    <MESSAGE value="dont parse methodParam if text is empty" />
+    <MESSAGE value="allow dots in paramName" />
+    <MESSAGE value="skip method params, if they are invalid &amp;&amp; skip factorio version 0.12.35" />
+    <MESSAGE value="use table as alias for Table" />
+    <MESSAGE value="parse and add @since to luaClasses" />
+    <MESSAGE value="updated gradle" />
+    <MESSAGE value="create @since for every method/attribute" />
+    <MESSAGE value="add JavaDocs" />
+    <MESSAGE value="also parse Concept.html" />
+    <MESSAGE value="also show progress on saving LUA files" />
+    <MESSAGE value="Print done if finished" />
+    <MESSAGE value="format code" />
+    <MESSAGE value="first param is used as directory, where to put the files to" />
+    <MESSAGE value="changed default directory to new layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed default directory to new layout" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="443" y="84" width="1024" height="845" key="#Project_Structure" timestamp="1592071709746">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="443" y="84" width="1024" height="845" key="#Project_Structure/0.28.1920.987@0.28.1920.987" timestamp="1592071709746" />
+    <state x="309" y="96" width="1425" height="895" key="#com.intellij.debugger.actions.ViewTextAction" timestamp="1596847674207">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="309" y="96" width="1425" height="895" key="#com.intellij.debugger.actions.ViewTextAction/0.28.1920.987@0.28.1920.987" timestamp="1596847674207" />
+    <state x="543" y="364" width="824" height="284" key="#com.intellij.debugger.ui.breakpoints.EditClassFiltersDialog" timestamp="1596663565644">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="543" y="364" width="824" height="284" key="#com.intellij.debugger.ui.breakpoints.EditClassFiltersDialog/0.28.1920.987@0.28.1920.987" timestamp="1596663565644" />
+    <state x="418" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597078760769">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="418" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.1920.987@0.28.1920.987" timestamp="1597078760769" />
+    <state x="87" y="198" width="1720" height="817" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1596145326316">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="87" y="198" width="1720" height="817" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.28.1920.987@0.28.1920.987" timestamp="1596145326316" />
+    <state x="617" y="308" width="676" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596669423570">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="617" y="308" width="676" height="396" key="#com.intellij.fileTypes.FileTypeChooser/0.28.1920.987@0.28.1920.987" timestamp="1596669423570" />
+    <state x="743" y="214" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1597009435003">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="743" y="214" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog/0.28.1920.987@0.28.1920.987" timestamp="1597009435003" />
+    <state x="768" y="214" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1596754451264">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="768" y="214" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/0.28.1920.987@0.28.1920.987" timestamp="1596754451264" />
+    <state x="687" y="298" width="525" height="416" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1596663564140">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="687" y="298" width="525" height="416" key="#com.intellij.ide.util.TreeClassChooserDialog/0.28.1920.987@0.28.1920.987" timestamp="1596663564140" />
+    <state x="638" y="452" width="808" height="511" key="#xdebugger.evaluate" timestamp="1597109851046">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="638" y="452" width="808" height="511" key="#xdebugger.evaluate/0.28.1920.987@0.28.1920.987" timestamp="1597109851046" />
+    <state x="0" y="28" width="1915" height="987" key="CommitChangelistDialog2" timestamp="1597115920791">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="0" y="28" width="1915" height="987" key="CommitChangelistDialog2/0.28.1920.987@0.28.1920.987" timestamp="1597115920791" />
+    <state width="486" height="506" key="DebuggerActiveHint" timestamp="1596058183090">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="486" height="506" key="DebuggerActiveHint/0.28.1920.987@0.28.1920.987" timestamp="1596058183089" />
+    <state x="184" y="112" width="1536" height="819" key="DiffContextDialog" timestamp="1597115569736">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="184" y="112" width="1536" height="819" key="DiffContextDialog/0.28.1920.987@0.28.1920.987" timestamp="1597115569736" />
+    <state x="744" y="321" width="424" height="484" key="FileChooserDialogImpl" timestamp="1592347788404">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="744" y="321" width="424" height="484" key="FileChooserDialogImpl/0.28.1920.987@0.28.1920.987" timestamp="1592347788404" />
+    <state width="1874" height="308" key="GridCell.Tab.0.bottom" timestamp="1597115416229">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="308" key="GridCell.Tab.0.bottom/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
+    <state width="1874" height="308" key="GridCell.Tab.0.center" timestamp="1597115416229">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="308" key="GridCell.Tab.0.center/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
+    <state width="1874" height="308" key="GridCell.Tab.0.left" timestamp="1597115416229">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="308" key="GridCell.Tab.0.left/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
+    <state width="1874" height="308" key="GridCell.Tab.0.right" timestamp="1597115416229">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="308" key="GridCell.Tab.0.right/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
+    <state width="1874" height="289" key="GridCell.Tab.1.bottom" timestamp="1597110439330">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="289" key="GridCell.Tab.1.bottom/0.28.1920.987@0.28.1920.987" timestamp="1597110439330" />
+    <state width="1874" height="289" key="GridCell.Tab.1.center" timestamp="1597110439329">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="289" key="GridCell.Tab.1.center/0.28.1920.987@0.28.1920.987" timestamp="1597110439329" />
+    <state width="1874" height="289" key="GridCell.Tab.1.left" timestamp="1597110439329">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="289" key="GridCell.Tab.1.left/0.28.1920.987@0.28.1920.987" timestamp="1597110439329" />
+    <state width="1874" height="289" key="GridCell.Tab.1.right" timestamp="1597110439330">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="1874" height="289" key="GridCell.Tab.1.right/0.28.1920.987@0.28.1920.987" timestamp="1597110439330" />
+    <state x="542" y="243" width="825" height="538" key="IDE.errors.dialog" timestamp="1597094380991">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="542" y="243" width="825" height="538" key="IDE.errors.dialog/0.28.1920.987@0.28.1920.987" timestamp="1597094380991" />
+    <state x="588" y="205" width="728" height="633" key="RollbackChangesDialog" timestamp="1596737526744">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="588" y="205" width="728" height="633" key="RollbackChangesDialog/0.28.1920.987@0.28.1920.987" timestamp="1596737526744" />
+    <state x="449" y="141" width="1024" height="845" key="SettingsEditor" timestamp="1597115537792">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="449" y="141" width="1024" height="845" key="SettingsEditor/0.28.1920.987@0.28.1920.987" timestamp="1597115537792" />
+    <state x="689" y="240" width="639" height="524" key="StructurePopup" timestamp="1597006906188">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="689" y="240" width="639" height="524" key="StructurePopup/0.28.1920.987@0.28.1920.987" timestamp="1597006906188" />
+    <state x="555" y="242" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1596845017609">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="555" y="242" width="800" height="528" key="Vcs.Push.Dialog.v2/0.28.1920.987@0.28.1920.987" timestamp="1596845017609" />
+    <state width="960" height="508" key="XDebugger.FullValuePopup" timestamp="1597076681921">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state width="960" height="508" key="XDebugger.FullValuePopup/0.28.1920.987@0.28.1920.987" timestamp="1597076681921" />
+    <state x="627" y="399" width="636" height="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1592346919021">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="627" y="399" width="636" height="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.28.1920.987@0.28.1920.987" timestamp="1592346919021" />
+    <state x="692" y="313" width="526" height="386" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1592348396325">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="692" y="313" width="526" height="386" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.28.1920.987@0.28.1920.987" timestamp="1592348396325" />
+    <state x="488" y="225" width="934" height="647" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1596663603287">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="488" y="225" width="934" height="647" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.28.1920.987@0.28.1920.987" timestamp="1596663603287" />
+    <state x="1291" y="258" width="524" height="478" key="extract.method.dialog" timestamp="1597074697626">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="1291" y="258" width="524" height="478" key="extract.method.dialog/0.28.1920.987@0.28.1920.987" timestamp="1597074697626" />
+    <state x="383" y="95" width="1196" height="823" key="find.popup" timestamp="1597092588193">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="383" y="95" width="1196" height="823" key="find.popup/0.28.1920.987@0.28.1920.987" timestamp="1597092588193" />
+    <state x="269" y="97" width="1372" height="818" key="new project wizard" timestamp="1592070265831">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="269" y="97" width="1372" height="818" key="new project wizard/0.28.1920.987@0.28.1920.987" timestamp="1592070265831" />
+    <state x="650" y="253" width="610" height="507" key="refactoring.ChangeSignatureDialog" timestamp="1597000045939">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="650" y="253" width="610" height="507" key="refactoring.ChangeSignatureDialog/0.28.1920.987@0.28.1920.987" timestamp="1597000045939" />
+    <state x="624" y="230" key="run.anything.popup" timestamp="1596846822687">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="624" y="230" key="run.anything.popup/0.28.1920.987@0.28.1920.987" timestamp="1596846822687" />
+    <state x="623" y="221" width="672" height="678" key="search.everywhere.popup" timestamp="1596738629971">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="623" y="221" width="672" height="678" key="search.everywhere.popup/0.28.1920.987@0.28.1920.987" timestamp="1596738629971" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties>
+            <option name="class-filters-enabled" value="true" />
+            <class-filters>
+              <class-filter pattern="moe.knox.factorio_api_parser.LuaApiParser" />
+            </class-filters>
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/factorio_api_parser$LuaApiParserTest_parseClass.ic" NAME="LuaApiParserTest.parseClass Coverage Results" MODIFIED="1596130230058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

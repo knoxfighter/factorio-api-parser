@@ -1,0 +1,19 @@
+moe/knox/factorio_api_parser/LuaApiParser.java
+ moe.knox.factorio_api_parser.LuaApiParser
+ moe.knox.factorio_api_parser.LuaApiParser$FieldResult
+ moe.knox.factorio_api_parser.LuaApiParser$FunctionResult
+ moe.knox.factorio_api_parser.LuaApiParser$ParseOverviewResult
+moe/knox/factorio_api_parser/lua_types/Attribute.java
+ moe.knox.factorio_api_parser.lua_types.Attribute
+moe/knox/factorio_api_parser/lua_types/Defines.java
+ moe.knox.factorio_api_parser.lua_types.Defines
+moe/knox/factorio_api_parser/lua_types/Class.java
+ moe.knox.factorio_api_parser.lua_types.Class
+moe/knox/factorio_api_parser/Main.java
+ moe.knox.factorio_api_parser.Main
+moe/knox/factorio_api_parser/lua_types/MethodParameter.java
+ moe.knox.factorio_api_parser.lua_types.MethodParameter
+moe/knox/factorio_api_parser/lua_types/Define.java
+ moe.knox.factorio_api_parser.lua_types.Define
+moe/knox/factorio_api_parser/lua_types/Method.java
+ moe.knox.factorio_api_parser.lua_types.Method

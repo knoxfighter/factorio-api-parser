@@ -1,0 +1,66 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/gorilla/mux"
+	"io/ioutil"
+	"log"
+	"net/http"
+)
+
+func main() {
+	router := mux.NewRouter()
+	router.Methods("GET")
+	apiRouter := router.PathPrefix("/api").Subrouter()
+	apiRouter.HandleFunc("/", ListVersionsHandler)
+	apiRouter.HandleFunc("/{version}/", ListVersionFilesHandler)
+	apiRouter.HandleFunc("/{version}/{file}", DownloadFileHandler)
+
+	err := http.ListenAndServe("127.0.0.1:8080", apiRouter)
+	if err != nil {
+		log.Fatalf("Error starting webserver: %s", err)
+	}
+}
+
+func ListVersionsHandler(w http.ResponseWriter, r *http.Request) {
+	// read out all folders in the main directory (all versions)
+	fileInfos, err := ioutil.ReadDir("../files/")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	var allDirs []string
+	for _, fileInfo := range fileInfos {
+		if fileInfo.IsDir() {
+			allDirs = append(allDirs, fileInfo.Name())
+		}
+	}
+
+	json.NewEncoder(w).Encode(allDirs)
+}
+
+func ListVersionFilesHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	version := vars["version"]
+	fileInfos, err := ioutil.ReadDir(fmt.Sprintf("../files/%s", version))
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	var allDirs []string
+	for _, fileInfo := range fileInfos {
+		allDirs = append(allDirs, fileInfo.Name())
+	}
+
+	json.NewEncoder(w).Encode(allDirs)
+}
+
+func DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	version := vars["version"]
+	file := vars["file"]
+	http.ServeFile(w, r, fmt.Sprintf("../files/%s/%s", version, file))
+}
