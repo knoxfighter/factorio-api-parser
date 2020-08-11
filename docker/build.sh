@@ -7,7 +7,7 @@ rm factorio-api.tar
 dockerDir="$PWD"
 
 cd ../parser
-./gradlew dockerJar -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64/ -Dme.test="$dockerDir"
+./gradlew jar -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64/ -Dme.test="$dockerDir"
 
 # build go webserver
 cd ../web/

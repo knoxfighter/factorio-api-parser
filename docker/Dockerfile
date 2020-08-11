@@ -10,4 +10,4 @@ COPY webserver webserver
 COPY entry.sh entry.sh
 
 # run startup script
-ENTRYPOINT entry.sh
+ENTRYPOINT ./entry.sh

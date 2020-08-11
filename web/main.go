@@ -25,7 +25,9 @@ func main() {
 	apiRouter.HandleFunc("/{version}/", ListVersionFilesHandler)
 	apiRouter.HandleFunc("/{version}/{file}", DownloadFileHandler)
 
-	err := http.ListenAndServe("127.0.0.1:8080", apiRouter)
+	log.Println("started listening!")
+
+	err := http.ListenAndServe("0.0.0.0:8080", apiRouter)
 	if err != nil {
 		log.Fatalf("Error starting webserver: %s", err)
 	}
