@@ -27,11 +27,20 @@ tasks.named('wrapper') {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-task dockerJar(type: Jar) {
-    archiveFileName='factorio-api-parser.jar'
-    println(System.getProperty("me.test"))
+tasks.withType(Jar) {
+    manifest {
+        attributes (
+            'Main-Class': 'moe.knox.factorio_api_parser.Main'
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
     String dir = System.getProperty("me.test")
     if (dir != null && !dir.isEmpty()) {
+        archiveFileName='factorio-api-parser.jar'
         destinationDirectory = file(dir)
     }
 }
