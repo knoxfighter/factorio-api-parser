@@ -4,6 +4,7 @@ import moe.knox.factorio_api_parser.lua_types.Attribute;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -54,7 +55,7 @@ public class Main {
 				Files.createDirectories(Paths.get(basePath));
 			} catch (IOException e) {
 				e.printStackTrace();
-				return;
+				throw new UncheckedIOException(e);
 			}
 
 			parseOverviewResult.classes.forEach((className, aClass) -> {
@@ -62,8 +63,10 @@ public class Main {
 				try {
 					FileOutputStream outputStream = new FileOutputStream(basePath + className + ".lua");
 					aClass.saveToFile(outputStream);
+					outputStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
+					throw new UncheckedIOException(e);
 				}
 			});
 
@@ -72,23 +75,27 @@ public class Main {
 				for (Attribute global : parseOverviewResult.globals) {
 					global.saveToFile(outputStream, "");
 				}
+				outputStream.close();
 			} catch (IOException e) {
 				e.printStackTrace();
+				throw new UncheckedIOException(e);
 			}
 
 			try {
 				FileOutputStream outputStream = new FileOutputStream(basePath + "defines.lua");
 				parseOverviewResult.defines.saveToFile(outputStream);
+				outputStream.close();
 			} catch (IOException e) {
 				e.printStackTrace();
+				throw new UncheckedIOException(e);
 			}
 
 			// copy in the hardcoded.lua file
 			try {
 				Files.copy(Main.class.getClassLoader().getResourceAsStream("hardcoded.lua"), Paths.get(basePath + "hardcoded.lua"), StandardCopyOption.REPLACE_EXISTING);
-//				Files.copy(Paths.get(Main.class.getClassLoader().getResource("hardcoded.lua").toURI()), Paths.get(basePath + "hardcoded.lua"), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
 				e.printStackTrace();
+				throw new UncheckedIOException(e);
 			}
 		});
 		printCurrentProgress(current.get(), current.get(), "Done!", true);
