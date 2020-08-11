@@ -327,13 +327,13 @@ public class LuaApiParser {
 
 	/**
 	 * copy the since field of the last result into the current attribute or use the currentVersion.
-	 *
+	 * <p>
 	 * side-effects in attribute!
 	 *
-	 * @param luaClassName the name of the class, this attribute belongs to
-	 * @param lastResult The result of the last-parsed-version
+	 * @param luaClassName   the name of the class, this attribute belongs to
+	 * @param lastResult     The result of the last-parsed-version
 	 * @param currentVersion The current parsed version number
-	 * @param attribute fill since field of this attribute
+	 * @param attribute      fill since field of this attribute
 	 */
 	public static void addSince(String luaClassName, ParseOverviewResult lastResult, String currentVersion, Attribute attribute) {
 		// add @since to attribute
@@ -356,13 +356,13 @@ public class LuaApiParser {
 
 	/**
 	 * copy the since field of the last result into the current attribute or use the currentVersion.
-	 *
+	 * <p>
 	 * side-effects in method!
 	 *
-	 * @param luaClassName the name of the class, this attribute belongs to
-	 * @param lastResult The result of the last-parsed-version
+	 * @param luaClassName   the name of the class, this attribute belongs to
+	 * @param lastResult     The result of the last-parsed-version
 	 * @param currentVersion The current parsed version number
-	 * @param method fill since field of this method
+	 * @param method         fill since field of this method
 	 */
 	public static void addSince(String luaClassName, ParseOverviewResult lastResult, String currentVersion, Method method) {
 		// add @since to method
@@ -668,10 +668,10 @@ public class LuaApiParser {
 
 	/**
 	 * parses a brief-listing of attributes used e.g. as list of parameters of methods
-	 *
+	 * <p>
 	 * side-effects in luaClass!
 	 *
-	 * @param luaClass the class to append the attributes to
+	 * @param luaClass     the class to append the attributes to
 	 * @param contentChild the element that contains all the attributes
 	 */
 	private static void parseSingleAttribute(Class luaClass, Element contentChild) {
@@ -722,10 +722,10 @@ public class LuaApiParser {
 	/**
 	 * Download the page from the link and then parse it.
 	 *
-	 * @param link The link to the page
+	 * @param link           The link to the page
 	 * @param currentVersion the current parsed version number
-	 * @param lastResult the result of the previous parsed version
-	 * @param concepts different parsing for concepts page
+	 * @param lastResult     the result of the previous parsed version
+	 * @param concepts       different parsing for concepts page
 	 * @return a map of all the parsed classes
 	 */
 	public static Map<String, Class> parseClassPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult, boolean concepts) {
@@ -745,10 +745,10 @@ public class LuaApiParser {
 	/**
 	 * Parse the JSoup document of a single class (will also parse multiple classes, if they are on that page)
 	 *
-	 * @param page The JSoup document to parse
+	 * @param page           The JSoup document to parse
 	 * @param currentVersion the current parsed version number
-	 * @param lastResult the result of the previous parsed version
-	 * @param concepts different parsings for concepts page
+	 * @param lastResult     the result of the previous parsed version
+	 * @param concepts       different parsings for concepts page
 	 * @return a map of all the parsed classes
 	 */
 	public static Map<String, Class> parseClassPage(Document page, String currentVersion, ParseOverviewResult lastResult, boolean concepts) {
@@ -816,9 +816,9 @@ public class LuaApiParser {
 	 * Download and parse the overview page of a single version.
 	 * This will start the parsing of everything, that is part of the api.
 	 *
-	 * @param link the link to the overview page to download
+	 * @param link           the link to the overview page to download
 	 * @param currentVersion the name of the version currently parsed
-	 * @param lastResult the result of the last parsed version
+	 * @param lastResult     the result of the last parsed version
 	 * @return result of this parsed version
 	 */
 	public static ParseOverviewResult parseOverviewPageFromDownload(String link, String currentVersion, ParseOverviewResult lastResult) {
@@ -908,11 +908,11 @@ public class LuaApiParser {
 
 	/**
 	 * Download and parse the events page. The events page has more information about the event based defines.
-	 *
+	 * <p>
 	 * side-effects in defines!
 	 *
 	 * @param baseLink the link to a versions overview page
-	 * @param defines the previously parsed defines, that will be updated
+	 * @param defines  the previously parsed defines, that will be updated
 	 */
 	public static void parseEvents(String baseLink, Defines defines) {
 		// parse event page here too
