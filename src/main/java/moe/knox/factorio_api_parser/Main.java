@@ -34,6 +34,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		String saveLocation = (args.length >= 1) ? args[0] : "luaOutput";
+
 		// Download and parse a single page
 		Map<String, LuaApiParser.ParseOverviewResult> overviewResultMap = LuaApiParser.parseVersionList();
 
@@ -41,7 +43,7 @@ public class Main {
 		System.out.println("Save everything to lua files:");
 		AtomicInteger current = new AtomicInteger();
 		overviewResultMap.forEach((versionName, parseOverviewResult) -> {
-			String basePath = "luaOutput/" + versionName + "/";
+			String basePath = saveLocation + "/" + versionName + "/";
 
 			printCurrentProgress(current.incrementAndGet(), overviewResultMap.size(), versionName);
 
