@@ -26,3 +26,12 @@ test {
 tasks.named('wrapper') {
     distributionType = Wrapper.DistributionType.ALL
 }
+
+task dockerJar(type: Jar) {
+    archiveFileName='factorio-api-parser.jar'
+    println(System.getProperty("me.test"))
+    String dir = System.getProperty("me.test")
+    if (dir != null && !dir.isEmpty()) {
+        destinationDirectory = file(dir)
+    }
+}

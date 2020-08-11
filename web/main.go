@@ -7,9 +7,17 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
+var mainDir string
+
 func main() {
+	args := os.Args
+	if len(args) >= 2 {
+		mainDir = args[1]
+	}
+
 	router := mux.NewRouter()
 	router.Methods("GET")
 	apiRouter := router.PathPrefix("/api").Subrouter()
@@ -25,7 +33,7 @@ func main() {
 
 func ListVersionsHandler(w http.ResponseWriter, r *http.Request) {
 	// read out all folders in the main directory (all versions)
-	fileInfos, err := ioutil.ReadDir("../files/")
+	fileInfos, err := ioutil.ReadDir(mainDir)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -44,7 +52,7 @@ func ListVersionsHandler(w http.ResponseWriter, r *http.Request) {
 func ListVersionFilesHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	version := vars["version"]
-	fileInfos, err := ioutil.ReadDir(fmt.Sprintf("../files/%s", version))
+	fileInfos, err := ioutil.ReadDir(fmt.Sprintf("%s/%s", mainDir, version))
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -62,5 +70,5 @@ func DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	version := vars["version"]
 	file := vars["file"]
-	http.ServeFile(w, r, fmt.Sprintf("../files/%s/%s", version, file))
+	http.ServeFile(w, r, fmt.Sprintf("%s/%s/%s", mainDir, version, file))
 }

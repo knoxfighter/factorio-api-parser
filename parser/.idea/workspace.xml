@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="969eab1c-5e6f-4dc4-934d-6a30a625b6c0" name="Default Changelist" comment="" />
+    <list default="true" id="969eab1c-5e6f-4dc4-934d-6a30a625b6c0" name="Default Changelist" comment="goland/intellij stuff for using git inside it">
+      <change afterPath="$PROJECT_DIR$/../web/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../web/main.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +45,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="factorio-api-parser" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="factorio-api-parser" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -95,6 +107,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="add_unversioned_files" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="junit.framework.TestCase" />
@@ -126,29 +139,26 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.parser [jar]">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="moe.knox.factorio_api_parser.Main" />
-      <module name="factorio-api-parser.main" />
+    <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="moe.knox.factorio_api_parser.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -229,6 +239,25 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="parser [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -256,11 +285,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.parser [jar]" />
         <item itemvalue="Gradle.factorio-api-parser [compileJava]" />
         <item itemvalue="Gradle.factorio-api-parser [buildNeeded]" />
         <item itemvalue="Gradle.factorio-api-parser [buildDependents]" />
         <item itemvalue="Gradle.LuaApiParserTest" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -314,6 +343,8 @@
       <workItem from="1597110508846" duration="10000" />
       <workItem from="1597110737228" duration="1928000" />
       <workItem from="1597115524197" duration="611000" />
+      <workItem from="1597116175494" duration="55000" />
+      <workItem from="1597154655226" duration="10873000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1585616046697</created>
@@ -609,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597116070181</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="goland/intellij stuff for using git inside it">
+      <created>1597116220743</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1597116220743</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +657,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="fixed function type not parsed &amp;&amp; fixed currentProgress not shown" />
     <MESSAGE value="fixed wrong replacing of array types, `defines.events` no parsed correctly" />
     <MESSAGE value="also parse globals" />
     <MESSAGE value="parse defines and events" />
@@ -644,9 +681,14 @@
     <MESSAGE value="first param is used as directory, where to put the files to" />
     <MESSAGE value="changed default directory to new layout" />
     <MESSAGE value="moved parser a directory up &amp;&amp; move project root to that directory &amp;&amp; added webserver to download the parsed files" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved parser a directory up &amp;&amp; move project root to that directory &amp;&amp; added webserver to download the parsed files" />
+    <MESSAGE value="goland/intellij stuff for using git inside it" />
+    <option name="LAST_COMMIT_MESSAGE" value="goland/intellij stuff for using git inside it" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="555" y="150" width="800" height="712" key="#Plugins" timestamp="1597159224804">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="555" y="150" width="800" height="712" key="#Plugins/0.28.1920.987@0.28.1920.987" timestamp="1597159224804" />
     <state x="443" y="84" width="1024" height="845" key="#Project_Structure" timestamp="1592071709746">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
@@ -687,10 +729,10 @@
       <screen x="0" y="28" width="1920" height="987" />
     </state>
     <state x="638" y="452" width="808" height="511" key="#xdebugger.evaluate/0.28.1920.987@0.28.1920.987" timestamp="1597109851046" />
-    <state x="0" y="28" width="1915" height="987" key="CommitChangelistDialog2" timestamp="1597116069992">
+    <state x="0" y="28" width="1915" height="987" key="CommitChangelistDialog2" timestamp="1597166834403">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
-    <state x="0" y="28" width="1915" height="987" key="CommitChangelistDialog2/0.28.1920.987@0.28.1920.987" timestamp="1597116069992" />
+    <state x="0" y="28" width="1915" height="987" key="CommitChangelistDialog2/0.28.1920.987@0.28.1920.987" timestamp="1597166834403" />
     <state width="486" height="506" key="DebuggerActiveHint" timestamp="1596058183090">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
@@ -703,22 +745,22 @@
       <screen x="0" y="28" width="1920" height="987" />
     </state>
     <state x="744" y="321" width="424" height="484" key="FileChooserDialogImpl/0.28.1920.987@0.28.1920.987" timestamp="1592347788404" />
-    <state width="1874" height="308" key="GridCell.Tab.0.bottom" timestamp="1597115416229">
+    <state width="1874" height="308" key="GridCell.Tab.0.bottom" timestamp="1597163691696">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
-    <state width="1874" height="308" key="GridCell.Tab.0.bottom/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
-    <state width="1874" height="308" key="GridCell.Tab.0.center" timestamp="1597115416229">
+    <state width="1874" height="308" key="GridCell.Tab.0.bottom/0.28.1920.987@0.28.1920.987" timestamp="1597163691696" />
+    <state width="1874" height="308" key="GridCell.Tab.0.center" timestamp="1597163691695">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
-    <state width="1874" height="308" key="GridCell.Tab.0.center/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
-    <state width="1874" height="308" key="GridCell.Tab.0.left" timestamp="1597115416229">
+    <state width="1874" height="308" key="GridCell.Tab.0.center/0.28.1920.987@0.28.1920.987" timestamp="1597163691695" />
+    <state width="1874" height="308" key="GridCell.Tab.0.left" timestamp="1597163691695">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
-    <state width="1874" height="308" key="GridCell.Tab.0.left/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
-    <state width="1874" height="308" key="GridCell.Tab.0.right" timestamp="1597115416229">
+    <state width="1874" height="308" key="GridCell.Tab.0.left/0.28.1920.987@0.28.1920.987" timestamp="1597163691695" />
+    <state width="1874" height="308" key="GridCell.Tab.0.right" timestamp="1597163691696">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
-    <state width="1874" height="308" key="GridCell.Tab.0.right/0.28.1920.987@0.28.1920.987" timestamp="1597115416229" />
+    <state width="1874" height="308" key="GridCell.Tab.0.right/0.28.1920.987@0.28.1920.987" timestamp="1597163691696" />
     <state width="1874" height="289" key="GridCell.Tab.1.bottom" timestamp="1597110439330">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
@@ -763,6 +805,10 @@
       <screen x="0" y="28" width="1920" height="987" />
     </state>
     <state x="627" y="399" width="636" height="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.28.1920.987@0.28.1920.987" timestamp="1592346919021" />
+    <state x="741" y="421" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597159245026">
+      <screen x="0" y="28" width="1920" height="987" />
+    </state>
+    <state x="741" y="421" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.28.1920.987@0.28.1920.987" timestamp="1597159245026" />
     <state x="692" y="313" width="526" height="386" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1592348396325">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
@@ -791,10 +837,10 @@
       <screen x="0" y="28" width="1920" height="987" />
     </state>
     <state x="624" y="230" key="run.anything.popup/0.28.1920.987@0.28.1920.987" timestamp="1596846822687" />
-    <state x="623" y="221" width="672" height="678" key="search.everywhere.popup" timestamp="1596738629971">
+    <state x="623" y="221" width="672" height="678" key="search.everywhere.popup" timestamp="1597163510215">
       <screen x="0" y="28" width="1920" height="987" />
     </state>
-    <state x="623" y="221" width="672" height="678" key="search.everywhere.popup/0.28.1920.987@0.28.1920.987" timestamp="1596738629971" />
+    <state x="623" y="221" width="672" height="678" key="search.everywhere.popup/0.28.1920.987@0.28.1920.987" timestamp="1597163510215" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
