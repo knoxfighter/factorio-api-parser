@@ -968,7 +968,7 @@ public class LuaApiParser {
 		for (int i = allLinks.size() - 1, j = 1; i >= 0; i--, j++) {
 			Element link = allLinks.get(i);
 			String versionName = link.text();
-			Main.printCurrentProgress(j, allLinks.size(), versionName);
+			Main.printCurrentProgress(j, allLinks.size(), versionName, false);
 			if (!versionName.equals("Latest version") && !versionName.equals("0.12.35")) {
 				String href = link.attr("href");
 				ParseOverviewResult overviewResult = parseOverviewPageFromDownload("https://lua-api.factorio.com" + href, versionName, result.get(lastVersion));
@@ -979,7 +979,7 @@ public class LuaApiParser {
 				lastVersion = versionName;
 			}
 		}
-		Main.printCurrentProgress(allLinks.size(), allLinks.size(), "Done!\n");
+		Main.printCurrentProgress(allLinks.size(), allLinks.size(), "Done!", true);
 
 		return result;
 	}

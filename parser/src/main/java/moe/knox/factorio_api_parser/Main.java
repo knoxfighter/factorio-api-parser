@@ -4,7 +4,6 @@ import moe.knox.factorio_api_parser.lua_types.Attribute;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -17,8 +16,9 @@ public class Main {
 	 *
 	 * @param current
 	 * @param max
+	 * @param end     if `true` will add a `\n` to the end of the output
 	 */
-	public static void printCurrentProgress(int current, int max, String additionalName) {
+	public static void printCurrentProgress(int current, int max, String additionalName, boolean end) {
 		StringBuilder stringBuilder = new StringBuilder("\r|");
 		int amountOfEquals = ((int) (((float) current) / ((float) max) * 20));
 		int amountOfSpaces = 20 - amountOfEquals - 1;
@@ -28,7 +28,10 @@ public class Main {
 		for (int i = 0; i < amountOfSpaces; i++) {
 			stringBuilder.append(" ");
 		}
-		stringBuilder.append(String.format("| %d/%d  %d%% - %s\r", current, max, ((int) (((float) current) / ((float) max) * 100)), additionalName));
+		stringBuilder.append(String.format("| %d/%d  %d%% - %s%s\r", current, max, ((int) (((float) current) / ((float) max) * 100)), additionalName, " ".repeat(10)));
+		if (end) {
+			stringBuilder.append("\n");
+		}
 		System.out.print(stringBuilder.toString());
 		System.out.flush();
 	}
@@ -45,7 +48,7 @@ public class Main {
 		overviewResultMap.forEach((versionName, parseOverviewResult) -> {
 			String basePath = saveLocation + "/" + versionName + "/";
 
-			printCurrentProgress(current.incrementAndGet(), overviewResultMap.size(), versionName);
+			printCurrentProgress(current.incrementAndGet(), overviewResultMap.size(), versionName, false);
 
 			try {
 				Files.createDirectories(Paths.get(basePath));
@@ -82,13 +85,12 @@ public class Main {
 
 			// copy in the hardcoded.lua file
 			try {
-				Files.copy(Paths.get(Main.class.getClassLoader().getResource("hardcoded.lua").toURI()), Paths.get(basePath + "hardcoded.lua"), StandardCopyOption.REPLACE_EXISTING);
+				Files.copy(Main.class.getClassLoader().getResourceAsStream("hardcoded.lua"), Paths.get(basePath + "hardcoded.lua"), StandardCopyOption.REPLACE_EXISTING);
+//				Files.copy(Paths.get(Main.class.getClassLoader().getResource("hardcoded.lua").toURI()), Paths.get(basePath + "hardcoded.lua"), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
 		});
-		printCurrentProgress(current.get(), current.get(), "Done!\n");
+		printCurrentProgress(current.get(), current.get(), "Done!", true);
 	}
 }
