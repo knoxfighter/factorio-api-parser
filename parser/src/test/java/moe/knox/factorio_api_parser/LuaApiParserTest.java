@@ -240,12 +240,14 @@ class LuaApiParserTest {
 										name = "forces";
 										type = "table<uint|string, LuaForce>";
 										readOnly = true;
+										description = "";
 									}
 								});
 							}
 						};
 					}
 				});
+
 				put("LuaControl_crafting_queue", new Class() {
 					{
 						name = "LuaControl_crafting_queue";
@@ -302,6 +304,7 @@ class LuaApiParserTest {
 						};
 					}
 				});
+
 				put("LuaControl_set_gui_arrow", new Class() {
 					{
 						name = "LuaControl_set_gui_arrow";
@@ -314,36 +317,42 @@ class LuaApiParserTest {
 										description = "Where to point to. This field determines what other fields are mandatory. May be \"nowhere\", \"goal\", \"entity_info\", \"active_window\", \"entity\", \"position\", \"crafting_queue\",|\"item_stack\".";
 									}
 								});
+
 								put("entity", new Attribute() {
 									{
 										name = "entity";
 										type = "LuaEntity";
 									}
 								});
+
 								put("position", new Attribute() {
 									{
 										name = "position";
 										type = "Position";
 									}
 								});
+
 								put("crafting_queueindex", new Attribute() {
 									{
 										name = "crafting_queueindex";
 										type = "uint";
 									}
 								});
+
 								put("inventory_index", new Attribute() {
 									{
 										name = "inventory_index";
 										type = "defines.inventory";
 									}
 								});
+
 								put("item_stack_index", new Attribute() {
 									{
 										name = "item_stack_index";
 										type = "uint";
 									}
 								});
+
 								put("source", new Attribute() {
 									{
 										name = "source";
@@ -355,6 +364,7 @@ class LuaApiParserTest {
 						};
 					}
 				});
+
 				put("LuaControl_begin_crafting", new Class() {
 					{
 						name = "LuaControl_begin_crafting";
@@ -367,6 +377,7 @@ class LuaApiParserTest {
 										description = "The count to craft.";
 									}
 								});
+
 								put("recipe", new Attribute() {
 									{
 										name = "recipe";
@@ -374,6 +385,7 @@ class LuaApiParserTest {
 										description = "The recipe to craft.";
 									}
 								});
+
 								put("silent", new Attribute() {
 									{
 										name = "silent";
