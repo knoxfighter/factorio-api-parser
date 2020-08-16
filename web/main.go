@@ -4,10 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/hashicorp/go-version"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"sort"
 )
 
 var mainDir string
@@ -46,6 +48,20 @@ func ListVersionsHandler(w http.ResponseWriter, r *http.Request) {
 		if fileInfo.IsDir() {
 			allDirs = append(allDirs, fileInfo.Name())
 		}
+	}
+
+	versions := make([]*version.Version, len(allDirs))
+	for i, raw := range allDirs {
+		v, _ := version.NewVersion(raw)
+		versions[i] = v
+	}
+
+	// After this, the versions are properly sorted
+	sort.Sort(version.Collection(versions))
+
+	allDirs = nil
+	for _, v := range versions {
+		allDirs = append(allDirs, v.String())
 	}
 
 	json.NewEncoder(w).Encode(allDirs)
