@@ -160,6 +160,10 @@ public class LuaApiParser {
 				if (!param.isEmpty()) {
 					MethodParameter parameter = new MethodParameter();
 					parameter.name = param;
+					if (param.contains(".")) {
+						parameter.name = "param";
+						parameter.type = param;
+					}
 					luaMethod.parameters.put(parameter.name, parameter);
 				}
 			}
@@ -421,8 +425,13 @@ public class LuaApiParser {
 		FieldResult fieldResult = parseFieldRegex(text);
 		if (fieldResult != null) {
 			String paramName = fieldResult.name;
+			String typeName = fieldResult.type;
+			if (paramName.contains(".")) {
+				typeName = paramName;
+				paramName = "param";
+			}
 			MethodParameter parameter = luaMethod.parameters.get(paramName);
-			parameter.type = fieldResult.type;
+			parameter.type = typeName;
 
 			String desc = fieldResult.description;
 			if (desc != null) {
