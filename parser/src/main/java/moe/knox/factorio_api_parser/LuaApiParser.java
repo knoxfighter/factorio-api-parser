@@ -127,7 +127,7 @@ public class LuaApiParser {
 		String old;
 		do {
 			old = s;
-			s = s.replaceAll("^(.*)dictionary (.*) → (.*?)( \\[[RW]{0,2}\\])?$", "$1table<$2, $3>$4");
+			s = s.replaceAll("^(.*)(?:(?:dictionary)|(?:CustomDictionary)) (.*) → (.*?)( \\[[RW]{0,2}\\])?$", "$1table<$2, $3>$4");
 		} while (!s.equals(old));
 
 		// replace alternatives
@@ -715,17 +715,17 @@ public class LuaApiParser {
 	 */
 	public static Map<String, Class> parseClassPageFromFile(String fileName) {
 		// Open class page
+		Document page;
 		try {
 			File file = new File(fileName);
-			Document page = Jsoup.parse(file, "utf-8");
+			page = Jsoup.parse(file, "utf-8");
 			page.outputSettings(new Document.OutputSettings().prettyPrint(false));
-			return parseClassPage(page, null, null, false);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.out.println("error opening the class API page");
 			System.out.println(e.getMessage());
+			return null;
 		}
-
-		return null;
+		return parseClassPage(page, null, null, false);
 	}
 
 	/**

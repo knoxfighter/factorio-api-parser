@@ -164,6 +164,7 @@ class LuaApiParserTest {
 													{
 														name = "param";
 														type = "defines.logistic_member_index";
+														optional = true;
 													}
 												});
 											}
@@ -230,6 +231,14 @@ class LuaApiParserTest {
 										name = "opened_gui_type";
 										type = "defines.gui_type";
 										description = "<p>Returns the <a href=\"defines.html#defines.gui_type\">defines.gui_type</a> or <code>nil</code>.</p>";
+										readOnly = true;
+									}
+								});
+
+								put("forces", new Attribute() {
+									{
+										name = "forces";
+										type = "table<uint|string, LuaForce>";
 										readOnly = true;
 									}
 								});
