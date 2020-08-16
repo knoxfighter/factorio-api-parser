@@ -27,7 +27,7 @@ func main() {
 
 	log.Println("started listening!")
 
-	err := http.ListenAndServe("0.0.0.0:8080", apiRouter)
+	err := http.ListenAndServe("0.0.0.0:80", apiRouter)
 	if err != nil {
 		log.Fatalf("Error starting webserver: %s", err)
 	}

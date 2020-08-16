@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  web:
+    image: factorio-api
+    expose:
+      - "80"
+    labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.stuff.rule=Host(`factorio-api.knox.moe`)"
+       - "traefik.http.routers.stuff.entrypoints=websecure"
+       - "traefik.http.routers.stuff.tls.certresolver=le"
+       - "traefik.docker.network=web_traefik"
+
+networks:
+  default:
+    external:
+      name: web_traefik
+
