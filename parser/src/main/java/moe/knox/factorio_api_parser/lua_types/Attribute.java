@@ -60,7 +60,7 @@ public class Attribute {
 
 		// since
 		if (since != null && !since.isEmpty()) {
-			outputStream.write(("---@type " + since + "\n").getBytes());
+			outputStream.write(("---@since " + since + "\n").getBytes());
 		}
 
 		// type
