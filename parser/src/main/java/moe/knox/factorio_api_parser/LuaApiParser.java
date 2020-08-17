@@ -477,6 +477,13 @@ public class LuaApiParser {
 			FieldResult fieldResult = parseFieldRegex(text);
 
 			if (fieldResult != null) {
+				String desc = fieldResult.description;
+				// if description contains "::", dont run further.
+				// This is done, so metaelement doesnt get parsed.
+				if (desc != null && desc.contains("::")) {
+					return;
+				}
+
 				String paramName = fieldResult.name;
 				String fullClassName = upperClassName + "_" + luaMethod.name;
 				Class additionalClass = classes.get(fullClassName);
@@ -489,7 +496,6 @@ public class LuaApiParser {
 				}
 				attribute.type = fieldResult.type;
 
-				String desc = fieldResult.description;
 				if (desc != null) {
 					attribute.description = desc.trim();
 				}
