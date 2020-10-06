@@ -1,0 +1,2 @@
+0 */3 * * * /usr/local/openjdk-11/bin/java -jar /factorio-prototypes.jar > /proc/1/fd/1 2>/proc/1/fd/2
+

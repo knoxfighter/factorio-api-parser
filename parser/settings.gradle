@@ -1,2 +1,5 @@
 rootProject.name = 'factorio-api-parser'
 
+include 'prototype'
+include 'lua-api'
+

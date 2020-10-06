@@ -9,10 +9,16 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"sort"
 )
 
-var mainDir string
+var (
+	mainDir       string
+	apiDir        string
+	wikiDir       string
+	prototypesDir string
+)
 
 func main() {
 	args := os.Args
@@ -20,24 +26,35 @@ func main() {
 		mainDir = args[1]
 	}
 
+	apiDir = filepath.Join(mainDir, "api")
+	prototypesDir = filepath.Join(mainDir, "prototypes")
+	wikiDir = filepath.Join(prototypesDir, "wiki")
+
 	router := mux.NewRouter()
-	router.Methods("GET")
-	apiRouter := router.PathPrefix("/api").Subrouter()
-	apiRouter.HandleFunc("/", ListVersionsHandler)
-	apiRouter.HandleFunc("/{version}/", ListVersionFilesHandler)
-	apiRouter.HandleFunc("/{version}/{file}", DownloadFileHandler)
+	//router.Methods("GET")
 
-	log.Println("started listening!")
+	apiRouter := router.PathPrefix("/api").Methods("GET").Subrouter()
+	apiRouter.HandleFunc("/", ApiListVersionsHandler)
+	apiRouter.HandleFunc("/{version}/", ApiListVersionFilesHandler)
+	apiRouter.HandleFunc("/{version}/{file}", ApiDownloadFileHandler)
 
-	err := http.ListenAndServe("0.0.0.0:80", apiRouter)
+	wikiRouter := router.PathPrefix("/wiki").Methods("GET").Subrouter()
+	wikiRouter.HandleFunc("/{file}", WikiDownloadFileHandler)
+
+	address := "0.0.0.0"
+	port := "80"
+
+	log.Printf("started listening on [%s:%s]", address, port)
+
+	err := http.ListenAndServe(fmt.Sprintf("%s:%s", address, port), router)
 	if err != nil {
 		log.Fatalf("Error starting webserver: %s", err)
 	}
 }
 
-func ListVersionsHandler(w http.ResponseWriter, r *http.Request) {
+func ApiListVersionsHandler(w http.ResponseWriter, r *http.Request) {
 	// read out all folders in the main directory (all versions)
-	fileInfos, err := ioutil.ReadDir(mainDir)
+	fileInfos, err := ioutil.ReadDir(apiDir)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -67,10 +84,10 @@ func ListVersionsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(allDirs)
 }
 
-func ListVersionFilesHandler(w http.ResponseWriter, r *http.Request) {
+func ApiListVersionFilesHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	version := vars["version"]
-	fileInfos, err := ioutil.ReadDir(fmt.Sprintf("%s/%s", mainDir, version))
+	fileInfos, err := ioutil.ReadDir(fmt.Sprintf("%s/%s", apiDir, version))
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -84,9 +101,15 @@ func ListVersionFilesHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(allDirs)
 }
 
-func DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
+func ApiDownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	version := vars["version"]
 	file := vars["file"]
-	http.ServeFile(w, r, fmt.Sprintf("%s/%s/%s", mainDir, version, file))
+	http.ServeFile(w, r, fmt.Sprintf("%s/%s/%s", apiDir, version, file))
+}
+
+func WikiDownloadFileHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	file := vars["file"]
+	http.ServeFile(w, r, fmt.Sprintf("%s/%s", wikiDir, file))
 }

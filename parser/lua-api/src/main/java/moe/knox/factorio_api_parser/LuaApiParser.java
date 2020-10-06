@@ -1,7 +1,7 @@
 package moe.knox.factorio_api_parser;
 
-import moe.knox.factorio_api_parser.lua_types.*;
 import moe.knox.factorio_api_parser.lua_types.Class;
+import moe.knox.factorio_api_parser.lua_types.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

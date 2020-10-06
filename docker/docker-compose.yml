@@ -6,13 +6,20 @@ services:
       - "80"
     labels:
        - "traefik.enable=true"
-       - "traefik.http.routers.stuff.rule=Host(`factorio-api.knox.moe`)"
-       - "traefik.http.routers.stuff.entrypoints=websecure"
-       - "traefik.http.routers.stuff.tls.certresolver=le"
+       - "traefik.http.routers.factorio_api.rule=Host(`factorio-api.knox.moe`)"
+       - "traefik.http.routers.factorio_api.entrypoints=websecure"
+       - "traefik.http.routers.factorio_api.tls.certresolver=le"
        - "traefik.docker.network=web_traefik"
+    environment:
+       - "webhookLink=https://discordapp.com/api/webhooks/761954324184039465/7_ohKza2qosgvEH3EK70mvmA0o2wZ4Uaz-HJHDfLS3DBlyU24ah2dDQZKa9dWp7ja2Q5"
+    volumes:
+       - files_volume:/files
 
 networks:
   default:
     external:
       name: web_traefik
+
+volumes:
+  files_volume:
 

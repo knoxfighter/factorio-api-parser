@@ -12,7 +12,6 @@ repositories {
 }
 
 dependencies {
-    compile 'org.jsoup:jsoup:1.12.1'
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
 }
 
@@ -20,27 +19,5 @@ test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
-    }
-}
-
-tasks.named('wrapper') {
-    distributionType = Wrapper.DistributionType.ALL
-}
-
-tasks.withType(Jar) {
-    manifest {
-        attributes (
-            'Main-Class': 'moe.knox.factorio_api_parser.Main'
-        )
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-
-    String dir = System.getProperty("me.test")
-    if (dir != null && !dir.isEmpty()) {
-        archiveFileName='factorio-api-parser.jar'
-        destinationDirectory = file(dir)
     }
 }

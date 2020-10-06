@@ -1,6 +1,5 @@
 package moe.knox.factorio_api_parser;
 
-
 import moe.knox.factorio_api_parser.lua_types.Attribute;
 import moe.knox.factorio_api_parser.lua_types.Class;
 import moe.knox.factorio_api_parser.lua_types.Method;
