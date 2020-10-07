@@ -118,12 +118,12 @@ public class Main {
 		System.out.println("diff-tool result: " + processResult);
 
 		if (someOutput) {
-			DiscordWebhook discordWebhook = new DiscordWebhook(System.getenv("webhookLink"));
+			DiscordWebhook discordWebhook = new DiscordWebhook("https://discordapp.com/api/webhooks/761954324184039465/7_ohKza2qosgvEH3EK70mvmA0o2wZ4Uaz-HJHDfLS3DBlyU24ah2dDQZKa9dWp7ja2Q5");
 			DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
 			embed.setTitle("Some changes to the prototype definitions happened");
 			embed.setDescription(String.format("https://factorio-api.knox.moe/wiki/%s", diffFileName));
 			discordWebhook.addEmbed(embed);
-//			discordWebhook.execute();
+			discordWebhook.execute();
 		}
 
 		// move everything from the new directory to the old directory
