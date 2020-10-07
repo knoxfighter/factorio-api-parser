@@ -163,12 +163,6 @@
         "type": "Sound",
         "description": "The sound file and volume.",
         "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Specification of the type of the prototype. Must be \"wind-sound\".",
-        "optional": false
       }
     ]
   },
@@ -347,12 +341,6 @@
         "name": "name",
         "type": "string",
         "description": "Name of the sound. Must be unique. Used as a \u003ca rel\u003d\"nofollow\" class\u003d\"external free\" href\u003d\"https://lua-api.factorio.com/latest/Concepts.html#SoundPath\"\u003ehttps://lua-api.factorio.com/latest/Concepts.html#SoundPath\u003c/a\u003e.",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"sound\".",
         "optional": false
       },
       {
@@ -945,12 +933,6 @@
         "name": "size",
         "type": "int32",
         "description": "Size of the font.",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"font\".",
         "optional": false
       },
       {
@@ -1633,12 +1615,6 @@
       {
         "name": "steering",
         "type": "table",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"map-settings\".",
         "optional": false
       },
       {
@@ -4177,12 +4153,6 @@
         "optional": false
       },
       {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"animation\".",
-        "optional": false
-      },
-      {
         "name": "animation_speed",
         "type": "float",
         "description": "Modifier of the animation playing speed, the default is 1, which means one animation frame per tick (60 fps). The speed of playing can often vary depending on the usage (output of steam engine for example). Has to be greater than 0.",
@@ -6216,12 +6186,6 @@
         "name": "show_status_icons",
         "type": "bool",
         "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"editor-controller\".",
-        "optional": false
       }
     ]
   },
@@ -6694,12 +6658,6 @@
         "name": "name",
         "type": "string",
         "description": "Name of the sprite. Must be unique. Can be used as a \u003ca rel\u003d\"nofollow\" class\u003d\"external free\" href\u003d\"https://lua-api.factorio.com/latest/Concepts.html#SpritePath\"\u003ehttps://lua-api.factorio.com/latest/Concepts.html#SpritePath\u003c/a\u003e.",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"sprite\".",
         "optional": false
       },
       {
@@ -7698,12 +7656,6 @@
         "name": "name",
         "type": "string",
         "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"trigger-target-type\".",
-        "optional": false
       }
     ]
   },
@@ -7882,12 +7834,6 @@
         "optional": false
       },
       {
-        "name": "type",
-        "type": "string",
-        "description": "\u003cp\u003eSpecification of the type of the prototype.\u003c/p\u003e\u003cp\u003eFor a list of all available types and their properties, see \u003ca href\u003d\"/Prototype_definitions\" title\u003d\"Prototype definitions\"\u003eprototype definitions\u003c/a\u003e. For a list of all types used in vanilla, see \u003ca href\u003d\"/Data.raw\" title\u003d\"Data.raw\"\u003edata.raw\u003c/a\u003e.\u003c/p\u003e",
-        "optional": false
-      },
-      {
         "name": "localised_description",
         "type": "LocalisedString",
         "description": "Overwrites the description set in the \u003ca href\u003d\"/Tutorial:Localisation#Localising_simple_strings\" title\u003d\"Tutorial:Localisation\"\u003elocale file\u003c/a\u003e. The description is usually shown in the tooltip of the prototype.",
@@ -8014,12 +7960,6 @@
         "type": "string",
         "description": "Name of the map-gen-presets. Must be \"default\" since only one instances of this prototype can be defined.",
         "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"map-gen-presets\".",
-        "optional": false
       }
     ]
   },
@@ -8093,12 +8033,6 @@
         "name": "name",
         "type": "string",
         "description": "Name of the prototype.",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"mouse-cursor\".",
         "optional": false
       },
       {
@@ -8249,12 +8183,6 @@
       {
         "name": "tick_scale",
         "type": "float",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"tile-effect\".",
         "optional": false
       },
       {
@@ -8414,12 +8342,6 @@
         "name": "track_type",
         "type": "string",
         "description": "This lets the game know in what instances the audio file is played.",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Specification of the type of the prototype. Must be \"ambient-sound\".",
         "optional": false
       },
       {
@@ -9213,12 +9135,6 @@
         "optional": false
       },
       {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"god-controller\".",
-        "optional": false
-      },
-      {
         "name": "crafting_categories",
         "type": "string[]",
         "description": "Names of the crafting categories the player can craft recipes from.",
@@ -9502,12 +9418,6 @@
         "description": "Name of the gui-style. Must be \"default\" since only one instance of this prototype can be defined.",
         "_default": "default",
         "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"gui-style\".",
-        "optional": false
       }
     ]
   },
@@ -9620,12 +9530,6 @@
         "type": "string",
         "description": "Name of the spectator-controller. Must be \"default\" since only one instances of this prototype can be defined.",
         "_default": "default",
-        "optional": false
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "description": "Must be \"spectator-controller\".",
         "optional": false
       }
     ]
