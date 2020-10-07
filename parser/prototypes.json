@@ -402,7 +402,7 @@
       },
       {
         "name": "variations",
-        "type": "table (array) of tables",
+        "type": "table[]",
         "optional": true
       },
       {
@@ -6567,7 +6567,7 @@
       },
       {
         "name": "smoke",
-        "type": "Array of SmokeSource",
+        "type": "SmokeSource[]",
         "optional": true
       },
       {
@@ -7085,13 +7085,13 @@
       },
       {
         "name": "circuit_connector_sprites",
-        "type": "Array of CircuitConnectorSprites",
+        "type": "CircuitConnectorSprites[]",
         "description": "The pictures displayed for circuit connections to this transport belt.",
         "optional": true
       },
       {
         "name": "circuit_wire_connection_point",
-        "type": "Array of WireConnectionPoint",
+        "type": "WireConnectionPoint[]",
         "description": "Defines how wires visually connect to this transport belt.",
         "optional": true
       },
@@ -7214,7 +7214,7 @@
       },
       {
         "name": "guns",
-        "type": "strings[] of prototype names",
+        "type": "strings[]",
         "description": "The guns this car prototype uses.",
         "optional": true
       },
@@ -8575,7 +8575,7 @@
       },
       {
         "name": "smoke",
-        "type": "Array of SmokeSource",
+        "type": "SmokeSource[]",
         "optional": true
       },
       {
@@ -8809,7 +8809,7 @@
       },
       {
         "name": "rocket_launch_products",
-        "type": "table (array) of ItemProductPrototype",
+        "type": "ItemProductPrototype[]",
         "optional": true
       },
       {
@@ -9342,6 +9342,18 @@
         "optional": true
       },
       {
+        "name": "fade_in_duration",
+        "type": "uint8",
+        "_default": "0",
+        "optional": true
+      },
+      {
+        "name": "fade_out_duration",
+        "type": "uint8",
+        "_default": "0",
+        "optional": true
+      },
+      {
         "name": "height",
         "type": "float",
         "_default": "1",
@@ -9350,6 +9362,58 @@
       {
         "name": "light",
         "type": "LightDefinition",
+        "optional": true
+      },
+      {
+        "name": "light_intensity_factor_final",
+        "type": "float",
+        "description": "Silently clamped to be between 0 and 1.",
+        "_default": "0.0",
+        "optional": true
+      },
+      {
+        "name": "light_intensity_factor_initial",
+        "type": "float",
+        "description": "Silently clamped to be between 0 and 1.",
+        "_default": "0.0",
+        "optional": true
+      },
+      {
+        "name": "light_intensity_peak_end_progress",
+        "type": "float",
+        "_default": "0.9",
+        "optional": true
+      },
+      {
+        "name": "light_intensity_peak_start_progress",
+        "type": "float",
+        "_default": "0.0",
+        "optional": true
+      },
+      {
+        "name": "light_size_factor_final",
+        "type": "float",
+        "description": "Silently clamped to be between 0 and 1.",
+        "_default": "0.1",
+        "optional": true
+      },
+      {
+        "name": "light_size_factor_initial",
+        "type": "float",
+        "description": "Silently clamped to be between 0 and 1.",
+        "_default": "0.05",
+        "optional": true
+      },
+      {
+        "name": "light_size_peak_end_progress",
+        "type": "float",
+        "_default": "0.5",
+        "optional": true
+      },
+      {
+        "name": "light_size_peak_start_progress",
+        "type": "float",
+        "_default": "0.1",
         "optional": true
       },
       {
@@ -9362,6 +9426,60 @@
         "name": "rotate",
         "type": "bool",
         "_default": "false",
+        "optional": true
+      },
+      {
+        "name": "scale",
+        "type": "float",
+        "_default": "1",
+        "optional": true
+      },
+      {
+        "name": "scale_animation_speed",
+        "type": "bool",
+        "_default": "false",
+        "optional": true
+      },
+      {
+        "name": "scale_deviation",
+        "type": "float",
+        "_default": "0",
+        "optional": true
+      },
+      {
+        "name": "scale_end",
+        "type": "float",
+        "_default": "1",
+        "optional": true
+      },
+      {
+        "name": "scale_in_duration",
+        "type": "uint8",
+        "_default": "0",
+        "optional": true
+      },
+      {
+        "name": "scale_increment_per_tick",
+        "type": "float",
+        "_default": "0",
+        "optional": true
+      },
+      {
+        "name": "scale_initial",
+        "type": "float",
+        "_default": "1",
+        "optional": true
+      },
+      {
+        "name": "scale_initial_deviation",
+        "type": "float",
+        "_default": "0",
+        "optional": true
+      },
+      {
+        "name": "scale_out_duration",
+        "type": "uint8",
+        "_default": "0",
         "optional": true
       },
       {
@@ -12837,7 +12955,7 @@
       },
       {
         "name": "color_filters",
-        "type": "table (array) of tables",
+        "type": "tables[]",
         "optional": false
       },
       {
@@ -13007,12 +13125,12 @@
       },
       {
         "name": "player_colors",
-        "type": "table (array) of tables",
+        "type": "table[]",
         "optional": false
       },
       {
         "name": "rail_segment_colors",
-        "type": "table (array) of Color",
+        "type": "Color[]",
         "optional": false
       },
       {
@@ -13127,17 +13245,17 @@
       },
       {
         "name": "default_alert_icon_scale_by_type",
-        "type": "table (array) of string to float",
+        "type": "table<string, float>",
         "optional": true
       },
       {
         "name": "default_alert_icon_shift_by_type",
-        "type": "table (array) of string to vector",
+        "type": "table<string, float>",
         "optional": true
       },
       {
         "name": "default_trigger_target_mask_by_type",
-        "type": "table (array) of string to TriggerTargetMask",
+        "type": "table<string, TriggerTargetMask>",
         "optional": true
       }
     ]
@@ -13622,7 +13740,7 @@
       },
       {
         "name": "running_sound_animation_positions",
-        "type": "table (array) of float",
+        "type": "float[]",
         "description": "Ignored if \u003ccode\u003ewalking_sounds\u003c/code\u003e is not defined.",
         "optional": true
       },
