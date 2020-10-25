@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.nio.file.*;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -50,6 +51,10 @@ public class Main {
 			}
 		}
 
+		parsePageByLinks(newPath, links);
+	}
+
+	private static void parsePageByLinks(Path newPath, Set<String> links) throws IOException {
 		// iterate over the unique list
 		for (String link : links) {
 			Document subPage = Jsoup.connect("https://wiki.factorio.com" + link).get();
@@ -97,6 +102,77 @@ public class Main {
 		// download all type pages
 		Elements allTypeLinks = mainPage.select(".prototype-toc-item-info > a");
 		parseLinkElementsAndTheirPage(newPath, allTypeLinks);
+
+		// parse pages that are not linked to by prototypes
+		Set<String> additionalTypes = new HashSet<>() {{
+			add("/Types/ActivateEquipmentCapsuleAction");
+			add("/Types/AreaTriggerItem");
+			add("/Types/ArtilleryRemoteCapsuleAction");
+			add("/Types/AnimationElement");
+			add("/Types/AttackReactionItem");
+			add("/Types/BeaconModuleVisualizations");
+			add("/Types/BeamAttackParameters");
+			add("/Types/CameraEffectTriggerEffectItem");
+			add("/Types/ClusterTriggerItem");
+			add("/Types/CreateDecorativesTriggerEffectItem");
+			add("/Types/CreateEntityTriggerEffectItem");
+			add("/Types/CreateExplosionTriggerEffectItem");
+			add("/Types/CreateFireTriggerEffectItem");
+			add("/Types/CreateParticleTriggerEffectItem");
+			add("/Types/CreateSmokeTriggerEffectItem");
+			add("/Types/CreateStickerTriggerEffectItem");
+			add("/Types/DamageTriggerEffectItem");
+			add("/Types/DestroyCliffsCapsuleAction");
+			add("/Types/DestroyCliffsTriggerEffectItem");
+			add("/Types/DestroyDecorativesTriggerEffectItem");
+			add("/Types/DirectTriggerItem");
+			add("/Types/ElectricUsagePriority");
+			add("/Types/FluidProductPrototype");
+			add("/Types/HeatConnection");
+			add("/Types/InsertItemTriggerEffectItem");
+			add("/Types/InvokeTileEffectTriggerEffectItem");
+			add("/Types/ItemIngredientPrototype");
+			add("/Types/LightFlickeringDefinition");
+			add("/Types/LineTriggerItem");
+			add("/Types/NestedTriggerEffectItem");
+			add("/Types/PipeConnectionDefinition");
+			add("/Types/PlaySoundTriggerEffectItem");
+			add("/Types/Position");
+			add("/Types/ProjectileAttackParameters");
+			add("/Types/PushBackTriggerEffectItem");
+			add("/Types/RealOrientation");
+			add("/Types/ScriptTriggerEffectItem");
+			add("/Types/SetTileTriggerEffectItem");
+			add("/Types/ShowExplosionOnChartTriggerEffectItem");
+			add("/Types/SpawnPoint");
+			add("/Types/SpriteNWaySheet");
+			add("/Types/StreamAttackParameters");
+			add("/Types/TileSprite");
+			add("/Types/TileTransitionSprite");
+			add("/Types/ThrowCapsuleAction");
+			add("/Types/TriggerEffectItem");
+			add("/Types/UseOnSelfCapsuleAction");
+			add("/Types/WirePosition");
+			add("/Types/TriggerItem");
+			add("/Types/BaseAttackParameters");
+			add("/Types/CircularParticleCreationSpecification");
+			add("/Types/CircularProjectileCreationSpecification");
+			add("/Types/DamageTypeFilters");
+			add("/Types/TriggerDelivery");
+			add("/Types/LayeredSound");
+			add("/Types/CyclicSound");
+			add("/Types/InstantTriggerDelivery");
+			add("/Types/ProjectileTriggerDelivery");
+			add("/Types/FlameThrowerExplosionTriggerDelivery");
+			add("/Types/BeamTriggerDelivery");
+			add("/Types/StreamTriggerDelivery");
+			add("/Types/ArtilleryTriggerDelivery");
+			add("/Types/IconData");
+			add("/Types/BoxSpecification");
+			add("/Types/Sprite8Way");
+			add("/Types/RailPieceLayers");
+		}};
+		parsePageByLinks(newPath, additionalTypes);
 
 		// save to file named after current timestamp
 		String diffFileName = String.valueOf(System.currentTimeMillis());

@@ -345,7 +345,7 @@
       },
       {
         "name": "aggregation",
-        "type": "table",
+        "type": "SoundAggregation",
         "optional": true
       },
       {
@@ -402,7 +402,7 @@
       },
       {
         "name": "variations",
-        "type": "table[]",
+        "type": "SoundValue2[]",
         "optional": true
       },
       {
@@ -776,8 +776,7 @@
     "properties": [
       {
         "name": "gui_mode",
-        "type": "string",
-        "description": "\"none\", \"all\" or \"admins\"",
+        "type": "GuiMode",
         "_default": "all",
         "optional": true
       }
@@ -1007,7 +1006,7 @@
       },
       {
         "name": "structure",
-        "type": "table",
+        "type": "LoaderStructure",
         "optional": false
       },
       {
@@ -1047,7 +1046,7 @@
       },
       {
         "name": "structure",
-        "type": "table",
+        "type": "LoaderStructure",
         "optional": false
       },
       {
@@ -1576,17 +1575,17 @@
     "properties": [
       {
         "name": "difficulty_settings",
-        "type": "table",
+        "type": "MapSettingsDifficultySettings",
         "optional": false
       },
       {
         "name": "enemy_evolution",
-        "type": "table",
+        "type": "MapSettingsEnemyEvolution",
         "optional": false
       },
       {
         "name": "enemy_expansion",
-        "type": "table",
+        "type": "MapSettingsEnemyExpansion",
         "optional": false
       },
       {
@@ -1603,23 +1602,23 @@
       },
       {
         "name": "path_finder",
-        "type": "table",
+        "type": "MapSettingsPathFinder",
         "optional": false
       },
       {
         "name": "pollution",
-        "type": "table",
+        "type": "MapSettingsPollution",
         "description": "The pollution settings, the values are for 60 ticks (1 second).",
         "optional": false
       },
       {
         "name": "steering",
-        "type": "table",
+        "type": "MapSettingsSteering",
         "optional": false
       },
       {
         "name": "unit_group",
-        "type": "table",
+        "type": "MapSettingsSteeringUnitGroup",
         "optional": false
       }
     ]
@@ -2121,7 +2120,7 @@
       },
       {
         "name": "alt_selection_mode",
-        "type": "string[]",
+        "type": "SelectionToolSelectionMode",
         "description": "A list of selection mode flags that define how the selection tool alt-selects things in-game. Possible values are identical to normal selection_mode.",
         "optional": false
       },
@@ -2139,13 +2138,13 @@
       },
       {
         "name": "selection_mode",
-        "type": "string[]",
+        "type": "SelectionToolSelectionMode",
         "description": "A list of selection mode flags that define how the selection tool selects things in-game.",
         "optional": false
       },
       {
         "name": "alt_entity_filter_mode",
-        "type": "string",
+        "type": "WhitelistBlacklist",
         "description": "One of \"whitelist\" and \"blacklist\".",
         "_default": "whitelist",
         "optional": true
@@ -2163,7 +2162,7 @@
       },
       {
         "name": "alt_tile_filter_mode",
-        "type": "string",
+        "type": "WhitelistBlacklist",
         "description": "One of \"whitelist\" and \"blacklist\".",
         "_default": "whitelist",
         "optional": true
@@ -2183,7 +2182,7 @@
       },
       {
         "name": "entity_filter_mode",
-        "type": "string",
+        "type": "WhitelistBlacklist",
         "description": "One of \"whitelist\" and \"blacklist\".",
         "_default": "whitelist",
         "optional": true
@@ -2215,7 +2214,7 @@
       },
       {
         "name": "tile_filter_mode",
-        "type": "string",
+        "type": "WhitelistBlacklist",
         "description": "One of \"whitelist\" and \"blacklist\".",
         "_default": "whitelist",
         "optional": true
@@ -2293,17 +2292,17 @@
       },
       {
         "name": "drawing_boxes",
-        "type": "table",
+        "type": "TrainStopDrawingBoxes",
         "optional": true
       },
       {
         "name": "light1",
-        "type": "table",
+        "type": "TrainStopLight",
         "optional": true
       },
       {
         "name": "light2",
-        "type": "table",
+        "type": "TrainStopLight",
         "optional": true
       },
       {
@@ -2617,7 +2616,7 @@
       },
       {
         "name": "cursor_box",
-        "type": "table",
+        "type": "UtilitySpritesCursorBox",
         "optional": false
       },
       {
@@ -3976,13 +3975,13 @@
     "properties": [
       {
         "name": "bending_type",
-        "type": "string",
+        "type": "RailRemnantsBendingType",
         "description": "Either \"straight\" or \"turn\".",
         "optional": false
       },
       {
         "name": "pictures",
-        "type": "table",
+        "type": "RailRemnantsPictures",
         "optional": false
       }
     ]
@@ -4045,7 +4044,7 @@
       },
       {
         "name": "default_recipe_tint",
-        "type": "Color[]",
+        "type": "TintColors",
         "description": "Each key/value pair is optional and defaults to the above value.",
         "optional": true
       },
@@ -4117,7 +4116,7 @@
       },
       {
         "name": "shift_animation_waypoints",
-        "type": "table[] (array) of vector",
+        "type": "CraftingMachineShiftAnimationWaypoints",
         "description": "Only loaded if one of \u003ccode\u003eshift_animation_waypoint_stop_duration\u003c/code\u003e or \u003ccode\u003eshift_animation_transition_duration\u003c/code\u003e is not 0.",
         "optional": true
       },
@@ -4130,7 +4129,7 @@
       },
       {
         "name": "status_colors",
-        "type": "Color[]",
+        "type": "CraftingMachineStatusColors",
         "optional": true
       },
       {
@@ -4278,7 +4277,7 @@
       },
       {
         "name": "run_mode",
-        "type": "string",
+        "type": "AnimationRunMode",
         "_default": "forward",
         "optional": true
       },
@@ -4794,7 +4793,7 @@
       },
       {
         "name": "graphics_set",
-        "type": "table",
+        "type": "OffshorePumpGraphicsSet",
         "description": "Mandatory if \u003ccode\u003epicture\u003c/code\u003e is not defined.",
         "optional": true
       },
@@ -4922,8 +4921,8 @@
     "properties": [
       {
         "name": "category",
-        "type": "string",
-        "description": "Either \"resource\", \"terrain\" or \"enemy\". Controls in what tab the autoplace is shown in the map generator GUI.",
+        "type": "AutoplaceControlCategory",
+        "description": "Controls in what tab the autoplace is shown in the map generator GUI.",
         "optional": false
       },
       {
@@ -5189,8 +5188,8 @@
       },
       {
         "name": "gui_mode",
-        "type": "string",
-        "description": "Controls which players can control what the chest spawns. Possible options: \"all\", \"none\", \"admins\".",
+        "type": "GuiMode",
+        "description": "Controls which players can control what the chest spawns.",
         "_default": "all",
         "optional": true
       }
@@ -5362,7 +5361,7 @@
       },
       {
         "name": "result_items",
-        "type": "table[]",
+        "type": "RocketSiloRocketResultItems[]",
         "description": "Unused in base game.",
         "optional": true
       },
@@ -5452,14 +5451,14 @@
       },
       {
         "name": "filter_mode",
-        "type": "string",
+        "type": "WhitelistBlacklist",
         "description": "This determines how filters are applied. If no filters are defined this is automatically set to \"none\".",
         "_default": "whitelist",
         "optional": true
       },
       {
         "name": "insertion_priority_mode",
-        "type": "string",
+        "type": "ItemWithInventoryInsertionPriorityMode",
         "description": "The insertion priority mode for this item. This determines if items are first attempted to be put into this items inventory if the item extends the inventory it sits in when items are put into the parent inventory.",
         "_default": "default",
         "optional": true
@@ -5567,7 +5566,7 @@
       },
       {
         "name": "orientations",
-        "type": "OrientedCliffPrototype[]",
+        "type": "CliffOrientations",
         "optional": false
       },
       {
@@ -5588,50 +5587,9 @@
     "name": "Prototype/Recipe",
     "link": "/Prototype/Recipe",
     "id": "recipe",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification:RecipeData",
     "description": "A recipe. It can be a crafting recipe, a smelting recipe, or a custom type of recipe (see Prototype/RecipeCategory).",
     "properties": [
-      {
-        "name": "ingredients",
-        "type": "IngredientPrototype[]",
-        "description": "\u003cp\u003eA table containing ingredient names and counts. Can also contain information about fluid temperature and catalyst amounts.\u003c/p\u003e\u003cp\u003eMaximal ingredient amount is 65535. The catalyst amounts are automatically calculated from the recipe, or can be set manually.\u003ca rel\u003d\"nofollow\" class\u003d\"external autonumber\" href\u003d\"https://factorio.com/blog/post/fff-256\"\u003e[1]\u003c/a\u003e\u003c/p\u003e",
-        "optional": false
-      },
-      {
-        "name": "allow_as_intermediate",
-        "type": "bool",
-        "description": "Optional. Whether the recipe can be used as an intermediate recipe in hand-crafting.",
-        "_default": "true",
-        "optional": true
-      },
-      {
-        "name": "allow_decomposition",
-        "type": "bool",
-        "description": "Optional. Whether this recipe is allowed to be broken down for the recipe tooltip \"Total raw\" calculations.",
-        "_default": "true",
-        "optional": true
-      },
-      {
-        "name": "allow_intermediates",
-        "type": "bool",
-        "description": "Optional. Whether the recipe is allowed to use intermediate recipes when hand-crafting.",
-        "_default": "true",
-        "optional": true
-      },
-      {
-        "name": "always_show_made_in",
-        "type": "bool",
-        "description": "Optional. Whether the \"Made in: {Machine}\" part of the tool-tip should always be present, not only when the recipe can not be hand-crafted.",
-        "_default": "false",
-        "optional": true
-      },
-      {
-        "name": "always_show_products",
-        "type": "bool",
-        "description": "Optional. Whether the products are always shown in the recipe tool-tip.",
-        "_default": "false",
-        "optional": true
-      },
       {
         "name": "category",
         "type": "string",
@@ -5641,122 +5599,24 @@
       },
       {
         "name": "crafting_machine_tint",
-        "type": "Color[]",
-        "description": "Optional. Used by crafting machine \u003ccode\u003e\u003ca href\u003d\"/Prototype/CraftingMachine#working_visualisations\" title\u003d\"Prototype/CraftingMachine\"\u003eworking_visualisations\u003c/a\u003e\u003c/code\u003e to tint certain layers with the recipe color. \u003ca href\u003d\"/Types/WorkingVisualisation#apply_recipe_tint\" title\u003d\"Types/WorkingVisualisation\"\u003eapply_recipe_tint\u003c/a\u003e on the working visualisation determines which of the 4 colors is used for that layer (if any).",
-        "optional": true
-      },
-      {
-        "name": "emissions_multiplier",
-        "type": "double",
-        "_default": "1.0",
-        "optional": true
-      },
-      {
-        "name": "enabled",
-        "type": "bool",
-        "description": "\u003cp\u003eOptional. This can be false to disable the recipe at the start of the game, or \"true\" to leave it enabled.\u003c/p\u003e\u003cp\u003eIf your recipe is unlocked by a technology, you should set this to \"false\".\u003c/p\u003e",
-        "_default": "true",
-        "optional": true
-      },
-      {
-        "name": "energy_required",
-        "type": "double",
-        "description": "\u003cp\u003eOptional. The amount of time it takes to make this recipe.\u003c/p\u003e\u003cp\u003eThis is the number of seconds it takes to craft at crafting speed 1.\u003c/p\u003e",
-        "_default": "0.5",
+        "type": "TintColors",
+        "description": "Used by crafting machine \u003ccode\u003e\u003ca href\u003d\"/Prototype/CraftingMachine#working_visualisations\" title\u003d\"Prototype/CraftingMachine\"\u003eworking_visualisations\u003c/a\u003e\u003c/code\u003e to tint certain layers with the recipe color. \u003ca href\u003d\"/Types/WorkingVisualisation#apply_recipe_tint\" title\u003d\"Types/WorkingVisualisation\"\u003eapply_recipe_tint\u003c/a\u003e on the working visualisation determines which of the 4 colors is used for that layer (if any).",
         "optional": true
       },
       {
         "name": "expensive",
-        "type": "Recipe data|bool",
-        "optional": true
-      },
-      {
-        "name": "hidden",
-        "type": "bool",
-        "description": "Optional. Hides the recipe from crafting menus.",
-        "_default": "false",
-        "optional": true
-      },
-      {
-        "name": "hide_from_player_crafting",
-        "type": "bool",
-        "description": "Optional. Hides the recipe from the player\u0027s crafting screen. The recipe will still show up for selection in machines.",
-        "_default": "false",
-        "optional": true
-      },
-      {
-        "name": "hide_from_stats",
-        "type": "bool",
-        "description": "Optional. Hides the recipe from flow stats (item/fluid production statistics).",
-        "_default": "false",
-        "optional": true
-      },
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "optional": true
-      },
-      {
-        "name": "main_product",
-        "type": "string",
-        "description": "\u003cp\u003eFor recipes with more than one product: This defines of which result the icon, subgroup and name is used. If it is not set and the recipe has more than 1 result the recipe will use the recipe-name and recipe-description locale and its own subgroup and icon.\u003c/p\u003e\u003cp\u003eFor recipes with 1 result: The recipe uses the icon, subgroup and name of the result by default. If set this property is set to an empty string, the recipe will use the properties of the recipe instead of the result.\u003c/p\u003e",
+        "type": "RecipeData|bool",
         "optional": true
       },
       {
         "name": "normal",
-        "type": "Recipe data|bool",
-        "optional": true
-      },
-      {
-        "name": "overload_multiplier",
-        "type": "uint32",
-        "description": "\u003cp\u003eUsed to determine how many extra items are put into an assembling machine before it\u0027s considered \"full enough\". See Inserters#Insertion_limits.\u003c/p\u003e\u003cp\u003eIf set to 0, it instead uses the following formula: 1.166 / (energy_required / the assembler\u0027s crafting_speed), rounded up, and clamped between 2 and 100.\u003c/p\u003e",
-        "_default": "0",
-        "optional": true
-      },
-      {
-        "name": "requester_paste_multiplier",
-        "type": "uint32",
-        "_default": "30",
-        "optional": true
-      },
-      {
-        "name": "result",
-        "type": "string",
-        "description": "Can be replaced with the results parameter. The item created by this recipe. Must be the name of an item, such as \"iron-gear-wheel\".",
-        "optional": true
-      },
-      {
-        "name": "result_count",
-        "type": "uint32",
-        "description": "Optional. The number of items created by this recipe.",
-        "_default": "1",
-        "optional": true
-      },
-      {
-        "name": "results",
-        "type": "ProductPrototype[]",
-        "description": "A table containing result names and counts. Can also contain information about fluid temperature and catalyst amounts. The catalyst amounts are automatically calculated from the recipe, or can be set manually.\u003ca rel\u003d\"nofollow\" class\u003d\"external autonumber\" href\u003d\"https://factorio.com/blog/post/fff-256\"\u003e[2]\u003c/a\u003e",
-        "optional": true
-      },
-      {
-        "name": "show_amount_in_title",
-        "type": "bool",
-        "description": "Optional. Whether the recipe name should have the product amount in front of it, e.g. \"2 \u003ca href\u003d\"/Transport_belt\" title\u003d\"Transport belt\"\u003etransport belt\u003c/a\u003e\"",
-        "_default": "true",
+        "type": "RecipeData|bool",
         "optional": true
       },
       {
         "name": "subgroup",
         "type": "string",
-        "description": "Optional. The subgroup of this recipe. If not specified, defaults to the subgroup of the product if there is only 1, or main_product if multiple products exist. If multiple products exist and no main_product is specified, the subgroup is required.",
-        "optional": true
-      },
-      {
-        "name": "unlock_results",
-        "type": "bool",
-        "description": "Optional. Whether enabling this recipe unlocks its item products to show in selection lists (item filter, logistic request etc.).",
-        "_default": "true",
+        "description": "The subgroup of this recipe. If not specified, defaults to the subgroup of the product if there is only 1, or main_product if multiple products exist. If multiple products exist and no main_product is specified, the subgroup is required.",
         "optional": true
       }
     ]
@@ -5765,14 +5625,9 @@
     "name": "Prototype/Tutorial",
     "link": "/Prototype/Tutorial",
     "id": "tutorial",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification",
     "description": "The definition of the tutorial as shown in the tutorial selection in-game. The actual tutorial code is defined in the tutorials folder, in the folder that has the name of the scenario property.",
     "properties": [
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "optional": false
-      },
       {
         "name": "scenario",
         "type": "string",
@@ -5781,7 +5636,7 @@
       },
       {
         "name": "trigger",
-        "type": "table",
+        "type": "TutorialTrigger",
         "optional": false
       },
       {
@@ -5832,14 +5687,9 @@
     "name": "Prototype/Achievement",
     "link": "/Prototype/Achievement",
     "id": "achievement",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification",
     "description": "This prototype definition is used for the in-game achievements.",
     "properties": [
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "optional": false
-      },
       {
         "name": "allowed_without_fight",
         "type": "bool",
@@ -6592,8 +6442,8 @@
       },
       {
         "name": "action",
-        "type": "string",
-        "description": "One of \"lua\", \"create-blueprint-item\", \"toggle-personal-roboport\", \"toggle-personal-logistic-requests\" and \"toggle-equipment-movement-bonus\".\u003cbr\u003eA lua event is only raised if the action is \"lua\".",
+        "type": "CustomInputAction",
+        "description": "A lua event is only raised if the action is \"lua\".",
         "_default": "lua",
         "optional": true
       },
@@ -6835,7 +6685,7 @@
       },
       {
         "name": "variants",
-        "type": "TileTransitions",
+        "type": "TileVariants",
         "description": "Graphics for this tile.",
         "optional": false
       },
@@ -6852,7 +6702,7 @@
       },
       {
         "name": "build_sound",
-        "type": "table",
+        "type": "TileBuildSound",
         "optional": true
       },
       {
@@ -6891,8 +6741,7 @@
       },
       {
         "name": "layer_group",
-        "type": "string",
-        "description": "One of \"zero\", \"water\", \"water-overlay\", \"ground\" and \"top\".",
+        "type": "TileLayerGroup",
         "optional": true
       },
       {
@@ -7079,7 +6928,7 @@
       },
       {
         "name": "belt_animation_set",
-        "type": "table",
+        "type": "TransportBeltBeltAnimationSet",
         "description": "\u003cp\u003eEither this, or \u003ccode\u003eanimations\u003c/code\u003e has to present.\u003c/p\u003e\u003cp\u003eThis is the same table as the one used by \u003ca href\u003d\"/Prototype/TransportBeltConnectable\" title\u003d\"Prototype/TransportBeltConnectable\"\u003ePrototype/TransportBeltConnectable\u003c/a\u003e, with additional properties. If this is present, the belt_animation_set will used for all graphics.\u003c/p\u003e",
         "optional": true
       },
@@ -7130,8 +6979,7 @@
       },
       {
         "name": "gui_mode",
-        "type": "string",
-        "description": "\"none\", \"all\" or \"admins\"",
+        "type": "GuiMode",
         "_default": "all",
         "optional": true
       },
@@ -7185,10 +7033,16 @@
         "optional": false
       },
       {
-        "name": "burner or energy_source",
+        "name": "burner",
         "type": "EnergySource",
-        "description": "Must be a burner energy source when using \"burner\", otherwise it can also be a void energy source.",
-        "optional": false
+        "description": "Must be a burner energy source.",
+        "optional": true
+      },
+      {
+        "name": "energy_source",
+        "type": "EnergySource",
+        "description": "Can also be a void energy source.",
+        "optional": true
       },
       {
         "name": "consumption",
@@ -7302,7 +7156,7 @@
       },
       {
         "name": "structure",
-        "type": "table",
+        "type": "UndergroundBeltStructure",
         "optional": false
       },
       {
@@ -7491,8 +7345,7 @@
       },
       {
         "name": "gui_mode",
-        "type": "string",
-        "description": "Possible options: \"all\", \"none\", \"admins\".",
+        "type": "GuiMode",
         "_default": "none",
         "optional": true
       },
@@ -7705,72 +7558,17 @@
     "name": "Prototype/Technology",
     "link": "/Prototype/Technology",
     "id": "technology",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification:TechnologyData",
     "description": "A \u003ca href\u003d\"/Technologies\" title\u003d\"Technologies\"\u003etechnology\u003c/a\u003e.",
     "properties": [
       {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "optional": false
-      },
-      {
-        "name": "unit",
-        "type": "table",
-        "optional": false
-      },
-      {
-        "name": "effects",
-        "type": "Modifier[]",
-        "description": "List of effects of the technology (applied when the technology is researched).",
-        "optional": true
-      },
-      {
-        "name": "enabled",
-        "type": "bool",
-        "_default": "true",
-        "optional": true
-      },
-      {
         "name": "expensive",
-        "type": "Technology data|bool",
-        "optional": true
-      },
-      {
-        "name": "hidden",
-        "type": "bool",
-        "description": "Hides the technology from the tech screen.",
-        "_default": "false",
-        "optional": true
-      },
-      {
-        "name": "max_level",
-        "type": "uint32|string",
-        "description": "\"infinite\" for infinite technologies, otherwise uint.",
+        "type": "TechnologyData|bool",
         "optional": true
       },
       {
         "name": "normal",
-        "type": "Technology data|bool",
-        "optional": true
-      },
-      {
-        "name": "prerequisites",
-        "type": "string[]",
-        "description": "List of technologies needed to be researched before this one can be researched.",
-        "optional": true
-      },
-      {
-        "name": "upgrade",
-        "type": "bool",
-        "description": "When set to true, and the technology contains several levels, only the relevant one is displayed in the technology screen.",
-        "_default": "false",
-        "optional": true
-      },
-      {
-        "name": "visible_when_disabled",
-        "type": "bool",
-        "description": "Controls whether the technology is shown in the tech GUI when it is disabled (enabled \u003d false).",
-        "_default": "false",
+        "type": "TechnologyData|bool",
         "optional": true
       }
     ]
@@ -8055,8 +7853,8 @@
       },
       {
         "name": "system_cursor",
-        "type": "string",
-        "description": "One of \"arrow\", \"i-beam\", \"crosshair\", \"wait-arrow\", \"size-all\", \"no\" and \"hand\". Either this or the other three properties have to be present.",
+        "type": "MouseCursorSystemCursor",
+        "description": "Either this or the other three properties have to be present.",
         "optional": true
       }
     ]
@@ -8297,14 +8095,9 @@
     "name": "Prototype/VirtualSignal",
     "link": "/Prototype/VirtualSignal",
     "id": "virtual-signal",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification",
     "description": "A \u003ca href\u003d\"/Circuit_network#Virtual_signals\" title\u003d\"Circuit network\"\u003evirtual signal\u003c/a\u003e.",
     "properties": [
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "optional": false
-      },
       {
         "name": "special_signal",
         "type": "bool",
@@ -8340,7 +8133,7 @@
       },
       {
         "name": "track_type",
-        "type": "string",
+        "type": "AmbientSoundTrackType",
         "description": "This lets the game know in what instances the audio file is played.",
         "optional": false
       },
@@ -8388,7 +8181,7 @@
       },
       {
         "name": "burnt_patch_alpha_variations",
-        "type": "table",
+        "type": "FireFlameBurntPatchAlphaVariations",
         "optional": true
       },
       {
@@ -8657,8 +8450,7 @@
       },
       {
         "name": "text_alignment",
-        "type": "string",
-        "description": "Options: \"left\", \"center\", \"right\"",
+        "type": "TextAlignment",
         "_default": "left",
         "optional": true
       }
@@ -8707,14 +8499,9 @@
     "name": "Prototype/Item",
     "link": "/Prototype/Item",
     "id": "item",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification",
     "description": "Possible configuration for all items.",
     "properties": [
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "optional": false
-      },
       {
         "name": "stack_size",
         "type": "ItemCountType",
@@ -8728,8 +8515,13 @@
         "optional": true
       },
       {
-        "name": "dark_background_icons, dark_background_icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
+        "name": "dark_background_icons",
+        "type": "IconData[]",
+        "optional": true
+      },
+      {
+        "name": "dark_background_icon",
+        "type": "FileName",
         "optional": true
       },
       {
@@ -8876,7 +8668,7 @@
     "name": "Prototype/Fluid",
     "link": "/Prototype/Fluid",
     "id": "fluid",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification",
     "description": "A fluid.",
     "properties": [
       {
@@ -8895,11 +8687,6 @@
         "name": "flow_color",
         "type": "Color",
         "description": "Used only for pipe windows or storage tank fill gauges.",
-        "optional": false
-      },
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
         "optional": false
       },
       {
@@ -9768,7 +9555,7 @@
       },
       {
         "name": "pictures",
-        "type": "Sprite[]",
+        "type": "PipeToGroundPictures",
         "optional": false
       }
     ]
@@ -10031,8 +9818,7 @@
       },
       {
         "name": "glow_render_mode",
-        "type": "string",
-        "description": "Options: \"additive\", \"multiplicative\"",
+        "type": "LampGlowRenderMode",
         "_default": "additive",
         "optional": true
       },
@@ -10086,13 +9872,14 @@
       },
       {
         "name": "fire",
-        "type": "table",
+        "type": "AnimationSidesOptional",
+        "description": "This means the table itself is required, but can be empty.",
         "optional": false
       },
       {
         "name": "fire_glow",
-        "type": "table",
-        "description": "\u003cp\u003eTable with the following optional members.\u003c/p\u003e\u003cp\u003eThis means the table itself is required, but can be empty.\u003c/p\u003e",
+        "type": "AnimationSidesOptional",
+        "description": "This means the table itself is required, but can be empty.",
         "optional": false
       },
       {
@@ -10107,7 +9894,7 @@
       },
       {
         "name": "structure",
-        "type": "table",
+        "type": "AnimationSidesMandatory",
         "optional": false
       },
       {
@@ -10129,14 +9916,13 @@
       },
       {
         "name": "mode",
-        "type": "string",
-        "description": "One of \"heat-water-inside\" or \"output-to-separate-pipe\".",
+        "type": "BoilerMode",
         "_default": "heat-water-inside",
         "optional": true
       },
       {
         "name": "patch",
-        "type": "table",
+        "type": "BoilerPatch",
         "optional": true
       }
     ]
@@ -10222,10 +10008,16 @@
     "description": "A \u003ca href\u003d\"/Locomotive\" title\u003d\"Locomotive\"\u003elocomotive\u003c/a\u003e.",
     "properties": [
       {
-        "name": "burner or energy_source",
+        "name": "burner",
         "type": "EnergySource",
         "description": "Must be a burner energy source when using \"burner\", otherwise it can also be a void energy source.",
-        "optional": false
+        "optional": true
+      },
+      {
+        "name": "energy_source",
+        "type": "EnergySource",
+        "description": "Must be a burner energy source when using \"burner\", otherwise it can also be a void energy source.",
+        "optional": true
       },
       {
         "name": "max_power",
@@ -10264,7 +10056,7 @@
       },
       {
         "name": "instruments",
-        "type": "table",
+        "type": "ProgrammableSpeakerInstrument[]",
         "optional": false
       },
       {
@@ -11099,8 +10891,7 @@
     "properties": [
       {
         "name": "action",
-        "type": "string",
-        "description": "One of \"toggle-alt-mode\", \"undo\", \"copy\", \"cut\", \"paste\", \"import-string\", \"toggle-personal-roboport\", \"toggle-equipment-movement-bonus\", \"create-blueprint-item\" and \"lua\".",
+        "type": "ShortcutAction",
         "optional": false
       },
       {
@@ -11264,7 +11055,7 @@
     "properties": [
       {
         "name": "pictures",
-        "type": "table",
+        "type": "WallPictures",
         "optional": false
       },
       {
@@ -11502,7 +11293,7 @@
       },
       {
         "name": "belt_animation_set",
-        "type": "table",
+        "type": "TransportBeltConnectableBeltAnimationSet",
         "description": "Either this, or all of the properties below this one have to present.",
         "optional": true
       },
@@ -12227,7 +12018,7 @@
       },
       {
         "name": "beacon_tint",
-        "type": "Color[]",
+        "type": "TintColors",
         "optional": true
       },
       {
@@ -12257,9 +12048,14 @@
     "description": "Abstract base of all vehicles.",
     "properties": [
       {
-        "name": "braking_power or braking_force",
-        "type": "Energy|double",
-        "optional": false
+        "name": "braking_force",
+        "type": "double",
+        "optional": true
+      },
+      {
+        "name": "braking_power",
+        "type": "Energy",
+        "optional": true
       },
       {
         "name": "energy_per_hit_point",
@@ -12268,10 +12064,16 @@
         "optional": false
       },
       {
-        "name": "friction or friction_force",
+        "name": "friction",
         "type": "double",
         "description": "Two different ways to set friction force. At least one must exist. Must be positive.",
-        "optional": false
+        "optional": true
+      },
+      {
+        "name": "friction_force",
+        "type": "double",
+        "description": "Two different ways to set friction force. At least one must exist. Must be positive.",
+        "optional": true
       },
       {
         "name": "weight",
@@ -12444,7 +12246,7 @@
       },
       {
         "name": "pictures",
-        "type": "table",
+        "type": "PipePictures",
         "optional": false
       },
       {
@@ -12520,7 +12322,7 @@
       },
       {
         "name": "ground_light_animations",
-        "type": "table",
+        "type": "BeamLightAnimations",
         "optional": true
       },
       {
@@ -12530,7 +12332,7 @@
       },
       {
         "name": "light_animations",
-        "type": "table",
+        "type": "BeamLightAnimations",
         "description": "Lights are additively accumulated onto lightmap, which is multiplicatively rendered on the game world.\u003ca rel\u003d\"nofollow\" class\u003d\"external autonumber\" href\u003d\"https://forums.factorio.com/viewtopic.php?p\u003d435042#p435042\"\u003e[1]\u003c/a\u003e",
         "optional": true
       },
@@ -12614,7 +12416,22 @@
         "optional": false
       },
       {
-        "name": "build_big",
+        "name": "build_blueprint_small",
+        "type": "Sound",
+        "optional": "false"
+      },
+      {
+        "name": "build_blueprint_medium",
+        "type": "Sound",
+        "optional": "false"
+      },
+      {
+        "name": "build_blueprint_large",
+        "type": "Sound",
+        "optional": "false"
+      },
+      {
+        "name": "build_large",
         "type": "Sound",
         "optional": false
       },
@@ -12630,6 +12447,11 @@
       },
       {
         "name": "cannot_build",
+        "type": "Sound",
+        "optional": false
+      },
+      {
+        "name": "clear_cursor",
         "type": "Sound",
         "optional": false
       },
@@ -12680,6 +12502,11 @@
       },
       {
         "name": "gui_click",
+        "type": "Sound",
+        "optional": false
+      },
+      {
+        "name": "inventory_click",
         "type": "Sound",
         "optional": false
       },
@@ -12790,7 +12617,7 @@
       },
       {
         "name": "pictures",
-        "type": "table",
+        "type": "StorageTankPictures",
         "optional": false
       },
       {
@@ -12910,7 +12737,7 @@
       },
       {
         "name": "bonus_gui_ordering",
-        "type": "table",
+        "type": "UtilityConstantsBonusGuiOrdering",
         "optional": false
       },
       {
@@ -12945,7 +12772,7 @@
       },
       {
         "name": "chart",
-        "type": "table",
+        "type": "UtilityConstantsChart",
         "optional": false
       },
       {
@@ -12955,7 +12782,7 @@
       },
       {
         "name": "color_filters",
-        "type": "tables[]",
+        "type": "UtilityConstantsColorFilter[]",
         "optional": false
       },
       {
@@ -13091,6 +12918,7 @@
       {
         "name": "light_renderer_search_distance_limit",
         "type": "uint8",
+        "description": "Can be set to anything from range 0 to 255, but larger values will be clamped to 160. Setting it to larger values can have performance impact (growing geometrically).",
         "optional": false
       },
       {
@@ -13105,7 +12933,7 @@
       },
       {
         "name": "map_editor",
-        "type": "table",
+        "type": "UtilityConstantsMapEditor",
         "optional": false
       },
       {
@@ -13125,7 +12953,8 @@
       },
       {
         "name": "player_colors",
-        "type": "table[]",
+        "type": "UtilityConstantsPlayerColor[]",
+        "description": "The inner tables have the following key/value pairs. The table with name = default must exist and be the first member of the array.",
         "optional": false
       },
       {
@@ -13165,7 +12994,7 @@
       },
       {
         "name": "train_path_finding",
-        "type": "table",
+        "type": "UtilityConstantsTrainPathFinding",
         "optional": false
       },
       {
@@ -13256,6 +13085,7 @@
       {
         "name": "default_trigger_target_mask_by_type",
         "type": "table<string, TriggerTargetMask>",
+        "description": "The strings are entity types.",
         "optional": true
       }
     ]
@@ -13315,15 +13145,9 @@
   "Prototype/Entity": {
     "name": "Prototype/Entity",
     "link": "/Prototype/Entity",
-    "parent": "PrototypeBase",
+    "parent": "PrototypeBase:IconSpecification",
     "description": "Abstract base of all entities in the game. Entity is basically everything that can be on the map (except tiles). For in game script access to entity, take a look at \u003ca rel\u003d\"nofollow\" class\u003d\"external text\" href\u003d\"http://lua-api.factorio.com/latest/LuaEntity.html\"\u003eLuaEntity\u003c/a\u003e",
     "properties": [
-      {
-        "name": "icons, icon, icon_size (IconSpecification)",
-        "type": "IconSpecification",
-        "description": "\u003cp\u003eAn icon is mandatory for entities that have at least one of these flags active: placeable-neutral, placeable-player, placeable-enemy.\u003c/p\u003e\u003cp\u003eThe icon will be used in the editor building selection and the bonus gui.\u003c/p\u003e",
-        "optional": false
-      },
       {
         "name": "additional_pastable_entities",
         "type": "string[]",
@@ -13490,8 +13314,8 @@
       },
       {
         "name": "remove_decoratives",
-        "type": "string",
-        "description": "Either \"automatic\", \"true\" or \"false\". Whether this entity should remove decoratives that collide with it when this entity is built.",
+        "type": "EntityRemoveDecoratives",
+        "description": "Whether this entity should remove decoratives that collide with it when this entity is built.",
         "_default": "automatic",
         "optional": true
       },
@@ -13604,7 +13428,7 @@
     "properties": [
       {
         "name": "pictures",
-        "type": "table",
+        "type": "RailRemnantsPictures",
         "optional": false
       },
       {
@@ -13675,7 +13499,7 @@
       },
       {
         "name": "alternative_attacking_frame_sequence",
-        "type": "table",
+        "type": "UnitAlternativeAttackingFrameSequence",
         "optional": true
       },
       {
