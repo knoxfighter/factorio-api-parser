@@ -204,33 +204,5 @@ public class Main {
 
 		// move everything from the new directory to the old directory
 		moveDirectory(newPath, oldPath);
-
-
-		////////////////////////////////////////////////
-		// remove all properties with the name "type" //
-		////////////////////////////////////////////////
-
-//		Map<String, Prototype> prototypes;
-//		// read prototypes from jsom file
-//		try (FileReader prototypeJsonRead = new FileReader("prototypes.json")) {
-//			Type mapType = new TypeToken<Map<String, Prototype>>() {
-//			}.getType();
-//			prototypes = new GsonBuilder().create().fromJson(prototypeJsonRead, mapType);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//			return;
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return;
-//		}
-//
-//		prototypes.forEach((s, prototype) -> prototype.properties.removeIf(property -> property.name.equals("type")));
-//
-//		// save json again
-//		try (Writer writer = new FileWriter("prototypes.json")) {
-//			new GsonBuilder().setPrettyPrinting().create().toJson(prototypes, writer);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 	}
 }
