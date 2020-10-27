@@ -260,17 +260,17 @@
       "properties": [
         {
           "name": "small",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "medium",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "large",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ]
@@ -498,127 +498,127 @@
       "properties": [
         {
           "name": "straight_vertical_single",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "straight_vertical",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "straight_vertical_window",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "straight_horizontal",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "straight_horizontal_window",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "corner_up_right",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "corner_up_left",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "corner_down_right",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "corner_down_left",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "t_up",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "t_down",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "t_right",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "t_left",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "cross",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ending_up",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ending_down",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ending_right",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ending_left",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "horizontal_window_background",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "vertical_window_background",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "fluid_background",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "low_temperature_flow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "middle_temperature_flow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "high_temperature_flow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "gas_flow",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         }
       ]
@@ -1053,7 +1053,7 @@
     "name": "TileBuildSound",
     "type": "alias",
     "link": "/Types/Tile#build_sound",
-    "value": "Sound|TileBuildSoundValue"
+    "value": "SoundType|TileBuildSoundValue"
   },
   "BeamLightAnimations": {
     "name": "BeamLightAnimations",
@@ -1063,22 +1063,22 @@
       "properties": [
         {
           "name": "start",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "ending",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "head",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "tail",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -1298,7 +1298,7 @@
         },
         {
           "name": "frame_main_scanner",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -1388,12 +1388,12 @@
         },
         {
           "name": "frame_main_scanner_nw_ne",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "frame_main_scanner_sw_se",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -1468,7 +1468,7 @@
       "properties": [
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
@@ -2221,8 +2221,8 @@
       ]
     }
   },
-  "Sound": {
-    "name": "Sound",
+  "SoundType": {
+    "name": "SoundType",
     "type": "alias",
     "link": "/Types/Sound",
     "value": "SoundValue1|SoundValue2[]"
@@ -3301,7 +3301,7 @@
           "optional": true
         }
       ],
-      "parent": "Animation"
+      "parent": "AnimationType"
     }
   },
   "PipeConnectionDefinition": {
@@ -3371,7 +3371,7 @@
     "name": "LayeredSound",
     "type": "alias",
     "link": "/Types/LayeredSound",
-    "value": "LayeredSoundValue|Sound"
+    "value": "LayeredSoundValue|SoundType"
   },
   "ProductPrototypeFluid": {
     "name": "ProductPrototypeFluid",
@@ -3573,7 +3573,7 @@
       "properties": [
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound to be played when the entity is working. If sound is not present, the entire WorkingSound is loaded as a \u003ca href\u003d\"/Types/Sound\" title\u003d\"Types/Sound\"\u003eTypes/Sound\u003c/a\u003e.\n",
           "optional": false
         },
@@ -3648,19 +3648,19 @@
         },
         {
           "name": "idle_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound to be played when the entity is idle. Might not work with all entities that use working_sound.",
           "optional": true
         },
         {
           "name": "activate_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "Might not work with all entities that use working_sound.",
           "optional": true
         },
         {
           "name": "deactivate_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "Might not work with all entities that use working_sound.",
           "optional": true
         }
@@ -3948,7 +3948,7 @@
     "name": "SpriteVariations",
     "type": "alias",
     "link": "/Types/SpriteVariations",
-    "value": "Sprite[]|Sprite|SpriteVariationsValue"
+    "value": "SpriteType[]|SpriteType|SpriteVariationsValue"
   },
   "ConnectableEntityGraphics": {
     "name": "ConnectableEntityGraphics",
@@ -4112,8 +4112,8 @@
       "parent": "TriggerEffectItem"
     }
   },
-  "Sprite": {
-    "name": "Sprite",
+  "SpriteType": {
+    "name": "SpriteType",
     "type": "table",
     "link": "/Types/Sprite",
     "description": "\u003cp\u003eSpecifies one picture that can be used in the game.\u003c/p\u003e\u003cp\u003eWhen there is more than one sprite or \u003ca href\u003d\"/Types/Animation\" title\u003d\"Types/Animation\"\u003eanimation\u003c/a\u003e frame with the same source file and dimensions/position in the game, they all share the same memory.\u003c/p\u003e",
@@ -4127,13 +4127,13 @@
         },
         {
           "name": "layers",
-          "type": "Sprite[]",
+          "type": "SpriteType[]",
           "description": "\u003cp\u003eIf this property is present, all Sprite definitions have to be placed as entries in the array, and they will all be loaded from there. Each item (Sprite definition) in the array may also have the \u003ccode\u003elayers\u003c/code\u003e property.\u003c/p\u003e\u003cp\u003eIf this property is present, all other properties are ignored and the mandatory properties do not have to be defined.\u003c/p\u003e\u003cp\u003eLayers may not be an empty table.\u003c/p\u003e",
           "optional": true
         },
         {
           "name": "hr_version",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "If this property exists and high resolution sprites are turned on, its contents are used to load the sprite.",
           "optional": true
         },
@@ -4701,7 +4701,7 @@
     "name": "AnimationVariations",
     "type": "alias",
     "description": "",
-    "value": "Animation[]|AnimationVariationValue"
+    "value": "AnimationType[]|AnimationVariationValue"
   },
   "PushBackTriggerEffectItem": {
     "name": "PushBackTriggerEffectItem",
@@ -5304,22 +5304,22 @@
       "properties": [
         {
           "name": "north",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "east",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "south",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "west",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ]
@@ -5427,23 +5427,23 @@
       "properties": [
         {
           "name": "north",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "Optional. If omitted and neither \u003ca href\u003d\"#sheets\"\u003e#sheets\u003c/a\u003e or \u003ca href\u003d\"#sheet\"\u003e#sheet\u003c/a\u003e are present, the game will not look for any other directions and instead try to load the whole definition as one \u003ca href\u003d\"/Types/Sprite\" title\u003d\"Types/Sprite\"\u003eTypes/Sprite\u003c/a\u003e and apply it to all directions.",
           "optional": true
         },
         {
           "name": "east",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "south",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "west",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -5648,22 +5648,22 @@
       "properties": [
         {
           "name": "north",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "east",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "south",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "west",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         }
       ]
@@ -5814,13 +5814,13 @@
       "properties": [
         {
           "name": "trunk",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "If \u003ccode\u003eshadow\u003c/code\u003e is not specified, this has to have one more frame than \u003ccode\u003eleaves\u003c/code\u003e.",
           "optional": false
         },
         {
           "name": "leaves",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -5835,7 +5835,7 @@
         },
         {
           "name": "shadow",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Shadow must have 1 less frame_count than \u003ccode\u003eleaves\u003c/code\u003e (shadow.frame_count \u003d leaves.frame_count + 1).",
           "optional": true
         },
@@ -5847,7 +5847,7 @@
         },
         {
           "name": "normal",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Normal must have the same frame_count as \u003ccode\u003eleaves\u003c/code\u003e (normal.frame_count \u003d leaves.frame_count).",
           "optional": true
         },
@@ -6414,7 +6414,7 @@
       "properties": [
         {
           "name": "sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -6557,7 +6557,7 @@
       "properties": [
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
@@ -6605,17 +6605,17 @@
       "properties": [
         {
           "name": "led_red",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "led_green",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "led_blue",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -6625,27 +6625,27 @@
         },
         {
           "name": "connector_main",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "connector_shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "wire_pins",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "wire_pins_shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "led_blue_off",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -6751,28 +6751,28 @@
         },
         {
           "name": "north_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Either these animations for the directions are loaded, or \u003ccode\u003eanimation\u003c/code\u003e and the positions for the directions are loaded.",
           "optional": true
         },
         {
           "name": "west_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "south_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "east_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Either this and the below positions are loaded, or the animation properties for each direction are loaded.",
           "optional": true
         },
@@ -6807,7 +6807,7 @@
       "properties": [
         {
           "name": "layers",
-          "type": "Sound[]",
+          "type": "SoundType[]",
           "optional": false
         }
       ]
@@ -6943,7 +6943,7 @@
       "properties": [
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -7068,42 +7068,42 @@
       "properties": [
         {
           "name": "north",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "north_east",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "east",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "south_east",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "south",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "south_west",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "west",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "north_west",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -7515,22 +7515,22 @@
         },
         {
           "name": "window_background",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "fluid_background",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "flow_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "gas_flow",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         }
       ]
@@ -7968,7 +7968,7 @@
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         }
       ]
@@ -8058,27 +8058,27 @@
       "properties": [
         {
           "name": "standup_base",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "standup_top",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "standup_shadow",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "connector",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "connector_shadow",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         }
       ]
@@ -8436,22 +8436,22 @@
       "properties": [
         {
           "name": "north",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "east",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "south",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "west",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         }
       ]
@@ -8470,7 +8470,7 @@
         },
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         }
       ]
@@ -8642,12 +8642,12 @@
         },
         {
           "name": "water_patch",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "effect_mask",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -8742,27 +8742,27 @@
         },
         {
           "name": "segment_visualisation_middle",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "segment_visualisation_ending_front",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "segment_visualisation_ending_back",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "segment_visualisation_continuing_front",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "segment_visualisation_continuing_back",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ]
@@ -9093,7 +9093,7 @@
           "optional": true
         }
       ],
-      "parent": "Sprite"
+      "parent": "SpriteType"
     }
   },
   "UseOnSelfCapsuleAction": {
@@ -9209,23 +9209,23 @@
       "properties": [
         {
           "name": "north",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Optional. If omitted, the game will not look for any other directions and instead try to load the whole definition as one \u003ca href\u003d\"/Types/Animation\" title\u003d\"Types/Animation\"\u003eTypes/Animation\u003c/a\u003e and apply it to all directions.",
           "optional": true
         },
         {
           "name": "east",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "south",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
           "name": "west",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -9385,8 +9385,8 @@
       ]
     }
   },
-  "Animation": {
-    "name": "Animation",
+  "AnimationType": {
+    "name": "AnimationType",
     "type": "table",
     "link": "/Types/Animation",
     "description": "\u003cp\u003eSpecifies animation that can be used in the game.\u003c/p\u003e\u003cp\u003eNote that if any frame of the animation is specified from the same source as any other \u003ca href\u003d\"/Types/Sprite\" title\u003d\"Types/Sprite\"\u003eTypes/Sprite\u003c/a\u003e or frame of other animation, it will be shared.\u003c/p\u003e",
@@ -9394,13 +9394,13 @@
       "properties": [
         {
           "name": "layers",
-          "type": "Animation[]",
+          "type": "AnimationType[]",
           "description": "\u003cp\u003eIf this property is present, all Animation definitions have to be placed as entries in the array, and they will all be loaded from there. Each item (Animation definition) in the array may also have the \u003ccode\u003elayers\u003c/code\u003e property.\u003c/p\u003e\u003cp\u003eIf this property is present, all other properties are ignored and the mandatory properties do not have to be defined.\u003c/p\u003e\u003cp\u003eLayers may not be an empty table.\u003c/p\u003e",
           "optional": true
         },
         {
           "name": "hr_version",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "If this property exists and high resolution sprites are turned on, its contents are used to load the Animation.",
           "optional": true
         },
@@ -9589,22 +9589,22 @@
       "properties": [
         {
           "name": "down",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "up",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "left",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "right",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         }
       ]
@@ -9699,7 +9699,7 @@
     "name": "Sprite4Way",
     "type": "alias",
     "link": "/Types/Sprite4Way",
-    "value": "Sprite|Sprite4WayValue[]"
+    "value": "SpriteType|Sprite4WayValue[]"
   },
   "CyclicSound": {
     "name": "CyclicSound",
@@ -9709,17 +9709,17 @@
       "properties": [
         {
           "name": "begin_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "middle_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "end_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ]
@@ -9942,7 +9942,7 @@
       "properties": [
         {
           "name": "sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -9999,7 +9999,7 @@
     "type": "alias",
     "link": "/Types/Animation4Way",
     "description": "A map of animations for all 4 directions of the entity, or one \u003ca href\u003d\"/Types/Animation\" title\u003d\"Types/Animation\"\u003eTypes/Animation\u003c/a\u003e that is used for all directions.",
-    "value": "Animation4WayValue|Animation"
+    "value": "Animation4WayValue|AnimationType"
   },
   "CreateFireTriggerEffectItem": {
     "name": "CreateFireTriggerEffectItem",

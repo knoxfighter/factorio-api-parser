@@ -8,7 +8,7 @@
       "properties": [
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         }
       ],
@@ -171,7 +171,7 @@
         },
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound file and volume.",
           "optional": false
         }
@@ -237,7 +237,7 @@
         },
         {
           "name": "muzzle_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -252,7 +252,7 @@
         },
         {
           "name": "out_of_ammo_alert_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -293,13 +293,13 @@
       "properties": [
         {
           "name": "picture_safe",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The sprite of the landmine before it is armed (just after placing).",
           "optional": false
         },
         {
           "name": "picture_set",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The sprite of the landmine of a friendly force when it is armed.",
           "optional": false
         },
@@ -328,7 +328,7 @@
         },
         {
           "name": "picture_set_enemy",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The sprite of the landmine of an enemy force when it is armed.",
           "optional": true
         },
@@ -505,18 +505,18 @@
       "properties": [
         {
           "name": "base",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "base_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "The animation played when the roboport is idle.",
           "optional": false
         },
         {
           "name": "base_patch",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -539,12 +539,12 @@
         },
         {
           "name": "door_animation_down",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "door_animation_up",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -578,7 +578,7 @@
         },
         {
           "name": "recharging_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "The animation played at each charging point when a robot is charging there.",
           "optional": false
         },
@@ -840,7 +840,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "Simple entity must have one of \u0027picture\u0027, \u0027pictures\u0027 or \u0027animations\u0027 defined.",
           "optional": true
         },
@@ -1292,7 +1292,7 @@
         },
         {
           "name": "rotating_stopped_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "l",
           "optional": true
         },
@@ -1325,7 +1325,7 @@
         },
         {
           "name": "activate_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -1337,7 +1337,7 @@
         },
         {
           "name": "deactivate_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ],
@@ -1353,7 +1353,7 @@
       "properties": [
         {
           "name": "arrow_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -1364,7 +1364,7 @@
         },
         {
           "name": "circle_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ],
@@ -1396,7 +1396,7 @@
         },
         {
           "name": "working_light_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -1432,7 +1432,7 @@
         },
         {
           "name": "heat_lower_layer_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -1442,7 +1442,7 @@
         },
         {
           "name": "lower_layer_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -1466,7 +1466,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -1612,7 +1612,7 @@
         },
         {
           "name": "horizontal_doors",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -1628,7 +1628,7 @@
         },
         {
           "name": "vertical_doors",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -1926,27 +1926,27 @@
         },
         {
           "name": "arm_01_back_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "arm_02_right_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "arm_03_front_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "base_day_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "base_front_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -1956,7 +1956,7 @@
         },
         {
           "name": "door_back_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -1966,7 +1966,7 @@
         },
         {
           "name": "door_front_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -1986,12 +1986,12 @@
         },
         {
           "name": "hole_light_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hole_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -2011,12 +2011,12 @@
         },
         {
           "name": "red_lights_back_sprites",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "red_lights_front_sprites",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -2027,7 +2027,7 @@
         },
         {
           "name": "rocket_glow_overlay_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -2037,22 +2037,22 @@
         },
         {
           "name": "rocket_shadow_overlay_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "satellite_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "satellite_shadow_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "shadow_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -2072,7 +2072,7 @@
         },
         {
           "name": "alarm_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -2092,12 +2092,12 @@
         },
         {
           "name": "base_night_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "clamps_off_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -2107,7 +2107,7 @@
         },
         {
           "name": "clamps_on_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -2117,7 +2117,7 @@
         },
         {
           "name": "doors_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -2127,12 +2127,12 @@
         },
         {
           "name": "flying_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "raise_rocket_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -2418,292 +2418,292 @@
       "properties": [
         {
           "name": "achievement_label_failed",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "achievement_label_locked",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "achievement_label_unlocked",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "achievement_label_unlocked_off",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "add",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ammo_damage_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ammo_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "and_or",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "area_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "arrow_button",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "artillery_range_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "auto_character_logistic_trash_slots_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "bar_gray_pip",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "battery",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "battery_indicator",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "battery_indicator_bar",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "brush_circle_shape",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "brush_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "brush_square_shape",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "cable_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "center",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "change_recipe",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_additional_mining_categories_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_build_distance_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_crafting_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_health_bonus_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_inventory_slots_bonus_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_item_drop_distance_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_item_pickup_distance_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_logistic_requests_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_logistic_slots_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_logistic_trash_slots_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_loot_pickup_distance_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_mining_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_reach_distance_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_resource_reach_distance_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "character_running_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "check_mark",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "check_mark_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "circuit_network_panel_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "circuit_network_panel_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "cliff_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "clock",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "clone",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "clone_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "close_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "close_fat",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "close_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "clouds",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "collapse",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "collapse_dark",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "color_effect",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "color_picker",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "confirm_slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "construction_radius_visualization",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "copper_wire",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "covered_chunk",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "crafting_machine_recipe_not_unlocked",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -2713,1147 +2713,1147 @@
         },
         {
           "name": "cursor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "custom_tag_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "danger_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "deconstruction_mark",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "deconstruction_time_to_live_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "decorative_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "default_ammo_damage_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "default_gun_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "default_turret_attack_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "destroyed_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "down_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "downloaded",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "downloaded_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "downloading",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "downloading_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "dropdown",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "editor_pause",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "editor_play",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "editor_selection",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "editor_speed_down",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "editor_speed_up",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "electricity_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "electricity_icon_unplugged",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "enemy_force_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "enter",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "entity_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "entity_info_dark_background",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "equipment_collision",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "equipment_grid",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "equipment_slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "expand",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "expand_dark",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "expand_dots",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "expand_dots_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "explosion_chart_visualization",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "export",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "export_slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "favourite_server_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "fluid_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "fluid_indication_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "fluid_indication_arrow_both_ways",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "follower_robot_lifetime_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "force_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "fuel_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "game_stopped_visualization",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ghost_bar_pip",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ghost_cursor",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "ghost_time_to_live_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "give_item_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "go_to_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "gps_map_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "green_circle",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "green_dot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "green_wire",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "green_wire_hightlight",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "grey_placement_indicator_leg",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "grey_rail_signal_placement_indicator",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "gun_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hand",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "health_bar_green_pip",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "health_bar_red_pip",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "health_bar_yellow_pip",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "heat_exchange_indication",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hint_arrow_down",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hint_arrow_left",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hint_arrow_right",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hint_arrow_up",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "import",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "import_slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "indication_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "indication_line",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "inserter_stack_size_bonus_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "item_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "laboratory_productivity_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "laboratory_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "left_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "light_cone",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "light_medium",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "light_small",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "line_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "logistic_network_panel_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "logistic_network_panel_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "logistic_radius_visualization",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "lua_snippet_tool_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "map",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "map_exchange_string",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "max_failed_attempts_per_tick_per_construction_queue_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "max_successful_attempts_per_tick_per_construction_queue_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "maximum_following_robots_count_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "medium_gui_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "mining_drill_productivity_bonus_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "missing_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "missing_mod_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "mod_dependency_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "multiplayer_waiting_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "nature_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "neutral_force_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "no_building_material_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "no_nature_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "no_storage_space_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "none_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "not_available",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "not_enough_construction_robots_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "not_enough_repair_packs_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "nothing_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "paint_bucket_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "pause",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "placement_indicator_leg",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "play",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "player_force_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "pollution_visualization",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "preset",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "pump_cannot_connect_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "questionmark",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "quick_bar_count_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rail_path_not_possible",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rail_planner_indication_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rail_planner_indication_arrow_too_far",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rail_signal_placement_indicator",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "recharge_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "red_wire",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "red_wire_hightlight",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "refresh",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "refresh_white",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rename_icon_normal",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rename_icon_small_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rename_icon_small_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "reset",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "reset_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "resource_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "right_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "robot_slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "scripting_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "search_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "search_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "search_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "set_bar_slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "shield_bar_pip",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "shoot_cursor_green",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "shoot_cursor_red",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "short_indication_line",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_electric_network_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_electric_network_in_map_view_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_logistics_network_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_logistics_network_in_map_view_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_player_names_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_player_names_in_map_view_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_pollution_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_pollution_in_map_view_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_train_station_names_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_train_station_names_in_map_view_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_turret_range_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "show_turret_range_in_map_view_black",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "shuffle",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_achievements_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_achievements_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_blueprint_library_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_blueprint_library_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_bonus_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_bonus_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_map_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_map_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_menu_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_menu_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_production_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_production_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_train_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_train_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_tutorials_hover_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "side_menu_tutorials_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_ammo",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_armor",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_fuel",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_gun",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_module",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_resource",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_result",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_robot",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "slot_icon_robot_material",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "small_gui_arrow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "spawn_flag",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "speed_down",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "speed_up",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "spray_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "stack_inserter_capacity_bonus_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "station_name",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "stop",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "surface_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "sync_mods",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "tick_custom",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "tick_once",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "tick_sixty",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "tile_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "tile_ghost_cursor",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "time_editor_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "too_far",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "too_far_from_roboport_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "track_button",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "train_braking_force_bonus_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "train_stop_disabled_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "train_stop_in_map_view",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "train_stop_placement_indicator",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "trash",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "trash_bin",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "trash_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "turret_attack_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "underground_pipe_connection",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "underground_remove_belts",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "underground_remove_pipes",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "unlock_recipe_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "upgrade_blueprint",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "upgrade_mark",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "variations_tool_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "warning",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "warning_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "warning_white",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "white_mask",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "white_square",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "wire_shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "worker_robot_battery_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "worker_robot_speed_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "worker_robot_storage_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "zoom_to_world_blueprint_enabled_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "zoom_to_world_deconstruction_planner_enabled_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "zoom_to_world_enabled_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "zoom_to_world_ghost_building_enabled_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "zoom_to_world_selection_tool_enabled_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "zoom_to_world_upgrade_planner_enabled_modifier_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         }
       ],
@@ -3941,13 +3941,13 @@
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Drawn when a robot brings/takes items from this container.",
           "optional": true
         },
         {
           "name": "animation_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "Played when a robot brings/takes items from this container. Ignored if \u003ccode\u003eanimation\u003c/code\u003e is not defined.",
           "optional": true
         },
@@ -4321,13 +4321,13 @@
         },
         {
           "name": "hr_version",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "If this property exists and high resolution sprites are turned on, its contents are used to load the Animation.",
           "optional": true
         },
         {
           "name": "layers",
-          "type": "Animation[]",
+          "type": "AnimationType[]",
           "description": "\u003cp\u003eIf this property is present, all Animation definitions have to be placed as entries in the array, and they will all be loaded from there. Each item (Animation definition) in the array may also have the layers property.\u003c/p\u003e\u003cp\u003eIf this property is present, all other properties are ignored and the mandatory properties do not have to be defined.\u003c/p\u003e\u003cp\u003eLayers may not be an empty table.\u003c/p\u003e",
           "optional": true
         },
@@ -4523,7 +4523,7 @@
         },
         {
           "name": "dying_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -4561,7 +4561,7 @@
         },
         {
           "name": "folding_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -4596,7 +4596,7 @@
         },
         {
           "name": "integration",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -4618,7 +4618,7 @@
         },
         {
           "name": "prepared_alternative_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -4640,7 +4640,7 @@
         },
         {
           "name": "prepared_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -4662,7 +4662,7 @@
         },
         {
           "name": "preparing_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -4702,7 +4702,7 @@
         },
         {
           "name": "starting_attack_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -4788,13 +4788,13 @@
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "The animation for the beacon, when in use. Loaded only if \u003ccode\u003egraphics_set\u003c/code\u003e is not present.",
           "optional": true
         },
         {
           "name": "base_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The picture of the beacon when it is not on. Loaded only if \u003ccode\u003egraphics_set\u003c/code\u003e is not present.",
           "optional": true
         },
@@ -4806,7 +4806,7 @@
         },
         {
           "name": "radius_visualisation_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ],
@@ -4927,7 +4927,7 @@
         },
         {
           "name": "placeable_position_visualization",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -4967,12 +4967,12 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "charge_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -5007,7 +5007,7 @@
         },
         {
           "name": "discharge_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -5123,13 +5123,13 @@
         },
         {
           "name": "eat",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound file played when the character eats (fish for example).",
           "optional": false
         },
         {
           "name": "heartbeat",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound file played when the character\u0027s health is low.",
           "optional": false
         },
@@ -5373,12 +5373,12 @@
         },
         {
           "name": "rocket_flame_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rocket_flame_left_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -5388,7 +5388,7 @@
         },
         {
           "name": "rocket_flame_right_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -5398,7 +5398,7 @@
         },
         {
           "name": "rocket_glare_overlay_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -5418,37 +5418,37 @@
         },
         {
           "name": "rocket_shadow_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "rocket_smoke_bottom1_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rocket_smoke_bottom2_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rocket_smoke_top1_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rocket_smoke_top2_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rocket_smoke_top3_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "rocket_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -5530,12 +5530,12 @@
       "properties": [
         {
           "name": "large_build_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "medium_build_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ],
@@ -5876,32 +5876,32 @@
         },
         {
           "name": "close_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "horizontal_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "horizontal_rail_animation_left",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "horizontal_rail_animation_right",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "horizontal_rail_base",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "open_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
@@ -5916,27 +5916,27 @@
         },
         {
           "name": "vertical_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "vertical_rail_animation_left",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "vertical_rail_animation_right",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "vertical_rail_base",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "wall_patch",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -6211,7 +6211,7 @@
       "properties": [
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -6233,7 +6233,7 @@
       "properties": [
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -6282,7 +6282,7 @@
         },
         {
           "name": "glow_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -6381,7 +6381,7 @@
         },
         {
           "name": "recharging_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "The animation played at each charging point when a robot is charging there.",
           "optional": false
         },
@@ -6504,7 +6504,7 @@
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -6583,7 +6583,7 @@
         },
         {
           "name": "shadow",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -6723,13 +6723,13 @@
         },
         {
           "name": "hr_version",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "If this property exists and high resolution sprites are turned on, its contents are used to load the sprite.",
           "optional": true
         },
         {
           "name": "layers",
-          "type": "Sprite[]",
+          "type": "SpriteType[]",
           "description": "\u003cp\u003eIf this property is present, all Sprite definitions have to be placed as entries in the array, and they will all be loaded from there. Each item (Sprite definition) in the array may also have the \u003ccode\u003elayers\u003c/code\u003e property.\u003c/p\u003e\u003cp\u003eIf this property is present, all other properties are ignored and the mandatory properties do not have to be defined.\u003c/p\u003e\u003cp\u003eLayers may not be an empty table.\u003c/p\u003e",
           "optional": true
         },
@@ -6929,7 +6929,7 @@
         },
         {
           "name": "mined_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -6997,7 +6997,7 @@
         },
         {
           "name": "walking_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -7048,7 +7048,7 @@
         },
         {
           "name": "picture",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Either \u003ccode\u003epictures\u003c/code\u003e or \u003ccode\u003epicture\u003c/code\u003e must be defined.",
           "optional": true
         },
@@ -7174,7 +7174,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ],
@@ -7301,7 +7301,7 @@
         },
         {
           "name": "sound_no_fuel",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -7358,12 +7358,12 @@
         },
         {
           "name": "underground_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "underground_remove_belts_sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ],
@@ -7522,7 +7522,7 @@
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -7562,7 +7562,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -7595,7 +7595,7 @@
         },
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -7884,7 +7884,7 @@
       "properties": [
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -7925,13 +7925,13 @@
         },
         {
           "name": "off_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "The animation that plays when the lab is idle.",
           "optional": false
         },
         {
           "name": "on_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "The animation that plays when the lab is active.",
           "optional": false
         },
@@ -8121,13 +8121,13 @@
         },
         {
           "name": "sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The graphics to use when this equipment is shown inside an equipment grid.",
           "optional": false
         },
         {
           "name": "ability_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -8213,7 +8213,7 @@
         },
         {
           "name": "texture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "Sprite size must be 512x512.",
           "optional": false
         },
@@ -8376,7 +8376,7 @@
         },
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound file and volume.",
           "optional": false
         },
@@ -9143,7 +9143,7 @@
         },
         {
           "name": "rotating_stopped_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -9376,7 +9376,7 @@
         },
         {
           "name": "walking_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "Sound played when the player walks over this resource.",
           "optional": true
         }
@@ -9569,7 +9569,7 @@
         },
         {
           "name": "sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ],
@@ -9652,7 +9652,7 @@
         },
         {
           "name": "horizontal_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -9662,7 +9662,7 @@
         },
         {
           "name": "vertical_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -9777,12 +9777,12 @@
         },
         {
           "name": "led_off",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "led_on",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -9792,12 +9792,12 @@
         },
         {
           "name": "overlay_loop",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
           "name": "overlay_start",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -9807,7 +9807,7 @@
         },
         {
           "name": "power_on_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -9873,7 +9873,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The picture displayed for this entity.",
           "optional": false
         },
@@ -10054,13 +10054,13 @@
         },
         {
           "name": "picture_off",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The lamps graphics when it\u0027s off.",
           "optional": false
         },
         {
           "name": "picture_on",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The lamps graphics when it\u0027s on.",
           "optional": false
         },
@@ -10383,7 +10383,7 @@
         },
         {
           "name": "sprite",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -10485,32 +10485,32 @@
         },
         {
           "name": "hand_base_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hand_base_shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hand_closed_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hand_closed_shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hand_open_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
           "name": "hand_open_shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -10725,7 +10725,7 @@
         },
         {
           "name": "active_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -10754,7 +10754,7 @@
         },
         {
           "name": "radius_visualisation_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -10811,7 +10811,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "Must have one of \u0027picture\u0027, \u0027pictures\u0027 or \u0027animations\u0027 defined.",
           "optional": true
         },
@@ -11201,7 +11201,7 @@
         },
         {
           "name": "smoke",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -11247,7 +11247,7 @@
         },
         {
           "name": "icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": false
         },
         {
@@ -11258,12 +11258,12 @@
         },
         {
           "name": "disabled_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
           "name": "disabled_small_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -11274,7 +11274,7 @@
         },
         {
           "name": "small_icon",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -11309,7 +11309,7 @@
       "properties": [
         {
           "name": "animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": false
         },
         {
@@ -11359,7 +11359,7 @@
         },
         {
           "name": "glow_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -11433,7 +11433,7 @@
         },
         {
           "name": "connected_gate_visualization",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -11624,7 +11624,7 @@
         },
         {
           "name": "rail_piece",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -11663,19 +11663,19 @@
         },
         {
           "name": "belt_horizontal",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
         {
           "name": "belt_vertical",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
         {
           "name": "ending_bottom",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
@@ -11687,13 +11687,13 @@
         },
         {
           "name": "ending_side",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
         {
           "name": "ending_top",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
@@ -11705,19 +11705,19 @@
         },
         {
           "name": "starting_bottom",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
         {
           "name": "starting_side",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         },
         {
           "name": "starting_top",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Mandatory if \u003ccode\u003ebelt_animation_set\u003c/code\u003e is not present.",
           "optional": true
         }
@@ -11776,7 +11776,7 @@
         },
         {
           "name": "particle",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -11857,7 +11857,7 @@
         },
         {
           "name": "shadow",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -11878,7 +11878,7 @@
         },
         {
           "name": "spine_animation",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -11979,7 +11979,7 @@
         },
         {
           "name": "dying_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -12141,7 +12141,7 @@
         },
         {
           "name": "radius_visualisation_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The sprite used to show the range of the mining drill.",
           "optional": true
         },
@@ -12307,7 +12307,7 @@
         },
         {
           "name": "repair_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -12480,13 +12480,13 @@
         },
         {
           "name": "minimap_representation",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The sprite that represents this vehicle on the map/minimap.",
           "optional": true
         },
         {
           "name": "selected_minimap_representation",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "The sprite that represents this vehicle on the map/minimap when it is selected.",
           "optional": true
         },
@@ -12611,7 +12611,7 @@
         },
         {
           "name": "walking_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ],
@@ -12671,13 +12671,13 @@
         },
         {
           "name": "head",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Head segment of the beam.",
           "optional": false
         },
         {
           "name": "tail",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Tail segment of the beam.",
           "optional": false
         },
@@ -12705,13 +12705,13 @@
         },
         {
           "name": "ending",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "End point of the beam.",
           "optional": true
         },
         {
           "name": "ending_light",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -12721,7 +12721,7 @@
         },
         {
           "name": "head_light",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -12744,19 +12744,19 @@
         },
         {
           "name": "start",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "Start point of the beam.",
           "optional": true
         },
         {
           "name": "start_light",
-          "type": "Animation",
+          "type": "AnimationType",
           "description": "This and the below properties ending in \"_light\" are considered deprecated. If they are present, then \u003ccode\u003elight_animations\u003c/code\u003e and \u003ccode\u003eground_light_animations\u003c/code\u003e are not loaded.",
           "optional": true
         },
         {
           "name": "tail_light",
-          "type": "Animation",
+          "type": "AnimationType",
           "optional": true
         },
         {
@@ -12783,212 +12783,212 @@
       "properties": [
         {
           "name": "achievement_unlocked",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "alert_destroyed",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "armor_insert",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "armor_remove",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "axe_fighting",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "axe_mining_ore",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "build_blueprint_small",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "build_blueprint_medium",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "build_blueprint_large",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "build_large",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "build_medium",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "build_small",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "cannot_build",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "clear_cursor",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "console_message",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "crafting_finished",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "deconstruct_big",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "deconstruct_medium",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "deconstruct_robot",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "deconstruct_small",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "default_manual_repair",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "game_lost",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "game_won",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "gui_click",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "inventory_click",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "inventory_move",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "list_box_click",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "metal_walking_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "mining_wood",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "new_objective",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "picked_up_item",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "research_completed",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "rotated_big",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "rotated_medium",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "rotated_small",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "scenario_message",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "smart_pipette",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "switch_gun",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "tutorial_notice",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "wire_connect_pole",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "wire_disconnect",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         },
         {
           "name": "wire_pickup",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": false
         }
       ],
@@ -13086,7 +13086,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "description": "Must have one of \u0027picture\u0027, \u0027pictures\u0027 or \u0027animations\u0027 defined.",
           "optional": true
         },
@@ -13513,7 +13513,7 @@
         },
         {
           "name": "chart_picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -13529,7 +13529,7 @@
         },
         {
           "name": "picture",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         },
         {
@@ -13541,7 +13541,7 @@
         },
         {
           "name": "shadow",
-          "type": "Sprite",
+          "type": "SpriteType",
           "optional": true
         }
       ],
@@ -13592,12 +13592,12 @@
         },
         {
           "name": "build_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "close_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -13683,12 +13683,12 @@
         },
         {
           "name": "mined_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
           "name": "mining_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -13699,7 +13699,7 @@
         },
         {
           "name": "open_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -13728,7 +13728,7 @@
         },
         {
           "name": "rotated_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         },
         {
@@ -13786,7 +13786,7 @@
         },
         {
           "name": "vehicle_impact_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "When playing this sound, the volume is scaled by the speed of the vehicle when colliding with this entity.",
           "optional": true
         },
@@ -13847,7 +13847,7 @@
         },
         {
           "name": "walking_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "Sound played when a character walks over this rail.",
           "optional": true
         }
@@ -13926,7 +13926,7 @@
         },
         {
           "name": "dying_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "description": "The sound file to play when entity dies.",
           "optional": true
         },
@@ -13992,7 +13992,7 @@
         },
         {
           "name": "walking_sound",
-          "type": "Sound",
+          "type": "SoundType",
           "optional": true
         }
       ],

@@ -30,6 +30,39 @@ public class TempTest {
 		}
 
 		/**
+		 * replace Animation with AnimationType
+		 */
+//		prototypes.forEach((s, prototype) -> {
+//			if (prototype.type.equals("Sprite")) {
+//				prototype.type = "SpriteType";
+//			} else if (prototype.type.equals("Sprite[]")) {
+//				prototype.type = "SpriteType[]";
+//			}
+//
+//			if (prototype.alias != null && prototype.alias.equals("Sprite")) {
+//				prototype.alias = "SpriteType";
+//			} else if (prototype.alias != null && prototype.alias.equals("Sprite[]")) {
+//				prototype.alias = "SpriteType[]";
+//			}
+//
+//			if (prototype.type.equals("table")) {
+//				if (prototype.table.parent != null && prototype.table.parent.equals("Sprite")) {
+//					prototype.table.parent = "SpriteType";
+//				} else if (prototype.table.parent != null && prototype.table.parent.equals("Sprite[]")) {
+//					prototype.table.parent = "SpriteType[]";
+//				}
+//
+//				prototype.table.properties.forEach(property -> {
+//					if (property.type.equals("Sprite")) {
+//						property.type = "SpriteType";
+//					} else if (property.type.equals("Sprite[]")) {
+//						property.type = "SpriteType[]";
+//					}
+//				});
+//			}
+//		});
+
+		/**
 		 * make IDs to Prototype Type
 		 */
 //		Map<String, String> stringMapA = new HashMap<>();

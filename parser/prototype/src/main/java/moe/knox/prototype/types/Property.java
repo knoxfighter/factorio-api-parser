@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Property {
 	public String name;
-	String type;
+	public String type;
 	String description;
 	@SerializedName("default")
 	public String _default;
