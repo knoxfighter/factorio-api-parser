@@ -15,7 +15,7 @@ public class TempTest {
 	void prototypeTest() {
 		Map<String, Prototype> prototypes;
 		// read prototypes from jsom file
-		try (FileReader prototypeJsonRead = new FileReader("../types.json")) {
+		try (FileReader prototypeJsonRead = new FileReader("../prototypes.json")) {
 			Type mapType = new TypeToken<Map<String, Prototype>>() {}.getType();
 			prototypes = new GsonBuilder()
 					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeDeserializer())
@@ -144,7 +144,7 @@ public class TempTest {
 //		}
 
 		// save json again
-		try (Writer writer = new FileWriter("../types.json")) {
+		try (Writer writer = new FileWriter("../prototypes.json")) {
 			new GsonBuilder()
 					.setPrettyPrinting()
 					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeSerializer())
