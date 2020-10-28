@@ -11,13 +11,15 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 )
 
 var (
-	mainDir       string
-	apiDir        string
-	wikiDir       string
-	prototypesDir string
+	mainDir            string
+	apiDir             string
+	wikiDir            string
+	prototypesDir      string
+	prototypesJsonPath string
 )
 
 func main() {
@@ -30,8 +32,14 @@ func main() {
 	prototypesDir = filepath.Join(mainDir, "prototypes")
 	wikiDir = filepath.Join(prototypesDir, "wiki")
 
+	if len(args) >= 3 {
+		prototypesJsonPath = args[2]
+	} else {
+		prototypesJsonPath = filepath.Join()
+	}
+
 	router := mux.NewRouter()
-	//router.Methods("GET")
+	//router.Methods("GET") // this doesn't work for some reason (bug in mux-router)
 
 	apiRouter := router.PathPrefix("/api").Methods("GET").Subrouter()
 	apiRouter.HandleFunc("/", ApiListVersionsHandler)
@@ -40,6 +48,11 @@ func main() {
 
 	wikiRouter := router.PathPrefix("/wiki").Methods("GET").Subrouter()
 	wikiRouter.HandleFunc("/{file}", WikiDownloadFileHandler)
+
+	router.HandleFunc("/prototypes.json", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, prototypesJsonPath)
+	})
+	router.HandleFunc("/prototypes.json/version", PrototypeJsonVersion)
 
 	address := "0.0.0.0"
 	port := "80"
@@ -87,7 +100,7 @@ func ApiListVersionsHandler(w http.ResponseWriter, r *http.Request) {
 func ApiListVersionFilesHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	version := vars["version"]
-	fileInfos, err := ioutil.ReadDir(fmt.Sprintf("%s/%s", apiDir, version))
+	fileInfos, err := ioutil.ReadDir(filepath.Join(apiDir, version))
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -105,11 +118,22 @@ func ApiDownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	version := vars["version"]
 	file := vars["file"]
-	http.ServeFile(w, r, fmt.Sprintf("%s/%s/%s", apiDir, version, file))
+	http.ServeFile(w, r, filepath.Join(apiDir, version, file))
 }
 
 func WikiDownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	file := vars["file"]
-	http.ServeFile(w, r, fmt.Sprintf("%s/%s", wikiDir, file))
+	http.ServeFile(w, r, filepath.Join(wikiDir, file))
+}
+
+func PrototypeJsonVersion(w http.ResponseWriter, r *http.Request) {
+	// get timestamp of prototypes.json as version
+	stat, err := os.Stat(prototypesJsonPath)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Write([]byte(strconv.FormatInt(stat.ModTime().Unix(), 10)))
 }
