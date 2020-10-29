@@ -1,29 +1,53 @@
 package moe.knox.prototype.types;
 
-import com.google.gson.*;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.reflect.TypeToken;
 
+import com.google.gson.*;
+
+import java.lang.annotation.*;
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+@Target(ElementType.FIELD)
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@interface PrototypeValue {
+	String[] value();
+}
+
 public class Prototype {
-	@SerializedName("name")
 	public String name;
-
-	@SerializedName("type")
 	public String type;
-
-	@SerializedName("link")
 	String link;
-
-	@SerializedName("description")
 	String description;
 
+	@PrototypeValue("table")
 	public transient Table table = new Table();
+
+	@PrototypeValue("alias")
 	public transient String alias;
+
+	@PrototypeValue({"prototype", "string", "stringArray"})
 	public transient Map<String, String> stringMap = new HashMap<>();
+
+	private static Field getAnnotatedFieldForType(String type) {
+		// iterate over all fields in Prototype class
+		for (Field field : Prototype.class.getFields()) {
+			// get my annotation
+			PrototypeValue annotation = field.getAnnotation(PrototypeValue.class);
+			// only run if annotation was found
+			if (annotation != null) {
+				String[] types = annotation.value();
+				// check if this annotation defines, that we want to use this field for data
+				if (Arrays.stream(types).anyMatch(type::equals)) {
+					return field;
+				}
+			}
+		}
+		return null;
+	}
 
 	public static class PrototypeDeserializer implements JsonDeserializer<Prototype> {
 		@Override
@@ -37,15 +61,22 @@ public class Prototype {
 			// check if this object has a "value" field, where the information is saved
 			if (jsonObject.has("value")) {
 				JsonElement jsonValue = jsonObject.get("value");
-					if (jsonValue != null && !jsonValue.isJsonNull()) {
-					// check if prototype is of type table
-					if (prototype.type.equals("table") && jsonValue.isJsonObject()) {
-						Table table = new Gson().fromJson(jsonValue, Table.class);
-						prototype.table = table;
-					} else if (prototype.type.equals("alias") && jsonValue.isJsonPrimitive()) {
-						prototype.alias = jsonValue.getAsString();
-					} else if ((prototype.type.equals("prototype") || prototype.type.equals("string") || prototype.type.equals("stringArray")) && jsonValue.isJsonObject()) {
-						prototype.stringMap = new Gson().fromJson(jsonValue, new TypeToken<Map<String, String>>() {}.getType());
+
+				if (jsonValue != null && !jsonValue.isJsonNull()) {
+					Field field = Prototype.getAnnotatedFieldForType(prototype.type);
+
+					if (field != null) {
+						// get type of the field
+						Class<?> fieldType = field.getType();
+
+						Object fieldFromJson = new Gson().fromJson(jsonValue, fieldType);
+						try {
+							// set the field on the prototype object
+							field.set(prototype, fieldFromJson);
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+							throw new JsonParseException(e);
+						}
 					}
 				}
 			}
@@ -63,27 +94,17 @@ public class Prototype {
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
 
 			if (src.type != null) {
-				switch (src.type) {
-					case "table":
-						// serialize table
-						JsonElement tableElement = new Gson().toJsonTree(src.table);
+				Field field = Prototype.getAnnotatedFieldForType(src.type);
 
-						// add to value field
-						jsonObject.add("value", tableElement);
-						break;
-					case "alias":
-						// serialize string with the alias
-						jsonObject.addProperty("value", src.alias);
-						break;
-					case "prototype":
-					case "string":
-					case "stringArray":
-						// serialize prototype map
-						JsonElement protElement = new Gson().toJsonTree(src.stringMap);
-
-						// add to value field
-						jsonObject.add("value", protElement);
-						break;
+				if (field != null) {
+					try {
+						Object valueField = field.get(src);
+						JsonElement valueJson = new Gson().toJsonTree(valueField, field.getGenericType());
+						jsonObject.add("value", valueJson);
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+						throw new JsonParseException(e);
+					}
 				}
 			}
 			return jsonElement;
