@@ -21,6 +21,9 @@ go build -o "$dockerDir/webserver" .
 # move back to this directory
 cd "$dockerDir"
 
+# copy over the prototypes.json file
+cp ../files/prototypes/prototypes.json prototypes.json
+
 # build docker image
 docker build . -t factorio-api
 

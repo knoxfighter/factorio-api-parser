@@ -13,4 +13,4 @@ java -jar factorio-api-parser.jar ./files/
 java -jar factorio-prototypes.jar ./files/
 
 # run webserver
-./webserver ./files/
+./webserver ./files/ ./prototypes.json
