@@ -1,6 +1,5 @@
 package moe.knox.prototype.types;
 
-
 import com.google.gson.*;
 
 import java.lang.annotation.*;

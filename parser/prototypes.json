@@ -11237,7 +11237,7 @@
     "name": "Shortcut",
     "type": "table",
     "link": "/Prototype/Shortcut",
-    "description": "Definition for a shortcut in the \u003ca href\u003d\"/Shortcut_bar\" title\u003d\"Shortcut bar\"\u003eshortcut bar\u003c/a\u003e.",
+    "description": "Definition for a shortcut button in the <a href=\"/Shortcut_bar\" title=\"Shortcut bar\">shortcut bar</a>.<br>This is <i>not</i> a custom keybinding (keyboard shortcut), for that see <a href=\"/Prototype/CustomInput\" title=\"Prototype/CustomInput\">Prototype/CustomInput</a>",
     "value": {
       "properties": [
         {
