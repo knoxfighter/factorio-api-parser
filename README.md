@@ -80,3 +80,10 @@ The `value` field is a map from string to string.
 ### stringArray
 This is basically the same as the `string` type. It just differs, that this is an array, that can have multiple of the values defined as `key`. A value can only be used once in the array.
 Additional values, that are not part of the keys can also be used.
+
+## Run it yourself
+### prototype diff checker
+Will download all the prototype pages from the wiki and compare them to previously downloaded ones.
+Create a file called `discordwebhook.env` in the prototype directory and add the link to the discordwebhook into it, so the differences will be posted on discord.
+
+Look into the sourcecode for how it works and what it does. Basically it is used, to check for changes on the wiki, so I can transfer them to the prototypes.json.

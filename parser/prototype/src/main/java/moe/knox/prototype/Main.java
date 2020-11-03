@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.nio.file.*;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -193,8 +192,9 @@ public class Main {
 		int processResult = process.waitFor();
 		System.out.println("diff-tool result: " + processResult);
 
-		if (someOutput) {
-			DiscordWebhook discordWebhook = new DiscordWebhook("https://discordapp.com/api/webhooks/761954324184039465/7_ohKza2qosgvEH3EK70mvmA0o2wZ4Uaz-HJHDfLS3DBlyU24ah2dDQZKa9dWp7ja2Q5");
+		// post the diff to discord
+		if (someOutput && BuildConfig.DISCORD_WEBHOOK != null && !BuildConfig.DISCORD_WEBHOOK.isEmpty()) {
+			DiscordWebhook discordWebhook = new DiscordWebhook(BuildConfig.DISCORD_WEBHOOK);
 			DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
 			embed.setTitle("Some changes to the prototype definitions happened");
 			embed.setDescription(String.format("https://factorio-api.knox.moe/wiki/%s", diffFileName));
