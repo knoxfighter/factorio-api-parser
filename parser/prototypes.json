@@ -6245,7 +6245,7 @@
         {
           "name": "affected_by_wind",
           "type": "bool",
-          "description": "Smoke always moves randomly unless \u003ccode\u003emovement_slow_down_factor\u003c/code\u003e is 1. If \u003ccode\u003eaffected_by_wind\u003c/code\u003e is true, the smoke will also be moved by wind.",
+          "description": "Smoke always moves randomly unless \u003ccode\u003emovement_slow_down_factor\u003c/code\u003e is 0. If \u003ccode\u003eaffected_by_wind\u003c/code\u003e is true, the smoke will also be moved by wind.",
           "default": "true",
           "optional": true
         },
@@ -6293,7 +6293,7 @@
         {
           "name": "movement_slow_down_factor",
           "type": "double",
-          "description": "Value between 0 and 1, with 1 being no movement.",
+          "description": "Value between 0 and 1, with 1 being no slowdown and 0 being no movement.",
           "default": "0.995",
           "optional": true
         },
