@@ -19,8 +19,8 @@ import java.util.Map;
 public class Prototype {
 	public String name;
 	public String type;
-	String link;
-	String description;
+	public String link;
+	public String description;
 
 	@PrototypeValue("table")
 	public transient Table table = new Table();

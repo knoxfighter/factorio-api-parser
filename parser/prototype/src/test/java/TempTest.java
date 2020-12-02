@@ -1,6 +1,7 @@
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import moe.knox.prototype.types.Property;
 import moe.knox.prototype.types.Prototype;
 
 import java.io.*;
@@ -11,12 +12,39 @@ import java.util.Map;
 import java.util.Set;
 
 public class TempTest {
+	void appendProperties(Writer writer, Prototype parentPrototype, Prototype basePrototype, Map<String, Prototype> prototypes) throws IOException {
+		for (Property property : parentPrototype.table.properties) {
+			if (property.description != null && !property.description.isEmpty()) {
+				writer.append(String.format("---%s\n", property.description));
+			}
+			if (property._default != null && !property._default.isEmpty()) {
+				writer.append(String.format("---@default %s\n", property._default));
+			}
+			writer.append(String.format("---@optional %b\n", property.optional));
+			writer.append(String.format("---@type %s\n", property.type));
+			writer.append(String.format("%s.%s = nil\n\n", basePrototype.name, property.name));
+		}
+
+		if (parentPrototype.table.parent != null && !parentPrototype.table.parent.isEmpty()) {
+			if (parentPrototype.table.parent.contains(":")) {
+				for (String prototypeName : parentPrototype.table.parent.split(":")) {
+					Prototype newPrototype = prototypes.get(prototypeName);
+					appendProperties(writer, newPrototype, basePrototype, prototypes);
+				}
+			} else {
+				Prototype newPrototype = prototypes.get(parentPrototype.table.parent);
+				appendProperties(writer, newPrototype, basePrototype, prototypes);
+			}
+		}
+	}
+
 	@org.junit.jupiter.api.Test
 	void prototypeTest() {
 		Map<String, Prototype> prototypes;
 		// read prototypes from jsom file
 		try (FileReader prototypeJsonRead = new FileReader("../prototypes.json")) {
-			Type mapType = new TypeToken<Map<String, Prototype>>() {}.getType();
+			Type mapType = new TypeToken<Map<String, Prototype>>() {
+			}.getType();
 			prototypes = new GsonBuilder()
 					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeDeserializer())
 					.create()
@@ -143,15 +171,42 @@ public class TempTest {
 //			prototypes.put(prototype.name, prototype);
 //		}
 
-		// save json again
-		try (Writer writer = new FileWriter("../prototypes.json")) {
-			new GsonBuilder()
-					.setPrettyPrinting()
-					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeSerializer())
-					.create()
-					.toJson(prototypes, writer);
+		// save prototypes as LUA file
+		try {
+			Writer writer = new FileWriter("../../files/prototypes/prototypes.lua");
+
+			for (Map.Entry<String, Prototype> entry : prototypes.entrySet()) {
+				Prototype prototype = entry.getValue();
+				if (prototype.type.equals("table")) {
+					writer.append(String.format("---%s\n", prototype.description));
+					writer.append(String.format("---@class %s\n", prototype.name));
+					// do not use parent here, we add all the properties manually, this has to be done, cause multi-inheritance is not supported.
+					writer.append(String.format("local %s = {}\n\n", prototype.name));
+
+					appendProperties(writer, prototype, prototype, prototypes);
+				} else if (prototype.type.equals("alias")) {
+					writer.append(String.format("---@alias %s %s\n\n", prototype.name, prototype.alias));
+				} else if (prototype.type.equals("string")) {
+					writer.append(String.format("---@alias %s string\n\n", prototype.name));
+				} else if (prototype.type.equals("stringArray")) {
+					writer.append(String.format("---@alias %s string[]\n\n", prototype.name));
+				}
+			}
+			writer.flush();
+			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		// save json again
+//		try (Writer writer = new FileWriter("../prototypes.json")) {
+//			new GsonBuilder()
+//					.setPrettyPrinting()
+//					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeSerializer())
+//					.create()
+//					.toJson(prototypes, writer);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 }

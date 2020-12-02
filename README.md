@@ -3,6 +3,8 @@
 The goal of this project is to provide the factorio LUA API and the prototype definitions in a way, that computers can easily work with it.
 Currently, the lua-API is served as LUA files, and the prototype definitions are served as json files. If you want any other format or LUA dialect, just say so as Issue or create a Pull Request, I am happy to add it to the project/website.
 
+This project is still work in progress, thing might change over time.
+
 ## LUA-API
 The LUA-API has a few pages, where everything is available to download.
 
@@ -22,7 +24,9 @@ The LUA files were built for EmmyLUA (a Plugin for Jetbrains IntelliJ)
 ## Prototypes
 All Prototype definitions from the [factorio wiki](https://wiki.factorio.com/Prototype_definitions) are served in a really big json file.
 This file can also be downloaded from my page: https://factorio-api.knox.moe/prototypes.json.  
-This list is manually maintained. The current timestamp of the last changes have a subpage: https://factorio-api.knox.moe/prototypes.json/version
+This list is manually maintained. The current timestamp of the last changes have a subpage: https://factorio-api.knox.moe/prototypes.json/version  
+The prototypes are also available as LUA file. In the LUA files all prototypes typed `string` or `stringArray` are only in there as alias to `string` or `string[]`.
+Also, everything of type `prototype` is stripped, cause there is no practical format to define it.
 
 The JSON is a map from string to objects.
 I wrote java classes, that provide the possibility to read and write the JSON with GSON.
