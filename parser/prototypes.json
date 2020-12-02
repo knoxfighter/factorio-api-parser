@@ -6610,7 +6610,7 @@
         {
           "name": "key_sequence",
           "type": "string",
-          "description": "<p>The default key sequence for this custom input.</p><ul><li>\"mouse-button-2\" etc for mouse buttons, mouse-button-3 for middle mouse button</li><li>\"mouse-wheel-up\", \"mouse-wheel-down\", \"mouse-wheel-left\", \"mouse-wheel-right\" for mouse wheel (mouse wheel controls do not work for custom inputs!)</li><li>\" + \" is used to separate modifier keys from normal keys: <code>\"ALT + G\"</code></li><li>For modifier keys, the following names are used: \"CONTROL\", \"SHIFT\", \"ALT\", \"COMMAND\"</li><li>A keybinding can contain an unlimited amount of modifier keys (listed above) but only one normal key (listed below).</li></ul>",
+          "description": "<p>The default key sequence for this custom input.</p><ul>\"\" (empty string) for unassigned<li>\"mouse-button-2\" etc for mouse buttons, mouse-button-3 for middle mouse button</li><li>\"mouse-wheel-up\", \"mouse-wheel-down\", \"mouse-wheel-left\", \"mouse-wheel-right\" for mouse wheel (mouse wheel controls do not work for custom inputs!)</li><li>\" + \" is used to separate modifier keys from normal keys: <code>\"ALT + G\"</code></li><li>For modifier keys, the following names are used: \"CONTROL\", \"SHIFT\", \"ALT\", \"COMMAND\"</li><li>A keybinding can contain an unlimited amount of modifier keys (listed above) but only one normal key (listed below).</li></ul>",
           "optional": false
         },
         {
@@ -10811,7 +10811,7 @@
         },
         {
           "name": "picture",
-          "type": "SpriteType",
+          "type": "Sprite4Way",
           "description": "Must have one of 'picture', 'pictures' or 'animations' defined.",
           "optional": true
         },
@@ -13086,7 +13086,7 @@
         },
         {
           "name": "picture",
-          "type": "SpriteType",
+          "type": "Sprite4Way",
           "description": "Must have one of 'picture', 'pictures' or 'animations' defined.",
           "optional": true
         },
