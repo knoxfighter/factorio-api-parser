@@ -23,6 +23,7 @@ cd "$dockerDir"
 
 # copy over the prototypes.json file
 cp ../files/prototypes/prototypes.json prototypes.json
+cp ../files/prototypes/prototypes.lua prototypes.lua
 
 # build docker image
 docker build . -t factorio-api

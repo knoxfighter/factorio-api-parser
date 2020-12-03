@@ -15,6 +15,7 @@ COPY webserver webserver
 
 # copy in prototypes.json
 COPY prototypes.json prototypes.json
+COPY prototypes.lua prototypes.lua
 
 # copy in startup script
 COPY entry.sh entry.sh
