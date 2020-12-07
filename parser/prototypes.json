@@ -3958,10 +3958,9 @@
           "optional": true
         },
         {
-          "name": "logistic_slots_count",
-          "type": "uint32",
-          "description": "The number of request slots this logistics container has. Requester-type containers must have > 0 slots. Storage-type containers must have <= 1 slot.",
-          "default": "0",
+          "name": "max_logistic_slots",
+          "type": "uint16",
+          "description": "The number of request slots this logistics container has. Requester-type containers must have > 0 slots and can have a maximum of 1000 slots. Storage-type containers must have <= 1 slot.",
           "optional": true
         },
         {
@@ -5489,12 +5488,6 @@
           "optional": true
         },
         {
-          "name": "result_items",
-          "type": "RocketSiloRocketResultItems[]",
-          "description": "Unused in base game.",
-          "optional": true
-        },
-        {
           "name": "rocket_initial_offset",
           "type": "vector",
           "optional": true
@@ -6500,6 +6493,7 @@
         {
           "name": "acceleration",
           "type": "double",
+          "description": "Must be != 0 if turning_speed_increases_exponentially_with_projectile_speed is true.",
           "optional": false
         },
         {
@@ -8345,12 +8339,6 @@
     "value": {
       "properties": [
         {
-          "name": "special_signal",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "subgroup",
           "type": "string",
           "description": "The name of a <a href=\"/Prototype/ItemSubGroup\" title=\"Prototype/ItemSubGroup\">Prototype/ItemSubGroup</a>.",
@@ -8960,7 +8948,7 @@
         {
           "name": "max_temperature",
           "type": "double",
-          "optional": false
+          "optional": true
         },
         {
           "name": "emissions_multiplier",
@@ -9853,6 +9841,13 @@
           "name": "pictures",
           "type": "PipeToGroundPictures",
           "optional": false
+        },
+        {
+          "name": "draw_fluid_icon_override",
+          "type": "bool",
+          "description": "Causes fluid icon to always be drawn, ignoring the usual pair requirement.",
+          "default": "false",
+          "optional": true
         }
       ],
       "parent": "EntityWithHealth"
@@ -10043,7 +10038,7 @@
         {
           "name": "energy_source",
           "type": "EnergySource",
-          "description": "Must be an electric or void energy source.",
+          "description": "Must be an electric or void energy source. The emissions set on the energy source are ignored so lamps cannot produce pollution.",
           "optional": false
         },
         {
@@ -10636,6 +10631,13 @@
           "optional": true
         },
         {
+          "name": "stack_size_bonus",
+          "type": "ItemCountType",
+          "description": " Stack size bonus that is inherent to the prototype without having to be researched.",
+          "default": "0",
+          "optional": true
+        },
+        {
           "name": "use_easter_egg",
           "type": "bool",
           "description": "Whether the inserter should be able to fish <a href=\"/Raw_fish\" title=\"Raw fish\">fish</a>.",
@@ -11183,7 +11185,33 @@
     "link": "/Prototype/ItemWithEntityData",
     "description": "ItemWithEntityData saves data associated with the entity that it represents, for example the content of the equipment grid of a car.",
     "value": {
-      "properties": [ ],
+      "properties": [
+        {
+          "name": "icon_tintable",
+          "type": "FileName",
+          "optional": true
+        },
+        {
+          "name": "icon_tintables",
+          "type": "IconData[]",
+          "optional": true
+        },
+        {
+          "name": "icon_size",
+          "type": "FileName",
+          "optional": true
+        },
+        {
+          "name": "icon_tintable_mask",
+          "type": "FileName",
+          "optional": true
+        },
+        {
+          "name": "icon_tintable_masks",
+          "type": "IconData[]",
+          "optional": true
+        }
+      ],
       "parent": "Item"
     }
   },
@@ -12178,12 +12206,14 @@
           "name": "durability_description_key",
           "type": "string",
           "default": "description.durability-key",
+          "description": "May not be longer than 200 characters.",
           "optional": true
         },
         {
           "name": "durability_description_value",
           "type": "string",
           "default": "description.durability-value",
+          "description": "May not be longer than 200 characters.",
           "optional": true
         },
         {
@@ -19481,11 +19511,51 @@
       "object-layer": "",
       "player-layer": "",
       "train-layer": "",
-      "layer-11": "",
-      "layer-12": "",
+      "rail-layer": "",
+      "transport-belt-layer": "",
       "layer-13": "",
       "layer-14": "",
       "layer-15": "",
+      "layer-16": "",
+      "layer-17": "",
+      "layer-18": "",
+      "layer-19": "",
+      "layer-20": "",
+      "layer-21": "",
+      "layer-22": "",
+      "layer-23": "",
+      "layer-24": "",
+      "layer-25": "",
+      "layer-26": "",
+      "layer-27": "",
+      "layer-28": "",
+      "layer-29": "",
+      "layer-30": "",
+      "layer-31": "",
+      "layer-32": "",
+      "layer-33": "",
+      "layer-34": "",
+      "layer-35": "",
+      "layer-36": "",
+      "layer-37": "",
+      "layer-38": "",
+      "layer-39": "",
+      "layer-40": "",
+      "layer-41": "",
+      "layer-42": "",
+      "layer-43": "",
+      "layer-44": "",
+      "layer-45": "",
+      "layer-46": "",
+      "layer-47": "",
+      "layer-48": "",
+      "layer-49": "",
+      "layer-50": "",
+      "layer-51": "",
+      "layer-52": "",
+      "layer-53": "",
+      "layer-54": "",
+      "layer-55": "",
       "not-colliding-with-itself": "Any 2 entities that both have this option enabled on their prototype and have an identical collision mask layers list will not collide. Other collision mask options are not included in the identical layer list check. This does mean that 2 different prototypes with the same collision mask layers and this option enabled will not collide.",
       "consider-tile-transitions": "Uses the prototypes position rather than its collision box when doing collision checks with tile prototypes. Allows the prototype to overlap colliding tiles up until its center point. This is only respected for character movement and cars driven by players.",
       "colliding-with-tiles-only": "Any prototype with this collision option will only be checked for collision with other prototype's collision masks if they are a tile."
@@ -19844,7 +19914,8 @@
       "can-extend-inventory": "",
       "primary-place-result": "",
       "mod-openable": "Only works for <a href=\"/Prototype/SelectionTool\" title=\"Prototype/SelectionTool\">Prototype/SelectionTool</a> and derived classes.<br>This property corresponds to the following event in the lua api: <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/events.html#on_mod_item_opened\">defines.events.on_mod_item_opened</a>",
-      "only-in-cursor": "Item is deleted when removed from the cursor by pressing <code>Q</code> (clear cursor). Used for example by the copy paste tools. "
+      "only-in-cursor": "Item is deleted when removed from the cursor by pressing <code>Q</code> (clear cursor). Used for example by the copy paste tools. ",
+      "spawnable": "Item is able to be spawned by a <a href=\"/Prototype/Shortcut\" title=\"Prototype/Shortcut\">Prototype/Shortcut</a> or <a href=\"/Prototype/CustomInput\" title=\"Prototype/CustomInput\">Prototype/CustomInput</a>."
     }
   },
   "ProgrammableSpeakerInstrument": {
@@ -23579,33 +23650,6 @@
           "name": "module_info_multi_row_initial_height_modifier",
           "type": "float",
           "default": "-0.1",
-          "optional": true
-        }
-      ]
-    }
-  },
-  "RocketSiloRocketResultItems": {
-    "name": "RocketSiloRocketResultItems",
-    "type": "table",
-    "link": "/Prototype/RocketSiloRocket#result_items",
-    "value": {
-      "properties": [
-        {
-          "name": "name",
-          "type": "string",
-          "description": "Name of an item.",
-          "optional": false
-        },
-        {
-          "name": "amount",
-          "type": "ItemCountType",
-          "description": "Must be positive.",
-          "optional": false
-        },
-        {
-          "name": "required_item",
-          "type": "string",
-          "description": "Name of an item.",
           "optional": true
         }
       ]

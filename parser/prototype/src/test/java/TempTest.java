@@ -3,6 +3,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import moe.knox.prototype.types.Property;
 import moe.knox.prototype.types.Prototype;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -38,7 +39,7 @@ public class TempTest {
 		}
 	}
 
-	@org.junit.jupiter.api.Test
+	@Test
 	void prototypeTest() {
 		Map<String, Prototype> prototypes;
 		// read prototypes from jsom file

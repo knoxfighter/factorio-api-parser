@@ -2731,11 +2731,13 @@ local MiningTool = {}
 ---@type double
 MiningTool.durability = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-key
 ---@optional true
 ---@type string
 MiningTool.durability_description_key = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-value
 ---@optional true
 ---@type string
@@ -8881,11 +8883,13 @@ RepairTool.repair_result = nil
 ---@type double
 RepairTool.durability = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-key
 ---@optional true
 ---@type string
 RepairTool.durability_description_key = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-value
 ---@optional true
 ---@type string
@@ -14033,11 +14037,10 @@ LogisticContainer.animation_sound = nil
 ---@type vector
 LogisticContainer.landing_location_offset = nil
 
----The number of request slots this logistics container has. Requester-type containers must have > 0 slots. Storage-type containers must have <= 1 slot.
----@default 0
+---The number of request slots this logistics container has. Requester-type containers must have > 0 slots and can have a maximum of 1000 slots. Storage-type containers must have <= 1 slot.
 ---@optional true
----@type uint32
-LogisticContainer.logistic_slots_count = nil
+---@type uint16
+LogisticContainer.max_logistic_slots = nil
 
 ---@default 0
 ---@optional true
@@ -19040,11 +19043,10 @@ InfinityContainer.animation_sound = nil
 ---@type vector
 InfinityContainer.landing_location_offset = nil
 
----The number of request slots this logistics container has. Requester-type containers must have > 0 slots. Storage-type containers must have <= 1 slot.
----@default 0
+---The number of request slots this logistics container has. Requester-type containers must have > 0 slots and can have a maximum of 1000 slots. Storage-type containers must have <= 1 slot.
 ---@optional true
----@type uint32
-InfinityContainer.logistic_slots_count = nil
+---@type uint16
+InfinityContainer.max_logistic_slots = nil
 
 ---@default 0
 ---@optional true
@@ -19561,11 +19563,6 @@ RocketSiloRocket.flying_trigger = nil
 ---@optional true
 ---@type LightDefinition
 RocketSiloRocket.glow_light = nil
-
----Unused in base game.
----@optional true
----@type RocketSiloRocketResultItems[]
-RocketSiloRocket.result_items = nil
 
 ---@optional true
 ---@type vector
@@ -24280,6 +24277,7 @@ RoboportEquipment.order = nil
 ---@class Projectile
 local Projectile = {}
 
+---Must be != 0 if turning_speed_increases_exponentially_with_projectile_speed is true.
 ---@optional false
 ---@type double
 Projectile.acceleration = nil
@@ -28700,11 +28698,13 @@ Armor.resistances = nil
 ---@type double
 Armor.durability = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-key
 ---@optional true
 ---@type string
 Armor.durability_description_key = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-value
 ---@optional true
 ---@type string
@@ -31389,11 +31389,6 @@ ConstantCombinator.icon_mipmaps = nil
 ---@class VirtualSignal
 local VirtualSignal = {}
 
----@default false
----@optional true
----@type bool
-VirtualSignal.special_signal = nil
-
 ---The name of a <a href="/Prototype/ItemSubGroup" title="Prototype/ItemSubGroup">Prototype/ItemSubGroup</a>.
 ---@default virtual-signal
 ---@optional true
@@ -33147,7 +33142,7 @@ Fluid.default_temperature = nil
 ---@type Color
 Fluid.flow_color = nil
 
----@optional false
+---@optional true
 ---@type double
 Fluid.max_temperature = nil
 
@@ -36634,6 +36629,12 @@ PipeToGround.fluid_box = nil
 ---@type PipeToGroundPictures
 PipeToGround.pictures = nil
 
+---Causes fluid icon to always be drawn, ignoring the usual pair requirement.
+---@default false
+---@optional true
+---@type bool
+PipeToGround.draw_fluid_icon_override = nil
+
 ---@default true
 ---@optional true
 ---@type bool
@@ -37865,7 +37866,7 @@ KillAchievement.icon_mipmaps = nil
 ---@class Lamp
 local Lamp = {}
 
----Must be an electric or void energy source.
+---Must be an electric or void energy source. The emissions set on the energy source are ignored so lamps cannot produce pollution.
 ---@optional false
 ---@type EnergySource
 Lamp.energy_source = nil
@@ -41177,6 +41178,12 @@ Inserter.hand_size = nil
 ---@type bool
 Inserter.stack = nil
 
+--- Stack size bonus that is inherent to the prototype without having to be researched.
+---@default 0
+---@optional true
+---@type ItemCountType
+Inserter.stack_size_bonus = nil
+
 ---Whether the inserter should be able to fish <a href="/Raw_fish" title="Raw fish">fish</a>.
 ---@default true
 ---@optional true
@@ -44101,6 +44108,26 @@ Capsule.icon_mipmaps = nil
 ---ItemWithEntityData saves data associated with the entity that it represents, for example the content of the equipment grid of a car.
 ---@class ItemWithEntityData
 local ItemWithEntityData = {}
+
+---@optional true
+---@type FileName
+ItemWithEntityData.icon_tintable = nil
+
+---@optional true
+---@type IconData[]
+ItemWithEntityData.icon_tintables = nil
+
+---@optional true
+---@type FileName
+ItemWithEntityData.icon_size = nil
+
+---@optional true
+---@type FileName
+ItemWithEntityData.icon_tintable_mask = nil
+
+---@optional true
+---@type IconData[]
+ItemWithEntityData.icon_tintable_masks = nil
 
 ---Count of items of the same name that can be stored in one inventory slot. Must be 1 when <code>stackable</code> is false.
 ---@optional false
@@ -47885,11 +47912,13 @@ local Tool = {}
 ---@type double
 Tool.durability = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-key
 ---@optional true
 ---@type string
 Tool.durability_description_key = nil
 
+---May not be longer than 200 characters.
 ---@default description.durability-value
 ---@optional true
 ---@type string
@@ -61428,25 +61457,6 @@ ModuleSpecification.module_info_separation_multiplier = nil
 ---@optional true
 ---@type float
 ModuleSpecification.module_info_multi_row_initial_height_modifier = nil
-
----null
----@class RocketSiloRocketResultItems
-local RocketSiloRocketResultItems = {}
-
----Name of an item.
----@optional false
----@type string
-RocketSiloRocketResultItems.name = nil
-
----Must be positive.
----@optional false
----@type ItemCountType
-RocketSiloRocketResultItems.amount = nil
-
----Name of an item.
----@optional true
----@type string
-RocketSiloRocketResultItems.required_item = nil
 
 ---<p>Specifies animation that can be used in the game.</p><p>Note that if any frame of the animation is specified from the same source as any other <a href="/Types/Sprite" title="Types/Sprite">Types/Sprite</a> or frame of other animation, it will be shared.</p>
 ---@class AnimationType
