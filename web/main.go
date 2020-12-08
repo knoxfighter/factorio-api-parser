@@ -21,6 +21,7 @@ var (
 	prototypesDir      string
 	prototypesJsonPath string
 	prototypesLuaPath  string
+	readmePath         string
 )
 
 func main() {
@@ -45,6 +46,12 @@ func main() {
 		prototypesLuaPath = filepath.Join()
 	}
 
+	if len(args) >= 5 {
+		readmePath = args[4]
+	} else {
+		readmePath = filepath.Join()
+	}
+
 	router := mux.NewRouter()
 	//router.Methods("GET") // this doesn't work for some reason (bug in mux-router)
 
@@ -64,6 +71,10 @@ func main() {
 	})
 	router.HandleFunc("/prototypes.json/version", PrototypeJsonVersion)
 	router.HandleFunc("/prototypes.lua/version", PrototypeJsonVersion)
+
+	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, readmePath)
+	})
 
 	address := "0.0.0.0"
 	port := "80"

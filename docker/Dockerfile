@@ -12,10 +12,12 @@ COPY factorio-prototypes.jar factorio-prototypes.jar
 # copy in go-executable
 COPY webserver webserver
 
-
 # copy in prototypes.json
 COPY prototypes.json prototypes.json
 COPY prototypes.lua prototypes.lua
+
+# copy in readme
+COPY README.html README.html
 
 # copy in startup script
 COPY entry.sh entry.sh

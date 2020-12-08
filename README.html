@@ -1,0 +1,228 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Factorio AIP as LUA and JSON</title>
+</head>
+
+<body>
+<h1>
+    Factorio API as LUA and JSON files.
+</h1>
+<p>
+    The goal of this project is to provide the factorio LUA API and the prototype definitions in a way, that
+    computers can easily work with it.
+    Currently, the lua-API is served as LUA files, and the prototype definitions are served as json files. If you
+    want any other format or LUA dialect, just say so as Issue or create a Pull Request, I am happy to add it to the
+    project/website.
+</p>
+<p>
+    This project is still work in progress, thing might change over time.
+</p>
+
+<b>
+    This project on github: <a href="https://github.com/knoxfighter/factorio-api-parser" rel="nofollow">
+    https://github.com/knoxfighter/factorio-api-parser</a>.
+    <br>
+    Please report Bugs there, also Feature-requests and suggestions are welcome.
+</b>
+<h2>
+    LUA-API
+</h2>
+<p>
+    The LUA-API has a few pages, where everything is available to download.
+</p>
+<h3>
+    <a href="https://factorio-api.knox.moe/api/" rel="nofollow">
+        https://factorio-api.knox.moe/api/
+    </a>
+</h3>
+<p>
+    Contains a JSON array, with all the available versions. You can download it and select a version you want.
+    <code>latest</code> is not available, but the array is sorted from lowest to highest with the
+    <a href="http://github.com/hashicorp/go-version">go-version</a> library.
+</p>
+<h3>
+    <a href="https://factorio-api.knox.moe/api/1.0.0/" rel="nofollow">
+        https://factorio-api.knox.moe/api/{version}/
+    </a>
+</h3>
+<p>
+    Contains a JSON array, with all the available LUA files. You can iterate over all entries and then download the
+    specified files. Replace <code>{version}</code>, with your selected version.
+    The integration is only fully available, when you download all the files. The files also have cross-references
+    in them.
+</p>
+<h3>
+    <a href="https://factorio-api.knox.moe/api/1.0.0/AmmoType.lua" rel="nofollow">
+        https://factorio-api.knox.moe/api/{version}/{file}
+    </a>
+</h3>
+<p>
+    This route will serve a specific LUA file. Replace <code>{file}</code>, with a single filename.
+    The LUA files were built for EmmyLUA (a Plugin for Jetbrains IntelliJ)
+</p>
+<h2>
+    Prototypes
+</h2>
+<p>
+    All Prototype definitions from the <a href="https://wiki.factorio.com/Prototype_definitions" rel="nofollow">factorio
+    wiki</a> are served in a really big json file. This file can also be downloaded from my page:
+    <a href="https://factorio-api.knox.moe/prototypes.json"
+       rel="nofollow">https://factorio-api.knox.moe/prototypes.json</a>.
+    <br>
+    This list is manually maintained. The current timestamp of the last changes have a subpage:
+    <a href="https://factorio-api.knox.moe/prototypes.json/version" rel="nofollow">https://factorio-api.knox.moe/prototypes.json/version</a>
+    <br>
+    The prototypes are also available as LUA file. In the LUA files all prototypes typed <code>string</code> or
+    <code>stringArray</code> are only in there as alias to <code>string</code> or <code>string[]</code>.
+    Also, everything of type <code>prototype</code> is stripped, cause there is no practical format to define it.
+</p>
+<p>
+    The JSON is a map from string to objects.
+    I wrote java classes, that provide the possibility to read and write the JSON with GSON.
+    These classes can be found in the
+    <a href="parser/prototype/src/main/java/moe/knox/prototype/types">prototype type package</a>.
+    Entry class is
+    <a href="parser/prototype/src/main/java/moe/knox/prototype/types/Prototype.java">
+        Prototype.java
+    </a>.
+</p>
+<p>
+    The object has the following fields:
+</p>
+<ul>
+    <li>
+        name [string] - The name of the prototype (same as key)
+    </li>
+    <li>
+        type [string] - The type of this entry, defines type of <code>value</code>. (One of <code>table</code>,
+        <code>prototype</code>, <code>alias</code>, <code>string</code>, <code>stringArray</code>)
+    </li>
+    <li>
+        link [string] - The link for the definition in the factorio wiki
+    </li>
+    <li>
+        description [string]
+    </li>
+    <li>
+        value [object] - The value field can have 3 different types, based on the value of the <code>type</code>
+        field.
+    </li>
+</ul>
+<p>
+    Further information for each type and the type of the <code>value</code> field, is below:
+</p>
+<h3>
+    table
+</h3>
+<p>
+    A table contains the information about what a prototype definition can have as properties.
+    A table also can have a different table as parent, which will combine both tables into one.
+</p>
+<p>
+    The <code>value</code> field is of type
+    <a href="parser/prototype/src/main/java/moe/knox/prototype/types/Table.java">Table</a>.
+</p>
+<h4>
+    Table
+</h4>
+<p>
+    The Table object has two fields:
+</p>
+<ul>
+    <li>
+        properties - Property[] - An array of the
+        <a href="parser/prototype/src/main/java/moe/knox/prototype/types/Property.java">Property</a> object.
+    </li>
+    <li>
+        parent - string - The name of a Prototype that this table inherits all properties from. This Prototype also
+        has to be of type table.
+    </li>
+</ul>
+<h4>
+    Property
+</h4>
+<p>
+    The Property object has five fields:
+</p>
+<ul>
+    <li>
+        name - string - The name of the property
+    </li>
+    <li>
+        type - string - The type of the property. Normally a Prototype or a primitive.
+    </li>
+    <li>
+        description - string
+    </li>
+    <li>
+        default - string - The default value of an optional property.
+    </li>
+    <li>
+        optional - bool - Defines, if this property is optional or mandatory.
+    </li>
+</ul>
+<h3>
+    prototype
+</h3>
+<p>
+    The <code>value</code> field is a map from string to string.
+</p>
+<p>
+    <code>Key</code> of the map, is the name, that the prototype definition has to have in its <code>type</code>
+    field.
+    <br>
+    <code>Value</code> of the map, is the name of a Prototype (key of the overall map).
+</p>
+<p>
+    A prototype is a table, that contains a <code>type</code> field. The <code>type</code> is the key of this map.
+    It can be looked up, and the value then is the name of the prototype name in the overall table.
+    The prototype in the overall map has to be of type table. The properties of the table, then are used for this
+    prototype of type <code>prototype</code>.
+</p>
+<h3>
+    alias
+</h3>
+<p>
+    An alias is just what it says, an alias for something different. The <code>value</code> field is of type <code>string,
+    that just contains a different prototype. It has the same layout as the </code>property-&gt;type` field.
+</p>
+<h3>
+    string
+</h3>
+<p>
+    The <code>value</code> field is a map from string to string.
+</p>
+<p>
+    <code>Key</code> of the map is a string, that can be used as value of this field. It is also possible to write
+    anything into the string, these keys are just to make proposals for the autocompletion.
+    <br>
+    <code>Value</code> of the map is a description for the key. It can be used to show more information about the
+    given key.
+</p>
+<h3>
+    stringArray
+</h3>
+<p>
+    This is basically the same as the <code>string</code> type. It just differs, that this is an array, that can have
+    multiple of the values defined as <code>key</code>. A value can only be used once in the array.
+    Additional values, that are not part of the keys can also be used.
+</p>
+<h2>
+    Run it yourself
+</h2>
+<h3>
+    prototype diff checker
+</h3>
+<p>
+    Will download all the prototype pages from the wiki and compare them to previously downloaded ones.
+    Create a file called <code>discordwebhook.env</code> in the prototype directory and add the link to the
+    discordwebhook into it, so the differences will be posted on discord.
+</p>
+<p>
+    Look into the sourcecode for how it works and what it does. Basically it is used, to check for changes on the
+    wiki, so I can transfer them to the prototypes.json.
+</p>
+</body>
+</html>
