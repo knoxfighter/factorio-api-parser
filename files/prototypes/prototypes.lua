@@ -53215,6 +53215,10 @@ AmmoItem.icon_size = nil
 ---@type uint8
 AmmoItem.icon_mipmaps = nil
 
+---null
+---@class LinkedContainer
+local LinkedContainer = {}
+
 ---@alias WhitelistBlacklist string
 
 ---null

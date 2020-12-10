@@ -14060,6 +14060,14 @@
       "parent": "Item"
     }
   },
+  "LinkedContainer": {
+    "name": "LinkedContainer",
+    "type": "table",
+    "link": "/Prototype_definitions",
+    "value": {
+      "properties": [ ]
+    }
+  },
   "Prototype": {
     "name": "Prototype",
     "type": "prototype",
@@ -14252,7 +14260,8 @@
       "group-attack-achievement": "GroupAttackAchievement",
       "wall": "Wall",
       "rail-chain-signal": "RailChainSignal",
-      "copy-paste-tool": "CopyPasteTool"
+      "copy-paste-tool": "CopyPasteTool",
+      "linked-container": "LinkedContainer"
     }
   },
   "WhitelistBlacklist": {
