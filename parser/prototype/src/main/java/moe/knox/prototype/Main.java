@@ -170,6 +170,7 @@ public class Main {
 			add("/Types/BoxSpecification");
 			add("/Types/Sprite8Way");
 			add("/Types/RailPieceLayers");
+			add("/Prototype_definitions");
 		}};
 		parsePageByLinks(newPath, additionalTypes);
 
