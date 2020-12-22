@@ -113,7 +113,6 @@ public class Main {
 			add("/Types/BeamAttackParameters");
 			add("/Types/CameraEffectTriggerEffectItem");
 			add("/Types/ClusterTriggerItem");
-			add("/Types/CreateDecorativesTriggerEffectItem");
 			add("/Types/CreateEntityTriggerEffectItem");
 			add("/Types/CreateExplosionTriggerEffectItem");
 			add("/Types/CreateFireTriggerEffectItem");
