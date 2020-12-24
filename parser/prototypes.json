@@ -31,23 +31,13 @@
       "parent": "EntityWithHealth"
     }
   },
-  "LegacyDecorative": {
-    "name": "LegacyDecorative",
-    "type": "table",
-    "link": "/Prototype/LegacyDecorative",
-    "description": "<b>Deprecated in 0.15.</b> Simple decorative purpose entities on the map, they have no health and some of them are removed when the player builds over. <b>The type \"decorative\" has been obsoleted and cannot be created.</b>",
-    "value": {
-      "properties": [ ],
-      "parent": "Entity"
-    }
-  },
   "ItemWithTags": {
     "name": "ItemWithTags",
     "type": "table",
     "link": "/Prototype/ItemWithTags",
     "description": "null",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "ItemWithLabel"
     }
   },
@@ -280,7 +270,7 @@
     "link": "/Prototype/ResourceCategory",
     "description": "A resource category. The built-in categories can be found <a href=\"/Data.raw#resource-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/ResourceEntity#category\" title=\"Prototype/ResourceEntity\">Prototype/ResourceEntity#category</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "PrototypeBase"
     }
   },
@@ -492,7 +482,7 @@
     "link": "/Prototype/MiningTool",
     "description": "Exists only for migration, cannot be used by mods.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Tool"
     }
   },
@@ -768,7 +758,7 @@
     "link": "/Prototype/FuelCategory",
     "description": "Each item which has a fuel_value must have a fuel category. The fuel categories are used to allow only certain fuels to be used in <a href=\"/Types/EnergySource\" title=\"Types/EnergySource\">Types/EnergySource</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "PrototypeBase"
     }
   },
@@ -948,7 +938,7 @@
     "link": "/Prototype/RailSignal",
     "description": "A <a href=\"/Rail_signal\" title=\"Rail signal\">rail signal</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "RailSignalBase"
     }
   },
@@ -1035,7 +1025,7 @@
     "link": "/Prototype/ItemEntity",
     "description": "The entity used for items on the ground.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Entity"
     }
   },
@@ -1131,19 +1121,13 @@
     "value": {
       "properties": [
         {
-          "name": "icons, icon, icon_size (IconSpecification)",
-          "type": "IconSpecification",
-          "description": "The icon that is shown to represent this item group.",
-          "optional": false
-        },
-        {
           "name": "order_in_recipe",
           "type": "Order",
           "description": "Items in recipes are ordered by item group. The <code>order_in_recipe</code> property can be used to specify the ordering in recipes without affecting the inventory order.",
           "optional": true
         }
       ],
-      "parent": "PrototypeBase"
+      "parent": "PrototypeBase:IconSpecification"
     }
   },
   "Splitter": {
@@ -2417,1444 +2401,1535 @@
     "value": {
       "properties": [
         {
-          "name": "achievement_label_failed",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "achievement_label_locked",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "achievement_label_unlocked",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "achievement_label_unlocked_off",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "add",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "ammo_damage_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "ammo_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "and_or",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "area_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "arrow_button",
-          "type": "AnimationType",
-          "optional": false
-        },
-        {
-          "name": "artillery_range_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "auto_character_logistic_trash_slots_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "bar_gray_pip",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "battery",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "battery_indicator",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "battery_indicator_bar",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "brush_circle_shape",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "brush_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "brush_square_shape",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "cable_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "center",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "change_recipe",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_additional_mining_categories_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_build_distance_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_crafting_speed_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_health_bonus_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_inventory_slots_bonus_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_item_drop_distance_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_item_pickup_distance_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_logistic_requests_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_logistic_slots_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_logistic_trash_slots_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_loot_pickup_distance_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_mining_speed_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_reach_distance_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_resource_reach_distance_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "character_running_speed_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "check_mark",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "check_mark_white",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "circuit_network_panel_black",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "circuit_network_panel_white",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "cliff_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "clock",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "clone",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "clone_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "close_black",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "close_fat",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "close_white",
-          "type": "SpriteType",
-          "optional": false
+          "name": "cursor_box",
+          "type": "UtilitySpritesCursorBox"
         },
         {
           "name": "clouds",
-          "type": "AnimationType",
-          "optional": false
+          "type": "AnimationType"
         },
         {
-          "name": "collapse",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "collapse_dark",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "color_effect",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "color_picker",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "confirm_slot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "construction_radius_visualization",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "copper_wire",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "covered_chunk",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "crafting_machine_recipe_not_unlocked",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "cursor_box",
-          "type": "UtilitySpritesCursorBox",
-          "optional": false
-        },
-        {
-          "name": "cursor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "custom_tag_in_map_view",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "danger_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "deconstruction_mark",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "deconstruction_time_to_live_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "decorative_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "default_ammo_damage_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "default_gun_speed_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "default_turret_attack_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "destroyed_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "down_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "downloaded",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "downloaded_white",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "downloading",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "downloading_white",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "dropdown",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "editor_pause",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "editor_play",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "editor_selection",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "editor_speed_down",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "editor_speed_up",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "electricity_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "electricity_icon_unplugged",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "enemy_force_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "enter",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "entity_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "entity_info_dark_background",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "equipment_collision",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "equipment_grid",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "equipment_slot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "expand",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "expand_dark",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "expand_dots",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "expand_dots_white",
-          "type": "SpriteType",
-          "optional": false
+          "name": "arrow_button",
+          "type": "AnimationType"
         },
         {
           "name": "explosion_chart_visualization",
-          "type": "AnimationType",
-          "optional": false
-        },
-        {
-          "name": "export",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "export_slot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "favourite_server_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "fluid_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "fluid_indication_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "fluid_indication_arrow_both_ways",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "follower_robot_lifetime_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "force_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "fuel_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "game_stopped_visualization",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "ghost_bar_pip",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "ghost_cursor",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "ghost_time_to_live_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "give_item_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "go_to_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "gps_map_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "green_circle",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "green_dot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "green_wire",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "green_wire_hightlight",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "grey_placement_indicator_leg",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "grey_rail_signal_placement_indicator",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "gun_speed_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "hand",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "health_bar_green_pip",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "health_bar_red_pip",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "health_bar_yellow_pip",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "heat_exchange_indication",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "hint_arrow_down",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "hint_arrow_left",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "hint_arrow_right",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "hint_arrow_up",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "import",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "import_slot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "indication_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "indication_line",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "inserter_stack_size_bonus_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "item_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "laboratory_productivity_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "laboratory_speed_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "left_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "light_cone",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "light_medium",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "light_small",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "line_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "logistic_network_panel_black",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "logistic_network_panel_white",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "logistic_radius_visualization",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "lua_snippet_tool_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "map",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "map_exchange_string",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "max_failed_attempts_per_tick_per_construction_queue_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "max_successful_attempts_per_tick_per_construction_queue_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "maximum_following_robots_count_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "medium_gui_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "mining_drill_productivity_bonus_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "missing_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "missing_mod_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "mod_dependency_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "multiplayer_waiting_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "nature_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "neutral_force_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "no_building_material_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "no_nature_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "no_storage_space_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "none_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "not_available",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "not_enough_construction_robots_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "not_enough_repair_packs_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "nothing_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "paint_bucket_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "pause",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "placement_indicator_leg",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "play",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "player_force_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "pollution_visualization",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "preset",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "pump_cannot_connect_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "questionmark",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "quick_bar_count_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "rail_path_not_possible",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "rail_planner_indication_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "rail_planner_indication_arrow_too_far",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "rail_signal_placement_indicator",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "recharge_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "red_wire",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "red_wire_hightlight",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "refresh",
-          "type": "SpriteType",
-          "optional": false
+          "type": "AnimationType"
         },
         {
           "name": "refresh_white",
-          "type": "AnimationType",
-          "optional": false
+          "type": "AnimationType"
         },
         {
-          "name": "rename_icon_normal",
-          "type": "SpriteType",
-          "optional": false
+          "name": "center",
+          "type": "SpriteType"
         },
         {
-          "name": "rename_icon_small_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "check_mark",
+          "type": "SpriteType"
         },
         {
-          "name": "rename_icon_small_white",
-          "type": "SpriteType",
-          "optional": false
+          "name": "check_mark_white",
+          "type": "SpriteType"
         },
         {
-          "name": "reset",
-          "type": "SpriteType",
-          "optional": false
+          "name": "check_mark_green",
+          "type": "SpriteType"
         },
         {
-          "name": "reset_white",
-          "type": "SpriteType",
-          "optional": false
+          "name": "check_mark_dark_green",
+          "type": "SpriteType"
         },
         {
-          "name": "resource_editor_icon",
-          "type": "SpriteType",
-          "optional": false
+          "name": "not_played_yet_green",
+          "type": "SpriteType"
         },
         {
-          "name": "right_arrow",
-          "type": "SpriteType",
-          "optional": false
+          "name": "not_played_yet_dark_green",
+          "type": "SpriteType"
         },
         {
-          "name": "robot_slot",
-          "type": "SpriteType",
-          "optional": false
+          "name": "played_green",
+          "type": "SpriteType"
         },
         {
-          "name": "scripting_editor_icon",
-          "type": "SpriteType",
-          "optional": false
+          "name": "played_dark_green",
+          "type": "SpriteType"
         },
         {
-          "name": "search_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "close_fat",
+          "type": "SpriteType"
         },
         {
-          "name": "search_icon",
-          "type": "SpriteType",
-          "optional": false
+          "name": "close_white",
+          "type": "SpriteType"
         },
         {
-          "name": "search_white",
-          "type": "SpriteType",
-          "optional": false
+          "name": "close_black",
+          "type": "SpriteType"
         },
         {
-          "name": "set_bar_slot",
-          "type": "SpriteType",
-          "optional": false
+          "name": "color_picker",
+          "type": "SpriteType"
         },
         {
-          "name": "shield_bar_pip",
-          "type": "SpriteType",
-          "optional": false
+          "name": "change_recipe",
+          "type": "SpriteType"
         },
         {
-          "name": "shoot_cursor_green",
-          "type": "SpriteType",
-          "optional": false
+          "name": "dropdown",
+          "type": "SpriteType"
         },
         {
-          "name": "shoot_cursor_red",
-          "type": "SpriteType",
-          "optional": false
+          "name": "downloading",
+          "type": "SpriteType"
         },
         {
-          "name": "short_indication_line",
-          "type": "SpriteType",
-          "optional": false
+          "name": "downloading_white",
+          "type": "SpriteType"
         },
         {
-          "name": "show_electric_network_in_map_view",
-          "type": "SpriteType",
-          "optional": false
+          "name": "downloaded",
+          "type": "SpriteType"
         },
         {
-          "name": "show_electric_network_in_map_view_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "downloaded_white",
+          "type": "SpriteType"
         },
         {
-          "name": "show_logistics_network_in_map_view",
-          "type": "SpriteType",
-          "optional": false
+          "name": "equipment_grid",
+          "type": "SpriteType"
         },
         {
-          "name": "show_logistics_network_in_map_view_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "expand_dots",
+          "type": "SpriteType"
         },
         {
-          "name": "show_player_names_in_map_view",
-          "type": "SpriteType",
-          "optional": false
+          "name": "expand_dots_white",
+          "type": "SpriteType"
         },
         {
-          "name": "show_player_names_in_map_view_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "export",
+          "type": "SpriteType"
         },
         {
-          "name": "show_pollution_in_map_view",
-          "type": "SpriteType",
-          "optional": false
+          "name": "import",
+          "type": "SpriteType"
         },
         {
-          "name": "show_pollution_in_map_view_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "map",
+          "type": "SpriteType"
         },
         {
-          "name": "show_train_station_names_in_map_view",
-          "type": "SpriteType",
-          "optional": false
+          "name": "map_exchange_string",
+          "type": "SpriteType"
         },
         {
-          "name": "show_train_station_names_in_map_view_black",
-          "type": "SpriteType",
-          "optional": false
+          "name": "missing_mod_icon",
+          "type": "SpriteType"
         },
         {
-          "name": "show_turret_range_in_map_view",
-          "type": "SpriteType",
-          "optional": false
+          "name": "not_available",
+          "type": "SpriteType"
         },
         {
-          "name": "show_turret_range_in_map_view_black",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "shuffle",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_achievements_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_achievements_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_blueprint_library_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_blueprint_library_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_bonus_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_bonus_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_map_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_map_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_menu_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_menu_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_production_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_production_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_train_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_train_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_tutorials_hover_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "side_menu_tutorials_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_ammo",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_armor",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_fuel",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_gun",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_module",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_resource",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_result",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_robot",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "slot_icon_robot_material",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "small_gui_arrow",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "spawn_flag",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "speed_down",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "speed_up",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "spray_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "stack_inserter_capacity_bonus_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "station_name",
-          "type": "SpriteType",
-          "optional": false
+          "name": "play",
+          "type": "SpriteType"
         },
         {
           "name": "stop",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
-          "name": "surface_editor_icon",
-          "type": "SpriteType",
-          "optional": false
+          "name": "preset",
+          "type": "SpriteType"
+        },
+        {
+          "name": "refresh",
+          "type": "SpriteType"
+        },
+        {
+          "name": "reset",
+          "type": "SpriteType"
+        },
+        {
+          "name": "reset_white",
+          "type": "SpriteType"
+        },
+        {
+          "name": "shuffle",
+          "type": "SpriteType"
+        },
+        {
+          "name": "station_name",
+          "type": "SpriteType"
+        },
+        {
+          "name": "search_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "search_white",
+          "type": "SpriteType"
         },
         {
           "name": "sync_mods",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "tick_custom",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "tick_once",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "tick_sixty",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "tile_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "tile_ghost_cursor",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "time_editor_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "too_far",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "too_far_from_roboport_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "track_button",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "train_braking_force_bonus_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "train_stop_disabled_in_map_view",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "train_stop_in_map_view",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "train_stop_placement_indicator",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
           "name": "trash",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "trash_bin",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
           "name": "trash_white",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
-          "name": "turret_attack_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
+          "name": "copy",
+          "type": "SpriteType"
         },
         {
-          "name": "underground_pipe_connection",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "underground_remove_belts",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "underground_remove_pipes",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "unlock_recipe_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "upgrade_blueprint",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "upgrade_mark",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "variations_tool_icon",
-          "type": "SpriteType",
-          "optional": false
+          "name": "reassign",
+          "type": "SpriteType"
         },
         {
           "name": "warning",
-          "type": "SpriteType",
-          "optional": false
-        },
-        {
-          "name": "warning_icon",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
           "name": "warning_white",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
-          "name": "white_mask",
-          "type": "SpriteType",
-          "optional": false
+          "name": "list_view",
+          "type": "SpriteType"
         },
         {
-          "name": "white_square",
-          "type": "SpriteType",
-          "optional": false
+          "name": "grid_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "reference_point",
+          "type": "SpriteType"
+        },
+        {
+          "name": "mouse_cursor",
+          "type": "SpriteType"
+        },
+        {
+          "name": "mod_dependency_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "add",
+          "type": "SpriteType"
+        },
+        {
+          "name": "clone",
+          "type": "SpriteType"
+        },
+        {
+          "name": "go_to_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "pause",
+          "type": "SpriteType"
+        },
+        {
+          "name": "speed_down",
+          "type": "SpriteType"
+        },
+        {
+          "name": "speed_up",
+          "type": "SpriteType"
+        },
+        {
+          "name": "editor_speed_down",
+          "type": "SpriteType"
+        },
+        {
+          "name": "editor_pause",
+          "type": "SpriteType"
+        },
+        {
+          "name": "editor_play",
+          "type": "SpriteType"
+        },
+        {
+          "name": "editor_speed_up",
+          "type": "SpriteType"
+        },
+        {
+          "name": "tick_once",
+          "type": "SpriteType"
+        },
+        {
+          "name": "tick_sixty",
+          "type": "SpriteType"
+        },
+        {
+          "name": "tick_custom",
+          "type": "SpriteType"
+        },
+        {
+          "name": "search_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "too_far",
+          "type": "SpriteType"
+        },
+        {
+          "name": "shoot_cursor_green",
+          "type": "SpriteType"
+        },
+        {
+          "name": "shoot_cursor_red",
+          "type": "SpriteType"
+        },
+        {
+          "name": "electricity_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "fuel_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "ammo_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "fluid_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "warning_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "danger_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "destroyed_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "recharge_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "too_far_from_roboport_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "pump_cannot_connect_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "not_enough_repair_packs_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "not_enough_construction_robots_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "no_building_material_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "no_storage_space_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "electricity_icon_unplugged",
+          "type": "SpriteType"
+        },
+        {
+          "name": "game_stopped_visualization",
+          "type": "SpriteType"
+        },
+        {
+          "name": "pollution_visualization",
+          "type": "SpriteType"
+        },
+        {
+          "name": "health_bar_green_pip",
+          "type": "SpriteType"
+        },
+        {
+          "name": "health_bar_yellow_pip",
+          "type": "SpriteType"
+        },
+        {
+          "name": "health_bar_red_pip",
+          "type": "SpriteType"
+        },
+        {
+          "name": "ghost_bar_pip",
+          "type": "SpriteType"
+        },
+        {
+          "name": "bar_gray_pip",
+          "type": "SpriteType"
+        },
+        {
+          "name": "shield_bar_pip",
+          "type": "SpriteType"
+        },
+        {
+          "name": "hand",
+          "type": "SpriteType"
+        },
+        {
+          "name": "hand_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "entity_info_dark_background",
+          "type": "SpriteType"
+        },
+        {
+          "name": "medium_gui_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "small_gui_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "light_medium",
+          "type": "SpriteType"
+        },
+        {
+          "name": "light_small",
+          "type": "SpriteType"
+        },
+        {
+          "name": "light_cone",
+          "type": "SpriteType"
+        },
+        {
+          "name": "color_effect",
+          "type": "SpriteType"
+        },
+        {
+          "name": "clock",
+          "type": "SpriteType"
+        },
+        {
+          "name": "default_ammo_damage_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "default_gun_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "default_turret_attack_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "hint_arrow_up",
+          "type": "SpriteType"
+        },
+        {
+          "name": "hint_arrow_down",
+          "type": "SpriteType"
+        },
+        {
+          "name": "hint_arrow_right",
+          "type": "SpriteType"
+        },
+        {
+          "name": "hint_arrow_left",
+          "type": "SpriteType"
+        },
+        {
+          "name": "fluid_indication_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "fluid_indication_arrow_both_ways",
+          "type": "SpriteType"
+        },
+        {
+          "name": "heat_exchange_indication",
+          "type": "SpriteType"
+        },
+        {
+          "name": "indication_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rail_planner_indication_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rail_planner_indication_arrow_too_far",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rail_path_not_possible",
+          "type": "SpriteType"
+        },
+        {
+          "name": "indication_line",
+          "type": "SpriteType"
+        },
+        {
+          "name": "short_indication_line",
+          "type": "SpriteType"
+        },
+        {
+          "name": "short_indication_line_green",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_module",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_module_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_armor",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_armor_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_gun",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_gun_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_ammo",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_ammo_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_resource",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_resource_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_fuel",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_fuel_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_result",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_result_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_robot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_robot_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_robot_material",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_robot_material_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_inserter_hand",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot_icon_inserter_hand_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "upgrade_blueprint",
+          "type": "SpriteType"
+        },
+        {
+          "name": "slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "equipment_slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "equipment_collision",
+          "type": "SpriteType"
+        },
+        {
+          "name": "battery",
+          "type": "SpriteType"
+        },
+        {
+          "name": "green_circle",
+          "type": "SpriteType"
+        },
+        {
+          "name": "green_dot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "robot_slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "set_bar_slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "missing_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "deconstruction_mark",
+          "type": "SpriteType"
+        },
+        {
+          "name": "upgrade_mark",
+          "type": "SpriteType"
+        },
+        {
+          "name": "confirm_slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "export_slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "import_slot",
+          "type": "SpriteType"
+        },
+        {
+          "name": "none_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "cable_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "tile_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "decorative_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "resource_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "entity_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "item_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "force_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "clone_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "scripting_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "paint_bucket_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "surface_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "time_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "cliff_editor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "brush_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "spray_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "cursor_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "area_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "line_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "variations_tool_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "lua_snippet_tool_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "editor_selection",
+          "type": "SpriteType"
+        },
+        {
+          "name": "brush_square_shape",
+          "type": "SpriteType"
+        },
+        {
+          "name": "brush_circle_shape",
+          "type": "SpriteType"
+        },
+        {
+          "name": "player_force_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "neutral_force_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "enemy_force_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "nature_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "no_nature_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "multiplayer_waiting_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "spawn_flag",
+          "type": "SpriteType"
+        },
+        {
+          "name": "questionmark",
+          "type": "SpriteType"
+        },
+        {
+          "name": "copper_wire",
+          "type": "SpriteType"
+        },
+        {
+          "name": "green_wire",
+          "type": "SpriteType"
+        },
+        {
+          "name": "red_wire",
+          "type": "SpriteType"
+        },
+        {
+          "name": "green_wire_hightlight",
+          "type": "SpriteType"
+        },
+        {
+          "name": "red_wire_hightlight",
+          "type": "SpriteType"
         },
         {
           "name": "wire_shadow",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
-          "name": "worker_robot_battery_modifier_icon",
+          "name": "and_or",
+          "type": "SpriteType"
+        },
+        {
+          "name": "left_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "right_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "down_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "enter",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_blueprint_library_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_production_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_bonus_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_tutorials_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_train_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_achievements_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_menu_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_map_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_blueprint_library_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_production_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_bonus_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_tutorials_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_train_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_achievements_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_menu_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "side_menu_map_hover_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "circuit_network_panel_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "circuit_network_panel_white",
+          "type": "SpriteType"
+        },
+        {
+          "name": "logistic_network_panel_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "logistic_network_panel_white",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rename_icon_small_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rename_icon_small_white",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rename_icon_normal",
+          "type": "SpriteType"
+        },
+        {
+          "name": "achievement_label_locked",
+          "type": "SpriteType"
+        },
+        {
+          "name": "achievement_label_unlocked_off",
+          "type": "SpriteType"
+        },
+        {
+          "name": "achievement_label_unlocked",
+          "type": "SpriteType"
+        },
+        {
+          "name": "achievement_label_failed",
+          "type": "SpriteType"
+        },
+        {
+          "name": "rail_signal_placement_indicator",
+          "type": "SpriteType"
+        },
+        {
+          "name": "train_stop_placement_indicator",
+          "type": "SpriteType"
+        },
+        {
+          "name": "placement_indicator_leg",
+          "type": "SpriteType"
+        },
+        {
+          "name": "grey_rail_signal_placement_indicator",
+          "type": "SpriteType"
+        },
+        {
+          "name": "grey_placement_indicator_leg",
+          "type": "SpriteType"
+        },
+        {
+          "name": "logistic_radius_visualization",
+          "type": "SpriteType"
+        },
+        {
+          "name": "construction_radius_visualization",
+          "type": "SpriteType"
+        },
+        {
+          "name": "track_button",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_logistics_network_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_electric_network_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_turret_range_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_pollution_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_train_station_names_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_player_names_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_tags_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_worker_robots_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_rail_signal_states_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_recipe_icons_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_logistics_network_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_electric_network_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_turret_range_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_pollution_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_train_station_names_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_player_names_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_tags_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_worker_robots_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_rail_signal_states_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "show_recipe_icons_in_map_view_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "train_stop_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "train_stop_disabled_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "train_stop_full_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "custom_tag_in_map_view",
+          "type": "SpriteType"
+        },
+        {
+          "name": "covered_chunk",
+          "type": "SpriteType"
+        },
+        {
+          "name": "white_square",
+          "type": "SpriteType"
+        },
+        {
+          "name": "white_mask",
+          "type": "SpriteType"
+        },
+        {
+          "name": "favourite_server_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "crafting_machine_recipe_not_unlocked",
+          "type": "SpriteType"
+        },
+        {
+          "name": "gps_map_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "custom_tag_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "underground_remove_belts",
+          "type": "SpriteType"
+        },
+        {
+          "name": "underground_remove_pipes",
+          "type": "SpriteType"
+        },
+        {
+          "name": "underground_pipe_connection",
+          "type": "SpriteType"
+        },
+        {
+          "name": "ghost_cursor",
+          "type": "SpriteType"
+        },
+        {
+          "name": "tile_ghost_cursor",
+          "type": "SpriteType"
+        },
+        {
+          "name": "expand",
+          "type": "SpriteType"
+        },
+        {
+          "name": "expand_dark",
+          "type": "SpriteType"
+        },
+        {
+          "name": "collapse",
+          "type": "SpriteType"
+        },
+        {
+          "name": "collapse_dark",
+          "type": "SpriteType"
+        },
+        {
+          "name": "status_working",
+          "type": "SpriteType"
+        },
+        {
+          "name": "status_not_working",
+          "type": "SpriteType"
+        },
+        {
+          "name": "status_yellow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "gradient",
+          "type": "SpriteType"
+        },
+        {
+          "name": "output_console_gradient",
+          "type": "SpriteType"
+        },
+        {
+          "name": "select_icon_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "select_icon_white",
+          "type": "SpriteType"
+        },
+        {
+          "name": "notification",
+          "type": "SpriteType"
+        },
+        {
+          "name": "alert_arrow",
+          "type": "SpriteType"
+        },
+        {
+          "name": "technology_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "technology_white",
+          "type": "SpriteType"
+        },
+        {
+          "name": "inserter_stack_size_bonus_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "inserter_stack_size_bonus_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "stack_inserter_capacity_bonus_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "stack_inserter_capacity_bonus_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "laboratory_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "laboratory_speed_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_logistic_slots_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_logistic_slots_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_logistic_trash_slots_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_logistic_trash_slots_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "maximum_following_robots_count_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "maximum_following_robots_count_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
         },
         {
           "name": "worker_robot_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "worker_robot_speed_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
         },
         {
           "name": "worker_robot_storage_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
-          "name": "zoom_to_world_blueprint_enabled_modifier_icon",
+          "name": "worker_robot_storage_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
         },
         {
-          "name": "zoom_to_world_deconstruction_planner_enabled_modifier_icon",
+          "name": "ghost_time_to_live_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "ghost_time_to_live_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "turret_attack_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "turret_attack_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "ammo_damage_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "ammo_damage_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "give_item_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "give_item_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "gun_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "gun_speed_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "unlock_recipe_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "unlock_recipe_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_crafting_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_crafting_speed_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_mining_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_mining_speed_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_running_speed_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_running_speed_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_build_distance_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_build_distance_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_item_drop_distance_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_item_drop_distance_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_reach_distance_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_reach_distance_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_resource_reach_distance_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_resource_reach_distance_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_item_pickup_distance_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_item_pickup_distance_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_loot_pickup_distance_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_loot_pickup_distance_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_inventory_slots_bonus_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_inventory_slots_bonus_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "deconstruction_time_to_live_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "deconstruction_time_to_live_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "max_failed_attempts_per_tick_per_construction_queue_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "max_failed_attempts_per_tick_per_construction_queue_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "max_successful_attempts_per_tick_per_construction_queue_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "max_successful_attempts_per_tick_per_construction_queue_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_health_bonus_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_health_bonus_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "mining_drill_productivity_bonus_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "mining_drill_productivity_bonus_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "train_braking_force_bonus_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "train_braking_force_bonus_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
         },
         {
           "name": "zoom_to_world_enabled_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "zoom_to_world_enabled_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
         },
         {
           "name": "zoom_to_world_ghost_building_enabled_modifier_icon",
-          "type": "SpriteType",
-          "optional": false
+          "type": "SpriteType"
         },
         {
-          "name": "zoom_to_world_selection_tool_enabled_modifier_icon",
+          "name": "zoom_to_world_ghost_building_enabled_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "zoom_to_world_blueprint_enabled_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "zoom_to_world_blueprint_enabled_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "zoom_to_world_deconstruction_planner_enabled_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "zoom_to_world_deconstruction_planner_enabled_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
         },
         {
           "name": "zoom_to_world_upgrade_planner_enabled_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "zoom_to_world_upgrade_planner_enabled_modifier_constant",
           "type": "SpriteType",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "zoom_to_world_selection_tool_enabled_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "zoom_to_world_selection_tool_enabled_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "worker_robot_battery_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "worker_robot_battery_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "laboratory_productivity_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "laboratory_productivity_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "follower_robot_lifetime_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "follower_robot_lifetime_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "artillery_range_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "artillery_range_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "nothing_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "nothing_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_additional_mining_categories_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_additional_mining_categories_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "character_logistic_requests_modifier_icon",
+          "type": "SpriteType"
+        },
+        {
+          "name": "character_logistic_requests_modifier_constant",
+          "type": "SpriteType",
+          "optional": true
         }
       ],
       "parent": "PrototypeBase"
@@ -4278,12 +4353,6 @@
           "optional": true
         },
         {
-          "name": "draw_as_shadow",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "filename",
           "type": "FileName",
           "description": "Mandatory if <code>stripes</code> is not specified.",
@@ -4437,7 +4506,8 @@
           "default": "0",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "Turret": {
@@ -5763,7 +5833,7 @@
     "name": "Tutorial",
     "type": "table",
     "link": "/Prototype/Tutorial",
-    "description": "The definition of the tutorial as shown in the tutorial selection in-game. The actual tutorial code is defined in the tutorials folder, in the folder that has the name of the scenario property.",
+    "description": "The definition of the tutorial to be used in the tips and tricks, see <a href=\"/Prototype/TipsAndTricksItem\" title=\"Prototype/TipsAndTricksItem\">Prototype/TipsAndTricksItem</a>. The actual tutorial code is defined in the tutorials folder, in the folder that has the name of the scenario property.",
     "value": {
       "properties": [
         {
@@ -5771,40 +5841,9 @@
           "type": "string",
           "description": "Name of the folder for this tutorial in the tutorials folder.",
           "optional": false
-        },
-        {
-          "name": "trigger",
-          "type": "TutorialTrigger",
-          "optional": false
-        },
-        {
-          "name": "dependencies",
-          "type": "string[]",
-          "description": "Names of the tutorials this one depends on. If those are not unlocked yet, the tutorial will show in a different color in the tutorial gui.",
-          "optional": true
-        },
-        {
-          "name": "locked_when_dependencies_not_completed",
-          "type": "bool",
-          "description": "Whether the tutorial should be locked when the #dependencies tutorials have not yet been completed.",
-          "default": "false",
-          "optional": true
-        },
-        {
-          "name": "related_items",
-          "type": "string[]",
-          "description": "Items that are related to this tutorial, are shown below the tutorial icon in the tutorial list. Max number of related_items is 9.",
-          "optional": true
-        },
-        {
-          "name": "unlocked",
-          "type": "bool",
-          "description": "Whether the tutorial is always unlocked, regardless of dependency tutorials.",
-          "default": "false",
-          "optional": true
         }
       ],
-      "parent": "PrototypeBase:IconSpecification"
+      "parent": "PrototypeBase"
     }
   },
   "UpgradeItem": {
@@ -6048,7 +6087,7 @@
     "link": "/Prototype/EquipmentCategory",
     "description": "Defines a category to be available to <a href=\"/Prototype/Equipment\" title=\"Prototype/Equipment\">Prototype/Equipment</a> and <a href=\"/Prototype/EquipmentGrid\" title=\"Prototype/EquipmentGrid\">Prototype/EquipmentGrid</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "PrototypeBase"
     }
   },
@@ -6058,7 +6097,7 @@
     "link": "/Prototype/TileGhost",
     "description": "The entity used for tile ghosts.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Entity"
     }
   },
@@ -6604,7 +6643,7 @@
         {
           "name": "key_sequence",
           "type": "string",
-          "description": "<p>The default key sequence for this custom input.</p><ul>\"\" (empty string) for unassigned<li>\"mouse-button-2\" etc for mouse buttons, mouse-button-3 for middle mouse button</li><li>\"mouse-wheel-up\", \"mouse-wheel-down\", \"mouse-wheel-left\", \"mouse-wheel-right\" for mouse wheel (mouse wheel controls do not work for custom inputs!)</li><li>\" + \" is used to separate modifier keys from normal keys: <code>\"ALT + G\"</code></li><li>For modifier keys, the following names are used: \"CONTROL\", \"SHIFT\", \"ALT\", \"COMMAND\"</li><li>A keybinding can contain an unlimited amount of modifier keys (listed above) but only one normal key (listed below).</li></ul>",
+          "description": "<p>The default key sequence for this custom input.</p><ul>\"\" (empty string) for unassigned<li>\"mouse-button-2\" etc for mouse buttons, mouse-button-3 for middle mouse button</li><li>\"mouse-wheel-up\", \"mouse-wheel-down\", \"mouse-wheel-left\", \"mouse-wheel-right\" for mouse wheel</li><li>\" + \" is used to separate modifier keys from normal keys: <code>\"ALT + G\"</code></li><li>For modifier keys, the following names are used: \"CONTROL\", \"SHIFT\", \"ALT\", \"COMMAND\"</li><li>A keybinding can contain an unlimited amount of modifier keys (listed above) but only one normal key (listed below).</li></ul>",
           "optional": false
         },
         {
@@ -6646,9 +6685,9 @@
           "optional": true
         },
         {
-          "name": "item_to_create",
+          "name": "item_to_spawn",
           "type": "string",
-          "description": "Name of a Prototype/Item. It will be created when this input is pressed.",
+          "description": "Name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>. It will be created when this input is pressed and action is set to \"spawn-item\". The item must have the <a href=\"/Types/ItemPrototypeFlags#.22spawnable.22\" title=\"Types/ItemPrototypeFlags\">\"spawnable\"</a> flag set.",
           "optional": true
         },
         {
@@ -6822,7 +6861,8 @@
           "default": "0",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "Tile": {
@@ -7068,7 +7108,7 @@
     "link": "/Prototype/SimpleSmoke",
     "description": "<b>Deprecated in 0.16. The type \"simple-smoke\" has been obsoleted and cannot be created. Use <a href=\"/Prototype/TrivialSmoke\" title=\"Prototype/TrivialSmoke\">Prototype/TrivialSmoke</a> or <a href=\"/Prototype/SmokeWithTrigger\" title=\"Prototype/SmokeWithTrigger\">Prototype/SmokeWithTrigger</a> instead.</b>",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Smoke"
     }
   },
@@ -7204,7 +7244,7 @@
     "link": "/Prototype/RecipeCategory",
     "description": "A recipe category. The built-in categories can be found <a href=\"/Data.raw#recipe-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Recipe#category\" title=\"Prototype/Recipe\">Prototype/Recipe#category</a>. Recipe categories can be used to specify which machine can craft which recipes.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "PrototypeBase"
     }
   },
@@ -7370,7 +7410,7 @@
     "link": "/Prototype/BatteryEquipment",
     "description": "Used by <a href=\"/Personal_battery\" title=\"Personal battery\">personal battery</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Equipment"
     }
   },
@@ -7380,7 +7420,7 @@
     "link": "/Prototype/ModuleCategory",
     "description": "A module category. The built-in categories can be found <a href=\"/Data.raw#module-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Module#category\" title=\"Prototype/Module\">Prototype/Module#category</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "PrototypeBase"
     }
   },
@@ -7831,7 +7871,7 @@
     "link": "/Prototype/HighlightBoxEntity",
     "description": "Used to attach graphics to entities during runtime.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Entity"
     }
   },
@@ -8763,6 +8803,11 @@
           "optional": true
         },
         {
+          "name": "close_sound",
+          "type": "SoundType",
+          "optional": true
+        },
+        {
           "name": "dark_background_icons",
           "type": "IconData[]",
           "optional": true
@@ -8821,6 +8866,11 @@
           "optional": true
         },
         {
+          "name": "open_sound",
+          "type": "SoundType",
+          "optional": true
+        },
+        {
           "name": "pictures",
           "type": "SpriteVariations",
           "description": "Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.",
@@ -8876,7 +8926,7 @@
     "link": "/Prototype/DeconstructibleTileProxy",
     "description": "Entity used to signify that the tile below it should be deconstructed.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Entity"
     }
   },
@@ -8916,7 +8966,7 @@
     "link": "/Prototype/EntityParticle",
     "description": "Deprecated in 0.18. The type \"particle\" has been obsoleted and cannot be created. See <a href=\"/Prototype/Particle\" title=\"Prototype/Particle\">Prototype/Particle</a> for particles.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Entity"
     }
   },
@@ -9604,7 +9654,7 @@
     "link": "/Prototype/RocketSiloRocketShadow",
     "description": "The shadow of the rocket inside the rocket silo.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "Entity"
     }
   },
@@ -11257,7 +11307,7 @@
     "link": "/Prototype/NoiseLayer",
     "description": "A noise layer used by the <a href=\"/Types/AutoplaceSpecification#noise_layer\" title=\"Types/AutoplaceSpecification\">autoplace system</a>. For a list of built-in layers, see <a href=\"/Data.raw#noise-layer\" title=\"Data.raw\">Data.raw#noise-layer</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "PrototypeBase"
     }
   },
@@ -11295,9 +11345,9 @@
           "optional": true
         },
         {
-          "name": "item_to_create",
+          "name": "item_to_spawn",
           "type": "string",
-          "description": "Name of a Prototype/Item. The item to create when clicking on a shortcut with the action set to \"create-blueprint-item\".",
+          "description": "Name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>. The item to create when clicking on a shortcut with the action set to \"spawn-item\". The item must have the <a href=\"/Types/ItemPrototypeFlags#.22spawnable.22\" title=\"Types/ItemPrototypeFlags\">\"spawnable\"</a> flag set.",
           "optional": true
         },
         {
@@ -12395,7 +12445,7 @@
     "link": "/Prototype/LeafParticle",
     "description": "Deprecated in 0.18. Particles that are exclusively meant for leaves of trees. The type \"leaf-particle\" has been obsoleted and cannot be created. See <a href=\"/Prototype/Particle\" title=\"Prototype/Particle\">Prototype/Particle</a> for particles.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "EntityParticle"
     }
   },
@@ -12842,6 +12892,16 @@
           "optional": false
         },
         {
+          "name": "blueprint_selection_ended",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "blueprint_selection_started",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "build_blueprint_small",
           "type": "SoundType",
           "optional": false
@@ -12872,6 +12932,16 @@
           "optional": false
         },
         {
+          "name": "cancel_deconstruction_selection_ended",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "cancel_deconstruction_selection_started",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "cannot_build",
           "type": "SoundType",
           "optional": false
@@ -12882,12 +12952,27 @@
           "optional": false
         },
         {
+          "name": "confirm",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "console_message",
           "type": "SoundType",
           "optional": false
         },
         {
+          "name": "copy_activated",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "crafting_finished",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "cut_activated",
           "type": "SoundType",
           "optional": false
         },
@@ -12912,7 +12997,32 @@
           "optional": false
         },
         {
+          "name": "deconstruction_selection_ended",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "deconstruction_selection_started",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "default_manual_repair",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "drop_item",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "entity_settings_pasted",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "entity_settings_copied",
           "type": "SoundType",
           "optional": false
         },
@@ -12942,6 +13052,16 @@
           "optional": false
         },
         {
+          "name": "item_deleted",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "item_spawned",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "list_box_click",
           "type": "SoundType",
           "optional": false
@@ -12962,7 +13082,17 @@
           "optional": false
         },
         {
+          "name": "paste_activated",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
           "name": "picked_up_item",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "rail_plan_start",
           "type": "SoundType",
           "optional": false
         },
@@ -13003,6 +13133,21 @@
         },
         {
           "name": "tutorial_notice",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "undo",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "upgrade_selection_ended",
+          "type": "SoundType",
+          "optional": false
+        },
+        {
+          "name": "upgrade_selection_started",
           "type": "SoundType",
           "optional": false
         },
@@ -13208,6 +13353,16 @@
           "optional": false
         },
         {
+          "name": "checkerboard_black",
+          "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "checkerboard_white",
+          "type": "Color",
+          "optional": false
+        },
+        {
           "name": "clipboard_history_size",
           "type": "uint32",
           "optional": false
@@ -13215,6 +13370,11 @@
         {
           "name": "color_filters",
           "type": "UtilityConstantsColorFilter[]",
+          "optional": false
+        },
+        {
+          "name": "count_button_size",
+          "type": "int",
           "optional": false
         },
         {
@@ -13359,6 +13519,22 @@
           "optional": false
         },
         {
+          "name": "main_menu_background_vignette_intensity",
+          "type": "float",
+          "optional": false
+        },
+        {
+          "name": "main_menu_background_vignette_sharpness",
+          "type": "float",
+          "optional": false
+        },
+        {
+          "name": "main_menu_simulations",
+          "type": "table<string, SimulationDefinition>",
+          "description": "The strings represent the names of the simulations.",
+          "optional": false
+        },
+        {
           "name": "manual_rail_building_reach_modifier",
           "type": "double",
           "optional": false
@@ -13379,6 +13555,11 @@
           "optional": false
         },
         {
+          "name": "medium_blueprint_area_size",
+          "type": "float",
+          "optional": false
+        },
+        {
           "name": "missing_preview_sprite_location",
           "type": "FileName",
           "optional": false
@@ -13387,6 +13568,11 @@
           "name": "player_colors",
           "type": "UtilityConstantsPlayerColor[]",
           "description": "The inner tables have the following key/value pairs. The table with name = default must exist and be the first member of the array.",
+          "optional": false
+        },
+        {
+          "name": "rail_planner_count_button_color",
+          "type": "Color",
           "optional": false
         },
         {
@@ -13415,13 +13601,33 @@
           "optional": false
         },
         {
+          "name": "small_blueprint_area_size",
+          "type": "float",
+          "optional": false
+        },
+        {
           "name": "tile_ghost_tint",
+          "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "train_button_hovered_tint",
+          "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "train_destination_full_color",
           "type": "Color",
           "optional": false
         },
         {
           "name": "train_inactivity_wait_condition_default",
           "type": "uint32",
+          "optional": false
+        },
+        {
+          "name": "train_no_path_color",
+          "type": "Color",
           "optional": false
         },
         {
@@ -13485,6 +13691,11 @@
           "optional": false
         },
         {
+          "name": "unit_group_max_pursue_distance",
+          "type": "double",
+          "optional": false
+        },
+        {
           "name": "unit_group_pathfind_resolution",
           "type": "int8",
           "optional": false
@@ -13511,7 +13722,7 @@
         },
         {
           "name": "default_alert_icon_shift_by_type",
-          "type": "table<string, float>",
+          "type": "table<string, vector>",
           "optional": true
         },
         {
@@ -13842,7 +14053,7 @@
     "link": "/Prototype/BlueprintItem",
     "description": "A <a href=\"/Blueprint\" title=\"Blueprint\">blueprint</a>.",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "SelectionTool"
     }
   },
@@ -14060,14 +14271,6 @@
       "parent": "Item"
     }
   },
-  "LinkedContainer": {
-    "name": "LinkedContainer",
-    "type": "table",
-    "link": "/Prototype_definitions",
-    "value": {
-      "properties": [ ]
-    }
-  },
   "Prototype": {
     "name": "Prototype",
     "type": "prototype",
@@ -14094,7 +14297,6 @@
       "module": "Module",
       "dont-build-entity-achievement": "DontBuildEntityAchievement",
       "rail-signal": "RailSignal",
-      "decorative": "LegacyDecorative",
       "animation": "Animation",
       "item-request-proxy": "ItemRequestProxy",
       "god-controller": "GodController",
@@ -14261,7 +14463,12 @@
       "wall": "Wall",
       "rail-chain-signal": "RailChainSignal",
       "copy-paste-tool": "CopyPasteTool",
-      "linked-container": "LinkedContainer"
+      "linked-container": "LinkedContainer",
+      "spider-leg": "SpiderLeg",
+      "spider-vehicle": "SpiderVehicle",
+      "spidertron-remote": "SpidertronRemote",
+      "tips-and-tricks-item": "TipsAndTricksItem",
+      "tips-and-tricks-item-category": "TipsAndTricksItemCategory"
     }
   },
   "WhitelistBlacklist": {
@@ -14894,7 +15101,7 @@
     "type": "table",
     "link": "/Types/InstantTriggerDelivery",
     "value": {
-      "properties": [ ],
+      "properties": [],
       "parent": "TriggerDeliveryBase"
     }
   },
@@ -15854,12 +16061,6 @@
           "optional": true
         },
         {
-          "name": "draw_as_shadow",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "mipmap_count",
           "type": "uint8",
           "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
@@ -16005,7 +16206,8 @@
           "type": "Stripe[]",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "FootstepTriggerEffectList": {
@@ -16182,6 +16384,11 @@
           "optional": false
         },
         {
+          "name": "entity_ghost_color",
+          "type": "Color",
+          "optional": false
+        },
+        {
           "name": "vehicle_outer_color",
           "type": "Color",
           "optional": false
@@ -16213,6 +16420,16 @@
         },
         {
           "name": "chart_train_stop_disabled_text_color",
+          "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "chart_train_stop_full_text_color",
+          "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "chart_deconstruct_tint",
           "type": "Color",
           "optional": false
         },
@@ -16668,11 +16885,6 @@
           "optional": false
         },
         {
-          "name": "logistics",
-          "type": "BoxSpecification[]",
-          "optional": false
-        },
-        {
           "name": "pair",
           "type": "BoxSpecification[]",
           "optional": false
@@ -17110,12 +17322,6 @@
           "optional": true
         },
         {
-          "name": "draw_as_shadow",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "mipmap_count",
           "type": "uint8",
           "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
@@ -17206,7 +17412,8 @@
           "default": "false",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "WorkingVisualisationApplyTint": {
@@ -18322,7 +18529,7 @@
     "link": "/Prototype/CustomInput#action",
     "value": {
       "lua": "",
-      "create-blueprint-item": "",
+      "spawn-item": "",
       "toggle-personal-roboport": "",
       "toggle-personal-logistic-requests": "",
       "toggle-equipment-movement-bonus": ""
@@ -18501,12 +18708,6 @@
           "optional": true
         },
         {
-          "name": "draw_as_shadow",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "mipmap_count",
           "type": "uint8",
           "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
@@ -18550,7 +18751,8 @@
           "default": "false",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "AmmoTypeTargetType": {
@@ -21971,7 +22173,7 @@
       "import-string": "",
       "toggle-personal-roboport": "",
       "toggle-equipment-movement-bonus": "",
-      "create-blueprint-item": "",
+      "spawn-item": "",
       "lua": ""
     }
   },
@@ -22659,12 +22861,6 @@
           "optional": true
         },
         {
-          "name": "draw_as_shadow",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "mipmap_count",
           "type": "uint8",
           "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
@@ -22708,7 +22904,8 @@
           "default": "false",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "LogisticContainerLogisticMode": {
@@ -23751,12 +23948,6 @@
           "optional": true
         },
         {
-          "name": "draw_as_shadow",
-          "type": "bool",
-          "default": "false",
-          "optional": true
-        },
-        {
           "name": "mipmap_count",
           "type": "uint8",
           "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
@@ -23857,7 +24048,8 @@
           "type": "Stripe[]",
           "optional": true
         }
-      ]
+      ],
+      "parent": "DrawAsAddition"
     }
   },
   "PipeToGroundPictures": {
@@ -24620,6 +24812,1138 @@
           "type": "bool",
           "default": "true",
           "optional": false
+        }
+      ]
+    }
+  },
+  "LinkedContainer": {
+    "name": "LinkedContainer",
+    "type": "table",
+    "link": "/Prototype/LinkedContainer",
+    "description": "A container that shares its inventory with containers with the same <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.link_id\">link_id</a>, which can be set via the GUI. The link IDs are per prototype and force, so only containers with the same ID and same prototype name <i>and</i> same force will share inventories.",
+    "value": {
+      "parent": "EntityWithHealth",
+      "properties": [
+        {
+          "name": "inventory_size",
+          "type": "ItemStackIndex",
+          "description": "Must be > 0.",
+          "optional": false
+        },
+        {
+          "name": "gui_mode",
+          "type": "GuiMode",
+          "description": "Players that can access the GUI to change the link ID. Possible options: \"all\", \"none\", \"admins\".",
+          "default": "all",
+          "optional": true
+        },
+        {
+          "name": "picture",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "scale_info_icons",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpiderLeg": {
+    "name": "SpiderLeg",
+    "type": "table",
+    "link": "/Prototype/SpiderLeg",
+    "description": "Used by <a href=\"/Types/SpiderLegSpecification\" title=\"Types/SpiderLegSpecification\">Types/SpiderLegSpecification</a> for <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>, also known as <a href=\"/Spidertron\" title=\"Spidertron\">spidertron</a>.",
+    "value": {
+      "parent": "EntityWithHealth",
+      "properties": [
+        {
+          "name": "graphics_set",
+          "type": "SpiderLegGraphicsSet",
+          "optional": false
+        },
+        {
+          "name": "initial_movement_speed",
+          "type": "double",
+          "optional": false
+        },
+        {
+          "name": "movement_acceleration",
+          "type": "double",
+          "optional": false
+        },
+        {
+          "name": "movement_based_position_selection_distance",
+          "type": "double",
+          "optional": false
+        },
+        {
+          "name": "part_length",
+          "type": "double",
+          "optional": false
+        },
+        {
+          "name": "walking_sound_volume_modifier",
+          "type": "double",
+          "default": "1",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpiderVehicle": {
+    "name": "SpiderVehicle",
+    "type": "table",
+    "link": "/Prototype/SpiderVehicle",
+    "description": "The <a href=\"/Spidertron\" title=\"Spidertron\">spidertron</a>.",
+    "value": {
+      "parent": "Vehicle",
+      "properties": [
+        {
+          "name": "automatic_weapon_cycling",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "burner",
+          "type": "EnergySource",
+          "description": "Must be a burner energy source.",
+          "optional": true
+        },
+        {
+          "name": "energy_source",
+          "type": "EnergySource",
+          "description": "Can also be a void energy source.",
+          "optional": true
+        },
+        {
+          "name": "chain_shooting_cooldown_modifier",
+          "type": "float",
+          "description": "This is applied whenever the spider shoots (manual and automatic targeting), <code>automatic_weapon_cycling</code> is true and the next gun in line (which is then selected) has ammo.<br>When all of the above is the case, the chain_shooting_cooldown_modifier is a multiplier on the remaining shooting cooldown: <code>cooldown = (remaining_cooldown × chain_shooting_cooldown_modifier)</code>. chain_shooting_cooldown_modifier is intended to be in the range of 0 to 1. This means that setting chain_shooting_cooldown_modifier to 0 reduces the remaining shooting cooldown to 0 while a chain_shooting_cooldown_modifier of 1 does not affect the remaining shooting cooldown at all.",
+          "optional": true
+        },
+        {
+          "name": "chunk_exploration_radius",
+          "type": "uint32",
+          "optional": false
+        },
+        {
+          "name": "graphics_set",
+          "type": "SpiderVehicleGraphicsSet",
+          "optional": false
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "description": "The height of the spider affects the shooting height and the drawing of the graphics and lights.",
+          "optional": false
+        },
+        {
+          "name": "inventory_size",
+          "type": "ItemStackIndex",
+          "optional": false
+        },
+        {
+          "name": "movement_energy_consumption",
+          "type": "Energy",
+          "optional": false
+        },
+        {
+          "name": "spider_engine",
+          "type": "SpiderEnginePrototype",
+          "optional": false
+        },
+        {
+          "name": "guns",
+          "type": "string[]",
+          "description": "The guns this spider vehicle uses.",
+          "optional": true
+        },
+        {
+          "name": "torso_rotation_speed",
+          "type": "float",
+          "description": "The orientation of the torso of the spider affects the shooting direction and the drawing of the graphics and lights.",
+          "default": "1",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpidertronRemote": {
+    "name": "SpidertronRemote",
+    "type": "table",
+    "link": "/Prototype/SpidertronRemote",
+    "description": "The <a href=\"/Spidertron_remote\" title=\"Spidertron remote\">spidertron remote</a>. This remote can only be connected to entities of type <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>.",
+    "value": {
+      "parent": "Item",
+      "properties": [
+        {
+          "name": "automatic_weapon_cycling",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "icon_color_indicator_masks",
+          "type": "IconData[]",
+          "description": "The property for the file path is <code>icon_color_indicator_masks</code> instead of icon.",
+          "optional": false
+        },
+        {
+          "name": "icon_color_indicator_mask",
+          "type": "IconData",
+          "optional": false
+        },
+        {
+          "name": "icon_size",
+          "type": "SpriteSizeType",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "DrawAsAddition": {
+    "name": "DrawAsAddition",
+    "type": "table",
+    "value": {
+      "properties": [
+        {
+          "name": "draw_as_glow",
+          "type": "bool",
+          "description": "<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/91682\">[1]</a></sup></p>",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "draw_as_light",
+          "type": "bool",
+          "description": "Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "draw_as_shadow",
+          "type": "bool",
+          "description": "Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.",
+          "default": "false",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "TipsAndTricksItem": {
+    "name": "TipsAndTricksItem",
+    "type": "table",
+    "link": "/Prototype/TipsAndTricksItem",
+    "description": "A tips and tricks entry.",
+    "value": {
+      "parent": "PrototypeBase",
+      "properties": [
+        {
+          "name": "category",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/TipsAndTricksItemCategory\" title=\"Prototype/TipsAndTricksItemCategory\">Prototype/TipsAndTricksItemCategory</a>, used for the sorting of this tips and tricks entry. Tips and trick entries are sorted first by category and then by their <code>order</code> within that category.",
+          "optional": true
+        },
+        {
+          "name": "dependencies",
+          "type": "string[]",
+          "description": "An array of names of other tips and tricks items. This tips and tricks entry is only shown to the player once they have marked all dependencies as read.",
+          "optional": true
+        },
+        {
+          "name": "image",
+          "type": "FileName",
+          "optional": true
+        },
+        {
+          "name": "indent",
+          "type": "uint8",
+          "description": "The tips and tricks entry is indented by <code>indent</code>×6 spaces.",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "is_title",
+          "type": "bool",
+          "description": "Whether the tip title on the left in the tips and tricks GUI should use the \"title_tip_item\" style (semi bold font).",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "simulation",
+          "type": "SimulationDefinition",
+          "optional": true
+        },
+        {
+          "name": "skip_trigger",
+          "type": "TipTrigger",
+          "description": "Condition for never showing the tip notification to the player.",
+          "optional": true
+        },
+        {
+          "name": "starting_status",
+          "type": "string",
+          "default": "locked",
+          "optional": true
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "description": "String to add in front of the tips and trick entries name. Can be anything, the base game tends to use <a href=\"/Rich_text\" title=\"Rich text\">rich text</a> tags for items, e.g. <code>[item=wooden-chest]</code> here.",
+          "optional": true
+        },
+        {
+          "name": "trigger",
+          "type": "TipTrigger",
+          "description": "Condition for when the tip notification should be shown to the player.",
+          "optional": true
+        },
+        {
+          "name": "tutorial",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Tutorial\" title=\"Prototype/Tutorial\">Prototype/Tutorial</a>.",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "TipsAndTricksItemStartingStatus": {
+    "name": "TipsAndTricksItemStartingStatus",
+    "type": "string",
+    "link": "/Prototype/TipsAndTricksItem#starting_status",
+    "value": {
+      "optional": "",
+      "locked": "",
+      "dependencies-not-met": "",
+      "unlocked": "",
+      "suggested": "",
+      "not-to-be-suggested": "",
+      "completed-without-tutorial": "",
+      "completed": ""
+    }
+  },
+  "TipsAndTricksItemCategory": {
+    "name": "TipsAndTricksItemCategory",
+    "type": "table",
+    "link": "/Prototype/TipsAndTricksItemCategory",
+    "description": "A <a href=\"/Prototype/TipsAndTricksItem\" title=\"Prototype/TipsAndTricksItem\">Prototype/TipsAndTricksItem</a> category, used for sorting of tips and tricks entries: Tips and trick entries are sorted first by category and then by their order within that category.",
+    "value": {
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "order",
+          "type": "Order",
+          "description": "Tips and trick categories are sorted by <code>order</code>, and then the tips and tips entries are sorted by their own order within those categories.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "CursorBoxType": {
+    "name": "CursorBoxType",
+    "type": "string",
+    "link": "/Types/CursorBoxType",
+    "value": {
+      "entity": "The normal entity selection box. Yellow by default.",
+      "electricity": "The selection box used to specify electric poles an entity is connected to. Light blue by default.",
+      "copy": "The selection box used when doing entity copy-paste. Green by default.",
+      "not-allowed": "The selection box used when specifying colliding entities. Red by default.",
+      "pair": "Light Blue by default.",
+      "logistics": "Light Blue by default.",
+      "train-visualization": "White by default.",
+      "blueprint-snap-rectangle": ""
+    }
+  },
+  "SimulationDefinition": {
+    "name": "SimulationDefinition",
+    "type": "table",
+    "link": "/Types/SimulationDefinition",
+    "description": "Used by <a href=\"/Prototype/TipsAndTricksItem\" title=\"Prototype/TipsAndTricksItem\">Prototype/TipsAndTricksItem</a> and by main menu simulations (<a href=\"/Prototype/UtilityConstants\" title=\"Prototype/UtilityConstants\">Prototype/UtilityConstants</a>).",
+    "value": {
+      "properties": [
+        {
+          "name": "save",
+          "type": "FileName",
+          "description": "The save file that is used for this simulation. If not given and <code>generate_map</code> is true, a map gets generated by the game. ",
+          "optional": true
+        },
+        {
+          "name": "init_file",
+          "type": "FileName",
+          "description": "This code is run as a (silent) console command inside the simulation when it is first initialized. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://lua-api.factorio.com/latest/Libraries.html\">[1]</a></sup>.",
+          "optional": true
+        },
+        {
+          "name": "init",
+          "type": "string",
+          "description": "<p>Only loaded if <code>init_file</code> is not present.</p><p>This code is run as a (silent) console command inside the simulation when it is first initialized. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://lua-api.factorio.com/latest/Libraries.html\">[2]</a></sup>.</p>",
+          "optional": true
+        },
+        {
+          "name": "update_file",
+          "type": "FileName",
+          "description": "This code is run as a (silent) console command inside the simulation every time the simulation is updated. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://lua-api.factorio.com/latest/Libraries.html\">[3]</a></sup>.",
+          "optional": true
+        },
+        {
+          "name": "update",
+          "type": "string",
+          "description": "<p>Only loaded if <code>update_file</code> is not present.</p><p>This code is run as a (silent) console command inside the simulation every time the simulation is updated. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://lua-api.factorio.com/latest/Libraries.html\">[4]</a></sup>.</p>",
+          "optional": true
+        },
+        {
+          "name": "init_update_count",
+          "type": "uint32",
+          "description": "Amount of ticks that this simulation should run for before the simulation is shown to the player. These updates happen after init/init_file has been run and at the highest possible rate (> 60 UPS).",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "length",
+          "type": "uint32",
+          "description": "How long this simulation takes. In the main menu simulations, another simulation will start after this simulation ends.",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "generate_map",
+          "type": "bool",
+          "description": "If <code>save</code> is not given and this is true, a map gets generated by the game for use in the simulation.",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "checkboard",
+          "type": "bool",
+          "description": "If this is true, the map of the simulation is set to be a lab-tile checkerboard in the area of {{-20, -15},{20, 15}} when the scenario is first initialized (before init/init_file run).",
+          "default": "true",
+          "optional": true
+        },
+        {
+          "name": "volume_modifier",
+          "type": "float",
+          "description": "Multiplier for the simulation volume set by the player in the sound settings.",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpiderEnginePrototype": {
+    "name": "SpiderEnginePrototype",
+    "type": "table",
+    "link": "/Types/SpiderEnginePrototype",
+    "description": "Used by <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>.",
+    "value": {
+      "properties": [
+        {
+          "name": "military_target",
+          "type": "string",
+          "description": "The name of the simple entity with force prototype that gets enemies interested in attacking the spider vehicle when nobody is in it.",
+          "optional": false
+        },
+        {
+          "name": "legs",
+          "type": "SpiderLegSpecification|SpiderLegSpecification[]",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "SpiderLegGraphicsSet": {
+    "name": "SpiderLegGraphicsSet",
+    "type": "table",
+    "link": "/Types/SpiderLegGraphicsSet",
+    "description": "Used to specify the graphics for <a href=\"/Prototype/SpiderLeg\" title=\"Prototype/SpiderLeg\">Prototype/SpiderLeg</a>.",
+    "value": {
+      "properties": [
+        {
+          "name": "joint_turn_offset",
+          "type": "float",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "joint",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "joint_shadow",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "upper_part",
+          "type": "SpiderLegPart",
+          "optional": true
+        },
+        {
+          "name": "lower_part",
+          "type": "SpiderLegPart",
+          "optional": true
+        },
+        {
+          "name": "upper_part_shadow",
+          "type": "SpiderLegPart",
+          "optional": true
+        },
+        {
+          "name": "lower_part_shadow",
+          "type": "SpiderLegPart",
+          "optional": true
+        },
+        {
+          "name": "upper_part_water_reflection",
+          "type": "SpiderLegPart",
+          "optional": true
+        },
+        {
+          "name": "lower_part_water_reflection",
+          "type": "SpiderLegPart",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpiderVehicleGraphicsSet": {
+    "name": "SpiderVehicleGraphicsSet",
+    "type": "table",
+    "link": "/Types/SpiderVehicleGraphicsSet",
+    "description": "Used to specify the graphics for <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>.",
+    "value": {
+      "properties": [
+        {
+          "name": "base_animation",
+          "type": "RotatedAnimation",
+          "optional": true
+        },
+        {
+          "name": "shadow_base_animation",
+          "type": "RotatedAnimation",
+          "optional": true
+        },
+        {
+          "name": "animation",
+          "type": "RotatedAnimation",
+          "optional": true
+        },
+        {
+          "name": "shadow_animation",
+          "type": "RotatedAnimation",
+          "optional": true
+        },
+        {
+          "name": "base_render_layer",
+          "type": "RenderLayer",
+          "default": "higher-object-under",
+          "optional": true
+        },
+        {
+          "name": "render_layer",
+          "type": "RenderLayer",
+          "default": "wires-above",
+          "optional": true
+        },
+        {
+          "name": "autopilot_destination_visualisation_render_layer",
+          "type": "RenderLayer",
+          "default": "object",
+          "optional": true
+        },
+        {
+          "name": "light",
+          "type": "LightDefinition",
+          "optional": true
+        },
+        {
+          "name": "eye_light",
+          "type": "LightDefinition",
+          "optional": true
+        },
+        {
+          "name": "autopilot_destination_on_map_visualisation",
+          "type": "AnimationType",
+          "optional": true
+        },
+        {
+          "name": "autopilot_destination_visualisation",
+          "type": "AnimationType",
+          "optional": true
+        },
+        {
+          "name": "light_positions",
+          "type": "vector[][]",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "TipTrigger": {
+    "name": "TipTrigger",
+    "type": "prototype",
+    "link": "/Types/TipTrigger",
+    "description": "A Types/table that is loaded as one of the below listed types, depending on the value of the type key in the table.",
+    "value": {
+      "or": "OrTipTrigger",
+      "and": "AndTipTrigger",
+      "sequence": "SequenceTipTrigger",
+      "dependencies-met": "DependenciesMetTipTrigger",
+      "time-elapsed": "TimeElapsedTipTrigger",
+      "research": "ResearchTechnologyTipTrigger",
+      "unlocked-recipe": "UnlockedRecipeTipTrigger",
+      "craft-item": "CraftItemTipTrigger",
+      "build-entity": "BuildEntityTipTrigger",
+      "manual-transfer": "ManualTransferTipTrigger",
+      "stack-transfer": "StackTransferTipTrigger",
+      "entity-transfer": "EntityTransferTipTrigger",
+      "set-recipe": "SetRecipeTipTrigger",
+      "limit-chest": "LimitChestTipTrigger",
+      "use-pipette": "UsePipetteTipTrigger",
+      "set-logistic-request": "SetLogisticRequestTipTrigger",
+      "use-confirm": "UseConfirmTipTrigger",
+      "low-power": "LowPowerTipTrigger",
+      "paste-entity-settings": "PasteEntitySettingsTipTrigger",
+      "fast-replace": "FastReplaceTipTrigger",
+      "group-attack": "GroupAttackTipTrigger"
+    }
+  },
+  "OrTipTrigger": {
+    "name": "OrTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "triggers",
+          "type": "TipTrigger[]",
+          "description": "Array of other tip triggers, if at least one of them is fulfilled, this tip trigger is considered fulfilled.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "AndTipTrigger": {
+    "name": "AndTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "triggers",
+          "type": "TipTrigger[]",
+          "description": "Array of other tip triggers, if all of them are fulfilled, this tip trigger is considered fulfilled.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "SequenceTipTrigger": {
+    "name": "SequenceTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "triggers",
+          "type": "TipTrigger[]",
+          "description": "Array of other tip triggers.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "DependenciesMetTipTrigger": {
+    "name": "DependenciesMetTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "description": "This tip trigger is considered fulfilled when the dependencies of the <a href=\"/Prototype/TipsAndTricksItem\" title=\"Prototype/TipsAndTricksItem\">Prototype/TipsAndTricksItem</a> are fulfilled.",
+    "value": {
+      "properties": []
+    }
+  },
+  "TimeElapsedTipTrigger": {
+    "name": "TimeElapsedTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "ticks",
+          "type": "uint32",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "ResearchTechnologyTipTrigger": {
+    "name": "ResearchTechnologyTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "technology",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Technology\" title=\"Prototype/Technology\">Prototype/Technology</a>.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "UnlockedRecipeTipTrigger": {
+    "name": "UnlockedRecipeTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "recipe",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Recipe\" title=\"Prototype/Recipe\">Prototype/Recipe</a>.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "CraftItemTipTrigger": {
+    "name": "CraftItemTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "item",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>.",
+          "optional": true
+        },
+        {
+          "name": "consecutive",
+          "type": "bool",
+          "description": "Can only be used with <code>event_type</code> \"crafting-finished\". ",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "event_type",
+          "type": "CraftItemTipTriggerEventType",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "CraftItemTipTriggerEventType": {
+    "name": "CraftItemTipTriggerEventType",
+    "type": "string",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "crafting-of-single-item-ordered": "",
+      "crafting-of-multiple-items-ordered": "",
+      "crafting-finished": ""
+    }
+  },
+  "BuildEntityTipTrigger": {
+    "name": "BuildEntityTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "1",
+          "optional": true
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "optional": true
+        },
+        {
+          "name": "match_type_only",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "build_by_dragging",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "ManualTransferTipTrigger": {
+    "name": "ManualTransferTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "StackTransferTipTrigger": {
+    "name": "StackTransferTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "transfer",
+          "type": "StackTransferTipTriggerTransfer",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "StackTransferTipTriggerTransfer": {
+    "name": "StackTransferTipTriggerTransfer",
+    "type": "string",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "stack": "",
+      "inventory": "",
+      "whole-inventory": ""
+    }
+  },
+  "EntityTransferTipTrigger": {
+    "name": "EntityTransferTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "transfer",
+          "type": "EntityTransferTipTriggerTransfer",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "EntityTransferTipTriggerTransfer": {
+    "name": "EntityTransferTipTriggerTransfer",
+    "type": "string",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "in": "",
+      "out": ""
+    }
+  },
+  "SetRecipeTipTrigger": {
+    "name": "SetRecipeTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "recipe",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Recipe\" title=\"Prototype/Recipe\">Prototype/Recipe</a>.",
+          "optional": true
+        },
+        {
+          "name": "machine",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "optional": true
+        },
+        {
+          "name": "consecutive",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "uses_fluid",
+          "type": "bool",
+          "description": "Default: any (= it does not matter)",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "LimitChestTipTrigger": {
+    "name": "LimitChestTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "UsePipetteTipTrigger": {
+    "name": "UsePipetteTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SetLogisticRequestTipTrigger": {
+    "name": "SetLogisticRequestTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "logistic_chest_only",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "UseConfirmTipTrigger": {
+    "name": "UseConfirmTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "LowPowerTipTrigger": {
+    "name": "LowPowerTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "PasteEntitySettingsTipTrigger": {
+    "name": "PasteEntitySettingsTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "optional": true
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "optional": true
+        },
+        {
+          "name": "match_type_only",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "FastReplaceTipTrigger": {
+    "name": "FastReplaceTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "optional": true
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "optional": true
+        },
+        {
+          "name": "match_type_only",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "GroupAttackTipTrigger": {
+    "name": "GroupAttackTipTrigger",
+    "type": "table",
+    "link": "/Types/TipTrigger",
+    "value": {
+      "properties": [
+        {
+          "name": "count",
+          "type": "uint32",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpiderLegSpecification": {
+    "name": "SpiderLegSpecification",
+    "type": "table",
+    "link": "/Types/SpiderLegSpecification",
+    "description": "Used by <a href=\"/Types/SpiderEnginePrototype\" title=\"Types/SpiderEnginePrototype\">Types/SpiderEnginePrototype</a> for <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>.",
+    "value": {
+      "properties": [
+        {
+          "name": "leg",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/SpiderLeg\" title=\"Prototype/SpiderLeg\">Prototype/SpiderLeg</a>.\n",
+          "optional": false
+        },
+        {
+          "name": "mount_position",
+          "type": "vector",
+          "optional": false
+        },
+        {
+          "name": "ground_position",
+          "type": "vector",
+          "optional": false
+        },
+        {
+          "name": "blocking_legs",
+          "type": "uint32[]",
+          "description": "The 1-based indices of the legs that should block this leg's movement.",
+          "optional": false
+        },
+        {
+          "name": "leg_hit_the_ground_trigger",
+          "type": "TriggerEffect",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SpiderLegPart": {
+    "name": "SpiderLegPart",
+    "type": "table",
+    "link": "/Types/SpiderLegPart",
+    "description": "Used by <a href=\"/Types/SpiderLegGraphicsSet\" title=\"Types/SpiderLegGraphicsSet\">Types/SpiderLegGraphicsSet</a> for <a href=\"/Prototype/SpiderLeg\" title=\"Prototype/SpiderLeg\">Prototype/SpiderLeg</a>.",
+    "value": {
+      "properties": [
+        {
+          "name": "top_end",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "middle",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "bottom_end",
+          "type": "SpriteType",
+          "optional": true
+        },
+        {
+          "name": "middle_offset_from_top",
+          "type": "float",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "middle_offset_from_bottom",
+          "type": "float",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "top_end_length",
+          "type": "float",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "bottom_end_length",
+          "type": "float",
+          "default": "0",
+          "optional": true
         }
       ]
     }

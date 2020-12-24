@@ -169,6 +169,8 @@ public class Main {
 			add("/Types/BoxSpecification");
 			add("/Types/Sprite8Way");
 			add("/Types/RailPieceLayers");
+			add("/Types/SpiderLegSpecification");
+			add("/Types/SpiderLegPart");
 			add("/Prototype_definitions");
 		}};
 		parsePageByLinks(newPath, additionalTypes);

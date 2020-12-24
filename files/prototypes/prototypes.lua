@@ -668,254 +668,6 @@ Fish.icon_size = nil
 ---@type uint8
 Fish.icon_mipmaps = nil
 
----<b>Deprecated in 0.15.</b> Simple decorative purpose entities on the map, they have no health and some of them are removed when the player builds over. <b>The type "decorative" has been obsoleted and cannot be created.</b>
----@class LegacyDecorative
-local LegacyDecorative = {}
-
----Entities this entity prototype can be pasted on to in addition to the standard supported types. This is used to allow copying between types that aren't compatible on the C++ code side, by allowing mods to receive the <a rel="nofollow" class="external text" href="https://lua-api.factorio.com/latest/events.html#on_entity_settings_pasted">on_entity_settings_pasted</a> event for the given entity and do the setting pasting via script.
----@optional true
----@type string[]
-LegacyDecorative.additional_pastable_entities = nil
-
----@optional true
----@type float
-LegacyDecorative.alert_icon_scale = nil
-
----@optional true
----@type vector
-LegacyDecorative.alert_icon_shift = nil
-
----@default true
----@optional true
----@type bool
-LegacyDecorative.allow_copy_paste = nil
-
----Used to specify the rules for placing this entity during map generation.
----@default nil
----@optional true
----@type AutoplaceSpecification
-LegacyDecorative.autoplace = nil
-
----@default 0
----@optional true
----@type double
-LegacyDecorative.build_base_evolution_requirement = nil
-
----@optional true
----@type SoundType
-LegacyDecorative.build_sound = nil
-
----@optional true
----@type SoundType
-LegacyDecorative.close_sound = nil
-
----<p>Specification of the entity collision boundaries.</p><p>Empty collision box is used for smoke, projectiles, particles, explosions etc.</p><p><div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="n">collision_box</span> <span class="o">=</span> <span class="p">{{</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">}}</span></pre></div></p><p>The {0,0} coordinate in the collision box will match the entity position.</p><p>It should be near the center of the collision box, to keep correct entity drawing order. It must include the {0,0} coordinate.</p><p>Note, that for buildings, it is customary to leave 0.1 wide border between the edge of the tile and the edge of the building, this lets the player move between the building and electric poles/inserters etc.</p>
----@optional true
----@type BoundingBox
-LegacyDecorative.collision_box = nil
-
----Two entities can collide only if they share a layer from the collision mask.
----@optional true
----@type CollisionMask
-LegacyDecorative.collision_mask = nil
-
----The effect/trigger that happens when the entity is placed.
----@optional true
----@type Trigger
-LegacyDecorative.created_effect = nil
-
----The smoke that is shown when the entity is placed. Default is using the "smoke-building" smoke.
----@default smoke-building
----@optional true
----@type CreateTrivialSmokeEffectItem
-LegacyDecorative.created_smoke = nil
-
----<p>Specification of space needed to see the whole entity.</p><p>This is used to calculate the correct zoom and positioning in the entity info gui.</p>
----@optional true
----@type BoundingBox
-LegacyDecorative.drawing_box = nil
-
----Amount of emissions created (positive number) or cleaned (negative number) every second by the entity. This is passive, and it is independent concept of the emissions of machines, these are created actively depending on the power consumption. Currently used just for trees.
----@default 0
----@optional true
----@type double
-LegacyDecorative.emissions_per_second = nil
-
----@optional true
----@type Color
-LegacyDecorative.enemy_map_color = nil
-
----<p>This allows you to replace an entity that's already placed, with a different one in your inventory. For example, replacing a burner inserter with a fast inserter.</p><p>This is simply a string, so any string can be used here. The entity that should be replaced simply has to use the same string here.</p>
----@optional true
----@type string
-LegacyDecorative.fast_replaceable_group = nil
-
----@optional true
----@type EntityPrototypeFlags
-LegacyDecorative.flags = nil
-
----@optional true
----@type Color
-LegacyDecorative.friendly_map_color = nil
-
----Where beams should hit the entity. Useful if the bounding box only covers part of the entity (e.g. feet of the character) and beams only hitting there would look weird.
----@optional true
----@type BoundingBox
-LegacyDecorative.hit_visualization_box = nil
-
----@optional true
----@type Color
-LegacyDecorative.map_color = nil
-
----Used instead of the collision box during map generation. Allows space entities differently during map generation, for example if the box is bigger, the entities will be placed farther apart.
----@optional true
----@type BoundingBox
-LegacyDecorative.map_generator_bounding_box = nil
-
----@optional true
----@type MinableProperties
-LegacyDecorative.minable = nil
-
----@optional true
----@type SoundType
-LegacyDecorative.mined_sound = nil
-
----@optional true
----@type SoundType
-LegacyDecorative.mining_sound = nil
-
----Name of the entity that will be automatically selected as the upgrade of this entity when using the <a href="/Upgrade_planner" title="Upgrade planner">upgrade planner</a> without configuration.</p><p>This entity may not have 'not-upgradable' flag set and must be minable. This entity mining result must not contain item product with "hidden" flag set. Mining results with no item products are allowed. The entity may not be a <a href="/Prototype/RollingStock" title="Prototype/RollingStock">Prototype/RollingStock</a>.<br>The upgrade target entity needs to have the same bounding box, collision mask, and fast replaceable group as this entity. The upgrade target entity must have least 1 item that builds it that isn't hidden.</p>
----@optional true
----@type string
-LegacyDecorative.next_upgrade = nil
-
----@optional true
----@type SoundType
-LegacyDecorative.open_sound = nil
-
----<p>Item that when placed creates this entity. Determines which item is picked when "Q" (smart pipette) is used on the entity, determines which item is needed in a blueprint of this entity.</p><p>The item count specified here can't be larger than the stack size of that item.</p>
----@optional true
----@type ItemToPlace|ItemToPlace[]
-LegacyDecorative.placeable_by = nil
-
----@optional true
----@type RadiusVisualisationSpecification
-LegacyDecorative.radius_visualisation_specification = nil
-
----The entity that remains when this one is mined, deconstructed or fast-replaced. The entity wont actually be spawned if it would collide with the entity that is in the process of being mined.
----@optional true
----@type string|string[]
-LegacyDecorative.remains_when_mined = nil
-
----Whether this entity should remove decoratives that collide with it when this entity is built.
----@default automatic
----@optional true
----@type EntityRemoveDecoratives
-LegacyDecorative.remove_decoratives = nil
-
----@optional true
----@type SoundType
-LegacyDecorative.rotated_sound = nil
-
----@default true
----@optional true
----@type bool
-LegacyDecorative.selectable_in_game = nil
-
----<p>Specification of the entity selection area. When empty the entity will have no selection area (and thus is not selectable).</p><p>The selection box is usually a little bit bigger than the collision box, for tilable entities (like buildings) it should match the tile size of the building.</p>
----@optional true
----@type BoundingBox
-LegacyDecorative.selection_box = nil
-
----The entity with the higher number is selectable before the entity with the lower number.
----@default 50
----@optional true
----@type uint8
-LegacyDecorative.selection_priority = nil
-
----The cursor size used when shooting at this entity.
----@optional true
----@type double
-LegacyDecorative.shooting_cursor_size = nil
-
----Used to set the area of the entity that can have stickers on it, currently only used for units to specify the area where the green slow down stickers can appear. It is optional and the collision box is used when not specified.
----@optional true
----@type BoundingBox
-LegacyDecorative.sticker_box = nil
-
----The name of the subgroup this entity should be sorted into in the map editor building selection.
----@optional true
----@type string
-LegacyDecorative.subgroup = nil
-
----@optional true
----@type uint32
-LegacyDecorative.tile_height = nil
-
----Used to determine how the center of the entity should be positioned when building (unless the offgrid <a href="/Types/EntityPrototypeFlags" title="Types/EntityPrototypeFlags">flag</a> is specified). When the tile width is odd, the center will be in the center of the tile, when it is even, the center is on the tile transition.
----@optional true
----@type uint32
-LegacyDecorative.tile_width = nil
-
----@optional true
----@type TriggerTargetMask
-LegacyDecorative.trigger_target_mask = nil
-
----When playing this sound, the volume is scaled by the speed of the vehicle when colliding with this entity.
----@optional true
----@type SoundType
-LegacyDecorative.vehicle_impact_sound = nil
-
----May also be defined inside <code>graphics_set</code> instead of directly in the entity prototype. This is useful for entities that use the a <code>graphics_set</code> property to define their graphics, becausen then all graphics can be in defined one place.
----@optional true
----@type WaterReflectionDefinition
-LegacyDecorative.water_reflection = nil
-
----Will also work on entities that don't actually do work.
----@optional true
----@type WorkingSound
-LegacyDecorative.working_sound = nil
-
----<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
----@optional false
----@type string
-LegacyDecorative.name = nil
-
----Overwrites the description set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. The description is usually shown in the tooltip of the prototype.
----@optional true
----@type LocalisedString
-LegacyDecorative.localised_description = nil
-
----Overwrites the name set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. Can be used to easily set a procedurally-generated name because the LocalisedString format allows to insert parameters into the name directly from the Lua script.
----@optional true
----@type LocalisedString
-LegacyDecorative.localised_name = nil
-
----<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>
----@optional true
----@type Order
-LegacyDecorative.order = nil
-
----Path to the icon file.
----@optional true
----@type FileName
-LegacyDecorative.icon = nil
-
----The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
----@optional true
----@type IconData[]
-LegacyDecorative.icons = nil
-
----Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
----@optional true
----@type FileName
-LegacyDecorative.icon_size = nil
-
----@default 0
----@optional true
----@type uint8
-LegacyDecorative.icon_mipmaps = nil
-
 ---null
 ---@class ItemWithTags
 local ItemWithTags = {}
@@ -940,6 +692,10 @@ ItemWithTags.stack_size = nil
 ---@optional true
 ---@type string
 ItemWithTags.burnt_result = nil
+
+---@optional true
+---@type SoundType
+ItemWithTags.close_sound = nil
 
 ---@optional true
 ---@type IconData[]
@@ -988,6 +744,10 @@ ItemWithTags.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 ItemWithTags.fuel_value = nil
+
+---@optional true
+---@type SoundType
+ItemWithTags.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -2760,6 +2520,10 @@ MiningTool.stack_size = nil
 MiningTool.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+MiningTool.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 MiningTool.dark_background_icons = nil
 
@@ -2806,6 +2570,10 @@ MiningTool.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 MiningTool.fuel_value = nil
+
+---@optional true
+---@type SoundType
+MiningTool.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -6764,11 +6532,6 @@ Loader1x2.icon_mipmaps = nil
 ---@class ItemGroup
 local ItemGroup = {}
 
----The icon that is shown to represent this item group.
----@optional false
----@type IconSpecification
-ItemGroup.icons, icon, icon_size (IconSpecification) = nil
-
 ---Items in recipes are ordered by item group. The <code>order_in_recipe</code> property can be used to specify the ordering in recipes without affecting the inventory order.
 ---@optional true
 ---@type Order
@@ -6793,6 +6556,26 @@ ItemGroup.localised_name = nil
 ---@optional true
 ---@type Order
 ItemGroup.order = nil
+
+---Path to the icon file.
+---@optional true
+---@type FileName
+ItemGroup.icon = nil
+
+---The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
+---@optional true
+---@type IconData[]
+ItemGroup.icons = nil
+
+---Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
+---@optional true
+---@type FileName
+ItemGroup.icon_size = nil
+
+---@default 0
+---@optional true
+---@type uint8
+ItemGroup.icon_mipmaps = nil
 
 ---A <a href="/Splitter" title="Splitter">splitter</a>.
 ---@class Splitter
@@ -8912,6 +8695,10 @@ RepairTool.stack_size = nil
 RepairTool.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+RepairTool.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 RepairTool.dark_background_icons = nil
 
@@ -8958,6 +8745,10 @@ RepairTool.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 RepairTool.fuel_value = nil
+
+---@optional true
+---@type SoundType
+RepairTool.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -11946,6 +11737,10 @@ SelectionTool.stack_size = nil
 SelectionTool.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+SelectionTool.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 SelectionTool.dark_background_icons = nil
 
@@ -11992,6 +11787,10 @@ SelectionTool.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 SelectionTool.fuel_value = nil
+
+---@optional true
+---@type SoundType
+SelectionTool.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -12473,152 +12272,28 @@ TrainStop.icon_mipmaps = nil
 local UtilitySprites = {}
 
 ---@optional false
----@type SpriteType
-UtilitySprites.achievement_label_failed = nil
+---@type UtilitySpritesCursorBox
+UtilitySprites.cursor_box = nil
 
 ---@optional false
----@type SpriteType
-UtilitySprites.achievement_label_locked = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.achievement_label_unlocked = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.achievement_label_unlocked_off = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.add = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.ammo_damage_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.ammo_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.and_or = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.area_icon = nil
+---@type AnimationType
+UtilitySprites.clouds = nil
 
 ---@optional false
 ---@type AnimationType
 UtilitySprites.arrow_button = nil
 
 ---@optional false
----@type SpriteType
-UtilitySprites.artillery_range_modifier_icon = nil
+---@type AnimationType
+UtilitySprites.explosion_chart_visualization = nil
 
 ---@optional false
----@type SpriteType
-UtilitySprites.auto_character_logistic_trash_slots_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.bar_gray_pip = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.battery = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.battery_indicator = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.battery_indicator_bar = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.brush_circle_shape = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.brush_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.brush_square_shape = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.cable_editor_icon = nil
+---@type AnimationType
+UtilitySprites.refresh_white = nil
 
 ---@optional false
 ---@type SpriteType
 UtilitySprites.center = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.change_recipe = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_additional_mining_categories_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_build_distance_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_crafting_speed_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_health_bonus_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_inventory_slots_bonus_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_item_drop_distance_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_item_pickup_distance_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_logistic_requests_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_logistic_slots_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_logistic_trash_slots_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_loot_pickup_distance_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_mining_speed_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_reach_distance_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_resource_reach_distance_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.character_running_speed_modifier_icon = nil
 
 ---@optional false
 ---@type SpriteType
@@ -12630,31 +12305,27 @@ UtilitySprites.check_mark_white = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.circuit_network_panel_black = nil
+UtilitySprites.check_mark_green = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.circuit_network_panel_white = nil
+UtilitySprites.check_mark_dark_green = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.cliff_editor_icon = nil
+UtilitySprites.not_played_yet_green = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.clock = nil
+UtilitySprites.not_played_yet_dark_green = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.clone = nil
+UtilitySprites.played_green = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.clone_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.close_black = nil
+UtilitySprites.played_dark_green = nil
 
 ---@optional false
 ---@type SpriteType
@@ -12665,20 +12336,8 @@ UtilitySprites.close_fat = nil
 UtilitySprites.close_white = nil
 
 ---@optional false
----@type AnimationType
-UtilitySprites.clouds = nil
-
----@optional false
 ---@type SpriteType
-UtilitySprites.collapse = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.collapse_dark = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.color_effect = nil
+UtilitySprites.close_black = nil
 
 ---@optional false
 ---@type SpriteType
@@ -12686,35 +12345,239 @@ UtilitySprites.color_picker = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.confirm_slot = nil
+UtilitySprites.change_recipe = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.construction_radius_visualization = nil
+UtilitySprites.dropdown = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.copper_wire = nil
+UtilitySprites.downloading = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.covered_chunk = nil
+UtilitySprites.downloading_white = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.crafting_machine_recipe_not_unlocked = nil
-
----@optional false
----@type UtilitySpritesCursorBox
-UtilitySprites.cursor_box = nil
+UtilitySprites.downloaded = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.cursor_icon = nil
+UtilitySprites.downloaded_white = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.custom_tag_in_map_view = nil
+UtilitySprites.equipment_grid = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.expand_dots = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.expand_dots_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.export = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.import = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.map = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.map_exchange_string = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.missing_mod_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.not_available = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.play = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.stop = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.preset = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.refresh = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.reset = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.reset_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.shuffle = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.station_name = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.search_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.search_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.sync_mods = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.trash = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.trash_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.copy = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.reassign = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.warning = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.warning_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.list_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.grid_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.reference_point = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.mouse_cursor = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.mod_dependency_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.add = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.clone = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.go_to_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.pause = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.speed_down = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.speed_up = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.editor_speed_down = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.editor_pause = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.editor_play = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.editor_speed_up = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.tick_once = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.tick_sixty = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.tick_custom = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.search_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.too_far = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.shoot_cursor_green = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.shoot_cursor_red = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.electricity_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.fuel_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.ammo_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.fluid_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.warning_icon = nil
 
 ---@optional false
 ---@type SpriteType
@@ -12722,15 +12585,111 @@ UtilitySprites.danger_icon = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.deconstruction_mark = nil
+UtilitySprites.destroyed_icon = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.deconstruction_time_to_live_modifier_icon = nil
+UtilitySprites.recharge_icon = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.decorative_editor_icon = nil
+UtilitySprites.too_far_from_roboport_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.pump_cannot_connect_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.not_enough_repair_packs_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.not_enough_construction_robots_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.no_building_material_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.no_storage_space_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.electricity_icon_unplugged = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.game_stopped_visualization = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.pollution_visualization = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.health_bar_green_pip = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.health_bar_yellow_pip = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.health_bar_red_pip = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.ghost_bar_pip = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.bar_gray_pip = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.shield_bar_pip = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.hand = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.hand_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.entity_info_dark_background = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.medium_gui_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.small_gui_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.light_medium = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.light_small = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.light_cone = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.color_effect = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.clock = nil
 
 ---@optional false
 ---@type SpriteType
@@ -12746,123 +12705,19 @@ UtilitySprites.default_turret_attack_modifier_icon = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.destroyed_icon = nil
+UtilitySprites.hint_arrow_up = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.down_arrow = nil
+UtilitySprites.hint_arrow_down = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.downloaded = nil
+UtilitySprites.hint_arrow_right = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.downloaded_white = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.downloading = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.downloading_white = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.dropdown = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.editor_pause = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.editor_play = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.editor_selection = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.editor_speed_down = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.editor_speed_up = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.electricity_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.electricity_icon_unplugged = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.enemy_force_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.enter = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.entity_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.entity_info_dark_background = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.equipment_collision = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.equipment_grid = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.equipment_slot = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.expand = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.expand_dark = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.expand_dots = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.expand_dots_white = nil
-
----@optional false
----@type AnimationType
-UtilitySprites.explosion_chart_visualization = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.export = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.export_slot = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.favourite_server_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.fluid_icon = nil
+UtilitySprites.hint_arrow_left = nil
 
 ---@optional false
 ---@type SpriteType
@@ -12874,303 +12729,11 @@ UtilitySprites.fluid_indication_arrow_both_ways = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.follower_robot_lifetime_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.force_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.fuel_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.game_stopped_visualization = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.ghost_bar_pip = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.ghost_cursor = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.ghost_time_to_live_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.give_item_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.go_to_arrow = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.gps_map_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.green_circle = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.green_dot = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.green_wire = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.green_wire_hightlight = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.grey_placement_indicator_leg = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.grey_rail_signal_placement_indicator = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.gun_speed_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.hand = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.health_bar_green_pip = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.health_bar_red_pip = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.health_bar_yellow_pip = nil
-
----@optional false
----@type SpriteType
 UtilitySprites.heat_exchange_indication = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.hint_arrow_down = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.hint_arrow_left = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.hint_arrow_right = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.hint_arrow_up = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.import = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.import_slot = nil
-
----@optional false
----@type SpriteType
 UtilitySprites.indication_arrow = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.indication_line = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.inserter_stack_size_bonus_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.item_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.laboratory_productivity_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.laboratory_speed_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.left_arrow = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.light_cone = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.light_medium = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.light_small = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.line_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.logistic_network_panel_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.logistic_network_panel_white = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.logistic_radius_visualization = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.lua_snippet_tool_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.map = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.map_exchange_string = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.max_failed_attempts_per_tick_per_construction_queue_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.max_successful_attempts_per_tick_per_construction_queue_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.maximum_following_robots_count_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.medium_gui_arrow = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.mining_drill_productivity_bonus_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.missing_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.missing_mod_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.mod_dependency_arrow = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.multiplayer_waiting_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.nature_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.neutral_force_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.no_building_material_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.no_nature_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.no_storage_space_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.none_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.not_available = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.not_enough_construction_robots_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.not_enough_repair_packs_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.nothing_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.paint_bucket_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.pause = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.placement_indicator_leg = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.play = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.player_force_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.pollution_visualization = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.preset = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.pump_cannot_connect_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.questionmark = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.quick_bar_count_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.rail_path_not_possible = nil
 
 ---@optional false
 ---@type SpriteType
@@ -13182,11 +12745,295 @@ UtilitySprites.rail_planner_indication_arrow_too_far = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.rail_signal_placement_indicator = nil
+UtilitySprites.rail_path_not_possible = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.recharge_icon = nil
+UtilitySprites.indication_line = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.short_indication_line = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.short_indication_line_green = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_module = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_module_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_armor = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_armor_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_gun = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_gun_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_ammo = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_ammo_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_resource = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_resource_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_fuel = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_fuel_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_result = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_result_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_robot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_robot_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_robot_material = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_robot_material_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_inserter_hand = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot_icon_inserter_hand_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.upgrade_blueprint = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.equipment_slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.equipment_collision = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.battery = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.green_circle = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.green_dot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.robot_slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.set_bar_slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.missing_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.deconstruction_mark = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.upgrade_mark = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.confirm_slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.export_slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.import_slot = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.none_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.cable_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.tile_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.decorative_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.resource_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.entity_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.item_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.force_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.clone_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.scripting_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.paint_bucket_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.surface_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.time_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.cliff_editor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.brush_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.spray_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.cursor_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.area_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.line_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.variations_tool_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.lua_snippet_tool_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.editor_selection = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.brush_square_shape = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.brush_circle_shape = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.player_force_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.neutral_force_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.enemy_force_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.nature_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.no_nature_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.multiplayer_waiting_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.spawn_flag = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.questionmark = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.copper_wire = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.green_wire = nil
 
 ---@optional false
 ---@type SpriteType
@@ -13194,19 +13041,115 @@ UtilitySprites.red_wire = nil
 
 ---@optional false
 ---@type SpriteType
+UtilitySprites.green_wire_hightlight = nil
+
+---@optional false
+---@type SpriteType
 UtilitySprites.red_wire_hightlight = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.refresh = nil
-
----@optional false
----@type AnimationType
-UtilitySprites.refresh_white = nil
+UtilitySprites.wire_shadow = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.rename_icon_normal = nil
+UtilitySprites.and_or = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.left_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.right_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.down_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.enter = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_blueprint_library_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_production_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_bonus_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_tutorials_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_train_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_achievements_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_menu_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_map_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_blueprint_library_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_production_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_bonus_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_tutorials_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_train_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_achievements_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_menu_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.side_menu_map_hover_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.circuit_network_panel_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.circuit_network_panel_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.logistic_network_panel_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.logistic_network_panel_white = nil
 
 ---@optional false
 ---@type SpriteType
@@ -13218,303 +13161,27 @@ UtilitySprites.rename_icon_small_white = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.reset = nil
+UtilitySprites.rename_icon_normal = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.reset_white = nil
+UtilitySprites.achievement_label_locked = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.resource_editor_icon = nil
+UtilitySprites.achievement_label_unlocked_off = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.right_arrow = nil
+UtilitySprites.achievement_label_unlocked = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.robot_slot = nil
+UtilitySprites.achievement_label_failed = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.scripting_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.search_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.search_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.search_white = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.set_bar_slot = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.shield_bar_pip = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.shoot_cursor_green = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.shoot_cursor_red = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.short_indication_line = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_electric_network_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_electric_network_in_map_view_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_logistics_network_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_logistics_network_in_map_view_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_player_names_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_player_names_in_map_view_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_pollution_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_pollution_in_map_view_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_train_station_names_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_train_station_names_in_map_view_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_turret_range_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.show_turret_range_in_map_view_black = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.shuffle = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_achievements_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_achievements_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_blueprint_library_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_blueprint_library_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_bonus_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_bonus_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_map_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_map_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_menu_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_menu_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_production_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_production_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_train_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_train_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_tutorials_hover_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.side_menu_tutorials_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_ammo = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_armor = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_fuel = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_gun = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_module = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_resource = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_result = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_robot = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.slot_icon_robot_material = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.small_gui_arrow = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.spawn_flag = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.speed_down = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.speed_up = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.spray_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.stack_inserter_capacity_bonus_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.station_name = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.stop = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.surface_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.sync_mods = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.tick_custom = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.tick_once = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.tick_sixty = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.tile_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.tile_ghost_cursor = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.time_editor_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.too_far = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.too_far_from_roboport_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.track_button = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.train_braking_force_bonus_modifier_icon = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.train_stop_disabled_in_map_view = nil
-
----@optional false
----@type SpriteType
-UtilitySprites.train_stop_in_map_view = nil
+UtilitySprites.rail_signal_placement_indicator = nil
 
 ---@optional false
 ---@type SpriteType
@@ -13522,23 +13189,151 @@ UtilitySprites.train_stop_placement_indicator = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.trash = nil
+UtilitySprites.placement_indicator_leg = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.trash_bin = nil
+UtilitySprites.grey_rail_signal_placement_indicator = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.trash_white = nil
+UtilitySprites.grey_placement_indicator_leg = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.turret_attack_modifier_icon = nil
+UtilitySprites.logistic_radius_visualization = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.underground_pipe_connection = nil
+UtilitySprites.construction_radius_visualization = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.track_button = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_logistics_network_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_electric_network_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_turret_range_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_pollution_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_train_station_names_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_player_names_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_tags_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_worker_robots_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_rail_signal_states_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_recipe_icons_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_logistics_network_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_electric_network_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_turret_range_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_pollution_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_train_station_names_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_player_names_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_tags_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_worker_robots_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_rail_signal_states_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.show_recipe_icons_in_map_view_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.train_stop_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.train_stop_disabled_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.train_stop_full_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.custom_tag_in_map_view = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.covered_chunk = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.white_square = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.white_mask = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.favourite_server_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.crafting_machine_recipe_not_unlocked = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.gps_map_icon = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.custom_tag_icon = nil
 
 ---@optional false
 ---@type SpriteType
@@ -13550,79 +13345,419 @@ UtilitySprites.underground_remove_pipes = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.unlock_recipe_modifier_icon = nil
+UtilitySprites.underground_pipe_connection = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.upgrade_blueprint = nil
+UtilitySprites.ghost_cursor = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.upgrade_mark = nil
+UtilitySprites.tile_ghost_cursor = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.variations_tool_icon = nil
+UtilitySprites.expand = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.warning = nil
+UtilitySprites.expand_dark = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.warning_icon = nil
+UtilitySprites.collapse = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.warning_white = nil
+UtilitySprites.collapse_dark = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.white_mask = nil
+UtilitySprites.status_working = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.white_square = nil
+UtilitySprites.status_not_working = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.wire_shadow = nil
+UtilitySprites.status_yellow = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.worker_robot_battery_modifier_icon = nil
+UtilitySprites.gradient = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.output_console_gradient = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.select_icon_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.select_icon_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.notification = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.alert_arrow = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.technology_black = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.technology_white = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.inserter_stack_size_bonus_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.inserter_stack_size_bonus_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.stack_inserter_capacity_bonus_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.stack_inserter_capacity_bonus_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.laboratory_speed_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.laboratory_speed_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_logistic_slots_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_logistic_slots_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_logistic_trash_slots_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_logistic_trash_slots_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.maximum_following_robots_count_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.maximum_following_robots_count_modifier_constant = nil
 
 ---@optional false
 ---@type SpriteType
 UtilitySprites.worker_robot_speed_modifier_icon = nil
 
+---@optional true
+---@type SpriteType
+UtilitySprites.worker_robot_speed_modifier_constant = nil
+
 ---@optional false
 ---@type SpriteType
 UtilitySprites.worker_robot_storage_modifier_icon = nil
 
----@optional false
+---@optional true
 ---@type SpriteType
-UtilitySprites.zoom_to_world_blueprint_enabled_modifier_icon = nil
+UtilitySprites.worker_robot_storage_modifier_constant = nil
 
 ---@optional false
 ---@type SpriteType
-UtilitySprites.zoom_to_world_deconstruction_planner_enabled_modifier_icon = nil
+UtilitySprites.ghost_time_to_live_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.ghost_time_to_live_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.turret_attack_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.turret_attack_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.ammo_damage_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.ammo_damage_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.give_item_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.give_item_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.gun_speed_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.gun_speed_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.unlock_recipe_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.unlock_recipe_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_crafting_speed_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_crafting_speed_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_mining_speed_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_mining_speed_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_running_speed_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_running_speed_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_build_distance_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_build_distance_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_item_drop_distance_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_item_drop_distance_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_reach_distance_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_reach_distance_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_resource_reach_distance_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_resource_reach_distance_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_item_pickup_distance_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_item_pickup_distance_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_loot_pickup_distance_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_loot_pickup_distance_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_inventory_slots_bonus_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_inventory_slots_bonus_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.deconstruction_time_to_live_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.deconstruction_time_to_live_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.max_failed_attempts_per_tick_per_construction_queue_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.max_failed_attempts_per_tick_per_construction_queue_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.max_successful_attempts_per_tick_per_construction_queue_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.max_successful_attempts_per_tick_per_construction_queue_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_health_bonus_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_health_bonus_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.mining_drill_productivity_bonus_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.mining_drill_productivity_bonus_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.train_braking_force_bonus_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.train_braking_force_bonus_modifier_constant = nil
 
 ---@optional false
 ---@type SpriteType
 UtilitySprites.zoom_to_world_enabled_modifier_icon = nil
 
+---@optional true
+---@type SpriteType
+UtilitySprites.zoom_to_world_enabled_modifier_constant = nil
+
 ---@optional false
 ---@type SpriteType
 UtilitySprites.zoom_to_world_ghost_building_enabled_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.zoom_to_world_ghost_building_enabled_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.zoom_to_world_blueprint_enabled_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.zoom_to_world_blueprint_enabled_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.zoom_to_world_deconstruction_planner_enabled_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.zoom_to_world_deconstruction_planner_enabled_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.zoom_to_world_upgrade_planner_enabled_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.zoom_to_world_upgrade_planner_enabled_modifier_constant = nil
 
 ---@optional false
 ---@type SpriteType
 UtilitySprites.zoom_to_world_selection_tool_enabled_modifier_icon = nil
 
+---@optional true
+---@type SpriteType
+UtilitySprites.zoom_to_world_selection_tool_enabled_modifier_constant = nil
+
 ---@optional false
 ---@type SpriteType
-UtilitySprites.zoom_to_world_upgrade_planner_enabled_modifier_icon = nil
+UtilitySprites.worker_robot_battery_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.worker_robot_battery_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.laboratory_productivity_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.laboratory_productivity_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.follower_robot_lifetime_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.follower_robot_lifetime_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.artillery_range_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.artillery_range_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.nothing_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.nothing_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_additional_mining_categories_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_additional_mining_categories_modifier_constant = nil
+
+---@optional false
+---@type SpriteType
+UtilitySprites.character_logistic_requests_modifier_icon = nil
+
+---@optional true
+---@type SpriteType
+UtilitySprites.character_logistic_requests_modifier_constant = nil
 
 ---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
 ---@optional false
@@ -15998,11 +16133,6 @@ Animation.apply_runtime_tint = nil
 ---@type BlendMode
 Animation.blend_mode = nil
 
----@default false
----@optional true
----@type bool
-Animation.draw_as_shadow = nil
-
 ---Mandatory if <code>stripes</code> is not specified.
 ---@optional true
 ---@type FileName
@@ -16131,6 +16261,24 @@ Animation.x = nil
 ---@optional true
 ---@type SpriteSizeType
 Animation.y = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+Animation.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+Animation.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+Animation.draw_as_shadow = nil
 
 ---A turret that needs no extra ammunition. See the extensions for turrets that need some kind of ammunition.
 ---@class Turret
@@ -16820,6 +16968,10 @@ DeconstructionItem.stack_size = nil
 DeconstructionItem.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+DeconstructionItem.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 DeconstructionItem.dark_background_icons = nil
 
@@ -16866,6 +17018,10 @@ DeconstructionItem.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 DeconstructionItem.fuel_value = nil
+
+---@optional true
+---@type SoundType
+DeconstructionItem.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -18315,6 +18471,10 @@ CopyPasteTool.stack_size = nil
 CopyPasteTool.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+CopyPasteTool.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 CopyPasteTool.dark_background_icons = nil
 
@@ -18361,6 +18521,10 @@ CopyPasteTool.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 CopyPasteTool.fuel_value = nil
+
+---@optional true
+---@type SoundType
+CopyPasteTool.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -20513,6 +20677,10 @@ ItemWithInventory.stack_size = nil
 ItemWithInventory.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+ItemWithInventory.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 ItemWithInventory.dark_background_icons = nil
 
@@ -20559,6 +20727,10 @@ ItemWithInventory.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 ItemWithInventory.fuel_value = nil
+
+---@optional true
+---@type SoundType
+ItemWithInventory.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -21539,7 +21711,7 @@ Recipe.show_amount_in_title = nil
 ---@type bool
 Recipe.unlock_results = nil
 
----The definition of the tutorial as shown in the tutorial selection in-game. The actual tutorial code is defined in the tutorials folder, in the folder that has the name of the scenario property.
+---The definition of the tutorial to be used in the tips and tricks, see <a href="/Prototype/TipsAndTricksItem" title="Prototype/TipsAndTricksItem">Prototype/TipsAndTricksItem</a>. The actual tutorial code is defined in the tutorials folder, in the folder that has the name of the scenario property.
 ---@class Tutorial
 local Tutorial = {}
 
@@ -21547,32 +21719,6 @@ local Tutorial = {}
 ---@optional false
 ---@type string
 Tutorial.scenario = nil
-
----@optional false
----@type TutorialTrigger
-Tutorial.trigger = nil
-
----Names of the tutorials this one depends on. If those are not unlocked yet, the tutorial will show in a different color in the tutorial gui.
----@optional true
----@type string[]
-Tutorial.dependencies = nil
-
----Whether the tutorial should be locked when the #dependencies tutorials have not yet been completed.
----@default false
----@optional true
----@type bool
-Tutorial.locked_when_dependencies_not_completed = nil
-
----Items that are related to this tutorial, are shown below the tutorial icon in the tutorial list. Max number of related_items is 9.
----@optional true
----@type string[]
-Tutorial.related_items = nil
-
----Whether the tutorial is always unlocked, regardless of dependency tutorials.
----@default false
----@optional true
----@type bool
-Tutorial.unlocked = nil
 
 ---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
 ---@optional false
@@ -21593,26 +21739,6 @@ Tutorial.localised_name = nil
 ---@optional true
 ---@type Order
 Tutorial.order = nil
-
----Path to the icon file.
----@optional true
----@type FileName
-Tutorial.icon = nil
-
----The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
----@optional true
----@type IconData[]
-Tutorial.icons = nil
-
----Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
----@optional true
----@type FileName
-Tutorial.icon_size = nil
-
----@default 0
----@optional true
----@type uint8
-Tutorial.icon_mipmaps = nil
 
 ---A <a href="/Upgrade_planner" title="Upgrade planner">upgrade planner</a>.
 ---@class UpgradeItem
@@ -21746,6 +21872,10 @@ UpgradeItem.stack_size = nil
 UpgradeItem.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+UpgradeItem.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 UpgradeItem.dark_background_icons = nil
 
@@ -21792,6 +21922,10 @@ UpgradeItem.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 UpgradeItem.fuel_value = nil
+
+---@optional true
+---@type SoundType
+UpgradeItem.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -22777,6 +22911,10 @@ ItemWithLabel.stack_size = nil
 ItemWithLabel.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+ItemWithLabel.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 ItemWithLabel.dark_background_icons = nil
 
@@ -22823,6 +22961,10 @@ ItemWithLabel.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 ItemWithLabel.fuel_value = nil
+
+---@optional true
+---@type SoundType
+ItemWithLabel.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -24608,7 +24750,7 @@ Projectile.icon_mipmaps = nil
 ---@class CustomInput
 local CustomInput = {}
 
----<p>The default key sequence for this custom input.</p><ul>"" (empty string) for unassigned<li>"mouse-button-2" etc for mouse buttons, mouse-button-3 for middle mouse button</li><li>"mouse-wheel-up", "mouse-wheel-down", "mouse-wheel-left", "mouse-wheel-right" for mouse wheel (mouse wheel controls do not work for custom inputs!)</li><li>" + " is used to separate modifier keys from normal keys: <code>"ALT + G"</code></li><li>For modifier keys, the following names are used: "CONTROL", "SHIFT", "ALT", "COMMAND"</li><li>A keybinding can contain an unlimited amount of modifier keys (listed above) but only one normal key (listed below).</li></ul>
+---<p>The default key sequence for this custom input.</p><ul>"" (empty string) for unassigned<li>"mouse-button-2" etc for mouse buttons, mouse-button-3 for middle mouse button</li><li>"mouse-wheel-up", "mouse-wheel-down", "mouse-wheel-left", "mouse-wheel-right" for mouse wheel</li><li>" + " is used to separate modifier keys from normal keys: <code>"ALT + G"</code></li><li>For modifier keys, the following names are used: "CONTROL", "SHIFT", "ALT", "COMMAND"</li><li>A keybinding can contain an unlimited amount of modifier keys (listed above) but only one normal key (listed below).</li></ul>
 ---@optional false
 ---@type string
 CustomInput.key_sequence = nil
@@ -24645,10 +24787,10 @@ CustomInput.enabled_while_in_cutscene = nil
 ---@type bool
 CustomInput.enabled_while_spectating = nil
 
----Name of a Prototype/Item. It will be created when this input is pressed.
+---Name of a <a href="/Prototype/Item" title="Prototype/Item">Prototype/Item</a>. It will be created when this input is pressed and action is set to "spawn-item". The item must have the <a href="/Types/ItemPrototypeFlags#.22spawnable.22" title="Types/ItemPrototypeFlags">"spawnable"</a> flag set.
 ---@optional true
 ---@type string
-CustomInput.item_to_create = nil
+CustomInput.item_to_spawn = nil
 
 ---When a custom-input is linked to a game control it won't show up in the control-settings GUI and will fire when the linked control is pressed. <a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/53591">[1]</a>
 ---@optional true
@@ -24807,6 +24949,24 @@ Sprite.x = nil
 ---@optional true
 ---@type SpriteSizeType
 Sprite.y = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+Sprite.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+Sprite.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+Sprite.draw_as_shadow = nil
 
 ---A <a href="/Tile" title="Tile">tile</a>. Only 255 instances of this prototype may be defined.
 ---@class Tile
@@ -28727,6 +28887,10 @@ Armor.stack_size = nil
 Armor.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+Armor.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 Armor.dark_background_icons = nil
 
@@ -28773,6 +28937,10 @@ Armor.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 Armor.fuel_value = nil
+
+---@optional true
+---@type SoundType
+Armor.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -32426,6 +32594,10 @@ Item.stack_size = nil
 Item.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+Item.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 Item.dark_background_icons = nil
 
@@ -32472,6 +32644,10 @@ Item.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 Item.fuel_value = nil
+
+---@optional true
+---@type SoundType
+Item.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -33240,6 +33416,10 @@ Gun.stack_size = nil
 Gun.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+Gun.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 Gun.dark_background_icons = nil
 
@@ -33286,6 +33466,10 @@ Gun.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 Gun.fuel_value = nil
+
+---@optional true
+---@type SoundType
+Gun.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -40450,6 +40634,10 @@ BlueprintBook.stack_size = nil
 BlueprintBook.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+BlueprintBook.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 BlueprintBook.dark_background_icons = nil
 
@@ -40496,6 +40684,10 @@ BlueprintBook.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 BlueprintBook.fuel_value = nil
+
+---@optional true
+---@type SoundType
+BlueprintBook.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -42886,6 +43078,10 @@ RailPlanner.stack_size = nil
 RailPlanner.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+RailPlanner.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 RailPlanner.dark_background_icons = nil
 
@@ -42932,6 +43128,10 @@ RailPlanner.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 RailPlanner.fuel_value = nil
+
+---@optional true
+---@type SoundType
+RailPlanner.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -43980,6 +44180,10 @@ Capsule.stack_size = nil
 Capsule.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+Capsule.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 Capsule.dark_background_icons = nil
 
@@ -44026,6 +44230,10 @@ Capsule.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 Capsule.fuel_value = nil
+
+---@optional true
+---@type SoundType
+Capsule.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -44140,6 +44348,10 @@ ItemWithEntityData.stack_size = nil
 ItemWithEntityData.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+ItemWithEntityData.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 ItemWithEntityData.dark_background_icons = nil
 
@@ -44186,6 +44398,10 @@ ItemWithEntityData.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 ItemWithEntityData.fuel_value = nil
+
+---@optional true
+---@type SoundType
+ItemWithEntityData.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -44738,10 +44954,10 @@ Shortcut.disabled_icon = nil
 ---@type SpriteType
 Shortcut.disabled_small_icon = nil
 
----Name of a Prototype/Item. The item to create when clicking on a shortcut with the action set to "create-blueprint-item".
+---Name of a <a href="/Prototype/Item" title="Prototype/Item">Prototype/Item</a>. The item to create when clicking on a shortcut with the action set to "spawn-item". The item must have the <a href="/Types/ItemPrototypeFlags#.22spawnable.22" title="Types/ItemPrototypeFlags">"spawnable"</a> flag set.
 ---@optional true
 ---@type string
-Shortcut.item_to_create = nil
+Shortcut.item_to_spawn = nil
 
 ---@optional true
 ---@type SpriteType
@@ -47941,6 +48157,10 @@ Tool.stack_size = nil
 Tool.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+Tool.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 Tool.dark_background_icons = nil
 
@@ -47987,6 +48207,10 @@ Tool.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 Tool.fuel_value = nil
+
+---@optional true
+---@type SoundType
+Tool.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -48814,6 +49038,10 @@ Module.stack_size = nil
 Module.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+Module.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 Module.dark_background_icons = nil
 
@@ -48860,6 +49088,10 @@ Module.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 Module.fuel_value = nil
+
+---@optional true
+---@type SoundType
+Module.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -50205,6 +50437,14 @@ UtilitySounds.axe_mining_ore = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.blueprint_selection_ended = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.blueprint_selection_started = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.build_blueprint_small = nil
 
 ---@optional false
@@ -50229,6 +50469,14 @@ UtilitySounds.build_small = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.cancel_deconstruction_selection_ended = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.cancel_deconstruction_selection_started = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.cannot_build = nil
 
 ---@optional false
@@ -50237,11 +50485,23 @@ UtilitySounds.clear_cursor = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.confirm = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.console_message = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.copy_activated = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.crafting_finished = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.cut_activated = nil
 
 ---@optional false
 ---@type SoundType
@@ -50261,7 +50521,27 @@ UtilitySounds.deconstruct_small = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.deconstruction_selection_ended = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.deconstruction_selection_started = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.default_manual_repair = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.drop_item = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.entity_settings_pasted = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.entity_settings_copied = nil
 
 ---@optional false
 ---@type SoundType
@@ -50285,6 +50565,14 @@ UtilitySounds.inventory_move = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.item_deleted = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.item_spawned = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.list_box_click = nil
 
 ---@optional false
@@ -50301,7 +50589,15 @@ UtilitySounds.new_objective = nil
 
 ---@optional false
 ---@type SoundType
+UtilitySounds.paste_activated = nil
+
+---@optional false
+---@type SoundType
 UtilitySounds.picked_up_item = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.rail_plan_start = nil
 
 ---@optional false
 ---@type SoundType
@@ -50334,6 +50630,18 @@ UtilitySounds.switch_gun = nil
 ---@optional false
 ---@type SoundType
 UtilitySounds.tutorial_notice = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.undo = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.upgrade_selection_ended = nil
+
+---@optional false
+---@type SoundType
+UtilitySounds.upgrade_selection_started = nil
 
 ---@optional false
 ---@type SoundType
@@ -51160,12 +51468,24 @@ UtilityConstants.capsule_range_visualization_color = nil
 UtilityConstants.chart = nil
 
 ---@optional false
+---@type Color
+UtilityConstants.checkerboard_black = nil
+
+---@optional false
+---@type Color
+UtilityConstants.checkerboard_white = nil
+
+---@optional false
 ---@type uint32
 UtilityConstants.clipboard_history_size = nil
 
 ---@optional false
 ---@type UtilityConstantsColorFilter[]
 UtilityConstants.color_filters = nil
+
+---@optional false
+---@type int
+UtilityConstants.count_button_size = nil
 
 ---@optional false
 ---@type DaytimeColorLookupTable
@@ -51281,6 +51601,19 @@ UtilityConstants.light_renderer_search_distance_limit = nil
 UtilityConstants.main_menu_background_image_location = nil
 
 ---@optional false
+---@type float
+UtilityConstants.main_menu_background_vignette_intensity = nil
+
+---@optional false
+---@type float
+UtilityConstants.main_menu_background_vignette_sharpness = nil
+
+---The strings represent the names of the simulations.
+---@optional false
+---@type table<string, SimulationDefinition>
+UtilityConstants.main_menu_simulations = nil
+
+---@optional false
 ---@type double
 UtilityConstants.manual_rail_building_reach_modifier = nil
 
@@ -51297,6 +51630,10 @@ UtilityConstants.max_terrain_building_size = nil
 UtilityConstants.medium_area_size = nil
 
 ---@optional false
+---@type float
+UtilityConstants.medium_blueprint_area_size = nil
+
+---@optional false
 ---@type FileName
 UtilityConstants.missing_preview_sprite_location = nil
 
@@ -51304,6 +51641,10 @@ UtilityConstants.missing_preview_sprite_location = nil
 ---@optional false
 ---@type UtilityConstantsPlayerColor[]
 UtilityConstants.player_colors = nil
+
+---@optional false
+---@type Color
+UtilityConstants.rail_planner_count_button_color = nil
 
 ---@optional false
 ---@type Color[]
@@ -51326,12 +51667,28 @@ UtilityConstants.server_command_console_chat_color = nil
 UtilityConstants.small_area_size = nil
 
 ---@optional false
+---@type float
+UtilityConstants.small_blueprint_area_size = nil
+
+---@optional false
 ---@type Color
 UtilityConstants.tile_ghost_tint = nil
 
 ---@optional false
+---@type Color
+UtilityConstants.train_button_hovered_tint = nil
+
+---@optional false
+---@type Color
+UtilityConstants.train_destination_full_color = nil
+
+---@optional false
 ---@type uint32
 UtilityConstants.train_inactivity_wait_condition_default = nil
+
+---@optional false
+---@type Color
+UtilityConstants.train_no_path_color = nil
 
 ---@optional false
 ---@type UtilityConstantsTrainPathFinding
@@ -51382,6 +51739,10 @@ UtilityConstants.tree_shadow_speed = nil
 UtilityConstants.turret_range_visualization_color = nil
 
 ---@optional false
+---@type double
+UtilityConstants.unit_group_max_pursue_distance = nil
+
+---@optional false
 ---@type int8
 UtilityConstants.unit_group_pathfind_resolution = nil
 
@@ -51402,7 +51763,7 @@ UtilityConstants.zoom_to_world_effect_strength = nil
 UtilityConstants.default_alert_icon_scale_by_type = nil
 
 ---@optional true
----@type table<string, float>
+---@type table<string, vector>
 UtilityConstants.default_alert_icon_shift_by_type = nil
 
 ---The strings are entity types.
@@ -52087,6 +52448,10 @@ BlueprintItem.stack_size = nil
 BlueprintItem.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+BlueprintItem.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 BlueprintItem.dark_background_icons = nil
 
@@ -52133,6 +52498,10 @@ BlueprintItem.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 BlueprintItem.fuel_value = nil
+
+---@optional true
+---@type SoundType
+BlueprintItem.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -53090,6 +53459,10 @@ AmmoItem.stack_size = nil
 AmmoItem.burnt_result = nil
 
 ---@optional true
+---@type SoundType
+AmmoItem.close_sound = nil
+
+---@optional true
 ---@type IconData[]
 AmmoItem.dark_background_icons = nil
 
@@ -53136,6 +53509,10 @@ AmmoItem.fuel_top_speed_multiplier = nil
 ---@optional true
 ---@type Energy
 AmmoItem.fuel_value = nil
+
+---@optional true
+---@type SoundType
+AmmoItem.open_sound = nil
 
 ---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
 ---@optional true
@@ -53214,10 +53591,6 @@ AmmoItem.icon_size = nil
 ---@optional true
 ---@type uint8
 AmmoItem.icon_mipmaps = nil
-
----null
----@class LinkedContainer
-local LinkedContainer = {}
 
 ---@alias WhitelistBlacklist string
 
@@ -54487,11 +54860,6 @@ RotatedAnimation.shift = nil
 ---@type double
 RotatedAnimation.scale = nil
 
----@default false
----@optional true
----@type bool
-RotatedAnimation.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -54613,6 +54981,24 @@ RotatedAnimation.apply_projection = nil
 ---@optional true
 ---@type Stripe[]
 RotatedAnimation.stripes = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+RotatedAnimation.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+RotatedAnimation.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+RotatedAnimation.draw_as_shadow = nil
 
 ---@alias FootstepTriggerEffectList FootstepTriggerEffectListValue[]
 
@@ -54770,6 +55156,10 @@ UtilityConstantsChart.rail_color = nil
 
 ---@optional false
 ---@type Color
+UtilityConstantsChart.entity_ghost_color = nil
+
+---@optional false
+---@type Color
 UtilityConstantsChart.vehicle_outer_color = nil
 
 ---@optional false
@@ -54795,6 +55185,14 @@ UtilityConstantsChart.chart_train_stop_text_color = nil
 ---@optional false
 ---@type Color
 UtilityConstantsChart.chart_train_stop_disabled_text_color = nil
+
+---@optional false
+---@type Color
+UtilityConstantsChart.chart_train_stop_full_text_color = nil
+
+---@optional false
+---@type Color
+UtilityConstantsChart.chart_deconstruct_tint = nil
 
 ---@optional false
 ---@type Color
@@ -55086,10 +55484,6 @@ UtilitySpritesCursorBox.copy = nil
 ---@optional false
 ---@type BoxSpecification[]
 UtilitySpritesCursorBox.electricity = nil
-
----@optional false
----@type BoxSpecification[]
-UtilitySpritesCursorBox.logistics = nil
 
 ---@optional false
 ---@type BoxSpecification[]
@@ -55481,11 +55875,6 @@ RotatedSprite.shift = nil
 ---@type double
 RotatedSprite.scale = nil
 
----@default false
----@optional true
----@type bool
-RotatedSprite.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -55562,6 +55951,24 @@ RotatedSprite.allow_low_quality_rotation = nil
 ---@optional true
 ---@type uint64
 RotatedSprite.lines_per_file = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+RotatedSprite.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+RotatedSprite.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+RotatedSprite.draw_as_shadow = nil
 
 ---@alias WorkingVisualisationApplyTint string
 
@@ -55915,11 +56322,6 @@ AnimationVariationSheet.shift = nil
 ---@type double
 AnimationVariationSheet.scale = nil
 
----@default false
----@optional true
----@type bool
-AnimationVariationSheet.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -56003,6 +56405,24 @@ AnimationVariationSheet.frame_sequence = nil
 ---@optional true
 ---@type Stripe[]
 AnimationVariationSheet.stripes = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+AnimationVariationSheet.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+AnimationVariationSheet.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+AnimationVariationSheet.draw_as_shadow = nil
 
 ---<p>Definition of a pipe connection. Used in fluidboxes.</p><p>Either <code>position</code> or <code>positions</code> must be specified. (<code>position</code> takes priority)</p>
 ---@class PipeConnectionDefinition
@@ -56802,11 +57222,6 @@ SpriteType.shift = nil
 ---@type double
 SpriteType.scale = nil
 
----@default false
----@optional true
----@type bool
-SpriteType.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -56843,6 +57258,24 @@ SpriteType.premul_alpha = nil
 ---@optional true
 ---@type bool
 SpriteType.generate_sdf = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+SpriteType.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+SpriteType.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+SpriteType.draw_as_shadow = nil
 
 ---@alias AmmoTypeTargetType string
 
@@ -60532,11 +60965,6 @@ SpriteNWaySheet.shift = nil
 ---@type double
 SpriteNWaySheet.scale = nil
 
----@default false
----@optional true
----@type bool
-SpriteNWaySheet.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -60573,6 +61001,24 @@ SpriteNWaySheet.premul_alpha = nil
 ---@optional true
 ---@type bool
 SpriteNWaySheet.generate_sdf = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+SpriteNWaySheet.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+SpriteNWaySheet.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+SpriteNWaySheet.draw_as_shadow = nil
 
 ---@alias LogisticContainerLogisticMode string
 
@@ -61236,11 +61682,6 @@ SpriteVariationsSheet.shift = nil
 ---@type double
 SpriteVariationsSheet.scale = nil
 
----@default false
----@optional true
----@type bool
-SpriteVariationsSheet.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -61277,6 +61718,24 @@ SpriteVariationsSheet.premul_alpha = nil
 ---@optional true
 ---@type bool
 SpriteVariationsSheet.generate_sdf = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+SpriteVariationsSheet.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+SpriteVariationsSheet.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+SpriteVariationsSheet.draw_as_shadow = nil
 
 ---null
 ---@class UseOnSelfCapsuleAction
@@ -61532,11 +61991,6 @@ AnimationType.shift = nil
 ---@type double
 AnimationType.scale = nil
 
----@default false
----@optional true
----@type bool
-AnimationType.draw_as_shadow = nil
-
 ---Only loaded if this is an icon (has flag "group=icon" or "group=gui").
 ---@default 0
 ---@optional true
@@ -61620,6 +62074,24 @@ AnimationType.frame_sequence = nil
 ---@optional true
 ---@type Stripe[]
 AnimationType.stripes = nil
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+AnimationType.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+AnimationType.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+AnimationType.draw_as_shadow = nil
 
 ---null
 ---@class PipeToGroundPictures
@@ -62548,4 +63020,1965 @@ ArtilleryRemoteCapsuleAction.flare = nil
 ---@optional false
 ---@type bool
 ArtilleryRemoteCapsuleAction.play_sound_on_failure = nil
+
+---A container that shares its inventory with containers with the same <a rel="nofollow" class="external text" href="https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.link_id">link_id</a>, which can be set via the GUI. The link IDs are per prototype and force, so only containers with the same ID and same prototype name <i>and</i> same force will share inventories.
+---@class LinkedContainer
+local LinkedContainer = {}
+
+---Must be > 0.
+---@optional false
+---@type ItemStackIndex
+LinkedContainer.inventory_size = nil
+
+---Players that can access the GUI to change the link ID. Possible options: "all", "none", "admins".
+---@default all
+---@optional true
+---@type GuiMode
+LinkedContainer.gui_mode = nil
+
+---@optional true
+---@type SpriteType
+LinkedContainer.picture = nil
+
+---@default false
+---@optional true
+---@type bool
+LinkedContainer.scale_info_icons = nil
+
+---@default true
+---@optional true
+---@type bool
+LinkedContainer.alert_when_damaged = nil
+
+---@optional true
+---@type AttackReaction
+LinkedContainer.attack_reaction = nil
+
+---Specifies the name(s) of the <a href="/Prototype/Corpse" title="Prototype/Corpse">Prototype/Corpse</a> entity to be used when this entity dies.
+---@optional true
+---@type string|strings[]
+LinkedContainer.corpse = nil
+
+---@default true
+---@optional true
+---@type bool
+LinkedContainer.create_ghost_on_death = nil
+
+---@optional true
+---@type TriggerEffect
+LinkedContainer.damaged_trigger_effect = nil
+
+---Either one <a href="/Types/ExplosionDefinition" title="Types/ExplosionDefinition">ExplosionDefinition</a> or an array of them. The entities that are spawned in place of this one when it dies.
+---@optional true
+---@type ExplosionDefinition|ExplosionDefinition[]
+LinkedContainer.dying_explosion = nil
+
+---@optional true
+---@type TriggerEffect
+LinkedContainer.dying_trigger_effect = nil
+
+---The amount of health cured by tick naturally. Works only on active entities. (Todo explain)
+---@default 0
+---@optional true
+---@type float
+LinkedContainer.healing_per_tick = nil
+
+---Whether the resistances of this entity should be hidden in the entity tooltip.
+---@default true
+---@optional true
+---@type bool
+LinkedContainer.hide_resistances = nil
+
+---Sprite drawn on ground under the entity to make it feel more integrated into the ground.
+---@optional true
+---@type Sprite4Way
+LinkedContainer.integration_patch = nil
+
+---@default lower-object
+---@optional true
+---@type RenderLayer
+LinkedContainer.integration_patch_render_layer = nil
+
+---The loot is dropped on the ground when the entity is killed.
+---@optional true
+---@type Loot
+LinkedContainer.loot = nil
+
+---The unit health can never go over the maximum. Default health of units on creation is set to max. Must be greater than 0.
+---@default 10
+---@optional true
+---@type float
+LinkedContainer.max_health = nil
+
+---@default false
+---@optional true
+---@type bool
+LinkedContainer.random_corpse_variation = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.repair_sound = nil
+
+---@default 1
+---@optional true
+---@type float
+LinkedContainer.repair_speed_modifier = nil
+
+---@optional true
+---@type Resistances
+LinkedContainer.resistances = nil
+
+---Entities this entity prototype can be pasted on to in addition to the standard supported types. This is used to allow copying between types that aren't compatible on the C++ code side, by allowing mods to receive the <a rel="nofollow" class="external text" href="https://lua-api.factorio.com/latest/events.html#on_entity_settings_pasted">on_entity_settings_pasted</a> event for the given entity and do the setting pasting via script.
+---@optional true
+---@type string[]
+LinkedContainer.additional_pastable_entities = nil
+
+---@optional true
+---@type float
+LinkedContainer.alert_icon_scale = nil
+
+---@optional true
+---@type vector
+LinkedContainer.alert_icon_shift = nil
+
+---@default true
+---@optional true
+---@type bool
+LinkedContainer.allow_copy_paste = nil
+
+---Used to specify the rules for placing this entity during map generation.
+---@default nil
+---@optional true
+---@type AutoplaceSpecification
+LinkedContainer.autoplace = nil
+
+---@default 0
+---@optional true
+---@type double
+LinkedContainer.build_base_evolution_requirement = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.build_sound = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.close_sound = nil
+
+---<p>Specification of the entity collision boundaries.</p><p>Empty collision box is used for smoke, projectiles, particles, explosions etc.</p><p><div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="n">collision_box</span> <span class="o">=</span> <span class="p">{{</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">}}</span></pre></div></p><p>The {0,0} coordinate in the collision box will match the entity position.</p><p>It should be near the center of the collision box, to keep correct entity drawing order. It must include the {0,0} coordinate.</p><p>Note, that for buildings, it is customary to leave 0.1 wide border between the edge of the tile and the edge of the building, this lets the player move between the building and electric poles/inserters etc.</p>
+---@optional true
+---@type BoundingBox
+LinkedContainer.collision_box = nil
+
+---Two entities can collide only if they share a layer from the collision mask.
+---@optional true
+---@type CollisionMask
+LinkedContainer.collision_mask = nil
+
+---The effect/trigger that happens when the entity is placed.
+---@optional true
+---@type Trigger
+LinkedContainer.created_effect = nil
+
+---The smoke that is shown when the entity is placed. Default is using the "smoke-building" smoke.
+---@default smoke-building
+---@optional true
+---@type CreateTrivialSmokeEffectItem
+LinkedContainer.created_smoke = nil
+
+---<p>Specification of space needed to see the whole entity.</p><p>This is used to calculate the correct zoom and positioning in the entity info gui.</p>
+---@optional true
+---@type BoundingBox
+LinkedContainer.drawing_box = nil
+
+---Amount of emissions created (positive number) or cleaned (negative number) every second by the entity. This is passive, and it is independent concept of the emissions of machines, these are created actively depending on the power consumption. Currently used just for trees.
+---@default 0
+---@optional true
+---@type double
+LinkedContainer.emissions_per_second = nil
+
+---@optional true
+---@type Color
+LinkedContainer.enemy_map_color = nil
+
+---<p>This allows you to replace an entity that's already placed, with a different one in your inventory. For example, replacing a burner inserter with a fast inserter.</p><p>This is simply a string, so any string can be used here. The entity that should be replaced simply has to use the same string here.</p>
+---@optional true
+---@type string
+LinkedContainer.fast_replaceable_group = nil
+
+---@optional true
+---@type EntityPrototypeFlags
+LinkedContainer.flags = nil
+
+---@optional true
+---@type Color
+LinkedContainer.friendly_map_color = nil
+
+---Where beams should hit the entity. Useful if the bounding box only covers part of the entity (e.g. feet of the character) and beams only hitting there would look weird.
+---@optional true
+---@type BoundingBox
+LinkedContainer.hit_visualization_box = nil
+
+---@optional true
+---@type Color
+LinkedContainer.map_color = nil
+
+---Used instead of the collision box during map generation. Allows space entities differently during map generation, for example if the box is bigger, the entities will be placed farther apart.
+---@optional true
+---@type BoundingBox
+LinkedContainer.map_generator_bounding_box = nil
+
+---@optional true
+---@type MinableProperties
+LinkedContainer.minable = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.mined_sound = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.mining_sound = nil
+
+---Name of the entity that will be automatically selected as the upgrade of this entity when using the <a href="/Upgrade_planner" title="Upgrade planner">upgrade planner</a> without configuration.</p><p>This entity may not have 'not-upgradable' flag set and must be minable. This entity mining result must not contain item product with "hidden" flag set. Mining results with no item products are allowed. The entity may not be a <a href="/Prototype/RollingStock" title="Prototype/RollingStock">Prototype/RollingStock</a>.<br>The upgrade target entity needs to have the same bounding box, collision mask, and fast replaceable group as this entity. The upgrade target entity must have least 1 item that builds it that isn't hidden.</p>
+---@optional true
+---@type string
+LinkedContainer.next_upgrade = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.open_sound = nil
+
+---<p>Item that when placed creates this entity. Determines which item is picked when "Q" (smart pipette) is used on the entity, determines which item is needed in a blueprint of this entity.</p><p>The item count specified here can't be larger than the stack size of that item.</p>
+---@optional true
+---@type ItemToPlace|ItemToPlace[]
+LinkedContainer.placeable_by = nil
+
+---@optional true
+---@type RadiusVisualisationSpecification
+LinkedContainer.radius_visualisation_specification = nil
+
+---The entity that remains when this one is mined, deconstructed or fast-replaced. The entity wont actually be spawned if it would collide with the entity that is in the process of being mined.
+---@optional true
+---@type string|string[]
+LinkedContainer.remains_when_mined = nil
+
+---Whether this entity should remove decoratives that collide with it when this entity is built.
+---@default automatic
+---@optional true
+---@type EntityRemoveDecoratives
+LinkedContainer.remove_decoratives = nil
+
+---@optional true
+---@type SoundType
+LinkedContainer.rotated_sound = nil
+
+---@default true
+---@optional true
+---@type bool
+LinkedContainer.selectable_in_game = nil
+
+---<p>Specification of the entity selection area. When empty the entity will have no selection area (and thus is not selectable).</p><p>The selection box is usually a little bit bigger than the collision box, for tilable entities (like buildings) it should match the tile size of the building.</p>
+---@optional true
+---@type BoundingBox
+LinkedContainer.selection_box = nil
+
+---The entity with the higher number is selectable before the entity with the lower number.
+---@default 50
+---@optional true
+---@type uint8
+LinkedContainer.selection_priority = nil
+
+---The cursor size used when shooting at this entity.
+---@optional true
+---@type double
+LinkedContainer.shooting_cursor_size = nil
+
+---Used to set the area of the entity that can have stickers on it, currently only used for units to specify the area where the green slow down stickers can appear. It is optional and the collision box is used when not specified.
+---@optional true
+---@type BoundingBox
+LinkedContainer.sticker_box = nil
+
+---The name of the subgroup this entity should be sorted into in the map editor building selection.
+---@optional true
+---@type string
+LinkedContainer.subgroup = nil
+
+---@optional true
+---@type uint32
+LinkedContainer.tile_height = nil
+
+---Used to determine how the center of the entity should be positioned when building (unless the offgrid <a href="/Types/EntityPrototypeFlags" title="Types/EntityPrototypeFlags">flag</a> is specified). When the tile width is odd, the center will be in the center of the tile, when it is even, the center is on the tile transition.
+---@optional true
+---@type uint32
+LinkedContainer.tile_width = nil
+
+---@optional true
+---@type TriggerTargetMask
+LinkedContainer.trigger_target_mask = nil
+
+---When playing this sound, the volume is scaled by the speed of the vehicle when colliding with this entity.
+---@optional true
+---@type SoundType
+LinkedContainer.vehicle_impact_sound = nil
+
+---May also be defined inside <code>graphics_set</code> instead of directly in the entity prototype. This is useful for entities that use the a <code>graphics_set</code> property to define their graphics, becausen then all graphics can be in defined one place.
+---@optional true
+---@type WaterReflectionDefinition
+LinkedContainer.water_reflection = nil
+
+---Will also work on entities that don't actually do work.
+---@optional true
+---@type WorkingSound
+LinkedContainer.working_sound = nil
+
+---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
+---@optional false
+---@type string
+LinkedContainer.name = nil
+
+---Overwrites the description set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. The description is usually shown in the tooltip of the prototype.
+---@optional true
+---@type LocalisedString
+LinkedContainer.localised_description = nil
+
+---Overwrites the name set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. Can be used to easily set a procedurally-generated name because the LocalisedString format allows to insert parameters into the name directly from the Lua script.
+---@optional true
+---@type LocalisedString
+LinkedContainer.localised_name = nil
+
+---<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>
+---@optional true
+---@type Order
+LinkedContainer.order = nil
+
+---Path to the icon file.
+---@optional true
+---@type FileName
+LinkedContainer.icon = nil
+
+---The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
+---@optional true
+---@type IconData[]
+LinkedContainer.icons = nil
+
+---Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
+---@optional true
+---@type FileName
+LinkedContainer.icon_size = nil
+
+---@default 0
+---@optional true
+---@type uint8
+LinkedContainer.icon_mipmaps = nil
+
+---Used by <a href="/Types/SpiderLegSpecification" title="Types/SpiderLegSpecification">Types/SpiderLegSpecification</a> for <a href="/Prototype/SpiderVehicle" title="Prototype/SpiderVehicle">Prototype/SpiderVehicle</a>, also known as <a href="/Spidertron" title="Spidertron">spidertron</a>.
+---@class SpiderLeg
+local SpiderLeg = {}
+
+---@optional false
+---@type SpiderLegGraphicsSet
+SpiderLeg.graphics_set = nil
+
+---@optional false
+---@type double
+SpiderLeg.initial_movement_speed = nil
+
+---@optional false
+---@type double
+SpiderLeg.movement_acceleration = nil
+
+---@optional false
+---@type double
+SpiderLeg.movement_based_position_selection_distance = nil
+
+---@optional false
+---@type double
+SpiderLeg.part_length = nil
+
+---@default 1
+---@optional true
+---@type double
+SpiderLeg.walking_sound_volume_modifier = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderLeg.alert_when_damaged = nil
+
+---@optional true
+---@type AttackReaction
+SpiderLeg.attack_reaction = nil
+
+---Specifies the name(s) of the <a href="/Prototype/Corpse" title="Prototype/Corpse">Prototype/Corpse</a> entity to be used when this entity dies.
+---@optional true
+---@type string|strings[]
+SpiderLeg.corpse = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderLeg.create_ghost_on_death = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderLeg.damaged_trigger_effect = nil
+
+---Either one <a href="/Types/ExplosionDefinition" title="Types/ExplosionDefinition">ExplosionDefinition</a> or an array of them. The entities that are spawned in place of this one when it dies.
+---@optional true
+---@type ExplosionDefinition|ExplosionDefinition[]
+SpiderLeg.dying_explosion = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderLeg.dying_trigger_effect = nil
+
+---The amount of health cured by tick naturally. Works only on active entities. (Todo explain)
+---@default 0
+---@optional true
+---@type float
+SpiderLeg.healing_per_tick = nil
+
+---Whether the resistances of this entity should be hidden in the entity tooltip.
+---@default true
+---@optional true
+---@type bool
+SpiderLeg.hide_resistances = nil
+
+---Sprite drawn on ground under the entity to make it feel more integrated into the ground.
+---@optional true
+---@type Sprite4Way
+SpiderLeg.integration_patch = nil
+
+---@default lower-object
+---@optional true
+---@type RenderLayer
+SpiderLeg.integration_patch_render_layer = nil
+
+---The loot is dropped on the ground when the entity is killed.
+---@optional true
+---@type Loot
+SpiderLeg.loot = nil
+
+---The unit health can never go over the maximum. Default health of units on creation is set to max. Must be greater than 0.
+---@default 10
+---@optional true
+---@type float
+SpiderLeg.max_health = nil
+
+---@default false
+---@optional true
+---@type bool
+SpiderLeg.random_corpse_variation = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.repair_sound = nil
+
+---@default 1
+---@optional true
+---@type float
+SpiderLeg.repair_speed_modifier = nil
+
+---@optional true
+---@type Resistances
+SpiderLeg.resistances = nil
+
+---Entities this entity prototype can be pasted on to in addition to the standard supported types. This is used to allow copying between types that aren't compatible on the C++ code side, by allowing mods to receive the <a rel="nofollow" class="external text" href="https://lua-api.factorio.com/latest/events.html#on_entity_settings_pasted">on_entity_settings_pasted</a> event for the given entity and do the setting pasting via script.
+---@optional true
+---@type string[]
+SpiderLeg.additional_pastable_entities = nil
+
+---@optional true
+---@type float
+SpiderLeg.alert_icon_scale = nil
+
+---@optional true
+---@type vector
+SpiderLeg.alert_icon_shift = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderLeg.allow_copy_paste = nil
+
+---Used to specify the rules for placing this entity during map generation.
+---@default nil
+---@optional true
+---@type AutoplaceSpecification
+SpiderLeg.autoplace = nil
+
+---@default 0
+---@optional true
+---@type double
+SpiderLeg.build_base_evolution_requirement = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.build_sound = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.close_sound = nil
+
+---<p>Specification of the entity collision boundaries.</p><p>Empty collision box is used for smoke, projectiles, particles, explosions etc.</p><p><div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="n">collision_box</span> <span class="o">=</span> <span class="p">{{</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">}}</span></pre></div></p><p>The {0,0} coordinate in the collision box will match the entity position.</p><p>It should be near the center of the collision box, to keep correct entity drawing order. It must include the {0,0} coordinate.</p><p>Note, that for buildings, it is customary to leave 0.1 wide border between the edge of the tile and the edge of the building, this lets the player move between the building and electric poles/inserters etc.</p>
+---@optional true
+---@type BoundingBox
+SpiderLeg.collision_box = nil
+
+---Two entities can collide only if they share a layer from the collision mask.
+---@optional true
+---@type CollisionMask
+SpiderLeg.collision_mask = nil
+
+---The effect/trigger that happens when the entity is placed.
+---@optional true
+---@type Trigger
+SpiderLeg.created_effect = nil
+
+---The smoke that is shown when the entity is placed. Default is using the "smoke-building" smoke.
+---@default smoke-building
+---@optional true
+---@type CreateTrivialSmokeEffectItem
+SpiderLeg.created_smoke = nil
+
+---<p>Specification of space needed to see the whole entity.</p><p>This is used to calculate the correct zoom and positioning in the entity info gui.</p>
+---@optional true
+---@type BoundingBox
+SpiderLeg.drawing_box = nil
+
+---Amount of emissions created (positive number) or cleaned (negative number) every second by the entity. This is passive, and it is independent concept of the emissions of machines, these are created actively depending on the power consumption. Currently used just for trees.
+---@default 0
+---@optional true
+---@type double
+SpiderLeg.emissions_per_second = nil
+
+---@optional true
+---@type Color
+SpiderLeg.enemy_map_color = nil
+
+---<p>This allows you to replace an entity that's already placed, with a different one in your inventory. For example, replacing a burner inserter with a fast inserter.</p><p>This is simply a string, so any string can be used here. The entity that should be replaced simply has to use the same string here.</p>
+---@optional true
+---@type string
+SpiderLeg.fast_replaceable_group = nil
+
+---@optional true
+---@type EntityPrototypeFlags
+SpiderLeg.flags = nil
+
+---@optional true
+---@type Color
+SpiderLeg.friendly_map_color = nil
+
+---Where beams should hit the entity. Useful if the bounding box only covers part of the entity (e.g. feet of the character) and beams only hitting there would look weird.
+---@optional true
+---@type BoundingBox
+SpiderLeg.hit_visualization_box = nil
+
+---@optional true
+---@type Color
+SpiderLeg.map_color = nil
+
+---Used instead of the collision box during map generation. Allows space entities differently during map generation, for example if the box is bigger, the entities will be placed farther apart.
+---@optional true
+---@type BoundingBox
+SpiderLeg.map_generator_bounding_box = nil
+
+---@optional true
+---@type MinableProperties
+SpiderLeg.minable = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.mined_sound = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.mining_sound = nil
+
+---Name of the entity that will be automatically selected as the upgrade of this entity when using the <a href="/Upgrade_planner" title="Upgrade planner">upgrade planner</a> without configuration.</p><p>This entity may not have 'not-upgradable' flag set and must be minable. This entity mining result must not contain item product with "hidden" flag set. Mining results with no item products are allowed. The entity may not be a <a href="/Prototype/RollingStock" title="Prototype/RollingStock">Prototype/RollingStock</a>.<br>The upgrade target entity needs to have the same bounding box, collision mask, and fast replaceable group as this entity. The upgrade target entity must have least 1 item that builds it that isn't hidden.</p>
+---@optional true
+---@type string
+SpiderLeg.next_upgrade = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.open_sound = nil
+
+---<p>Item that when placed creates this entity. Determines which item is picked when "Q" (smart pipette) is used on the entity, determines which item is needed in a blueprint of this entity.</p><p>The item count specified here can't be larger than the stack size of that item.</p>
+---@optional true
+---@type ItemToPlace|ItemToPlace[]
+SpiderLeg.placeable_by = nil
+
+---@optional true
+---@type RadiusVisualisationSpecification
+SpiderLeg.radius_visualisation_specification = nil
+
+---The entity that remains when this one is mined, deconstructed or fast-replaced. The entity wont actually be spawned if it would collide with the entity that is in the process of being mined.
+---@optional true
+---@type string|string[]
+SpiderLeg.remains_when_mined = nil
+
+---Whether this entity should remove decoratives that collide with it when this entity is built.
+---@default automatic
+---@optional true
+---@type EntityRemoveDecoratives
+SpiderLeg.remove_decoratives = nil
+
+---@optional true
+---@type SoundType
+SpiderLeg.rotated_sound = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderLeg.selectable_in_game = nil
+
+---<p>Specification of the entity selection area. When empty the entity will have no selection area (and thus is not selectable).</p><p>The selection box is usually a little bit bigger than the collision box, for tilable entities (like buildings) it should match the tile size of the building.</p>
+---@optional true
+---@type BoundingBox
+SpiderLeg.selection_box = nil
+
+---The entity with the higher number is selectable before the entity with the lower number.
+---@default 50
+---@optional true
+---@type uint8
+SpiderLeg.selection_priority = nil
+
+---The cursor size used when shooting at this entity.
+---@optional true
+---@type double
+SpiderLeg.shooting_cursor_size = nil
+
+---Used to set the area of the entity that can have stickers on it, currently only used for units to specify the area where the green slow down stickers can appear. It is optional and the collision box is used when not specified.
+---@optional true
+---@type BoundingBox
+SpiderLeg.sticker_box = nil
+
+---The name of the subgroup this entity should be sorted into in the map editor building selection.
+---@optional true
+---@type string
+SpiderLeg.subgroup = nil
+
+---@optional true
+---@type uint32
+SpiderLeg.tile_height = nil
+
+---Used to determine how the center of the entity should be positioned when building (unless the offgrid <a href="/Types/EntityPrototypeFlags" title="Types/EntityPrototypeFlags">flag</a> is specified). When the tile width is odd, the center will be in the center of the tile, when it is even, the center is on the tile transition.
+---@optional true
+---@type uint32
+SpiderLeg.tile_width = nil
+
+---@optional true
+---@type TriggerTargetMask
+SpiderLeg.trigger_target_mask = nil
+
+---When playing this sound, the volume is scaled by the speed of the vehicle when colliding with this entity.
+---@optional true
+---@type SoundType
+SpiderLeg.vehicle_impact_sound = nil
+
+---May also be defined inside <code>graphics_set</code> instead of directly in the entity prototype. This is useful for entities that use the a <code>graphics_set</code> property to define their graphics, becausen then all graphics can be in defined one place.
+---@optional true
+---@type WaterReflectionDefinition
+SpiderLeg.water_reflection = nil
+
+---Will also work on entities that don't actually do work.
+---@optional true
+---@type WorkingSound
+SpiderLeg.working_sound = nil
+
+---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
+---@optional false
+---@type string
+SpiderLeg.name = nil
+
+---Overwrites the description set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. The description is usually shown in the tooltip of the prototype.
+---@optional true
+---@type LocalisedString
+SpiderLeg.localised_description = nil
+
+---Overwrites the name set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. Can be used to easily set a procedurally-generated name because the LocalisedString format allows to insert parameters into the name directly from the Lua script.
+---@optional true
+---@type LocalisedString
+SpiderLeg.localised_name = nil
+
+---<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>
+---@optional true
+---@type Order
+SpiderLeg.order = nil
+
+---Path to the icon file.
+---@optional true
+---@type FileName
+SpiderLeg.icon = nil
+
+---The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
+---@optional true
+---@type IconData[]
+SpiderLeg.icons = nil
+
+---Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
+---@optional true
+---@type FileName
+SpiderLeg.icon_size = nil
+
+---@default 0
+---@optional true
+---@type uint8
+SpiderLeg.icon_mipmaps = nil
+
+---The <a href="/Spidertron" title="Spidertron">spidertron</a>.
+---@class SpiderVehicle
+local SpiderVehicle = {}
+
+---@optional false
+---@type bool
+SpiderVehicle.automatic_weapon_cycling = nil
+
+---Must be a burner energy source.
+---@optional true
+---@type EnergySource
+SpiderVehicle.burner = nil
+
+---Can also be a void energy source.
+---@optional true
+---@type EnergySource
+SpiderVehicle.energy_source = nil
+
+---This is applied whenever the spider shoots (manual and automatic targeting), <code>automatic_weapon_cycling</code> is true and the next gun in line (which is then selected) has ammo.<br>When all of the above is the case, the chain_shooting_cooldown_modifier is a multiplier on the remaining shooting cooldown: <code>cooldown = (remaining_cooldown × chain_shooting_cooldown_modifier)</code>. chain_shooting_cooldown_modifier is intended to be in the range of 0 to 1. This means that setting chain_shooting_cooldown_modifier to 0 reduces the remaining shooting cooldown to 0 while a chain_shooting_cooldown_modifier of 1 does not affect the remaining shooting cooldown at all.
+---@optional true
+---@type float
+SpiderVehicle.chain_shooting_cooldown_modifier = nil
+
+---@optional false
+---@type uint32
+SpiderVehicle.chunk_exploration_radius = nil
+
+---@optional false
+---@type SpiderVehicleGraphicsSet
+SpiderVehicle.graphics_set = nil
+
+---The height of the spider affects the shooting height and the drawing of the graphics and lights.
+---@optional false
+---@type float
+SpiderVehicle.height = nil
+
+---@optional false
+---@type ItemStackIndex
+SpiderVehicle.inventory_size = nil
+
+---@optional false
+---@type Energy
+SpiderVehicle.movement_energy_consumption = nil
+
+---@optional false
+---@type SpiderEnginePrototype
+SpiderVehicle.spider_engine = nil
+
+---The guns this spider vehicle uses.
+---@optional true
+---@type string[]
+SpiderVehicle.guns = nil
+
+---The orientation of the torso of the spider affects the shooting direction and the drawing of the graphics and lights.
+---@default 1
+---@optional true
+---@type float
+SpiderVehicle.torso_rotation_speed = nil
+
+---@optional true
+---@type double
+SpiderVehicle.braking_force = nil
+
+---@optional true
+---@type Energy
+SpiderVehicle.braking_power = nil
+
+---The (movement) energy used per hit point (1 hit point = 1 health damage) taken and dealt for this vehicle during collisions. The smaller the number, the more damage this vehicle and the rammed entity take during collisions: <code>damage = energy / energy_per_hit_point</code>.
+---@optional false
+---@type double
+SpiderVehicle.energy_per_hit_point = nil
+
+---Two different ways to set friction force. At least one must exist. Must be positive.
+---@optional true
+---@type double
+SpiderVehicle.friction = nil
+
+---Two different ways to set friction force. At least one must exist. Must be positive.
+---@optional true
+---@type double
+SpiderVehicle.friction_force = nil
+
+---Must be positive. Weight of the entity used for physics calculation when car hits something.
+---@optional false
+---@type double
+SpiderVehicle.weight = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderVehicle.crash_trigger = nil
+
+---The name of the <a href="/Prototype/EquipmentGrid" title="Prototype/EquipmentGrid">equipment grid</a> this vehicle has.
+---@optional true
+---@type string
+SpiderVehicle.equipment_grid = nil
+
+---The sprite that represents this vehicle on the map/minimap.
+---@optional true
+---@type SpriteType
+SpiderVehicle.minimap_representation = nil
+
+---The sprite that represents this vehicle on the map/minimap when it is selected.
+---@optional true
+---@type SpriteType
+SpiderVehicle.selected_minimap_representation = nil
+
+---Must be positive. Sound is scaled by speed.
+---@optional true
+---@type double
+SpiderVehicle.sound_minimum_speed = nil
+
+---Must be positive. Sound is scaled by speed.
+---@default 1.0
+---@optional true
+---@type double
+SpiderVehicle.sound_scaling_ratio = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderVehicle.stop_trigger = nil
+
+---@default 0.0
+---@optional true
+---@type double
+SpiderVehicle.stop_trigger_speed = nil
+
+---Must be in the [0, 1] interval.
+---@default 1
+---@optional true
+---@type float
+SpiderVehicle.terrain_friction_modifier = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderVehicle.alert_when_damaged = nil
+
+---@optional true
+---@type AttackReaction
+SpiderVehicle.attack_reaction = nil
+
+---Specifies the name(s) of the <a href="/Prototype/Corpse" title="Prototype/Corpse">Prototype/Corpse</a> entity to be used when this entity dies.
+---@optional true
+---@type string|strings[]
+SpiderVehicle.corpse = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderVehicle.create_ghost_on_death = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderVehicle.damaged_trigger_effect = nil
+
+---Either one <a href="/Types/ExplosionDefinition" title="Types/ExplosionDefinition">ExplosionDefinition</a> or an array of them. The entities that are spawned in place of this one when it dies.
+---@optional true
+---@type ExplosionDefinition|ExplosionDefinition[]
+SpiderVehicle.dying_explosion = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderVehicle.dying_trigger_effect = nil
+
+---The amount of health cured by tick naturally. Works only on active entities. (Todo explain)
+---@default 0
+---@optional true
+---@type float
+SpiderVehicle.healing_per_tick = nil
+
+---Whether the resistances of this entity should be hidden in the entity tooltip.
+---@default true
+---@optional true
+---@type bool
+SpiderVehicle.hide_resistances = nil
+
+---Sprite drawn on ground under the entity to make it feel more integrated into the ground.
+---@optional true
+---@type Sprite4Way
+SpiderVehicle.integration_patch = nil
+
+---@default lower-object
+---@optional true
+---@type RenderLayer
+SpiderVehicle.integration_patch_render_layer = nil
+
+---The loot is dropped on the ground when the entity is killed.
+---@optional true
+---@type Loot
+SpiderVehicle.loot = nil
+
+---The unit health can never go over the maximum. Default health of units on creation is set to max. Must be greater than 0.
+---@default 10
+---@optional true
+---@type float
+SpiderVehicle.max_health = nil
+
+---@default false
+---@optional true
+---@type bool
+SpiderVehicle.random_corpse_variation = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.repair_sound = nil
+
+---@default 1
+---@optional true
+---@type float
+SpiderVehicle.repair_speed_modifier = nil
+
+---@optional true
+---@type Resistances
+SpiderVehicle.resistances = nil
+
+---Entities this entity prototype can be pasted on to in addition to the standard supported types. This is used to allow copying between types that aren't compatible on the C++ code side, by allowing mods to receive the <a rel="nofollow" class="external text" href="https://lua-api.factorio.com/latest/events.html#on_entity_settings_pasted">on_entity_settings_pasted</a> event for the given entity and do the setting pasting via script.
+---@optional true
+---@type string[]
+SpiderVehicle.additional_pastable_entities = nil
+
+---@optional true
+---@type float
+SpiderVehicle.alert_icon_scale = nil
+
+---@optional true
+---@type vector
+SpiderVehicle.alert_icon_shift = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderVehicle.allow_copy_paste = nil
+
+---Used to specify the rules for placing this entity during map generation.
+---@default nil
+---@optional true
+---@type AutoplaceSpecification
+SpiderVehicle.autoplace = nil
+
+---@default 0
+---@optional true
+---@type double
+SpiderVehicle.build_base_evolution_requirement = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.build_sound = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.close_sound = nil
+
+---<p>Specification of the entity collision boundaries.</p><p>Empty collision box is used for smoke, projectiles, particles, explosions etc.</p><p><div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="n">collision_box</span> <span class="o">=</span> <span class="p">{{</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">}}</span></pre></div></p><p>The {0,0} coordinate in the collision box will match the entity position.</p><p>It should be near the center of the collision box, to keep correct entity drawing order. It must include the {0,0} coordinate.</p><p>Note, that for buildings, it is customary to leave 0.1 wide border between the edge of the tile and the edge of the building, this lets the player move between the building and electric poles/inserters etc.</p>
+---@optional true
+---@type BoundingBox
+SpiderVehicle.collision_box = nil
+
+---Two entities can collide only if they share a layer from the collision mask.
+---@optional true
+---@type CollisionMask
+SpiderVehicle.collision_mask = nil
+
+---The effect/trigger that happens when the entity is placed.
+---@optional true
+---@type Trigger
+SpiderVehicle.created_effect = nil
+
+---The smoke that is shown when the entity is placed. Default is using the "smoke-building" smoke.
+---@default smoke-building
+---@optional true
+---@type CreateTrivialSmokeEffectItem
+SpiderVehicle.created_smoke = nil
+
+---<p>Specification of space needed to see the whole entity.</p><p>This is used to calculate the correct zoom and positioning in the entity info gui.</p>
+---@optional true
+---@type BoundingBox
+SpiderVehicle.drawing_box = nil
+
+---Amount of emissions created (positive number) or cleaned (negative number) every second by the entity. This is passive, and it is independent concept of the emissions of machines, these are created actively depending on the power consumption. Currently used just for trees.
+---@default 0
+---@optional true
+---@type double
+SpiderVehicle.emissions_per_second = nil
+
+---@optional true
+---@type Color
+SpiderVehicle.enemy_map_color = nil
+
+---<p>This allows you to replace an entity that's already placed, with a different one in your inventory. For example, replacing a burner inserter with a fast inserter.</p><p>This is simply a string, so any string can be used here. The entity that should be replaced simply has to use the same string here.</p>
+---@optional true
+---@type string
+SpiderVehicle.fast_replaceable_group = nil
+
+---@optional true
+---@type EntityPrototypeFlags
+SpiderVehicle.flags = nil
+
+---@optional true
+---@type Color
+SpiderVehicle.friendly_map_color = nil
+
+---Where beams should hit the entity. Useful if the bounding box only covers part of the entity (e.g. feet of the character) and beams only hitting there would look weird.
+---@optional true
+---@type BoundingBox
+SpiderVehicle.hit_visualization_box = nil
+
+---@optional true
+---@type Color
+SpiderVehicle.map_color = nil
+
+---Used instead of the collision box during map generation. Allows space entities differently during map generation, for example if the box is bigger, the entities will be placed farther apart.
+---@optional true
+---@type BoundingBox
+SpiderVehicle.map_generator_bounding_box = nil
+
+---@optional true
+---@type MinableProperties
+SpiderVehicle.minable = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.mined_sound = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.mining_sound = nil
+
+---Name of the entity that will be automatically selected as the upgrade of this entity when using the <a href="/Upgrade_planner" title="Upgrade planner">upgrade planner</a> without configuration.</p><p>This entity may not have 'not-upgradable' flag set and must be minable. This entity mining result must not contain item product with "hidden" flag set. Mining results with no item products are allowed. The entity may not be a <a href="/Prototype/RollingStock" title="Prototype/RollingStock">Prototype/RollingStock</a>.<br>The upgrade target entity needs to have the same bounding box, collision mask, and fast replaceable group as this entity. The upgrade target entity must have least 1 item that builds it that isn't hidden.</p>
+---@optional true
+---@type string
+SpiderVehicle.next_upgrade = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.open_sound = nil
+
+---<p>Item that when placed creates this entity. Determines which item is picked when "Q" (smart pipette) is used on the entity, determines which item is needed in a blueprint of this entity.</p><p>The item count specified here can't be larger than the stack size of that item.</p>
+---@optional true
+---@type ItemToPlace|ItemToPlace[]
+SpiderVehicle.placeable_by = nil
+
+---@optional true
+---@type RadiusVisualisationSpecification
+SpiderVehicle.radius_visualisation_specification = nil
+
+---The entity that remains when this one is mined, deconstructed or fast-replaced. The entity wont actually be spawned if it would collide with the entity that is in the process of being mined.
+---@optional true
+---@type string|string[]
+SpiderVehicle.remains_when_mined = nil
+
+---Whether this entity should remove decoratives that collide with it when this entity is built.
+---@default automatic
+---@optional true
+---@type EntityRemoveDecoratives
+SpiderVehicle.remove_decoratives = nil
+
+---@optional true
+---@type SoundType
+SpiderVehicle.rotated_sound = nil
+
+---@default true
+---@optional true
+---@type bool
+SpiderVehicle.selectable_in_game = nil
+
+---<p>Specification of the entity selection area. When empty the entity will have no selection area (and thus is not selectable).</p><p>The selection box is usually a little bit bigger than the collision box, for tilable entities (like buildings) it should match the tile size of the building.</p>
+---@optional true
+---@type BoundingBox
+SpiderVehicle.selection_box = nil
+
+---The entity with the higher number is selectable before the entity with the lower number.
+---@default 50
+---@optional true
+---@type uint8
+SpiderVehicle.selection_priority = nil
+
+---The cursor size used when shooting at this entity.
+---@optional true
+---@type double
+SpiderVehicle.shooting_cursor_size = nil
+
+---Used to set the area of the entity that can have stickers on it, currently only used for units to specify the area where the green slow down stickers can appear. It is optional and the collision box is used when not specified.
+---@optional true
+---@type BoundingBox
+SpiderVehicle.sticker_box = nil
+
+---The name of the subgroup this entity should be sorted into in the map editor building selection.
+---@optional true
+---@type string
+SpiderVehicle.subgroup = nil
+
+---@optional true
+---@type uint32
+SpiderVehicle.tile_height = nil
+
+---Used to determine how the center of the entity should be positioned when building (unless the offgrid <a href="/Types/EntityPrototypeFlags" title="Types/EntityPrototypeFlags">flag</a> is specified). When the tile width is odd, the center will be in the center of the tile, when it is even, the center is on the tile transition.
+---@optional true
+---@type uint32
+SpiderVehicle.tile_width = nil
+
+---@optional true
+---@type TriggerTargetMask
+SpiderVehicle.trigger_target_mask = nil
+
+---When playing this sound, the volume is scaled by the speed of the vehicle when colliding with this entity.
+---@optional true
+---@type SoundType
+SpiderVehicle.vehicle_impact_sound = nil
+
+---May also be defined inside <code>graphics_set</code> instead of directly in the entity prototype. This is useful for entities that use the a <code>graphics_set</code> property to define their graphics, becausen then all graphics can be in defined one place.
+---@optional true
+---@type WaterReflectionDefinition
+SpiderVehicle.water_reflection = nil
+
+---Will also work on entities that don't actually do work.
+---@optional true
+---@type WorkingSound
+SpiderVehicle.working_sound = nil
+
+---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
+---@optional false
+---@type string
+SpiderVehicle.name = nil
+
+---Overwrites the description set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. The description is usually shown in the tooltip of the prototype.
+---@optional true
+---@type LocalisedString
+SpiderVehicle.localised_description = nil
+
+---Overwrites the name set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. Can be used to easily set a procedurally-generated name because the LocalisedString format allows to insert parameters into the name directly from the Lua script.
+---@optional true
+---@type LocalisedString
+SpiderVehicle.localised_name = nil
+
+---<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>
+---@optional true
+---@type Order
+SpiderVehicle.order = nil
+
+---Path to the icon file.
+---@optional true
+---@type FileName
+SpiderVehicle.icon = nil
+
+---The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
+---@optional true
+---@type IconData[]
+SpiderVehicle.icons = nil
+
+---Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
+---@optional true
+---@type FileName
+SpiderVehicle.icon_size = nil
+
+---@default 0
+---@optional true
+---@type uint8
+SpiderVehicle.icon_mipmaps = nil
+
+---The <a href="/Spidertron_remote" title="Spidertron remote">spidertron remote</a>. This remote can only be connected to entities of type <a href="/Prototype/SpiderVehicle" title="Prototype/SpiderVehicle">Prototype/SpiderVehicle</a>.
+---@class SpidertronRemote
+local SpidertronRemote = {}
+
+---@optional false
+---@type bool
+SpidertronRemote.automatic_weapon_cycling = nil
+
+---The property for the file path is <code>icon_color_indicator_masks</code> instead of icon.
+---@optional false
+---@type IconData[]
+SpidertronRemote.icon_color_indicator_masks = nil
+
+---@optional false
+---@type IconData
+SpidertronRemote.icon_color_indicator_mask = nil
+
+---@optional false
+---@type SpriteSizeType
+SpidertronRemote.icon_size = nil
+
+---Count of items of the same name that can be stored in one inventory slot. Must be 1 when <code>stackable</code> is false.
+---@optional false
+---@type ItemCountType
+SpidertronRemote.stack_size = nil
+
+---The item that is the result when this item gets burned as fuel.
+---@optional true
+---@type string
+SpidertronRemote.burnt_result = nil
+
+---@optional true
+---@type SoundType
+SpidertronRemote.close_sound = nil
+
+---@optional true
+---@type IconData[]
+SpidertronRemote.dark_background_icons = nil
+
+---@optional true
+---@type FileName
+SpidertronRemote.dark_background_icon = nil
+
+---@optional true
+---@type ItemCountType
+SpidertronRemote.default_request_amount = nil
+
+---Specifies some properties of the item.
+---@optional true
+---@type ItemPrototypeFlags
+SpidertronRemote.flags = nil
+
+---@default 1.0
+---@optional true
+---@type double
+SpidertronRemote.fuel_acceleration_multiplier = nil
+
+---Must exist when a fuel_value is defined. Name of one of the <a href="/Prototype/FuelCategory" title="Prototype/FuelCategory">fuel categories</a>.
+---@optional true
+---@type string
+SpidertronRemote.fuel_category = nil
+
+---@default 1.0
+---@optional true
+---@type double
+SpidertronRemote.fuel_emissions_multiplier = nil
+
+---Colors the glow of the burner energy source when this fuel is burned.
+---@optional true
+---@type Color
+SpidertronRemote.fuel_glow_color = nil
+
+---@default 1.0
+---@optional true
+---@type double
+SpidertronRemote.fuel_top_speed_multiplier = nil
+
+---Mandatory when fuel_acceleration_multiplier, fuel_top_speed_multiplier, fuel_emissions_multiplier, or fuel_glow_color are used. Amount of energy it gives when used as fuel.
+---@default 0J
+---@optional true
+---@type Energy
+SpidertronRemote.fuel_value = nil
+
+---@optional true
+---@type SoundType
+SpidertronRemote.open_sound = nil
+
+---Used to give the item multiple different icons so that they look less uniform on belts etc. For inventory icons and similar, <code>icon/icons</code> will be used. Maximum number of variations is 16.
+---@optional true
+---@type SpriteVariations
+SpidertronRemote.pictures = nil
+
+---@optional true
+---@type PlaceAsTile
+SpidertronRemote.place_as_tile = nil
+
+---Name of prototype/Entity that can be built using this item. The localised name of the entity will be used as the in-game item name. This behavior can be overwritten by specifying <code>localised_name</code> on this item, it will be used instead.
+---@optional true
+---@type string
+SpidertronRemote.place_result = nil
+
+---@optional true
+---@type string
+SpidertronRemote.placed_as_equipment_result = nil
+
+---@optional true
+---@type ItemProductPrototype
+SpidertronRemote.rocket_launch_product = nil
+
+---@optional true
+---@type ItemProductPrototype[]
+SpidertronRemote.rocket_launch_products = nil
+
+---Empty text of subgroup is not allowed. (You can ommit the definition to get the default "other").
+---@default other
+---@optional true
+---@type string
+SpidertronRemote.subgroup = nil
+
+---The number of items needed to connect 2 entities with this as wire. In the base game, <a href="/Green_wire" title="Green wire">green wire</a>, <a href="/Red_wire" title="Red wire">red wire</a> and <a href="/Copper_cable" title="Copper cable">copper cable</a> have this set to 1.
+---@default 0
+---@optional true
+---@type ItemCountType
+SpidertronRemote.wire_count = nil
+
+---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
+---@optional false
+---@type string
+SpidertronRemote.name = nil
+
+---Overwrites the description set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. The description is usually shown in the tooltip of the prototype.
+---@optional true
+---@type LocalisedString
+SpidertronRemote.localised_description = nil
+
+---Overwrites the name set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. Can be used to easily set a procedurally-generated name because the LocalisedString format allows to insert parameters into the name directly from the Lua script.
+---@optional true
+---@type LocalisedString
+SpidertronRemote.localised_name = nil
+
+---<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>
+---@optional true
+---@type Order
+SpidertronRemote.order = nil
+
+---Path to the icon file.
+---@optional true
+---@type FileName
+SpidertronRemote.icon = nil
+
+---The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).
+---@optional true
+---@type IconData[]
+SpidertronRemote.icons = nil
+
+---Mandatory if <code>icon_size</code> is not specified inside all instances of <a href="/Types/IconData" title="Types/IconData">Types/IconData</a> inside <code>icons</code>. The size of the square icon, in pixels, e.g. 32 for a 32px by 32px icon.
+---@optional true
+---@type FileName
+SpidertronRemote.icon_size = nil
+
+---@default 0
+---@optional true
+---@type uint8
+SpidertronRemote.icon_mipmaps = nil
+
+---null
+---@class DrawAsAddition
+local DrawAsAddition = {}
+
+---<p>Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_glow</code> takes precedence over <code>draw_as_light</code>.</p><p>Draws first as a normal sprite, and again as a light layer.<sup><a rel="nofollow" class="external autonumber" href="https://forums.factorio.com/91682">[1]</a></sup></p>
+---@default false
+---@optional true
+---@type bool
+DrawAsAddition.draw_as_glow = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true.
+---@default false
+---@optional true
+---@type bool
+DrawAsAddition.draw_as_light = nil
+
+---Only one of <code>draw_as_shadow</code>, <code>draw_as_glow</code> and <code>draw_as_light</code> can be true. <code>draw_as_shadow</code> takes precedence over <code>draw_as_glow</code> and <code>draw_as_light</code>.
+---@default false
+---@optional true
+---@type bool
+DrawAsAddition.draw_as_shadow = nil
+
+---A tips and tricks entry.
+---@class TipsAndTricksItem
+local TipsAndTricksItem = {}
+
+---Name of a <a href="/Prototype/TipsAndTricksItemCategory" title="Prototype/TipsAndTricksItemCategory">Prototype/TipsAndTricksItemCategory</a>, used for the sorting of this tips and tricks entry. Tips and trick entries are sorted first by category and then by their <code>order</code> within that category.
+---@optional true
+---@type string
+TipsAndTricksItem.category = nil
+
+---An array of names of other tips and tricks items. This tips and tricks entry is only shown to the player once they have marked all dependencies as read.
+---@optional true
+---@type string[]
+TipsAndTricksItem.dependencies = nil
+
+---@optional true
+---@type FileName
+TipsAndTricksItem.image = nil
+
+---The tips and tricks entry is indented by <code>indent</code>×6 spaces.
+---@default 0
+---@optional true
+---@type uint8
+TipsAndTricksItem.indent = nil
+
+---Whether the tip title on the left in the tips and tricks GUI should use the "title_tip_item" style (semi bold font).
+---@default false
+---@optional true
+---@type bool
+TipsAndTricksItem.is_title = nil
+
+---@optional true
+---@type SimulationDefinition
+TipsAndTricksItem.simulation = nil
+
+---Condition for never showing the tip notification to the player.
+---@optional true
+---@type TipTrigger
+TipsAndTricksItem.skip_trigger = nil
+
+---@default locked
+---@optional true
+---@type string
+TipsAndTricksItem.starting_status = nil
+
+---String to add in front of the tips and trick entries name. Can be anything, the base game tends to use <a href="/Rich_text" title="Rich text">rich text</a> tags for items, e.g. <code>[item=wooden-chest]</code> here.
+---@optional true
+---@type string
+TipsAndTricksItem.tag = nil
+
+---Condition for when the tip notification should be shown to the player.
+---@optional true
+---@type TipTrigger
+TipsAndTricksItem.trigger = nil
+
+---Name of a <a href="/Prototype/Tutorial" title="Prototype/Tutorial">Prototype/Tutorial</a>.
+---@optional true
+---@type string
+TipsAndTricksItem.tutorial = nil
+
+---<p>Unique textual identification of the prototype.</p><p>For a list of all names used in vanilla, see <a href="/Data.raw" title="Data.raw">data.raw</a>.</p><p>May not contain <code>.</code>, may not exceed a length of 200 characters.</p>
+---@optional false
+---@type string
+TipsAndTricksItem.name = nil
+
+---Overwrites the description set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. The description is usually shown in the tooltip of the prototype.
+---@optional true
+---@type LocalisedString
+TipsAndTricksItem.localised_description = nil
+
+---Overwrites the name set in the <a href="/Tutorial:Localisation#Localising_simple_strings" title="Tutorial:Localisation">locale file</a>. Can be used to easily set a procedurally-generated name because the LocalisedString format allows to insert parameters into the name directly from the Lua script.
+---@optional true
+---@type LocalisedString
+TipsAndTricksItem.localised_name = nil
+
+---<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>
+---@optional true
+---@type Order
+TipsAndTricksItem.order = nil
+
+---@alias TipsAndTricksItemStartingStatus string
+
+---A <a href="/Prototype/TipsAndTricksItem" title="Prototype/TipsAndTricksItem">Prototype/TipsAndTricksItem</a> category, used for sorting of tips and tricks entries: Tips and trick entries are sorted first by category and then by their order within that category.
+---@class TipsAndTricksItemCategory
+local TipsAndTricksItemCategory = {}
+
+---@optional false
+---@type string
+TipsAndTricksItemCategory.name = nil
+
+---Tips and trick categories are sorted by <code>order</code>, and then the tips and tips entries are sorted by their own order within those categories.
+---@optional false
+---@type Order
+TipsAndTricksItemCategory.order = nil
+
+---@alias CursorBoxType string
+
+---Used by <a href="/Prototype/TipsAndTricksItem" title="Prototype/TipsAndTricksItem">Prototype/TipsAndTricksItem</a> and by main menu simulations (<a href="/Prototype/UtilityConstants" title="Prototype/UtilityConstants">Prototype/UtilityConstants</a>).
+---@class SimulationDefinition
+local SimulationDefinition = {}
+
+---The save file that is used for this simulation. If not given and <code>generate_map</code> is true, a map gets generated by the game. 
+---@optional true
+---@type FileName
+SimulationDefinition.save = nil
+
+---This code is run as a (silent) console command inside the simulation when it is first initialized. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel="nofollow" class="external autonumber" href="https://lua-api.factorio.com/latest/Libraries.html">[1]</a></sup>.
+---@optional true
+---@type FileName
+SimulationDefinition.init_file = nil
+
+---<p>Only loaded if <code>init_file</code> is not present.</p><p>This code is run as a (silent) console command inside the simulation when it is first initialized. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel="nofollow" class="external autonumber" href="https://lua-api.factorio.com/latest/Libraries.html">[2]</a></sup>.</p>
+---@optional true
+---@type string
+SimulationDefinition.init = nil
+
+---This code is run as a (silent) console command inside the simulation every time the simulation is updated. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel="nofollow" class="external autonumber" href="https://lua-api.factorio.com/latest/Libraries.html">[3]</a></sup>.
+---@optional true
+---@type FileName
+SimulationDefinition.update_file = nil
+
+---<p>Only loaded if <code>update_file</code> is not present.</p><p>This code is run as a (silent) console command inside the simulation every time the simulation is updated. Since this is run as a console command, the restrictions of console commands apply, e.g. <code>require</code> is not available<sup><a rel="nofollow" class="external autonumber" href="https://lua-api.factorio.com/latest/Libraries.html">[4]</a></sup>.</p>
+---@optional true
+---@type string
+SimulationDefinition.update = nil
+
+---Amount of ticks that this simulation should run for before the simulation is shown to the player. These updates happen after init/init_file has been run and at the highest possible rate (> 60 UPS).
+---@default 0
+---@optional true
+---@type uint32
+SimulationDefinition.init_update_count = nil
+
+---How long this simulation takes. In the main menu simulations, another simulation will start after this simulation ends.
+---@default 0
+---@optional true
+---@type uint32
+SimulationDefinition.length = nil
+
+---If <code>save</code> is not given and this is true, a map gets generated by the game for use in the simulation.
+---@default false
+---@optional true
+---@type bool
+SimulationDefinition.generate_map = nil
+
+---If this is true, the map of the simulation is set to be a lab-tile checkerboard in the area of {{-20, -15},{20, 15}} when the scenario is first initialized (before init/init_file run).
+---@default true
+---@optional true
+---@type bool
+SimulationDefinition.checkboard = nil
+
+---Multiplier for the simulation volume set by the player in the sound settings.
+---@optional true
+---@type float
+SimulationDefinition.volume_modifier = nil
+
+---Used by <a href="/Prototype/SpiderVehicle" title="Prototype/SpiderVehicle">Prototype/SpiderVehicle</a>.
+---@class SpiderEnginePrototype
+local SpiderEnginePrototype = {}
+
+---The name of the simple entity with force prototype that gets enemies interested in attacking the spider vehicle when nobody is in it.
+---@optional false
+---@type string
+SpiderEnginePrototype.military_target = nil
+
+---@optional false
+---@type SpiderLegSpecification|SpiderLegSpecification[]
+SpiderEnginePrototype.legs = nil
+
+---Used to specify the graphics for <a href="/Prototype/SpiderLeg" title="Prototype/SpiderLeg">Prototype/SpiderLeg</a>.
+---@class SpiderLegGraphicsSet
+local SpiderLegGraphicsSet = {}
+
+---@default 0
+---@optional true
+---@type float
+SpiderLegGraphicsSet.joint_turn_offset = nil
+
+---@optional true
+---@type SpriteType
+SpiderLegGraphicsSet.joint = nil
+
+---@optional true
+---@type SpriteType
+SpiderLegGraphicsSet.joint_shadow = nil
+
+---@optional true
+---@type SpiderLegPart
+SpiderLegGraphicsSet.upper_part = nil
+
+---@optional true
+---@type SpiderLegPart
+SpiderLegGraphicsSet.lower_part = nil
+
+---@optional true
+---@type SpiderLegPart
+SpiderLegGraphicsSet.upper_part_shadow = nil
+
+---@optional true
+---@type SpiderLegPart
+SpiderLegGraphicsSet.lower_part_shadow = nil
+
+---@optional true
+---@type SpiderLegPart
+SpiderLegGraphicsSet.upper_part_water_reflection = nil
+
+---@optional true
+---@type SpiderLegPart
+SpiderLegGraphicsSet.lower_part_water_reflection = nil
+
+---Used to specify the graphics for <a href="/Prototype/SpiderVehicle" title="Prototype/SpiderVehicle">Prototype/SpiderVehicle</a>.
+---@class SpiderVehicleGraphicsSet
+local SpiderVehicleGraphicsSet = {}
+
+---@optional true
+---@type RotatedAnimation
+SpiderVehicleGraphicsSet.base_animation = nil
+
+---@optional true
+---@type RotatedAnimation
+SpiderVehicleGraphicsSet.shadow_base_animation = nil
+
+---@optional true
+---@type RotatedAnimation
+SpiderVehicleGraphicsSet.animation = nil
+
+---@optional true
+---@type RotatedAnimation
+SpiderVehicleGraphicsSet.shadow_animation = nil
+
+---@default higher-object-under
+---@optional true
+---@type RenderLayer
+SpiderVehicleGraphicsSet.base_render_layer = nil
+
+---@default wires-above
+---@optional true
+---@type RenderLayer
+SpiderVehicleGraphicsSet.render_layer = nil
+
+---@default object
+---@optional true
+---@type RenderLayer
+SpiderVehicleGraphicsSet.autopilot_destination_visualisation_render_layer = nil
+
+---@optional true
+---@type LightDefinition
+SpiderVehicleGraphicsSet.light = nil
+
+---@optional true
+---@type LightDefinition
+SpiderVehicleGraphicsSet.eye_light = nil
+
+---@optional true
+---@type AnimationType
+SpiderVehicleGraphicsSet.autopilot_destination_on_map_visualisation = nil
+
+---@optional true
+---@type AnimationType
+SpiderVehicleGraphicsSet.autopilot_destination_visualisation = nil
+
+---@optional true
+---@type vector[][]
+SpiderVehicleGraphicsSet.light_positions = nil
+
+---null
+---@class OrTipTrigger
+local OrTipTrigger = {}
+
+---Array of other tip triggers, if at least one of them is fulfilled, this tip trigger is considered fulfilled.
+---@optional false
+---@type TipTrigger[]
+OrTipTrigger.triggers = nil
+
+---null
+---@class AndTipTrigger
+local AndTipTrigger = {}
+
+---Array of other tip triggers, if all of them are fulfilled, this tip trigger is considered fulfilled.
+---@optional false
+---@type TipTrigger[]
+AndTipTrigger.triggers = nil
+
+---null
+---@class SequenceTipTrigger
+local SequenceTipTrigger = {}
+
+---Array of other tip triggers.
+---@optional false
+---@type TipTrigger[]
+SequenceTipTrigger.triggers = nil
+
+---This tip trigger is considered fulfilled when the dependencies of the <a href="/Prototype/TipsAndTricksItem" title="Prototype/TipsAndTricksItem">Prototype/TipsAndTricksItem</a> are fulfilled.
+---@class DependenciesMetTipTrigger
+local DependenciesMetTipTrigger = {}
+
+---null
+---@class TimeElapsedTipTrigger
+local TimeElapsedTipTrigger = {}
+
+---@optional false
+---@type uint32
+TimeElapsedTipTrigger.ticks = nil
+
+---null
+---@class ResearchTechnologyTipTrigger
+local ResearchTechnologyTipTrigger = {}
+
+---Name of a <a href="/Prototype/Technology" title="Prototype/Technology">Prototype/Technology</a>.
+---@optional false
+---@type string
+ResearchTechnologyTipTrigger.technology = nil
+
+---null
+---@class UnlockedRecipeTipTrigger
+local UnlockedRecipeTipTrigger = {}
+
+---Name of a <a href="/Prototype/Recipe" title="Prototype/Recipe">Prototype/Recipe</a>.
+---@optional false
+---@type string
+UnlockedRecipeTipTrigger.recipe = nil
+
+---null
+---@class CraftItemTipTrigger
+local CraftItemTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+CraftItemTipTrigger.count = nil
+
+---Name of a <a href="/Prototype/Item" title="Prototype/Item">Prototype/Item</a>.
+---@optional true
+---@type string
+CraftItemTipTrigger.item = nil
+
+---Can only be used with <code>event_type</code> "crafting-finished". 
+---@default false
+---@optional true
+---@type bool
+CraftItemTipTrigger.consecutive = nil
+
+---@optional false
+---@type CraftItemTipTriggerEventType
+CraftItemTipTrigger.event_type = nil
+
+---@alias CraftItemTipTriggerEventType string
+
+---null
+---@class BuildEntityTipTrigger
+local BuildEntityTipTrigger = {}
+
+---@default 1
+---@optional true
+---@type uint32
+BuildEntityTipTrigger.count = nil
+
+---Name of a <a href="/Prototype/Entity" title="Prototype/Entity">Prototype/Entity</a>.
+---@optional true
+---@type string
+BuildEntityTipTrigger.entity = nil
+
+---@default false
+---@optional true
+---@type bool
+BuildEntityTipTrigger.match_type_only = nil
+
+---@default false
+---@optional true
+---@type bool
+BuildEntityTipTrigger.build_by_dragging = nil
+
+---null
+---@class ManualTransferTipTrigger
+local ManualTransferTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+ManualTransferTipTrigger.count = nil
+
+---null
+---@class StackTransferTipTrigger
+local StackTransferTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+StackTransferTipTrigger.count = nil
+
+---@optional true
+---@type StackTransferTipTriggerTransfer
+StackTransferTipTrigger.transfer = nil
+
+---@alias StackTransferTipTriggerTransfer string
+
+---null
+---@class EntityTransferTipTrigger
+local EntityTransferTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+EntityTransferTipTrigger.count = nil
+
+---@optional true
+---@type EntityTransferTipTriggerTransfer
+EntityTransferTipTrigger.transfer = nil
+
+---@alias EntityTransferTipTriggerTransfer string
+
+---null
+---@class SetRecipeTipTrigger
+local SetRecipeTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+SetRecipeTipTrigger.count = nil
+
+---Name of a <a href="/Prototype/Recipe" title="Prototype/Recipe">Prototype/Recipe</a>.
+---@optional true
+---@type string
+SetRecipeTipTrigger.recipe = nil
+
+---Name of a <a href="/Prototype/Entity" title="Prototype/Entity">Prototype/Entity</a>.
+---@optional true
+---@type string
+SetRecipeTipTrigger.machine = nil
+
+---@default false
+---@optional true
+---@type bool
+SetRecipeTipTrigger.consecutive = nil
+
+---Default: any (= it does not matter)
+---@optional true
+---@type bool
+SetRecipeTipTrigger.uses_fluid = nil
+
+---null
+---@class LimitChestTipTrigger
+local LimitChestTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+LimitChestTipTrigger.count = nil
+
+---null
+---@class UsePipetteTipTrigger
+local UsePipetteTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+UsePipetteTipTrigger.count = nil
+
+---null
+---@class SetLogisticRequestTipTrigger
+local SetLogisticRequestTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+SetLogisticRequestTipTrigger.count = nil
+
+---@default false
+---@optional true
+---@type bool
+SetLogisticRequestTipTrigger.logistic_chest_only = nil
+
+---null
+---@class UseConfirmTipTrigger
+local UseConfirmTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+UseConfirmTipTrigger.count = nil
+
+---null
+---@class LowPowerTipTrigger
+local LowPowerTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+LowPowerTipTrigger.count = nil
+
+---null
+---@class PasteEntitySettingsTipTrigger
+local PasteEntitySettingsTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+PasteEntitySettingsTipTrigger.count = nil
+
+---Name of a <a href="/Prototype/Entity" title="Prototype/Entity">Prototype/Entity</a>.
+---@optional true
+---@type string
+PasteEntitySettingsTipTrigger.source = nil
+
+---Name of a <a href="/Prototype/Entity" title="Prototype/Entity">Prototype/Entity</a>.
+---@optional true
+---@type string
+PasteEntitySettingsTipTrigger.target = nil
+
+---@default false
+---@optional true
+---@type bool
+PasteEntitySettingsTipTrigger.match_type_only = nil
+
+---null
+---@class FastReplaceTipTrigger
+local FastReplaceTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+FastReplaceTipTrigger.count = nil
+
+---Name of a <a href="/Prototype/Entity" title="Prototype/Entity">Prototype/Entity</a>.
+---@optional true
+---@type string
+FastReplaceTipTrigger.source = nil
+
+---Name of a <a href="/Prototype/Entity" title="Prototype/Entity">Prototype/Entity</a>.
+---@optional true
+---@type string
+FastReplaceTipTrigger.target = nil
+
+---@default false
+---@optional true
+---@type bool
+FastReplaceTipTrigger.match_type_only = nil
+
+---null
+---@class GroupAttackTipTrigger
+local GroupAttackTipTrigger = {}
+
+---@default 0
+---@optional true
+---@type uint32
+GroupAttackTipTrigger.count = nil
+
+---Used by <a href="/Types/SpiderEnginePrototype" title="Types/SpiderEnginePrototype">Types/SpiderEnginePrototype</a> for <a href="/Prototype/SpiderVehicle" title="Prototype/SpiderVehicle">Prototype/SpiderVehicle</a>.
+---@class SpiderLegSpecification
+local SpiderLegSpecification = {}
+
+---Name of a <a href="/Prototype/SpiderLeg" title="Prototype/SpiderLeg">Prototype/SpiderLeg</a>.
+
+---@optional false
+---@type string
+SpiderLegSpecification.leg = nil
+
+---@optional false
+---@type vector
+SpiderLegSpecification.mount_position = nil
+
+---@optional false
+---@type vector
+SpiderLegSpecification.ground_position = nil
+
+---The 1-based indices of the legs that should block this leg's movement.
+---@optional false
+---@type uint32[]
+SpiderLegSpecification.blocking_legs = nil
+
+---@optional true
+---@type TriggerEffect
+SpiderLegSpecification.leg_hit_the_ground_trigger = nil
+
+---Used by <a href="/Types/SpiderLegGraphicsSet" title="Types/SpiderLegGraphicsSet">Types/SpiderLegGraphicsSet</a> for <a href="/Prototype/SpiderLeg" title="Prototype/SpiderLeg">Prototype/SpiderLeg</a>.
+---@class SpiderLegPart
+local SpiderLegPart = {}
+
+---@optional true
+---@type SpriteType
+SpiderLegPart.top_end = nil
+
+---@optional true
+---@type SpriteType
+SpiderLegPart.middle = nil
+
+---@optional true
+---@type SpriteType
+SpiderLegPart.bottom_end = nil
+
+---@default 0
+---@optional true
+---@type float
+SpiderLegPart.middle_offset_from_top = nil
+
+---@default 0
+---@optional true
+---@type float
+SpiderLegPart.middle_offset_from_bottom = nil
+
+---@default 0
+---@optional true
+---@type float
+SpiderLegPart.top_end_length = nil
+
+---@default 0
+---@optional true
+---@type float
+SpiderLegPart.bottom_end_length = nil
 
