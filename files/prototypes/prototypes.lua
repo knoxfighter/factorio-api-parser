@@ -30170,7 +30170,7 @@ Lab.energy_source = nil
 ---@type Energy
 Lab.energy_usage = nil
 
----A list of the names of science packs that cane be used in this lab.
+---A list of the names of science packs that can be used in this lab.
 ---@optional false
 ---@type string[]
 Lab.inputs = nil
@@ -49016,6 +49016,11 @@ Module.beacon_tint = nil
 ---@optional true
 ---@type string[]
 Module.limitation = nil
+
+---<p>Array of recipe names this module can <b>not</b> be used on, implicitly allowing its use on all other recipes. This property has no effect if set to an empty table.</p><p>Note that the game converts this into a normal list of limitations internally, so reading <a rel="nofollow" class="external text" href="https://lua-api.factorio.com/latest/LuaItemPrototype.html#LuaItemPrototype.limitations">LuaItemPrototype.limitations</a> at runtime will be the product of both ways of defining limitations.</p>
+---@optional true
+---@type string[]
+Module.limitation_blacklist = nil
 
 ---Mandatory when <code>limitation</code> is present. The locale key of the message that is shown when the player attempts to use the module on a recipe it can't be used on. The locale key will be prefixed with <code>item-limitation.</code> (the "category" of the locale) by the game.
 ---@optional true

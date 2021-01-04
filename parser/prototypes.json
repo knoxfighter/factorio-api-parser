@@ -7954,7 +7954,7 @@
         {
           "name": "inputs",
           "type": "string[]",
-          "description": "A list of the names of science packs that cane be used in this lab.",
+          "description": "A list of the names of science packs that can be used in this lab.",
           "optional": false
         },
         {
@@ -12488,6 +12488,12 @@
           "name": "limitation",
           "type": "string[]",
           "description": "Array of recipe names this module can be used on. If empty, the module can be used on all recipes.",
+          "optional": true
+        },
+        {
+          "name": "limitation_blacklist",
+          "type": "string[]",
+          "description": "<p>Array of recipe names this module can <b>not</b> be used on, implicitly allowing its use on all other recipes. This property has no effect if set to an empty table.</p><p>Note that the game converts this into a normal list of limitations internally, so reading <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaItemPrototype.html#LuaItemPrototype.limitations\">LuaItemPrototype.limitations</a> at runtime will be the product of both ways of defining limitations.</p>",
           "optional": true
         },
         {
@@ -19856,7 +19862,7 @@
       "placeable-neutral": "placeable neutral/player/enemy determine the default force when placing entities in the map editor and using the *AUTO* option for the force.",
       "placeable-enemy": "placeable neutral/player/enemy determine the default force when placing entities in the map editor and using the *AUTO* option for the force.",
       "placeable-off-grid": "placeable-off-grid refers to the fact that most entities are placed on an invisible 'grid' within the world, entities with the placeable-off-grid flag do not have to line up with this grid (like trees and land-mines)",
-      "player-creation": "Makes it possible for the biter AI to target the entity as a distraction. Makes it possible to blueprint, deconstruct, and repair the entity (can be turned off again using the specific flags). Enables smoke to be created automatically when building the entity.",
+      "player-creation": "Makes it possible for the biter AI to target the entity as a distraction. Makes it possible to blueprint, deconstruct, and repair the entity (can be turned off again using the specific flags). Enables smoke to be created automatically when building the entity. Enables the entity to appear on the map/minimap.",
       "building-direction-8-way": "Uses 45 degree angle increments when selecting direction.",
       "filter-directions": "Used to automatically detect the proper direction, if possible. Used by base with the pump, train stop, and train signal.",
       "fast-replaceable-no-build-while-moving": "Fast replace will not apply when building while moving.",
