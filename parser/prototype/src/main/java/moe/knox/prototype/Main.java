@@ -10,7 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.*;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -172,13 +174,23 @@ public class Main {
 			add("/Types/SpiderLegSpecification");
 			add("/Types/SpiderLegPart");
 			add("/Prototype_definitions");
+			add("/Types/ModifierPrototype");
+			add("/Types/SimpleModifierPrototype");
+			add("/Types/TurretAttackModifierPrototype");
+			add("/Types/AmmoDamageModifierPrototype");
+			add("/Types/GiveItemModifierPrototype");
+			add("/Types/GunSpeedModifierPrototype");
+			add("/Types/UnlockRecipeModifierPrototype");
+			add("/Types/BoolModifierPrototype");
+			add("/Types/NothingModifierPrototype");
+			add("/Types/TipStatus");
 		}};
 		parsePageByLinks(newPath, additionalTypes);
 
 		// save to file named after current timestamp
 		String diffFileName = String.valueOf(System.currentTimeMillis());
 		String diffFilePath = diffPath.resolve(diffFileName).toString();
-		String diffCommand = String.format("diff \"%s\" \"%s\" | tee \"%s\"", newPath.toString(), oldPath.toString(), diffFilePath);
+		String diffCommand = String.format("diff \"%s\" \"%s\" | tee \"%s\"", newPath, oldPath, diffFilePath);
 
 		// run the difftool to check for changes
 		ProcessBuilder processBuilder = new ProcessBuilder();
@@ -192,7 +204,9 @@ public class Main {
 			someOutput = true;
 		}
 		int processResult = process.waitFor();
-		System.out.println("diff-tool result: " + processResult);
+
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(new Date());
+		System.out.println(timeStamp + " -- diff-tool result: " + processResult);
 
 		// post the diff to discord
 		if (someOutput && BuildConfig.DISCORD_WEBHOOK != null && !BuildConfig.DISCORD_WEBHOOK.isEmpty()) {

@@ -211,6 +211,11 @@
           "optional": true
         },
         {
+          "name": "enough_fuel_indicator_light",
+          "type": "LightDefinition",
+          "optional": true
+        },
+        {
           "name": "folded_muzzle_animation_shift",
           "type": "AnimatedVector",
           "optional": true
@@ -218,11 +223,6 @@
         {
           "name": "folding_muzzle_animation_shift",
           "type": "AnimatedVector",
-          "optional": true
-        },
-        {
-          "name": "indicator_light",
-          "type": "LightDefinition",
           "optional": true
         },
         {
@@ -238,6 +238,11 @@
         {
           "name": "not_enough_fuel_indicator_picture",
           "type": "Sprite4Way",
+          "optional": true
+        },
+        {
+          "name": "not_enough_fuel_indicator_light",
+          "type": "LightDefinition",
           "optional": true
         },
         {
@@ -268,7 +273,7 @@
     "name": "ResourceCategory",
     "type": "table",
     "link": "/Prototype/ResourceCategory",
-    "description": "A resource category. The built-in categories can be found <a href=\"/Data.raw#resource-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/ResourceEntity#category\" title=\"Prototype/ResourceEntity\">Prototype/ResourceEntity#category</a>.",
+    "description": "A resource category. The built-in categories can be found <a href=\"/Data.raw#resource-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/ResourceEntity#category\" title=\"Prototype/ResourceEntity\">Prototype/ResourceEntity#category</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [],
       "parent": "PrototypeBase"
@@ -598,7 +603,7 @@
         {
           "name": "charging_offsets",
           "type": "vector[]",
-          "description": "The offsets from the centre of the roboport at which robots will charge.",
+          "description": "The offsets from the centre of the roboport at which robots will charge. Only used if charging_station_count is equal to zero.",
           "optional": true
         },
         {
@@ -704,7 +709,7 @@
         {
           "name": "robot_limit",
           "type": "ItemCountType",
-          "description": "How many robots can exist in the network (cumulative).",
+          "description": " Unused.",
           "optional": true
         },
         {
@@ -756,7 +761,7 @@
     "name": "FuelCategory",
     "type": "table",
     "link": "/Prototype/FuelCategory",
-    "description": "Each item which has a fuel_value must have a fuel category. The fuel categories are used to allow only certain fuels to be used in <a href=\"/Types/EnergySource\" title=\"Types/EnergySource\">Types/EnergySource</a>.",
+    "description": "Each item which has a fuel_value must have a fuel category. The fuel categories are used to allow only certain fuels to be used in <a href=\"/Types/EnergySource\" title=\"Types/EnergySource\">Types/EnergySource</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [],
       "parent": "PrototypeBase"
@@ -862,6 +867,7 @@
         {
           "name": "secondary_draw_order",
           "type": "int8",
+          "description": "Used to determine render order for entities with the same <code>render_layer</code> in the same position. Entities with a higher <code>secondary_draw_order</code> are drawn on top.",
           "default": "0",
           "optional": true
         }
@@ -1117,7 +1123,7 @@
     "name": "ItemGroup",
     "type": "table",
     "link": "/Prototype/ItemGroup",
-    "description": "An item group. Item groups are shown above the list of craftable items in the player's inventory. The built-in groups are \"logistics\", \"production\", \"intermediate-products\" and \"combat\" but mods can define their own. See also <a href=\"/Prototype/Item#group\" title=\"Prototype/Item\">Prototype/Item#group</a>.",
+    "description": "An item group. Item groups are shown above the list of craftable items in the player's inventory. The built-in groups are \"logistics\", \"production\", \"intermediate-products\" and \"combat\" but mods can define their own. See also <a href=\"/Prototype/Item#group\" title=\"Prototype/Item\">Prototype/Item#group</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -1554,6 +1560,7 @@
         {
           "name": "max_speed",
           "type": "double",
+          "description": "<p>Maximum speed of the rolling stock in tiles/tick.</p><p>In-game, the max speed of a train is <code>min(all_rolling_stock_max_speeds) × average(all_fuel_modifiers_in_all_locomotives)</code>. This calculated train speed is then silently capped to 7386.3km/h.</p>",
           "optional": false
         },
         {
@@ -1591,7 +1598,7 @@
         {
           "name": "drive_over_tie_trigger",
           "type": "TriggerEffect",
-          "description": "Usually a sound to play when the rolling stock drives over a tie.",
+          "description": "Usually a sound to play when the rolling stock drives over a tie. The rolling stock is considered to be driving over a tie every <code>tie_distance</code> tiles.",
           "optional": true
         },
         {
@@ -1607,6 +1614,7 @@
         {
           "name": "tie_distance",
           "type": "double",
+          "description": "In tiles. Used to determine how often <code>drive_over_tie_trigger</code> is triggered.",
           "default": "10.0",
           "optional": true
         },
@@ -2186,7 +2194,7 @@
         },
         {
           "name": "alt_selection_cursor_box_type",
-          "type": "string",
+          "type": "CursorBoxType",
           "description": "The type of cursor box used to render selection of entities/tiles when alt selecting. Possible values are identical to normal selection_cursor_box_type.",
           "optional": false
         },
@@ -2204,7 +2212,7 @@
         },
         {
           "name": "selection_cursor_box_type",
-          "type": "string",
+          "type": "CursorBoxType",
           "description": "The type of cursor box used to render selection of entities/tiles when standard selecting.",
           "optional": false
         },
@@ -2233,6 +2241,11 @@
           "optional": true
         },
         {
+          "name": "alt_selection_count_button_color",
+          "type": "Color",
+          "optional": true
+        },
+        {
           "name": "alt_tile_filter_mode",
           "type": "WhitelistBlacklist",
           "description": "One of \"whitelist\" and \"blacklist\".",
@@ -2250,6 +2263,21 @@
           "type": "bool",
           "description": "If tiles should be included in the selection regardless of entities also being in the selection. This is a visual only setting.",
           "default": "false",
+          "optional": true
+        },
+        {
+          "name": "chart_alt_selection_color",
+          "type": "Color",
+          "optional": true
+        },
+        {
+          "name": "chart_reverse_selection_color",
+          "type": "Color",
+          "optional": true
+        },
+        {
+          "name": "chart_selection_color",
+          "type": "Color",
           "optional": true
         },
         {
@@ -2278,10 +2306,30 @@
           "optional": true
         },
         {
-          "name": "show_in_library",
-          "type": "bool",
-          "description": "Whether this is shown in the blueprint library. Unused as of 0.18.13 as the ability to show any selection tools in the blueprint library was removed.",
-          "default": "false",
+          "name": "reverse_selection_color",
+          "type": "Color",
+          "optional": true
+        },
+        {
+          "name": "reverse_selection_count_button_color",
+          "type": "Color",
+          "optional": true
+        },
+        {
+          "name": "reverse_selection_cursor_box_type",
+          "type": "CursorBoxType",
+          "description": "The type of cursor box used to render selection of entities/tiles when reverse-selecting.",
+          "optional": true
+        },
+        {
+          "name": "reverse_selection_mode",
+          "type": "SelectionToolSelectionMode",
+          "description": "A list of selection mode flags that define how the selection tool reverse-selects things in-game. Possible values are identical to normal selection_mode.",
+          "optional": true
+        },
+        {
+          "name": "selection_count_button_color",
+          "type": "Color",
           "optional": true
         },
         {
@@ -2349,6 +2397,16 @@
         },
         {
           "name": "default_train_stopped_signal",
+          "type": "SignalIDConnector",
+          "optional": true
+        },
+        {
+          "name": "default_trains_count_signal",
+          "type": "SignalIDConnector",
+          "optional": true
+        },
+        {
+          "name": "default_trains_limit_signal",
           "type": "SignalIDConnector",
           "optional": true
         },
@@ -2466,6 +2524,10 @@
         },
         {
           "name": "close_black",
+          "type": "SpriteType"
+        },
+        {
+          "name": "close_map_preview",
           "type": "SpriteType"
         },
         {
@@ -4307,6 +4369,13 @@
           "optional": true
         },
         {
+          "name": "show_recipe_icon_on_map",
+          "type": "bool",
+          "description": " Whether the recipe icon should be shown on the map. ",
+          "default": "true",
+          "optional": true
+        },
+        {
           "name": "status_colors",
           "type": "CraftingMachineStatusColors",
           "optional": true
@@ -4378,6 +4447,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "Unused.",
           "default": "false",
           "optional": true
         },
@@ -4421,7 +4491,7 @@
         {
           "name": "mipmap_count",
           "type": "uint8",
-          "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
+          "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").<br>Note: mipmap_count doesn't make sense in animation, as it is not possible to layout mipmaps in a way, that would load correctly both the animation and the mipmaps (besides animations with just one frame).<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/viewtopic.php?p=549058#p549058\">[2]</a>",
           "default": "0",
           "optional": true
         },
@@ -4799,13 +4869,15 @@
       "properties": [
         {
           "name": "entity_filter_count",
-          "type": "Types/ItemStackIndex",
+          "type": "ItemStackIndex",
+          "description": " Can't be > 255.",
           "default": "0",
           "optional": true
         },
         {
           "name": "tile_filter_count",
-          "type": "Types/ItemStackIndex",
+          "type": "ItemStackIndex",
+          "description": " Can't be > 255.",
           "default": "0",
           "optional": true
         }
@@ -5047,6 +5119,7 @@
         {
           "name": "charge_light",
           "type": "LightDefinition",
+          "description": "Note that some kind of charge_animation must also be defined for the light to appear.",
           "optional": true
         },
         {
@@ -5082,6 +5155,7 @@
         {
           "name": "discharge_light",
           "type": "LightDefinition",
+          "description": "Note that some kind of charge_animation must also be defined for the light to appear.",
           "optional": true
         },
         {
@@ -5104,7 +5178,7 @@
     "name": "AutoplaceControl",
     "type": "table",
     "link": "/Prototype/AutoplaceControl",
-    "description": "A setting in the map creation GUI. Used by the <a href=\"/Types/AutoplaceSpecification#control\" title=\"Types/AutoplaceSpecification\">autoplace system</a>.",
+    "description": "A setting in the map creation GUI. Used by the <a href=\"/Types/AutoplaceSpecification#control\" title=\"Types/AutoplaceSpecification\">autoplace system</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -6028,6 +6102,7 @@
         {
           "name": "destroy_action",
           "type": "Trigger",
+          "description": "Applied when the combat robot expires (runs out of time_to_live).",
           "optional": true
         },
         {
@@ -6085,7 +6160,7 @@
     "name": "EquipmentCategory",
     "type": "table",
     "link": "/Prototype/EquipmentCategory",
-    "description": "Defines a category to be available to <a href=\"/Prototype/Equipment\" title=\"Prototype/Equipment\">Prototype/Equipment</a> and <a href=\"/Prototype/EquipmentGrid\" title=\"Prototype/EquipmentGrid\">Prototype/EquipmentGrid</a>.",
+    "description": "Defines a category to be available to <a href=\"/Prototype/Equipment\" title=\"Prototype/Equipment\">Prototype/Equipment</a> and <a href=\"/Prototype/EquipmentGrid\" title=\"Prototype/EquipmentGrid\">Prototype/EquipmentGrid</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [],
       "parent": "PrototypeBase"
@@ -6260,7 +6335,7 @@
     "name": "TrivialSmoke",
     "type": "table",
     "link": "/Prototype/TrivialSmoke",
-    "description": "Smoke, but it's not an entity for optimization purposes.",
+    "description": "Smoke, but it's not an entity for optimization purposes. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -6373,7 +6448,7 @@
         {
           "name": "gui_title_key",
           "type": "string",
-          "description": "The locale key of the title of the GUI that is shown when the player opens the assembling machine.",
+          "description": "The locale key of the title of the GUI that is shown when the player opens the assembling machine. May not be longer than 200 characters.",
           "optional": true
         },
         {
@@ -6685,6 +6760,13 @@
           "optional": true
         },
         {
+          "name": "include_selected_prototype",
+          "type": "bool",
+          "description": "If true, the type and name of the currently selected prototype will be provided as \"selected_prototype\" in the raised <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/events.html#Custom%20Input%20Events\">lua event</a>. This also works in GUI's, not just the game world.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/96125\">[2]</a>",
+          "default": "false",
+          "optional": true
+        },
+        {
           "name": "item_to_spawn",
           "type": "string",
           "description": "Name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>. It will be created when this input is pressed and action is set to \"spawn-item\". The item must have the <a href=\"/Types/ItemPrototypeFlags#.22spawnable.22\" title=\"Types/ItemPrototypeFlags\">\"spawnable\"</a> flag set.",
@@ -6745,6 +6827,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "Unused",
           "default": "false",
           "optional": true
         },
@@ -6914,6 +6997,7 @@
         {
           "name": "build_sound",
           "type": "TileBuildSound",
+          "description": "If the <a href=\"/Types/Sound\" title=\"Types/Sound\">Sound</a> is provided directly, it is loaded as the \"small\" build sound.",
           "optional": true
         },
         {
@@ -6958,7 +7042,7 @@
         {
           "name": "minable",
           "type": "MinableProperties",
-          "description": "If you want the tile to not be minable, don't specify the minable property.",
+          "description": " If you want the tile to not be mineable, don't specify the minable property. Only non-mineable tiles become hidden tiles when placing mineable tiles on top of them. ",
           "optional": true
         },
         {
@@ -7041,7 +7125,7 @@
           "optional": true
         }
       ],
-      "parent": "PrototypeBase"
+      "parent": "PrototypeBase:IconSpecification"
     }
   },
   "GroupAttackAchievement": {
@@ -7183,6 +7267,12 @@
           "type": "bool",
           "default": "0",
           "optional": true
+        },
+        {
+          "name": "related_underground_belt",
+          "type": "string",
+          "description": "<p>The name of the <a href=\"/Prototype/UndergroundBelt\" title=\"Prototype/UndergroundBelt\">Prototype/UndergroundBelt</a> which is used in quick-replace fashion when the smart belt dragging behavior is triggered.</p>",
+          "optional": true
         }
       ],
       "parent": "TransportBeltConnectable"
@@ -7279,6 +7369,12 @@
           "optional": false
         },
         {
+          "name": "darkness_to_render_light_animation",
+          "type": "float",
+          "optional": true,
+          "default": "0.3"
+        },
+        {
           "name": "effectivity",
           "type": "double",
           "description": "Modifies the efficiency of energy transfer from burner output to wheels.",
@@ -7325,6 +7421,12 @@
         {
           "name": "light",
           "type": "LightDefinition",
+          "optional": true
+        },
+        {
+          "name": "light_animation",
+          "type": "RotatedAnimation",
+          "description": "Must have the same frame count as <code>animation</code>.",
           "optional": true
         },
         {
@@ -7418,7 +7520,7 @@
     "name": "ModuleCategory",
     "type": "table",
     "link": "/Prototype/ModuleCategory",
-    "description": "A module category. The built-in categories can be found <a href=\"/Data.raw#module-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Module#category\" title=\"Prototype/Module\">Prototype/Module#category</a>.",
+    "description": "A module category. The built-in categories can be found <a href=\"/Data.raw#module-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Module#category\" title=\"Prototype/Module\">Prototype/Module#category</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [],
       "parent": "PrototypeBase"
@@ -7761,7 +7863,7 @@
     "name": "DamageType",
     "type": "table",
     "link": "/Prototype/DamageType",
-    "description": "A damage type. This is used in the <a href=\"/Damage\" title=\"Damage\">damage system</a>. <a href=\"/Damage#Damage_Types\" title=\"Damage\">A list of built-in damage types can be found here</a>.",
+    "description": "A damage type. This is used in the <a href=\"/Damage\" title=\"Damage\">damage system</a>. <a href=\"/Damage#Damage_Types\" title=\"Damage\">A list of built-in damage types can be found here</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -7869,7 +7971,7 @@
     "name": "HighlightBoxEntity",
     "type": "table",
     "link": "/Prototype/HighlightBoxEntity",
-    "description": "Used to attach graphics to entities during runtime.",
+    "description": "<p>Used to attach graphics for <a href=\"/Types/CursorBoxType\" title=\"Types/CursorBoxType\">cursor boxes</a> to entities during runtime. HighlightBoxEntity can also be independent from entities so it is simply drawn somewhere in the world. See <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaSurface.html#LuaSurface.create_entity\">LuaSurface.create_entity</a> for the available options for type \"highlight-box\".</p><p>The <code><a href=\"/Prototype/Entity#collision_box\" title=\"Prototype/Entity\">collision_box</a></code> of the highlight box prototype is ignored during runtime, instead the \"bounding_box\" given in create_entity() or the selection box of the target entity is used.</p>",
     "value": {
       "properties": [],
       "parent": "Entity"
@@ -7904,7 +8006,8 @@
           "name": "order",
           "type": "Order",
           "description": "<p>Used to order items in inventory, recipes and GUI's.</p><p>May not exceed a length of 200 characters.</p>",
-          "optional": true
+          "optional": true,
+          "default": ""
         }
       ]
     }
@@ -8158,11 +8261,6 @@
           "type": "SpriteType",
           "description": "The graphics to use when this equipment is shown inside an equipment grid.",
           "optional": false
-        },
-        {
-          "name": "ability_icon",
-          "type": "SpriteType",
-          "optional": true
         },
         {
           "name": "background_border_color",
@@ -8793,7 +8891,7 @@
         {
           "name": "stack_size",
           "type": "ItemCountType",
-          "description": "Count of items of the same name that can be stored in one inventory slot. Must be 1 when <code>stackable</code> is false.",
+          "description": " Count of items of the same name that can be stored in one inventory slot. Must be 1 when the <code>\"not-stackable\"</code> flag is set. ",
           "optional": false
         },
         {
@@ -8884,7 +8982,7 @@
         {
           "name": "place_result",
           "type": "string",
-          "description": "Name of prototype/Entity that can be built using this item. The localised name of the entity will be used as the in-game item name. This behavior can be overwritten by specifying <code>localised_name</code> on this item, it will be used instead.",
+          "description": "Name of <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">prototype/Entity</a> that can be built using this item. If this item should be the one that construction bots use to build the specified place_result, set the <a href=\"/Types/ItemPrototypeFlags#.22primary-place-result.22\" title=\"Types/ItemPrototypeFlags\">primary-place-result</a> item flag.<br>The localised name of the entity will be used as the in-game item name. This behavior can be overwritten by specifying <code>localised_name</code> on this item, it will be used instead.",
           "optional": true
         },
         {
@@ -10021,7 +10119,6 @@
         {
           "name": "automatic",
           "type": "bool",
-          "description": "If false, the equipment must have an <code>ability_icon</code> specified.",
           "optional": false
         }
       ],
@@ -10300,6 +10397,12 @@
           "optional": false
         },
         {
+          "name": "destroy_action",
+          "type": "Trigger",
+          "description": "Applied when the robot expires (runs out of energy and <a href=\"/Prototype/FlyingRobot#speed_multiplier_when_out_of_energy\" title=\"Prototype/FlyingRobot\">speed_multiplier_when_out_of_energy</a> is 0).",
+          "optional": true
+        },
+        {
           "name": "draw_cargo",
           "type": "bool",
           "default": "true",
@@ -10374,6 +10477,12 @@
           "optional": true
         },
         {
+          "name": "darkness_to_render_light_animation",
+          "type": "float",
+          "optional": true,
+          "default": "0.3"
+        },
+        {
           "name": "energy_source",
           "type": "EnergySource",
           "description": "Must be a burner energy source when using \"burner\", otherwise it can also be a void energy source.",
@@ -10392,6 +10501,11 @@
         {
           "name": "front_light",
           "type": "LightDefinition",
+          "optional": true
+        },
+        {
+          "name": "front_light_pictures",
+          "type": "RotatedSprite",
           "optional": true
         }
       ],
@@ -10475,14 +10589,7 @@
     "link": "/Prototype/BlueprintBook",
     "description": "A <a href=\"/Blueprint_book\" title=\"Blueprint book\">blueprint book</a>.",
     "value": {
-      "properties": [
-        {
-          "name": "show_in_library",
-          "type": "bool",
-          "default": "true",
-          "optional": true
-        }
-      ],
+      "properties": [],
       "parent": "ItemWithInventory"
     }
   },
@@ -10858,6 +10965,7 @@
         {
           "name": "force_visibility",
           "type": "ForceCondition",
+          "description": " If the entity is not visible to a player, the player cannot select it.",
           "default": "all",
           "optional": true
         },
@@ -10895,6 +11003,7 @@
         {
           "name": "secondary_draw_order",
           "type": "int8",
+          "description": "Used to determine render order for entities with the same <code>render_layer</code> in the same position. Entities with a higher <code>secondary_draw_order</code> are drawn on top.",
           "default": "0",
           "optional": true
         }
@@ -11195,7 +11304,7 @@
     "name": "AmmoCategory",
     "type": "table",
     "link": "/Prototype/AmmoCategory",
-    "description": "An ammo category. Each weapon has an ammo category, and can use any ammo with the same ammo category. Ammo categories can also be upgraded by technologies.",
+    "description": "An ammo category. Each weapon has an ammo category, and can use any ammo with the same ammo category. Ammo categories can also be upgraded by technologies. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -11326,6 +11435,7 @@
         {
           "name": "icon",
           "type": "SpriteType",
+          "description": "Scales to fit a 16x16-pixel square.<br> Note: The scale that can be defined in the sprite may not behave as expected because the game always scales the sprite to fill the GUI slot.",
           "optional": false
         },
         {
@@ -11337,11 +11447,13 @@
         {
           "name": "disabled_icon",
           "type": "SpriteType",
+          "description": "The icon used when the shortcut is shown in the quickbar, and is not usable.<br> Note: The scale that can be defined in the sprite may not behave as expected because the game always scales the sprite to fill the GUI slot.",
           "optional": true
         },
         {
           "name": "disabled_small_icon",
           "type": "SpriteType",
+          "description": " The icon used in the panel for visible shortcuts, when the shortcut is not usable.<br> Note: The scale that can be defined in the sprite may not behave as expected because the game always scales the sprite to fill the GUI slot.",
           "optional": true
         },
         {
@@ -11353,6 +11465,7 @@
         {
           "name": "small_icon",
           "type": "SpriteType",
+          "description": " The icon used in the panel for visible shortcuts, when the shortcut is usable.<br>Note: The scale that can be defined in the sprite may not behave as expected because the game always scales the sprite to fill the GUI slot.",
           "optional": true
         },
         {
@@ -12115,7 +12228,7 @@
         {
           "name": "resource_categories",
           "type": "string[]",
-          "description": "The names of the <a href=\"/Prototype/ResourceCategory\" title=\"Prototype/ResourceCategory\">Prototype/ResourceCategory</a> that can be mined by this drill. For a list on built-in categories, see <a href=\"/Data.raw#resource-category\" title=\"Data.raw\">Data.raw#resource-category</a>.",
+          "description": "The names of the <a href=\"/Prototype/ResourceCategory\" title=\"Prototype/ResourceCategory\">Prototype/ResourceCategory</a> that can be mined by this drill. For a list on built-in categories, see <a href=\"/Data.raw#resource-category\" title=\"Data.raw\">Data.raw#resource-category</a>.<br>Note: Categories containing resources which produce items, fluids, or items+fluids may be combined on the same entity, but may not work as expected. Examples: Miner does not rotate fluid-resulting resources until depletion. Fluid isn't output (fluid resource change and fluidbox matches previous fluid). Miner with no vector_to_place_result can't output an item result and halts.",
           "optional": false
         },
         {
@@ -12127,7 +12240,7 @@
         {
           "name": "vector_to_place_result",
           "type": "vector",
-          "description": "The position where the (mine) result is placed, when the mining drill is facing south (?).",
+          "description": "The position where any item results are placed, when the mining drill is facing north (default direction).",
           "optional": false
         },
         {
@@ -12221,13 +12334,6 @@
           "name": "radius_visualisation_picture",
           "type": "SpriteType",
           "description": "The sprite used to show the range of the mining drill.",
-          "optional": true
-        },
-        {
-          "name": "storage_slots",
-          "type": "ItemStackIndex",
-          "description": "The output slot(s).",
-          "default": "1",
           "optional": true
         },
         {
@@ -12343,7 +12449,7 @@
         {
           "name": "healing_per_tick",
           "type": "float",
-          "description": "The amount of health cured by tick naturally. Works only on active entities. (Todo explain)",
+          "description": "The amount of health automatically regenerated per tick. The entity must be active for this to work.\nTrees will regenerate every 60 ticks with <code>healing_per_tick × 60</code> and they don't need to be active.",
           "default": "0",
           "optional": true
         },
@@ -12409,7 +12515,7 @@
     "name": "EquipmentGrid",
     "type": "table",
     "link": "/Prototype/EquipmentGrid",
-    "description": "The prototype of an equipment grid, for example the one used in a <a href=\"/Power_armor\" title=\"Power armor\">power armor</a>.",
+    "description": "The prototype of an equipment grid, for example the one used in a <a href=\"/Power_armor\" title=\"Power armor\">power armor</a>. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -12519,6 +12625,12 @@
     "description": "Abstract base of all vehicles.",
     "value": {
       "properties": [
+        {
+          "name": "allow_passengers",
+          "type": "bool",
+          "description": "Determines whether this vehicle accepts passengers. This includes both drivers and gunners, if applicable.",
+          "optional": true
+        },
         {
           "name": "braking_force",
           "type": "double",
@@ -12644,7 +12756,7 @@
     "name": "Decorative",
     "type": "table",
     "link": "/Prototype/Decorative",
-    "description": "Simple decorative purpose objects on the map, they have no health and some of them are removed when the player builds over. Usually used for grass patches, roots, small plants etc.",
+    "description": "Simple decorative purpose objects on the map, they have no health and some of them are removed when the player builds over. Usually used for grass patches, roots, small plants etc. Only 255 instances of this prototype may be defined.",
     "value": {
       "properties": [
         {
@@ -13299,6 +13411,7 @@
         {
           "name": "secondary_draw_order",
           "type": "int8",
+          "description": "Used to determine render order for entities with the same <code>render_layer</code> in the same position. Entities with a higher <code>secondary_draw_order</code> are drawn on top.",
           "default": "0",
           "optional": true
         }
@@ -13429,6 +13542,11 @@
           "optional": false
         },
         {
+          "name": "dynamic_recipe_overload_factor",
+          "type": "double",
+          "optional": false
+        },
+        {
           "name": "enabled_recipe_slot_tint",
           "type": "Color",
           "optional": false
@@ -13464,6 +13582,12 @@
           "optional": false
         },
         {
+          "name": "flying_text_ttl",
+          "type": "uint32",
+          "description": "Must be >= 1.",
+          "optional": false
+        },
+        {
           "name": "forced_enabled_recipe_slot_background_tint",
           "type": "Color",
           "optional": false
@@ -13491,6 +13615,12 @@
         {
           "name": "icon_shadow_sharpness",
           "type": "float",
+          "optional": false
+        },
+        {
+          "name": "inventory_width",
+          "type": "uint32",
+          "description": "Must be in range [1, 100].",
           "optional": false
         },
         {
@@ -13556,6 +13686,11 @@
           "optional": false
         },
         {
+          "name": "maximum_recipe_overload_multiplier",
+          "type": "uint32",
+          "optional": false
+        },
+        {
           "name": "medium_area_size",
           "type": "float",
           "optional": false
@@ -13566,8 +13701,25 @@
           "optional": false
         },
         {
+          "name": "minimum_recipe_overload_multiplier",
+          "type": "uint32",
+          "optional": false
+        },
+        {
           "name": "missing_preview_sprite_location",
           "type": "FileName",
+          "optional": false
+        },
+        {
+          "name": "module_inventory_width",
+          "type": "uint32",
+          "description": "Must be in range [1, 100].",
+          "optional": false
+        },
+        {
+          "name": "normalised_achievement_icon_size",
+          "type": "uint32",
+          "description": "Must be >= 1.",
           "optional": false
         },
         {
@@ -13597,6 +13749,18 @@
           "optional": false
         },
         {
+          "name": "select_group_row_count",
+          "type": "uint32",
+          "description": "Must be in range [1, 100].",
+          "optional": false
+        },
+        {
+          "name": "select_slot_row_count",
+          "type": "uint32",
+          "description": "Must be in range [1, 100].",
+          "optional": false
+        },
+        {
           "name": "server_command_console_chat_color",
           "type": "Color",
           "optional": false
@@ -13614,6 +13778,12 @@
         {
           "name": "tile_ghost_tint",
           "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "tooltip_monitor_edge_border",
+          "type": "int32",
+          "description": "Must be >= 1.",
           "optional": false
         },
         {
@@ -13694,6 +13864,11 @@
         {
           "name": "turret_range_visualization_color",
           "type": "Color",
+          "optional": false
+        },
+        {
+          "name": "tutorial_notice_icon_size",
+          "type": "uint32",
           "optional": false
         },
         {
@@ -13805,7 +13980,7 @@
         {
           "name": "additional_pastable_entities",
           "type": "string[]",
-          "description": "Entities this entity prototype can be pasted on to in addition to the standard supported types. This is used to allow copying between types that aren't compatible on the C++ code side, by allowing mods to receive the <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/events.html#on_entity_settings_pasted\">on_entity_settings_pasted</a> event for the given entity and do the setting pasting via script.",
+          "description": "Names of the entity prototypes this entity prototype can be pasted on to in addition to the standard supported types.<br>This is used to allow copying between types that aren't compatible on the C++ code side, by allowing mods to receive the <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/events.html#on_entity_settings_pasted\">on_entity_settings_pasted</a> event for the given entity and do the setting pasting via script.",
           "optional": true
         },
         {
@@ -13868,7 +14043,7 @@
         {
           "name": "created_smoke",
           "type": "CreateTrivialSmokeEffectItem",
-          "description": "The smoke that is shown when the entity is placed. Default is using the \"smoke-building\" smoke.",
+          "description": "The smoke that is shown when the entity is placed.",
           "default": "smoke-building",
           "optional": true
         },
@@ -13969,7 +14144,7 @@
         {
           "name": "remove_decoratives",
           "type": "EntityRemoveDecoratives",
-          "description": "Whether this entity should remove decoratives that collide with it when this entity is built.",
+          "description": "Whether this entity should remove decoratives that collide with it when this entity is built. When set to \"automatic\", if the entity type is considered a building (e.g. an assembling machine or a wall) it will remove decoratives.",
           "default": "automatic",
           "optional": true
         },
@@ -14474,7 +14649,8 @@
       "spider-vehicle": "SpiderVehicle",
       "spidertron-remote": "SpidertronRemote",
       "tips-and-tricks-item": "TipsAndTricksItem",
-      "tips-and-tricks-item-category": "TipsAndTricksItemCategory"
+      "tips-and-tricks-item-category": "TipsAndTricksItemCategory",
+      "linked-belt": "LinkedBelt"
     }
   },
   "WhitelistBlacklist": {
@@ -14547,7 +14723,7 @@
         {
           "name": "ingredients",
           "type": "IngredientPrototype[]",
-          "description": "<p>A table containing ingredient names and counts. Can also contain information about fluid temperature and catalyst amounts.</p><p>Maximal ingredient amount is 65535. The catalyst amounts are automatically calculated from the recipe, or can be set manually.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://factorio.com/blog/post/fff-256\">[1]</a></p>",
+          "description": "A table containing ingredient names and counts. Can also contain information about fluid temperature and catalyst amounts. The catalyst amounts are automatically calculated from the recipe, or can be set manually in the <a href=\"/Types/IngredientPrototype\" title=\"Types/IngredientPrototype\">IngredientPrototype</a>.<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://factorio.com/blog/post/fff-256\">[1]</a></sup><br>Maximum ingredient amount is 65535.<br><code>ingredients</code> can be set to an empty table  to create a recipe that needs no ingredients.<br>Duplicate ingredients, e.g. two entries for the \"wood\" item, are <i>not</i> allowed.</p>",
           "optional": false
         },
         {
@@ -14561,6 +14737,13 @@
           "name": "allow_decomposition",
           "type": "bool",
           "description": "Optional. Whether this recipe is allowed to be broken down for the recipe tooltip \"Total raw\" calculations.",
+          "default": "true",
+          "optional": true
+        },
+        {
+          "name": "allow_inserter_overload",
+          "type": "bool",
+          "description": "If the recipe is allowed to have the extra inserter overload bonus applied (4 * stack inserter stack size).",
           "default": "true",
           "optional": true
         },
@@ -14635,7 +14818,7 @@
         {
           "name": "overload_multiplier",
           "type": "uint32",
-          "description": "<p>Used to determine how many extra items are put into an assembling machine before it's considered \"full enough\". See Inserters#Insertion_limits.</p><p>If set to 0, it instead uses the following formula: 1.166 / (energy_required / the assembler's crafting_speed), rounded up, and clamped between 2 and 100.</p>",
+          "description": "<p>Used to determine how many extra items are put into an assembling machine before it's considered \"full enough\". See <a href=\"/Inserters#Insertion_limits\" title=\"Inserters\">Inserters#Insertion_limits</a>.</p><p>If set to 0, it instead uses the following formula: 1.166 / (energy_required / the assembler's crafting_speed), rounded up, and clamped between 2 and 100. The numbers used in this formula can be changed by the <a href=\"/Prototype/UtilityConstants\" title=\"Prototype/UtilityConstants\">Prototype/UtilityConstants</a> dynamic_recipe_overload_factor, minimum_recipe_overload_multiplier and maximum_recipe_overload_multiplier.</p>",
           "default": "0",
           "optional": true
         },
@@ -14661,7 +14844,7 @@
         {
           "name": "results",
           "type": "ProductPrototype[]",
-          "description": "A table containing result names and counts. Can also contain information about fluid temperature and catalyst amounts. The catalyst amounts are automatically calculated from the recipe, or can be set manually.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://factorio.com/blog/post/fff-256\">[2]</a>",
+          "description": "A table containing result names and counts. Can also contain information about fluid temperature and catalyst amounts. The catalyst amounts are automatically calculated from the recipe, or can be set manually in the <a href=\"/Types/ProductPrototype\" title=\"Types/ProductPrototype\">ProductPrototype</a>.<sup><a rel=\"nofollow\" class=\"external autonumber\" href=\"https://factorio.com/blog/post/fff-256\">[2]</a></sup><br><code>results</code> can be set to an empty table to create a recipe that produces nothing.<br>Duplicate results, e.g. two entries for the \"iron-plate\" item, are allowed.",
           "optional": true
         },
         {
@@ -15208,12 +15391,24 @@
           "name": "name",
           "type": "string",
           "description": "The name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>.",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "[1]",
+          "type": "string",
+          "description": "The name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>.",
+          "optional": true
         },
         {
           "name": "amount",
           "type": "uint16",
-          "description": "Mandatory when using numbered keys (an array).",
+          "description": "Mandatory when using numbered keys (an array). If <code>amount</code> is present, <code>amount_min</code> and <code>amount_max</code> are not loaded.",
+          "optional": true
+        },
+        {
+          "name": "[2]",
+          "type": "uint16",
+          "description": "Mandatory when using numbered keys (an array). If <code>amount</code> is present, <code>amount_min</code> and <code>amount_max</code> are not loaded.",
           "optional": true
         },
         {
@@ -15396,14 +15591,14 @@
         {
           "name": "secondary_draw_order",
           "type": "int8",
-          "description": "Set the secondary draw order for all orientations.",
+          "description": "Set the secondary draw order for all orientations. Used to determine render order for sprites with the same <code>render_layer</code> in the same position. Sprites with a higher <code>secondary_draw_order</code> are drawn on top.",
           "default": "1",
           "optional": true
         },
         {
           "name": "secondary_draw_orders",
           "type": "FluidBoxSecondaryDrawOrders",
-          "description": "Set the secondary draw order for each orientation.",
+          "description": "Set the secondary draw order for each orientation. Used to determine render order for sprites with the same <code>render_layer</code> in the same position. Sprites with a higher <code>secondary_draw_order</code> are drawn on top.",
           "optional": true
         }
       ]
@@ -15594,7 +15789,7 @@
         {
           "name": "turn_range",
           "type": "float",
-          "description": "If this is &lt;= 0, it is set to 1. Arc from 0 to 1, so for example 0.25 is 90°. Used by the <a href=\"/Flamethrower_turret\" title=\"Flamethrower turret\">flamethrower turret</a> in the base game.",
+          "description": "If this is <= 0, it is set to 1. Arc from 0 to 1, so for example 0.25 is 90°. Used by the <a href=\"/Flamethrower_turret\" title=\"Flamethrower turret\">flamethrower turret</a> in the base game. Arcs greater than 0.5 but less than 1 will be clamped to 0.5 as targeting in arcs larger than half circle is not implemented.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/94654\">[1]</a>",
           "default": "1",
           "optional": true
         },
@@ -15617,6 +15812,12 @@
           "type": "float",
           "description": "A higher penalty will discourage turrets from targeting units with higher health. A negative penalty will encourage turrets to target units with higher health.",
           "default": "0",
+          "optional": true
+        },
+        {
+          "name": "range_mode",
+          "type": "BaseAttackParametersRangeMode",
+          "default": "center-to-center",
           "optional": true
         },
         {
@@ -15677,6 +15878,11 @@
           "optional": true
         },
         {
+          "name": "activation_type",
+          "type": "BaseAttackParametersActivationType",
+          "optional": true
+        },
+        {
           "name": "sound",
           "type": "LayeredSound",
           "optional": true
@@ -15712,6 +15918,26 @@
       ]
     }
   },
+  "BaseAttackParametersRangeMode": {
+    "name": "BaseAttackParametersRangeMode",
+    "type": "string",
+    "link": "/Types/BaseAttackParameters#range_mdoe",
+    "value": {
+      "center-to-center": "",
+      "bounding-box-to-bounding-box": ""
+    }
+  },
+  "BaseAttackParametersActivationType": {
+    "name": "BaseAttackParametersActivationType",
+    "type": "string",
+    "link": "/Types/BaseAttackParameters#activation_type",
+    "value": {
+      "shoot": "",
+      "throw": "",
+      "consume": "",
+      "activate": ""
+    }
+  },
   "int16": {
     "name": "int16",
     "type": "alias",
@@ -15719,12 +15945,51 @@
     "description": "16 bit signed number. The range is -32,768 to 32,767 or [-2^15, 2^15 - 1].",
     "value": "number"
   },
+  "int": {
+    "name": "int",
+    "type": "alias",
+    "link": "/Types/int",
+    "value": "int32"
+  },
   "Vector3D": {
     "name": "Vector3D",
-    "type": "alias",
+    "type": "table",
     "link": "/Types/Vector3D",
     "description": "table of three floats. Either specified as an array, or with the named keys \"x\", \"y\" and \"z\".",
-    "value": "table"
+    "value": {
+      "properties": [
+        {
+          "name": "x",
+          "type": "float",
+          "optional": true
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "optional": true
+        },
+        {
+          "name": "z",
+          "type": "float",
+          "optional": true
+        },
+        {
+          "name": "[1]",
+          "type": "float",
+          "optional": true
+        },
+        {
+          "name": "[2]",
+          "type": "float",
+          "optional": true
+        },
+        {
+          "name": "[3]",
+          "type": "float",
+          "optional": true
+        }
+      ]
+    }
   },
   "TrainStopLight": {
     "name": "TrainStopLight",
@@ -16107,6 +16372,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "Unused.",
           "default": "false",
           "optional": true
         },
@@ -16715,43 +16981,6 @@
     "link": "/Types/Sound",
     "value": "SoundValue1|SoundValue2[]"
   },
-  "ColorValue": {
-    "name": "ColorValue",
-    "type": "table",
-    "link": "/Types/Color",
-    "value": {
-      "properties": [
-        {
-          "name": "r",
-          "type": "float",
-          "description": "red value",
-          "default": "0",
-          "optional": true
-        },
-        {
-          "name": "g",
-          "type": "float",
-          "description": "green value",
-          "default": "0",
-          "optional": true
-        },
-        {
-          "name": "b",
-          "type": "float",
-          "description": "blue value",
-          "default": "0",
-          "optional": true
-        },
-        {
-          "name": "a",
-          "type": "float",
-          "description": "alpha value - transparency",
-          "default": "1",
-          "optional": true
-        }
-      ]
-    }
-  },
   "SpriteSizeType": {
     "name": "SpriteSizeType",
     "type": "alias",
@@ -17035,12 +17264,23 @@
           "name": "name",
           "type": "string",
           "description": "The name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>.",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "[1]",
+          "type": "string",
+          "description": "The name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>.",
+          "optional": true
         },
         {
           "name": "amount",
           "type": "uint16",
-          "optional": false
+          "optional": true
+        },
+        {
+          "name": "[2]",
+          "type": "uint16",
+          "optional": true
         },
         {
           "name": "catalyst_amount",
@@ -17180,7 +17420,7 @@
         {
           "name": "equipment",
           "type": "string",
-          "description": "Name of a <a href=\"/Prototype/Equipment\" title=\"Prototype/Equipment\">Prototype/Equipment</a>.",
+          "description": "Name of a <a href=\"/Prototype/Equipment\" title=\"Prototype/Equipment\">Prototype/Equipment</a>. Activation is only implemented for <a href=\"/Prototype/ActiveDefenseEquipment\" title=\"Prototype/ActiveDefenseEquipment\">Prototype/ActiveDefenseEquipment</a>.",
           "optional": false
         }
       ]
@@ -17368,6 +17608,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "Unused.",
           "default": "false",
           "optional": true
         },
@@ -17883,15 +18124,15 @@
       "alpha-mask": "",
       "no-scale": "",
       "mask": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"group=none\"</li></ul>",
-      "icon": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"no-crop\"</li>\n<li>\"no-scale\"</li>\n<li>\"mipmap\"</li>\n<li>\"linear-minification\"</li>\n<li>\"linear-magnification\"</li>\n<li>\"linear-mip-level\"</li>\n<li>\"not-compressed\"</li>\n<li>\"group=icon\"</li></ul>",
-      "gui": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"no-crop\"</li>\n<li>\"no-scale\"</li>\n<li>\"mipmap\"</li>\n<li>\"linear-minification\"</li>\n<li>\"linear-magnification\"</li>\n<li>\"linear-mip-level\"</li>\n<li>\"not-compressed\"</li>\n<li>\"group=gui\"</li></ul>",
-      "gui-icon": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"no-crop\"</li>\n<li>\"no-scale\"</li>\n<li>\"mipmap\"</li>\n<li>\"linear-minification\"</li>\n<li>\"linear-magnification\"</li>\n<li>\"not-compressed\"</li>\n<li>\"group=icon\"</li></ul>",
-      "light": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"no-crop\"</li>\n<li>\"no-scale\"</li>\n<li>\"mipmap\"</li>\n<li>\"linear-minification\"</li>\n<li>\"linear-magnification\"</li>\n<li>\"linear-mip-level\"</li>\n<li>\"group=none\"</li></ul>",
-      "terrain": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"no-crop\"</li>\n<li>\"mipmap\"</li>\n<li>\"linear-minification\"</li>\n<li>\"linear-mip-level\"</li>\n<li>\"group=terrain\"</li></ul>",
-      "terrain-effect-map": "",
+      "icon": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"no-crop\"</li><li>\"no-scale\"</li><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"linear-mip-level\"</li><li>\"not-compressed\"</li><li>\"group=icon\"</li></ul>",
+      "gui": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"no-crop\"</li><li>\"no-scale\"</li><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"linear-mip-level\"</li><li>\"not-compressed\"</li><li>\"group=gui\"</li></ul>",
+      "gui-icon": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"no-crop\"</li><li>\"no-scale\"</li><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"not-compressed\"</li><li>\"group=icon\"</li></ul>",
+      "light": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"mipmap\"</li><li>\"linear-mip-level\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"group=none\"</li></ul>",
+      "terrain": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"mipmap\"</li><li>\"linear-mip-level\"</li><li>\"linear-minification\"</li><li>\"no-crop\"</li><li>\"group=terrain\"</li></ul>",
+      "terrain-effect-map": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"mipmap\"</li><li>\"linear-mip-level\"</li><li>\"linear-minification\"</li><li>\"no-crop\"</li><li>\"terrain-effect-map\" (internal group flag)</li></ul>",
       "shadow": "",
-      "smoke": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"mipmap\"</li>\n<li>\"linear-minification\"</li>\n<li>\"linear-magnification\"</li>\n<li>\"group=smoke\"</li></ul>",
-      "decal": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"group=decal\"</li></ul>",
+      "smoke": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"group=smoke\"</li></ul>",
+      "decal": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"group=decal\"</li></ul>",
       "low-object": "",
       "trilinear-filtering": "",
       "group=none": "",
@@ -18754,6 +18995,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "This property is only used by sprites used in <a href=\"/Prototype/UtilitySprites\" title=\"Prototype/UtilitySprites\">Prototype/UtilitySprites</a> that have the \"icon\" flag.<br>If this is set to true, the game will generate an icon shadow (using signed distance fields) for the sprite.",
           "default": "false",
           "optional": true
         }
@@ -18887,12 +19129,14 @@
         {
           "name": "direction_deviation",
           "type": "float",
+          "description": "Maximum deviation of the projectile from source orientation, in +/- ( x radians / 2). Example: 3.14 radians -> +/- (180° / 2), meaning up to 90° deviation in either direction of rotation.",
           "default": "0",
           "optional": true
         },
         {
           "name": "range_deviation",
           "type": "float",
+          "description": "In tiles. Post-deviation range may exceed max_range or be less than min_range.",
           "default": "0",
           "optional": true
         },
@@ -19252,7 +19496,7 @@
         {
           "name": "icons",
           "type": "IconData[]",
-          "description": "The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index).",
+          "description": "The rendering order of the individual icons follows the table (array) order: Later added icons (higher index) get drawn on top of previously added icons (lower index). Can't be an empty table.",
           "optional": true
         },
         {
@@ -19336,8 +19580,7 @@
         {
           "name": "scale",
           "type": "double",
-          "description": "Values different than 1 specify the scale of the icon on default gui scale. Scale 2 means that the icon will be 2 times bigger on screen (and more pixelated).",
-          "default": "1",
+          "description": "Default for items/recipes: (32/icon_size)<br>Default for technologies: (256/icon_size)<br>When set, specifies the scale of the icon on the GUI scale. Scale 2 means that the icon will be 2 times bigger on screen (and more pixelated). ",
           "optional": true
         },
         {
@@ -19417,7 +19660,7 @@
         {
           "name": "amount",
           "type": "double",
-          "description": "Cannot be < 0.",
+          "description": "Cannot be < 0. If this is present, <code>amount_min</code> and <code>amount_max</code> are not loaded.",
           "optional": true
         },
         {
@@ -19843,7 +20086,29 @@
     "type": "alias",
     "link": "/Types/DaytimeColorLookupTable",
     "description": "<p>An <a href=\"/Types/table\" title=\"Types/table\">array</a> of <a href=\"/Types/table\" title=\"Types/table\">arrays</a>.</p>\n<p>The first member of the inner array must be a <a href=\"/Types/double\" title=\"Types/double\">double</a>, second member of the inner array must be a <a href=\"/Types/FileName\" title=\"Types/FileName\">FileName</a> or \"identity\". The file pointed to by the filename must be a sprite of size 16x16.</p>\n<p>\nzoom_to_world_daytime_color_lookup =\n{\n  {0.25, \"identity\"},\n  {0.45, \"__core__/graphics/color_luts/night.png\"},\n  {0.55, \"__core__/graphics/color_luts/night.png\"},\n  {0.75, \"identity\"},\n}\n</p>",
-    "value": "table[]"
+    "value": "DaytimeColorLookupTableValue[]"
+  },
+  "DaytimeColorLookupTableValue": {
+    "name": "DaytimeColorLookupTableValue",
+    "type": "table",
+    "link": "Types/DaytimeColorLookupTable",
+    "description": "The first member of the inner array must be a <a href=\"/Types/double\" title=\"Types/double\">double</a>, second member of the inner array must be a <a href=\"/Types/FileName\" title=\"Types/FileName\">FileName</a> or \"identity\". The file pointed to by the filename must be a sprite of size 256×16 or 16×256.",
+    "value": {
+      "properties": [
+        {
+          "name": "[1]",
+          "type": "double",
+          "description": "<p>The first member states at which <a href=\"/Time#Days\" title=\"Time\">time of the day</a> the <a href=\"#Second_member\">LUT</a> should be used.</p><p>If the current game time is between two values defined in the color lookup that have different LUTs, the color is interpolated to create a smooth transition. (Sharp transition can be achieved by having the two values differing only by a small fraction.)</p><p>Only one inner array means that the LUT will be used all the time, regardless of the value of the first member.</p>",
+          "optional": false
+        },
+        {
+          "name": "[2]",
+          "type": "string",
+          "description": "The second member is a lookup table (LUT) for the color which maps the original color to a position in the sprite where is the replacement color is found.",
+          "optional": false
+        }
+      ]
+    }
   },
   "Energy": {
     "name": "Energy",
@@ -19862,7 +20127,7 @@
       "placeable-neutral": "placeable neutral/player/enemy determine the default force when placing entities in the map editor and using the *AUTO* option for the force.",
       "placeable-enemy": "placeable neutral/player/enemy determine the default force when placing entities in the map editor and using the *AUTO* option for the force.",
       "placeable-off-grid": "placeable-off-grid refers to the fact that most entities are placed on an invisible 'grid' within the world, entities with the placeable-off-grid flag do not have to line up with this grid (like trees and land-mines)",
-      "player-creation": "Makes it possible for the biter AI to target the entity as a distraction. Makes it possible to blueprint, deconstruct, and repair the entity (can be turned off again using the specific flags). Enables smoke to be created automatically when building the entity. Enables the entity to appear on the map/minimap.",
+      "player-creation": "Makes it possible for the biter AI to target the entity as a distraction. Makes it possible to blueprint, deconstruct, and repair the entity (can be turned off again using the specific flags). Enables smoke to be created automatically when building the entity. If the entity does not have <a href=\"/Prototype/Entity#map_color\" title=\"Prototype/Entity\">Prototype/Entity#map_color</a> set, \"player-creation\" makes the entity appear on the map/minimap with the default color specified in the <a href=\"/Prototype/UtilityConstants\" title=\"Prototype/UtilityConstants\">Prototype/UtilityConstants</a>.",
       "building-direction-8-way": "Uses 45 degree angle increments when selecting direction.",
       "filter-directions": "Used to automatically detect the proper direction, if possible. Used by base with the pump, train stop, and train signal.",
       "fast-replaceable-no-build-while-moving": "Fast replace will not apply when building while moving.",
@@ -19879,7 +20144,7 @@
       "no-automated-item-removal": "Prevents inserters and loaders from taking items from this entity.",
       "no-automated-item-insertion": "Prevents inserters and loaders from inserting items into this entity.",
       "no-copy-paste": "",
-      "not-selectable-in-game": "",
+      "not-selectable-in-game": "Disallows selection of the entity even when a selection box is specified for other reasons. For example, selection boxes are used to determine the size of outlines to be shown when highlighting entities inside electric pole ranges.",
       "not-upgradable": "The entity can't be selected by the <a href=\"/Upgrade_planner\" title=\"Upgrade planner\">upgrade planner</a>.",
       "not-in-kill-statistics": "The entity is not shown in the kill statistics."
     }
@@ -20015,10 +20280,69 @@
   },
   "Color": {
     "name": "Color",
-    "type": "alias",
-    "link": "/Types/Color",
+    "type": "table",
     "description": "<p>Table of red, green, blue, and alpha float values between 0 and 1. All values are optional, default optional value for colors is 0, for alpha 1. Alternatively, values can be from 0-255, they are interpreted as such if at least one value is > 1.</p><p>Color allows the short-hand notation of passing an array of exactly 3 or 4 numbers.</p><p>The game usually expects colors to be in pre-multiplied form (color channels are pre-multiplied by alpha).</p>",
-    "value": "ColorValue|float[]"
+    "link": "/Types/Color",
+    "value": {
+      "properties": [
+        {
+          "name": "r",
+          "type": "float",
+          "description": "red value",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "g",
+          "type": "float",
+          "description": "green value",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "description": "blue value",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "a",
+          "type": "float",
+          "description": "alpha value - transparency",
+          "default": "1",
+          "optional": true
+        },
+        {
+          "name": "[1]",
+          "type": "float",
+          "description": "red value",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "[2]",
+          "type": "float",
+          "description": "green value",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "[3]",
+          "type": "float",
+          "description": "blue value",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "[4]",
+          "type": "float",
+          "description": "alpha value - transparency",
+          "default": "1",
+          "optional": true
+        }
+      ]
+    }
   },
   "TransportBeltConnectableBeltAnimationSet": {
     "name": "TransportBeltConnectableBeltAnimationSet",
@@ -20127,9 +20451,9 @@
       "always-show": "Always show the item in selection lists (item filter, logistic request etc.) even when locked recipe for that item is present.",
       "hide-from-bonus-gui": "Item will not appear in the bonus gui.",
       "hide-from-fuel-tooltip": "Item will not appear in the tooltips shown when hovering over a burner inventory with the fuel category the item is in.",
-      "not-stackable": "The item can never be stacked.",
-      "can-extend-inventory": "",
-      "primary-place-result": "",
+      "not-stackable": "The item can never be stacked. Additionally, the item does not show an item count when in the cursor.<br>This also prevents the item from stacking in assembling machine input slots, which otherwise can exceed the item stack size if required by the recipe. ",
+      "can-extend-inventory": "Has no effect.",
+      "primary-place-result": "Item will be preferred by construction bots when building the entity specified by the item's <a href=\"/Prototype/Item#place_result\" title=\"Prototype/Item\">place_result</a>.",
       "mod-openable": "Only works for <a href=\"/Prototype/SelectionTool\" title=\"Prototype/SelectionTool\">Prototype/SelectionTool</a> and derived classes.<br>This property corresponds to the following event in the lua api: <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/events.html#on_mod_item_opened\">defines.events.on_mod_item_opened</a>",
       "only-in-cursor": "Item is deleted when removed from the cursor by pressing <code>Q</code> (clear cursor). Used for example by the copy paste tools. ",
       "spawnable": "Item is able to be spawned by a <a href=\"/Prototype/Shortcut\" title=\"Prototype/Shortcut\">Prototype/Shortcut</a> or <a href=\"/Prototype/CustomInput\" title=\"Prototype/CustomInput\">Prototype/CustomInput</a>."
@@ -20633,6 +20957,7 @@
         {
           "name": "whitelist",
           "type": "bool",
+          "description": "Whether this is a whitelist or a blacklist of damage types. Defaults to being a blacklist.",
           "default": "false",
           "optional": true
         }
@@ -20721,6 +21046,7 @@
         {
           "name": "audible_distance_modifier",
           "type": "double",
+          "description": "Modifies how far a sound can be heard. Must be between 0 and 1 (inclusive).",
           "default": "1.0",
           "optional": true
         },
@@ -20917,7 +21243,8 @@
     "description": "Class used for <a href=\"/Prototype/Recipe\" title=\"Prototype/Recipe\">Prototype/Recipe</a> ingredients, it loads as <a href=\"/Types/ItemIngredientPrototype\" title=\"Types/ItemIngredientPrototype\">Types/ItemIngredientPrototype</a> or <a href=\"/Types/FluidIngredientPrototype\" title=\"Types/FluidIngredientPrototype\">Types/FluidIngredientPrototype</a>, depending on the <a href=\"#type\">#type</a>.",
     "value": {
       "item": "ItemIngredientPrototype",
-      "fluid": "FluidIngredientPrototype"
+      "fluid": "FluidIngredientPrototype",
+      "": "ItemIngredientPrototype"
     }
   },
   "BoxSpecification": {
@@ -21047,7 +21374,8 @@
     "description": "Class used for <a href=\"/Prototype/Recipe\" title=\"Prototype/Recipe\">Prototype/Recipe</a> prodcuts, it loads as <a href=\"/Types/ItemProductPrototype\" title=\"Types/ItemProductPrototype\">Types/ItemProductPrototype</a> or <a href=\"/Types/FluidProductPrototype\" title=\"Types/FluidProductPrototype\">Types/FluidProductPrototype</a>, depending on the <a href=\"#type\">#type</a>.",
     "value": {
       "item": "ProductPrototypeItem",
-      "fluid": "ProductPrototypeFluid"
+      "fluid": "ProductPrototypeFluid",
+      "": "ProductPrototypeItem"
     }
   },
   "CapsuleAction": {
@@ -21228,6 +21556,7 @@
         {
           "name": "secondary_draw_order",
           "type": "int8",
+          "description": "Used to determine render order for sprites with the same <code>render_layer</code> in the same position. Sprites with a higher <code>secondary_draw_order</code> are drawn on top.",
           "optional": true
         },
         {
@@ -21266,28 +21595,31 @@
         {
           "name": "north_animation",
           "type": "AnimationType",
-          "description": "Either these animations for the directions are loaded, or <code>animation</code> and the positions for the directions are loaded.",
+          "description": "Either these animations for the directions are loaded (though they are still optional), or <code>animation</code> is loaded.",
           "optional": true
         },
         {
           "name": "west_animation",
           "type": "AnimationType",
+          "description": "Either these animations for the directions are loaded (though they are still optional), or <code>animation</code> is loaded.",
           "optional": true
         },
         {
           "name": "south_animation",
           "type": "AnimationType",
+          "description": "Either these animations for the directions are loaded (though they are still optional), or <code>animation</code> is loaded.",
           "optional": true
         },
         {
           "name": "east_animation",
           "type": "AnimationType",
+          "description": "Either these animations for the directions are loaded (though they are still optional), or <code>animation</code> is loaded.",
           "optional": true
         },
         {
           "name": "animation",
           "type": "AnimationType",
-          "description": "Either this and the below positions are loaded, or the animation properties for each direction are loaded.",
+          "description": "If this is present, this is loaded, otherwise the animation properties for each direction are loaded. ",
           "optional": true
         },
         {
@@ -21931,11 +22263,6 @@
           "optional": true
         },
         {
-          "name": "source_effects",
-          "type": "TriggerEffect",
-          "optional": true
-        },
-        {
           "name": "action_delivery",
           "type": "TriggerDelivery|TriggerDelivery[]",
           "optional": true
@@ -22402,7 +22729,7 @@
         {
           "name": "fluid_usage_per_tick",
           "type": "double",
-          "description": "The number of fluid units the energy source uses per tick. If used with scale_fluid_usage, this specifies the maximum. If this value is not set, scale_energy_usage = false and a fluid box filter is set, the game will attempt to calculate this value from the fluid box filter's fluid's fuel_value or heat_capacity and the entity's energy_usage. If burns_fluid is false, maximum_temperature will also be used.",
+          "description": "The number of fluid units the energy source uses per tick. If used with scale_fluid_usage, this specifies the maximum. If this value is not set, scale_energy_usage = false and a fluid box filter is set, the game will attempt to calculate this value from the fluid box filter's fluid's fuel_value or heat_capacity and the entity's energy_usage. If burns_fluid is false, maximum_temperature will also be used. If the attempt of the game to calculate this value fails ( scale_energy_usage = false and a fluid box filter is set), then scale_energy_usage will be forced to true, to prevent the energy source from being an infinite fluid sink.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/90613\">[1]</a>",
           "default": "0",
           "optional": true
         },
@@ -22454,6 +22781,7 @@
         {
           "name": "secondary_draw_order",
           "type": "int8",
+          "description": "Used to determine render order for sprites with the same <code>render_layer</code> in the same position. Sprites with a higher <code>secondary_draw_order</code> are drawn on top.",
           "optional": true
         },
         {
@@ -22775,6 +23103,11 @@
           "name": "train_with_no_path_penalty",
           "type": "uint32",
           "optional": false
+        },
+        {
+          "name": "train_auto_without_schedule_penalty",
+          "type": "uint32",
+          "optional": false
         }
       ]
     }
@@ -22907,6 +23240,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "Unused.",
           "default": "false",
           "optional": true
         }
@@ -23335,7 +23669,8 @@
       "early-game": "",
       "main-track": "",
       "interlude": "",
-      "late-game": ""
+      "late-game": "",
+      "menu-track": ""
     }
   },
   "TechnologyData": {
@@ -23351,7 +23686,7 @@
         },
         {
           "name": "effects",
-          "type": "Modifier[]",
+          "type": "ModifierPrototype[]",
           "description": "List of effects of the technology (applied when the technology is researched).",
           "optional": true
         },
@@ -23365,6 +23700,13 @@
           "name": "hidden",
           "type": "bool",
           "description": "Hides the technology from the tech screen.",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "ignore_tech_cost_multiplier",
+          "type": "bool",
+          "description": "Controls whether the technology cost ignores the tech cost multiplier set in the <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/Concepts.html#DifficultySettings\">DifficultySettings</a>, e.g. 4 for the default expensive difficulty.",
           "default": "false",
           "optional": true
         },
@@ -23546,6 +23888,11 @@
           "name": "width",
           "type": "double",
           "optional": false
+        },
+        {
+          "name": "range_effects",
+          "type": "TriggerEffect",
+          "optional": false
         }
       ],
       "parent": "TriggerItem"
@@ -23572,9 +23919,11 @@
       "enemy": "The entity force is enemy to that of the player doing the selection",
       "upgrade": "The normal rules for acceptable entities in upgrade planners",
       "cancel-upgrade": "The normal rules for acceptable entities for cancel upgrade",
+      "downgrade": "The normal rules for acceptable entities for downgrade ",
       "entity-with-health": "",
       "entity-with-force": "",
-      "entity-with-owner": ""
+      "entity-with-owner": "",
+      "avoid-rolling-stock": "The entity is not a <a href=\"/Prototype/RollingStock\" title=\"Prototype/RollingStock\">Prototype/RollingStock</a>"
     }
   },
   "SpriteVariationsSheet": {
@@ -23790,7 +24139,7 @@
         {
           "name": "count",
           "type": "double",
-          "description": "How many units are needed. Must be positive. May not be specified if count_formula is specified.",
+          "description": "How many units are needed. Must be larger than 0. May not be specified if count_formula is specified.",
           "optional": true
         },
         {
@@ -23956,7 +24305,7 @@
         {
           "name": "mipmap_count",
           "type": "uint8",
-          "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").",
+          "description": "Only loaded if this is an icon (has flag \"group=icon\" or \"group=gui\").<br>Note: mipmap_count doesn't make sense in animation, as it is not possible to layout mipmaps in a way, that would load correctly both the animation and the mipmaps (besides animations with just one frame).<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/viewtopic.php?p=549058#p549058\">[2]</a>",
           "default": "0",
           "optional": true
         },
@@ -23994,6 +24343,7 @@
         {
           "name": "generate_sdf",
           "type": "bool",
+          "description": "Unused.",
           "default": "false",
           "optional": true
         },
@@ -24553,7 +24903,7 @@
     "name": "TriggerEffect",
     "type": "alias",
     "link": "/Types/TriggerEffect",
-    "value": "TriggerEffectValue[]"
+    "value": "TriggerEffectValue|TriggerEffectValue[]"
   },
   "WireConnectionPoint": {
     "name": "WireConnectionPoint",
@@ -24826,7 +25176,7 @@
     "name": "LinkedContainer",
     "type": "table",
     "link": "/Prototype/LinkedContainer",
-    "description": "A container that shares its inventory with containers with the same <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.link_id\">link_id</a>, which can be set via the GUI. The link IDs are per prototype and force, so only containers with the same ID and same prototype name <i>and</i> same force will share inventories.",
+    "description": "A container that shares its inventory with containers with the same <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.link_id\">link_id</a>, which can be set via the GUI. The link IDs are per prototype and force, so only containers with the <b>same ID</b>, <b>same prototype name</b> and <b>same force</b> will share inventories.",
     "value": {
       "parent": "EntityWithHealth",
       "properties": [
@@ -24857,6 +25207,46 @@
       ]
     }
   },
+  "LinkedBelt": {
+    "name": "LinkedBelt",
+    "type": "table",
+    "link": "/Prototype/LinkedBelt",
+    "description": "A belt that can be connected to a belt anywhere else, including on a different surface, see <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.connect_linked_belts\">connect_linked_belts</a> and other runtime functions.\n",
+    "value": {
+      "parent": "TransportBeltConnectable",
+      "properties": [
+        {
+          "name": "structure",
+          "type": "UndergroundBeltStructure",
+          "optional": false
+        },
+        {
+          "name": "allow_blueprint_connection",
+          "type": "bool",
+          "default": "true",
+          "optional": true
+        },
+        {
+          "name": "allow_clone_connection",
+          "type": "bool",
+          "default": "true",
+          "optional": true
+        },
+        {
+          "name": "allow_side_loading",
+          "type": "bool",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "structure_render_layer",
+          "type": "RenderLayer",
+          "default": "object",
+          "optional": true
+        }
+      ]
+    }
+  },
   "SpiderLeg": {
     "name": "SpiderLeg",
     "type": "table",
@@ -24876,6 +25266,11 @@
           "optional": false
         },
         {
+          "name": "minimal_step_size",
+          "type": "double",
+          "optional": false
+        },
+        {
           "name": "movement_acceleration",
           "type": "double",
           "optional": false
@@ -24887,6 +25282,12 @@
         },
         {
           "name": "part_length",
+          "type": "double",
+          "description": "Must be larger than 0.",
+          "optional": false
+        },
+        {
+          "name": "target_position_randomisation_distance",
           "type": "double",
           "optional": false
         },
@@ -24972,6 +25373,12 @@
           "type": "float",
           "description": "The orientation of the torso of the spider affects the shooting direction and the drawing of the graphics and lights.",
           "default": "1",
+          "optional": true
+        },
+        {
+          "name": "trash_inventory_size",
+          "type": "float",
+          "default": "0",
           "optional": true
         }
       ]
@@ -25090,7 +25497,7 @@
         },
         {
           "name": "starting_status",
-          "type": "string",
+          "type": "TipStatus",
           "default": "locked",
           "optional": true
         },
@@ -25115,19 +25522,19 @@
       ]
     }
   },
-  "TipsAndTricksItemStartingStatus": {
-    "name": "TipsAndTricksItemStartingStatus",
+  "TipStatus": {
+    "name": "TipStatus",
     "type": "string",
-    "link": "/Prototype/TipsAndTricksItem#starting_status",
+    "link": "/Prototype/TipStatus",
     "value": {
-      "optional": "",
-      "locked": "",
-      "dependencies-not-met": "",
-      "unlocked": "",
-      "suggested": "",
+      "locked": "The tip is hidden.",
+      "optional": "Same as \"locked\".",
+      "dependencies-not-met": "The <a href=\"/Prototype/TipsAndTricksItem#trigger\" title=\"Prototype/TipsAndTricksItem\">trigger</a> for the tip was already met, but the tip is still hidden because of dependencies.",
+      "unlocked": "Not suggested by trigger yet, but visible in the window. This is also the state that tips are left in when the /unlock-tips command is used in-game. ",
+      "suggested": "The dependencies and triggers are met, the game suggests the tip.",
       "not-to-be-suggested": "",
-      "completed-without-tutorial": "",
-      "completed": ""
+      "completed-without-tutorial": "The tip is considered completed, shows the checkmark in the GUI.",
+      "completed": "The tip is considered completed, shows the checkmark in the GUI."
     }
   },
   "TipsAndTricksItemCategory": {
@@ -25157,13 +25564,13 @@
     "link": "/Types/CursorBoxType",
     "value": {
       "entity": "The normal entity selection box. Yellow by default.",
-      "electricity": "The selection box used to specify electric poles an entity is connected to. Light blue by default.",
-      "copy": "The selection box used when doing entity copy-paste. Green by default.",
       "not-allowed": "The selection box used when specifying colliding entities. Red by default.",
-      "pair": "Light Blue by default.",
-      "logistics": "Light Blue by default.",
+      "electricity": "The selection box used to specify electric poles an entity is connected to. Light blue by default.",
+      "pair": "Light blue by default.",
+      "copy": "The selection box used when doing entity copy-paste. Green by default.",
       "train-visualization": "White by default.",
-      "blueprint-snap-rectangle": ""
+      "logistics": "Light blue by default.",
+      "blueprint-snap-rectangle": "Green by default."
     }
   },
   "SimulationDefinition": {
@@ -25235,6 +25642,12 @@
           "name": "volume_modifier",
           "type": "float",
           "description": "Multiplier for the simulation volume set by the player in the sound settings.",
+          "optional": true
+        },
+        {
+          "name": "override_volume",
+          "type": "bool",
+          "description": "If true, overrides the simulation volume set by the player in the sound settings, simply setting the volume modifier to 1. ",
           "optional": true
         }
       ]
@@ -25378,9 +25791,31 @@
           "optional": true
         },
         {
+          "name": "autopilot_destination_queue_on_map_visualisation",
+          "type": "AnimationType",
+          "optional": true
+        },
+        {
           "name": "autopilot_destination_visualisation",
           "type": "AnimationType",
           "optional": true
+        },
+        {
+          "name": "autopilot_destination_queue_visualisation",
+          "type": "AnimationType",
+          "optional": true
+        },
+        {
+          "name": "autopilot_path_visualisation_line_width",
+          "type": "AnimationType",
+          "optional": true,
+          "default": "0.125"
+        },
+        {
+          "name": "autopilot_path_visualisation_on_map_line_width",
+          "type": "AnimationType",
+          "optional": true,
+          "default": "2.0"
         },
         {
           "name": "light_positions",
@@ -25949,6 +26384,239 @@
           "name": "bottom_end_length",
           "type": "float",
           "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "ModifierPrototype": {
+    "name": "ModifierPrototype",
+    "type": "prototype",
+    "link": "/Types/ModifierPrototype",
+    "description": "The effect that is applied when a <a href=\"/Prototype/Technology\" title=\"Prototype/Technology\">Prototype/Technology</a> is researched. It is a <a href=\"/Types/table\" title=\"Types/table\">Types/table</a> that contains at least the field <code>type</code>. A modifier prototype may also have other fields depending on the type, because it is loaded as an extension of this type.",
+    "value": {
+      "inserter-stack-size-bonus": "SimpleModifierPrototype",
+      "stack-inserter-capacity-bonus": "SimpleModifierPrototype",
+      "laboratory-speed": "SimpleModifierPrototype",
+      "character-logistic-trash-slots": "SimpleModifierPrototype",
+      "maximum-following-robots-count": "SimpleModifierPrototype",
+      "worker-robot-speed": "SimpleModifierPrototype",
+      "worker-robot-storage": "SimpleModifierPrototype",
+      "ghost-time-to-live": "SimpleModifierPrototype",
+      "turret-attack": "TurretAttackModifierPrototype",
+      "ammo-damage": "AmmoDamageModifierPrototype",
+      "give-item": "GiveItemModifierPrototype",
+      "gun-speed": "GunSpeedModifierPrototype",
+      "unlock-recipe": "UnlockRecipeModifierPrototype",
+      "character-crafting-speed": "SimpleModifierPrototype",
+      "character-mining-speed": "SimpleModifierPrototype",
+      "character-running-speed": "SimpleModifierPrototype",
+      "character-build-distance": "SimpleModifierPrototype",
+      "character-item-drop-distance": "SimpleModifierPrototype",
+      "character-reach-distance": "SimpleModifierPrototype",
+      "character-resource-reach-distance": "SimpleModifierPrototype",
+      "character-item-pickup-distance": "SimpleModifierPrototype",
+      "character-loot-pickup-distance": "SimpleModifierPrototype",
+      "character-inventory-slots-bonus": "SimpleModifierPrototype",
+      "deconstruction-time-to-live": "SimpleModifierPrototype",
+      "max-failed-attempts-per-tick-per-construction-queue": "SimpleModifierPrototype",
+      "max-successful-attempts-per-tick-per-construction-queue": "SimpleModifierPrototype",
+      "character-health-bonus": "SimpleModifierPrototype",
+      "mining-drill-productivity-bonus": "SimpleModifierPrototype",
+      "zoom-to-world-enabled": "BoolModifierPrototype",
+      "zoom-to-world-ghost-building-enabled": "BoolModifierPrototype",
+      "zoom-to-world-blueprint-enabled": "BoolModifierPrototype",
+      "zoom-to-world-deconstruction-planner-enabled": "BoolModifierPrototype",
+      "zoom-to-world-upgrade-planner-enabled": "BoolModifierPrototype",
+      "zoom-to-world-selection-tool-enabled": "BoolModifierPrototype",
+      "worker-robot-battery": "SimpleModifierPrototype",
+      "laboratory-productivity": "SimpleModifierPrototype",
+      "follower-robot-lifetime": "SimpleModifierPrototype",
+      "artillery-range": "SimpleModifierPrototype",
+      "nothing": "NothingModifierPrototype",
+      "character-logistic-requests": "BoolModifierPrototype"
+    }
+  },
+  "ModifierPrototypeParent": {
+    "name": "ModifierPrototypeParent",
+    "type": "table",
+    "link": "/Types/ModifierPrototype",
+    "description": "Parent for the prototype \"ModifierPrototype\"",
+    "value": {
+      "parent": "IconSpecification",
+      "properties": [
+        {
+          "name": "infer_icon",
+          "type": "bool",
+          "description": "If set to false, use the icon from the <a href=\"/Prototype/UtilitySprites\" title=\"Prototype/UtilitySprites\">utility sprites</a> for this technology effect icon.",
+          "default": "0",
+          "optional": true
+        },
+        {
+          "name": "use_icon_overlay_constant",
+          "type": "bool",
+          "description": "If set to false, do not draw the small \"constant\" icon over the technology effect icon. ",
+          "default": "0",
+          "optional": true
+        }
+      ]
+    }
+  },
+  "SimpleModifierPrototype": {
+    "name": "SimpleModifierPrototype",
+    "type": "table",
+    "link": "/Types/SimpleModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "modifier",
+          "type": "double",
+          "description": "Modification value. This value will be added to the variable it modifies.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "TurretAttackModifierPrototype": {
+    "name": "TurretAttackModifierPrototype",
+    "type": "table",
+    "link": "/Types/TurretAttackModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "turret_id",
+          "type": "string",
+          "description": "Prototype name of the <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">entity</a> that is affected.",
+          "optional": false
+        },
+        {
+          "name": "modifier",
+          "type": "double",
+          "description": "Modification value. This will be added to the current turret attack modifier upon researching.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "AmmoDamageModifierPrototype": {
+    "name": "AmmoDamageModifierPrototype",
+    "type": "table",
+    "link": "/Types/AmmoDamageModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "ammo_category",
+          "type": "string",
+          "description": "Prototype name of the <a href=\"/Prototype/AmmoCategory\" title=\"Prototype/AmmoCategory\">ammunition category</a> that is affected.",
+          "optional": false
+        },
+        {
+          "name": "modifier",
+          "type": "double",
+          "description": "Modification value. This will be added to the current ammo damage modifier upon researching.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "GiveItemModifierPrototype": {
+    "name": "GiveItemModifierPrototype",
+    "type": "table",
+    "link": "/Types/GiveItemModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "item",
+          "type": "string",
+          "description": "Name of a <a href=\"/Prototype/Item\" title=\"Prototype/Item\">Prototype/Item</a>.",
+          "optional": false
+        },
+        {
+          "name": "count",
+          "type": "ItemCountType",
+          "description": "Must be > 0.",
+          "optional": true,
+          "default": "1"
+        }
+      ]
+    }
+  },
+  "GunSpeedModifierPrototype": {
+    "name": "GunSpeedModifierPrototype",
+    "type": "table",
+    "link": "/Types/GunSpeedModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "ammo_category",
+          "type": "string",
+          "description": "Prototype name of the <a href=\"/Prototype/AmmoCategory\" title=\"Prototype/AmmoCategory\">ammunition category</a> that is affected.",
+          "optional": false
+        },
+        {
+          "name": "modifier",
+          "type": "double",
+          "description": "Modification value. This will be added to the current gun speed modifier upon researching.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "UnlockRecipeModifierPrototype": {
+    "name": "UnlockRecipeModifierPrototype",
+    "type": "table",
+    "link": "/Types/UnlockRecipeModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "recipe",
+          "type": "string",
+          "description": "Prototype name of the <a href=\"/Prototype/Recipe\" title=\"Prototype/Recipe\">recipe</a> that is unlocked upon researching.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "BoolModifierPrototype": {
+    "name": "BoolModifierPrototype",
+    "type": "table",
+    "link": "/Types/BoolModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "modifier",
+          "type": "bool",
+          "description": "The value this modifier will have upon researching.",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "NothingModifierPrototype": {
+    "name": "NothingModifierPrototype",
+    "type": "table",
+    "link": "/Types/NothingModifierPrototype",
+    "description": "Extends <a href=\"/Types/ModifierPrototype\" title=\"Types/ModifierPrototype\">Types/ModifierPrototype</a>.",
+    "value": {
+      "parent": "ModifierPrototypeParent",
+      "properties": [
+        {
+          "name": "effect_description",
+          "type": "LocalisedString",
           "optional": true
         }
       ]

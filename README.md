@@ -1,25 +1,13 @@
-# Factorio API as LUA and JSON files.
+# Factorio API as JSON files.
 
-The goal of this project is to provide the factorio LUA API and the prototype definitions in a way, that computers can easily work with it.
-Currently, the lua-API is served as LUA files, and the prototype definitions are served as json files. If you want any other format or LUA dialect, just say so as Issue or create a Pull Request, I am happy to add it to the project/website.
-
-This project is still work in progress, thing might change over time.
+The goal of this project is to provide factorio prototypes, in a computer readable way, in this case as JSON.  
+The lua-api now has a json format, so it is not generated here anymore.   
+If you want any other format, create an Issue or Pull Request.
 
 ## LUA-API
-The LUA-API has a few pages, where everything is available to download.
-
-### [https://factorio-api.knox.moe/api/](https://factorio-api.knox.moe/api/)
-Contains a JSON array, with all the available versions. You can download it and select a version you want.
-`latest` is not available, but the array is sorted from lowest to highest with the [go-version](http://github.com/hashicorp/go-version) library.
-
-### [https://factorio-api.knox.moe/api/{version}/](https://factorio-api.knox.moe/api/1.0.0/)
-Contains a JSON array, with all the available LUA files. You can iterate over all entries and then download the specified files. 
-Replace `{version}`, with your selected version.
-The integration is only fully available, when you download all the files. The files also have cross-references in them.
-
-### [https://factorio-api.knox.moe/api/{version}/{file}](https://factorio-api.knox.moe/api/1.0.0/AmmoType.lua)
-This route will serve a specific LUA file. Replace `{file}`, with a single filename.
-The LUA files were built for EmmyLUA (a Plugin for Jetbrains IntelliJ)
+Not needed anymore, factorio is providing their own json with all needed information.  
+Documentation: https://lua-api.factorio.com/latest/json-docs.html  
+Direct-Link: https://lua-api.factorio.com/latest/runtime-api.json
 
 ## Prototypes
 All Prototype definitions from the [factorio wiki](https://wiki.factorio.com/Prototype_definitions) are served in a really big json file.
@@ -71,8 +59,11 @@ A prototype is a table, that contains a `type` field. The `type` is the key of t
 It can be looked up, and the value then is the name of the prototype name in the overall table.
 The prototype in the overall map has to be of type table. The properties of the table, then are used for this prototype of type `prototype`.
 
+If one of the `Key` is an empty string `""`, then it is the default value.
+Used for prototypes with default constructors, like [IngredientPrototype](https://wiki.factorio.com/Types/IngredientPrototype).
+
 ### alias
-An alias is just what it says, an alias for something different. The `value` field is of type `string, that just contains a different prototype.
+An alias is just what it says, an alias for something different. The `value` field is of type `string`, that just contains a different prototype.
 It has the same layout as the `property->type` field. 
 
 ### string
@@ -83,7 +74,6 @@ The `value` field is a map from string to string.
 
 ### stringArray
 This is basically the same as the `string` type. It just differs, that this is an array, that can have multiple of the values defined as `key`. A value can only be used once in the array.
-Additional values, that are not part of the keys can also be used.
 
 ## Run it yourself
 ### prototype diff checker

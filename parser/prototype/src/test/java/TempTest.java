@@ -173,41 +173,42 @@ public class TempTest {
 //		}
 
 		// save prototypes as LUA file
-		try {
-			Writer writer = new FileWriter("../../files/prototypes/prototypes.lua");
-
-			for (Map.Entry<String, Prototype> entry : prototypes.entrySet()) {
-				Prototype prototype = entry.getValue();
-				if (prototype.type.equals("table")) {
-					writer.append(String.format("---%s\n", prototype.description));
-					writer.append(String.format("---@class %s\n", prototype.name));
-					// do not use parent here, we add all the properties manually, this has to be done, cause multi-inheritance is not supported.
-					writer.append(String.format("local %s = {}\n\n", prototype.name));
-
-					appendProperties(writer, prototype, prototype, prototypes);
-				} else if (prototype.type.equals("alias")) {
-					writer.append(String.format("---@alias %s %s\n\n", prototype.name, prototype.alias));
-				} else if (prototype.type.equals("string")) {
-					writer.append(String.format("---@alias %s string\n\n", prototype.name));
-				} else if (prototype.type.equals("stringArray")) {
-					writer.append(String.format("---@alias %s string[]\n\n", prototype.name));
-				}
-			}
-			writer.flush();
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// save json again
-//		try (Writer writer = new FileWriter("../prototypes.json")) {
-//			new GsonBuilder()
-//					.setPrettyPrinting()
-//					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeSerializer())
-//					.create()
-//					.toJson(prototypes, writer);
+//		try {
+//			Writer writer = new FileWriter("../../files/prototypes/prototypes.lua");
+//
+//			for (Map.Entry<String, Prototype> entry : prototypes.entrySet()) {
+//				Prototype prototype = entry.getValue();
+//				if (prototype.type.equals("table")) {
+//					writer.append(String.format("---%s\n", prototype.description));
+//					writer.append(String.format("---@class %s\n", prototype.name));
+//					// do not use parent here, we add all the properties manually, this has to be done, cause multi-inheritance is not supported.
+//					writer.append(String.format("local %s = {}\n\n", prototype.name));
+//
+//					appendProperties(writer, prototype, prototype, prototypes);
+//				} else if (prototype.type.equals("alias")) {
+//					writer.append(String.format("---@alias %s %s\n\n", prototype.name, prototype.alias));
+//				} else if (prototype.type.equals("string")) {
+//					writer.append(String.format("---@alias %s string\n\n", prototype.name));
+//				} else if (prototype.type.equals("stringArray")) {
+//					writer.append(String.format("---@alias %s string[]\n\n", prototype.name));
+//				}
+//			}
+//			writer.flush();
+//			writer.close();
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
+
+		// save json again
+		try (Writer writer = new FileWriter("../prototypes_small.json")) {
+			new GsonBuilder()
+//					.setPrettyPrinting()
+					.disableHtmlEscaping()
+					.registerTypeAdapter(Prototype.class, new Prototype.PrototypeSerializer())
+					.create()
+					.toJson(prototypes, writer);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -23,7 +23,7 @@ cd "$dockerDir"
 
 # copy over the prototypes files
 cp ../files/prototypes/prototypes.json prototypes.json
-cp ../files/prototypes/prototypes.lua prototypes.lua	
+cp ../files/prototypes/prototypes.lua prototypes.lua
 
 # copy over README file
 cp ../README.html README.html
