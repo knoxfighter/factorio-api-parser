@@ -12,68 +12,70 @@ Direct-Link: https://lua-api.factorio.com/latest/runtime-api.json
 ## Prototypes
 All Prototype definitions from the [factorio wiki](https://wiki.factorio.com/Prototype_definitions) are served in a really big json file.
 This file can also be downloaded from my page: https://factorio-api.knox.moe/prototypes.json.  
-This list is manually maintained. The current timestamp of the last changes have a subpage: https://factorio-api.knox.moe/prototypes.json/version  
-The prototypes are also available as LUA file. In the LUA files all prototypes typed `string` or `stringArray` are only in there as alias to `string` or `string[]`.
-Also, everything of type `prototype` is stripped, cause there is no practical format to define it.
+This list is manually maintained. The current timestamp of the last changes has a subpage: https://factorio-api.knox.moe/prototypes.json/version  
 
-The JSON is a map from string to objects.
+### JSON
+The JSON has the following fields:
+- tables - Table[]
+- aliases - Alias[]
+- string - StringType[]
+- prototypes - Prototype[]
+
+All of those types have in common:
+- name - String
+- link - String
+- description - String
+
 I wrote java classes, that provide the possibility to read and write the JSON with GSON.
 These classes can be found in the [prototype type package](parser/prototype/src/main/java/moe/knox/prototype/types).
-Entry class is [Prototype.java](parser/prototype/src/main/java/moe/knox/prototype/types/Prototype.java).
+Entry class is [JsonRoot.java](parser/prototype/src/main/java/moe/knox/prototype/types/JsonRoot.java).
 
-The object has the following fields:
-- name [string] - The name of the prototype (same as key)
-- type [string] - The type of this entry, defines type of `value`. (One of `table`, `prototype`, `alias`, `string`, `stringArray`)
-- link [string] - The link for the definition in the factorio wiki
-- description [string]
-- value [object] - The value field can have 3 different types, based on the value of the `type` field.
-
-Further information for each type and the type of the `value` field, is below:
-
-### table
+### Table
 A table contains the information about what a prototype definition can have as properties.
 A table also can have a different table as parent, which will combine both tables into one.
+If a table has the `prototype` field set, it is referenced in a `prototype` and has the given `prototype` as parent.
 
-The `value` field is of type [Table](parser/prototype/src/main/java/moe/knox/prototype/types/Table.java).
-
-#### Table 
-The Table object has two fields:
+Additional fields:
 - properties - Property[] - An array of the [Property](parser/prototype/src/main/java/moe/knox/prototype/types/Property.java) object.
-- parent - string - The name of a Prototype that this table inherits all properties from. This Prototype also has to be of type table.
+- parent - String - The name of a Prototype that this table inherits all properties from. This Prototype also has to be of type table.
+- prototype - String - The ID of the Prototype this table represents (will be null in most cases)
 
 #### Property
 The Property object has five fields:
-- name - string - The name of the property
-- type - string - The type of the property. Normally a Prototype or a primitive.
-- description - string
-- default - string - The default value of an optional property.
-- optional - bool - Defines, if this property is optional or mandatory.
+- name - String - The name of the property
+- type - String - The type of the property. Normally a Prototype or a primitive.
+- description - String
+- default - String - The default value of an optional property.
+- optional - Boolean - Defines, if this property is optional or mandatory.
+
+### Alias
+An alias is just what it says, an alias for something different.
+The original type is in the field `other`.
+Normally a Prototype or a primitive type.
+
+### string
+A list of strings that this string can be set to. Only these strings are valid values.
+This is often used for flags, flags will have an `alias` to an array of these strings.
+These strings can be represented as an alias to a string literal type (e.g. `---@type "enemy"|"ally"|"friend`).
+
+`Key` of the map is a string, that can be used as value of this field.   
+`Value` of the map is a description for the key. It can be used to show more information about the given key.
 
 ### prototype
-The `value` field is a map from string to string.
+A map of string to string. This is a represantation of a Prototype.
+A Prototype has to contain a `type` field, that contains the ID.
 
 `Key` of the map, is the name, that the prototype definition has to have in its `type` field.  
-`Value` of the map, is the name of a Prototype (key of the overall map).
+`Value` of the map, is the name of a Table.
 
 A prototype is a table, that contains a `type` field. The `type` is the key of this map.
 It can be looked up, and the value then is the name of the prototype name in the overall table.
 The prototype in the overall map has to be of type table. The properties of the table, then are used for this prototype of type `prototype`.
+This Prototype has to be available as class, so the actual Prototypes can inherit the `type` field, they don't have them themselves.
 
 If one of the `Key` is an empty string `""`, then it is the default value.
 Used for prototypes with default constructors, like [IngredientPrototype](https://wiki.factorio.com/Types/IngredientPrototype).
 
-### alias
-An alias is just what it says, an alias for something different. The `value` field is of type `string`, that just contains a different prototype.
-It has the same layout as the `property->type` field. 
-
-### string
-The `value` field is a map from string to string.
-
-`Key` of the map is a string, that can be used as value of this field. It is also possible to write anything into the string, these keys are just to make proposals for the autocompletion.  
-`Value` of the map is a description for the key. It can be used to show more information about the given key.
-
-### stringArray
-This is basically the same as the `string` type. It just differs, that this is an array, that can have multiple of the values defined as `key`. A value can only be used once in the array.
 
 ## Run it yourself
 ### prototype diff checker

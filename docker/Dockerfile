@@ -6,7 +6,7 @@ RUN apt-get -y install cron
 RUN rm -rf /var/lib/apt/lists/*
 
 # copy in jars
-COPY factorio-api-parser.jar factorio-api-parser.jar
+#COPY factorio-api-parser.jar factorio-api-parser.jar
 COPY factorio-prototypes.jar factorio-prototypes.jar
 
 # copy in go-executable
@@ -14,7 +14,7 @@ COPY webserver webserver
 
 # copy in prototypes.json
 COPY prototypes.json prototypes.json
-COPY prototypes.lua prototypes.lua
+#COPY prototypes.lua prototypes.lua
 
 # copy in readme
 COPY README.html README.html

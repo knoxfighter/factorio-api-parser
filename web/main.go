@@ -55,10 +55,10 @@ func main() {
 	router := mux.NewRouter()
 	//router.Methods("GET") // this doesn't work for some reason (bug in mux-router)
 
-	apiRouter := router.PathPrefix("/api").Methods("GET").Subrouter()
-	apiRouter.HandleFunc("/", ApiListVersionsHandler)
-	apiRouter.HandleFunc("/{version}/", ApiListVersionFilesHandler)
-	apiRouter.HandleFunc("/{version}/{file}", ApiDownloadFileHandler)
+	//apiRouter := router.PathPrefix("/api").Methods("GET").Subrouter()
+	//apiRouter.HandleFunc("/", ApiListVersionsHandler)
+	//apiRouter.HandleFunc("/{version}/", ApiListVersionFilesHandler)
+	//apiRouter.HandleFunc("/{version}/{file}", ApiDownloadFileHandler)
 
 	wikiRouter := router.PathPrefix("/wiki").Methods("GET").Subrouter()
 	wikiRouter.HandleFunc("/{file}", WikiDownloadFileHandler)
@@ -66,11 +66,11 @@ func main() {
 	router.HandleFunc("/prototypes.json", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, prototypesJsonPath)
 	})
-	router.HandleFunc("/prototypes.lua", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, prototypesLuaPath)
-	})
+	//router.HandleFunc("/prototypes.lua", func(w http.ResponseWriter, r *http.Request) {
+	//	http.ServeFile(w, r, prototypesLuaPath)
+	//})
 	router.HandleFunc("/prototypes.json/version", PrototypeJsonVersion)
-	router.HandleFunc("/prototypes.lua/version", PrototypeJsonVersion)
+	//router.HandleFunc("/prototypes.lua/version", PrototypeJsonVersion)
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, readmePath)
