@@ -12396,7 +12396,7 @@
         },
         {
           "name": "healing_per_tick",
-          "description": "The amount of health automatically regenerated per tick. The entity must be active for this to work.\nTrees will regenerate every 60 ticks with <code>healing_per_tick × 60</code> and they don't need to be active.",
+          "description": "The amount of health automatically regenerated per tick. The entity must be active for this to work.<br>Trees will regenerate every 60 ticks with <code>healing_per_tick × 60</code> and they don't need to be active.",
           "type": "float",
           "default": "0",
           "optional": true
@@ -17538,7 +17538,7 @@
       "properties": [
         {
           "name": "sound",
-          "description": "The sound to be played when the entity is working. If sound is not present, the entire WorkingSound is loaded as a <a href=\"/Types/Sound\" title=\"Types/Sound\">Types/Sound</a>.\n",
+          "description": "The sound to be played when the entity is working. If sound is not present, the entire WorkingSound is loaded as a <a href=\"/Types/Sound\" title=\"Types/Sound\">Types/Sound</a>.",
           "type": "SoundType",
           "optional": false
         },
@@ -23375,7 +23375,7 @@
       "prototype": "Prototype",
       "name": "LinkedBelt",
       "link": "/Prototype/LinkedBelt",
-      "description": "A belt that can be connected to a belt anywhere else, including on a different surface, see <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.connect_linked_belts\">connect_linked_belts</a> and other runtime functions.\n"
+      "description": "A belt that can be connected to a belt anywhere else, including on a different surface, see <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.connect_linked_belts\">connect_linked_belts</a> and other runtime functions."
     },
     {
       "properties": [
@@ -24282,7 +24282,7 @@
       "properties": [
         {
           "name": "leg",
-          "description": "Name of a <a href=\"/Prototype/SpiderLeg\" title=\"Prototype/SpiderLeg\">Prototype/SpiderLeg</a>.\n",
+          "description": "Name of a <a href=\"/Prototype/SpiderLeg\" title=\"Prototype/SpiderLeg\">Prototype/SpiderLeg</a>.",
           "type": "string",
           "optional": false
         },
@@ -24660,8 +24660,7 @@
     {
       "other": "DaytimeColorLookupTableValue[]",
       "name": "DaytimeColorLookupTable",
-      "link": "/Types/DaytimeColorLookupTable",
-      "description": "<p>An <a href=\"/Types/table\" title=\"Types/table\">array</a> of <a href=\"/Types/table\" title=\"Types/table\">arrays</a>.</p>\n<p>The first member of the inner array must be a <a href=\"/Types/double\" title=\"Types/double\">double</a>, second member of the inner array must be a <a href=\"/Types/FileName\" title=\"Types/FileName\">FileName</a> or \"identity\". The file pointed to by the filename must be a sprite of size 16x16.</p>\n<p>\nzoom_to_world_daytime_color_lookup =\n{\n  {0.25, \"identity\"},\n  {0.45, \"__core__/graphics/color_luts/night.png\"},\n  {0.55, \"__core__/graphics/color_luts/night.png\"},\n  {0.75, \"identity\"},\n}\n</p>"
+      "link": "/Types/DaytimeColorLookupTable"
     },
     {
       "other": "string",
@@ -25277,7 +25276,7 @@
         "linear-mip-level": "",
         "alpha-mask": "",
         "no-scale": "",
-        "mask": "<p>When this flag is set, it will automatically set these flags:</p>\n<ul><li>\"group=none\"</li></ul>",
+        "mask": "<p>When this flag is set, it will automatically set these flags:</p><ul><li>\"group=none\"</li></ul>",
         "icon": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"no-crop\"</li><li>\"no-scale\"</li><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"linear-mip-level\"</li><li>\"not-compressed\"</li><li>\"group=icon\"</li></ul>",
         "gui": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"no-crop\"</li><li>\"no-scale\"</li><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"linear-mip-level\"</li><li>\"not-compressed\"</li><li>\"group=gui\"</li></ul>",
         "gui-icon": "<p>When this flag is set, it will internally set these flags:</p><ul><li>\"no-crop\"</li><li>\"no-scale\"</li><li>\"mipmap\"</li><li>\"linear-minification\"</li><li>\"linear-magnification\"</li><li>\"not-compressed\"</li><li>\"group=icon\"</li></ul>",
