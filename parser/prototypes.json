@@ -356,14 +356,14 @@
         },
         {
           "name": "category",
-          "description": "One of \"game-effect\", \"gui-effect\", \"ambient\", \"environment\", \"walking\", \"alert\" and \"wind\".",
-          "type": "string",
+          "description": "This defines which slider in the sound settings affects the volume of this sound. Furthermore, some sound types are mixed differently than others, e.g. zoom level effects are applied.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/viewtopic.php?p=527778#p527778\">[1]</a>",
+          "type": "SoundCategory",
           "default": "game-effect",
           "optional": true
         },
         {
           "name": "filename",
-          "description": "Mandatory if <code>variations</code> is not given.",
+          "description": "Mandatory if <code>variations</code> is not given.<br>Support sound file formats are `.ogg`, `.wav` and `.voc`.",
           "type": "FileName",
           "optional": true
         },
@@ -488,7 +488,7 @@
         },
         {
           "name": "charge_approach_distance",
-          "description": "Presumably, the distance from the roboport at which robots will wait to charge.",
+          "description": "The distance from the roboport at which robots will wait to charge. notablely,if robots are already in range,then it will simplely wait at spot.",
           "type": "float",
           "optional": false
         },
@@ -581,6 +581,7 @@
         {
           "name": "charging_station_count",
           "type": "uint32",
+          "description": "How many charging point this roboport has, if value is 0, roboport will try to use charging_offsets to know charging point instead. (in vanilla game, roboport charging point is defined by charging_offsets)",
           "default": "0",
           "optional": true
         },
@@ -592,6 +593,7 @@
         {
           "name": "charging_threshold_distance",
           "type": "float",
+          "description": "Unused. (only used in <a href=\"/Prototype/RoboportEquipment\" title=\"Prototype/RoboportEquipment\">personal roboport</a>)",
           "default": "1.0",
           "optional": true
         },
@@ -680,7 +682,7 @@
         },
         {
           "name": "robot_limit",
-          "description": " Unused.",
+          "description": "Unused. (only used in <a href=\"/Prototype/RoboportEquipment\" title=\"Prototype/RoboportEquipment\">personal roboport</a>)",
           "type": "ItemCountType",
           "optional": true
         },
@@ -1222,7 +1224,6 @@
         },
         {
           "name": "rotating_stopped_sound",
-          "description": "l",
           "type": "SoundType",
           "optional": true
         },
@@ -5875,7 +5876,7 @@
       "prototype": "Prototype",
       "name": "EntityGhost",
       "link": "/Prototype/EntityGhost",
-      "description": "The entity used for ghosts of entities."
+      "description": "The entity used for ghosts of entities. In-game, the inner entity (the entity this is a ghost of) is rendered with a <a href=\"/Prototype/UtilityConstants#ghost_tint\" title=\"Prototype/UtilityConstants\">ghost_tint</a>."
     },
     {
       "properties": [
@@ -6689,6 +6690,7 @@
         {
           "name": "charging_threshold_distance",
           "type": "float",
+          "description": "This defines how far away a robot can be to be charged, however a bot is still required to reach a charging spot and cannot have full battery.",
           "default": "1.0",
           "optional": true
         },
@@ -9769,27 +9771,21 @@
           "name": "default_sprite_priority",
           "type": "SpritePriority",
           "default": "medium",
-          "optional": false
+          "optional": true
         },
         {
           "name": "default_sprite_scale",
           "type": "double",
           "default": "1",
-          "optional": false
+          "optional": true
         },
         {
           "name": "default_tileset",
           "type": "FileName",
-          "optional": false
-        },
-        {
-          "name": "name",
-          "description": "Name of the gui-style. Must be \"default\" since only one instance of this prototype can be defined.",
-          "type": "string",
-          "default": "default",
-          "optional": false
+          "optional": true
         }
       ],
+      "parent": "PrototypeBase",
       "prototype": "Prototype",
       "name": "GuiStyle",
       "link": "/Prototype/GuiStyle",
@@ -19749,6 +19745,7 @@
         {
           "name": "filename",
           "type": "FileName",
+          "description": "Support sound file formats are `.ogg`, `.wav` and `.voc`.",
           "optional": false
         },
         {
@@ -19814,7 +19811,7 @@
         },
         {
           "name": "filename",
-          "description": "Mandatory if <code>variations</code> is not given.",
+          "description": "Mandatory if <code>variations</code> is not given.<br>Support sound file formats are `.ogg`, `.wav` and `.voc`.",
           "type": "FileName",
           "optional": true
         },
@@ -20251,7 +20248,7 @@
         },
         {
           "name": "apply_tint",
-          "description": "Used by <a href=\"/Prototype/CraftingMachine\" title=\"Prototype/CraftingMachine\">Prototype/CraftingMachine</a> (\"status\" only) and <a href=\"/Prototype/MiningDrill\" title=\"Prototype/MiningDrill\">Prototype/MiningDrill</a>.\n",
+          "description": "<p>Either \"resource-color\", \"input-fluid-base-color\", \"input-fluid-flow-color\", \"status\" or \"none\". Used by <a href=\"/Prototype/CraftingMachine\" title=\"Prototype/CraftingMachine\">Prototype/CraftingMachine</a> (\"status\" only) and <a href=\"/Prototype/MiningDrill\" title=\"Prototype/MiningDrill\">Prototype/MiningDrill</a>.</p><ul><li>For \"status\" on CraftingMachine, the colors are specified via <a href=\"/Prototype/CraftingMachine#status_colors\" title=\"Prototype/CraftingMachine\">Prototype/CraftingMachine#status_colors</a>.</li><li>For \"status\" on MiningDrill, the colors are specified via <a href=\"/Types/MiningDrillGraphicsSet#status_colors\" title=\"Types/MiningDrillGraphicsSet\">Types/MiningDrillGraphicsSet#status_colors</a>.</li><li>For \"resource-color\", the colors are specified via <a href=\"/Prototype/ResourceEntity#mining_visualisation_tint\" title=\"Prototype/ResourceEntity\">Prototype/ResourceEntity#mining_visualisation_tint</a>.</li></ul>",
           "type": "WorkingVisualisationApplyTint",
           "optional": true
         },
