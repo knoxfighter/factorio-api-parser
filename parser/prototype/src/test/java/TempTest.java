@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 
 public class TempTest {
+
 	@Test
 	void prototypeTest() {
 		JsonRoot prototypes;

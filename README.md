@@ -37,8 +37,8 @@ If a table has the `prototype` field set, it is referenced in a `prototype` and 
 
 Additional fields:
 - properties - Property[] - An array of the [Property](parser/prototype/src/main/java/moe/knox/prototype/types/Property.java) object.
-- parent - String - The name of a Prototype that this table inherits all properties from. This Prototype also has to be of type table.
-- prototype - String - The ID of the Prototype this table represents (will be null in most cases)
+- parent - String - The name of a Table that this table inherits all properties from.
+- prototype - String - The name of the Prototype this table is part of. (Has to inherit its type element!)
 
 #### Property
 The Property object has five fields:
