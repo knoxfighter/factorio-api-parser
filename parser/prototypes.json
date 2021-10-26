@@ -9,7 +9,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_PlayerPort",
       "link": "/Prototype/PlayerPort",
       "description": "When a character dies, this entity will immediately respawn the character at the entities location, so there is no respawn time. If there are multiple player ports in the world, the character will respawn at the nearest player port to their death location."
@@ -23,7 +23,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Fish",
       "link": "/Prototype/Fish",
       "description": "Entity that spawns in water tiles, which can be mined. Moves around unless deactived with entity.active = false."
@@ -31,7 +31,7 @@
     {
       "properties": [],
       "parent": "PT_ItemWithLabel",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ItemWithTags",
       "link": "/Prototype/ItemWithTags",
       "description": "null"
@@ -134,7 +134,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Pump",
       "link": "/Prototype/Pump",
       "description": "The Pump is used to transfer liquids or gas between tanks, and pipes."
@@ -154,7 +154,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_WindSound",
       "link": "/Prototype/WindSound",
       "description": "A wind sound."
@@ -253,15 +253,15 @@
         }
       ],
       "parent": "PT_Turret",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FluidTurret",
       "link": "/Prototype/FluidTurret",
       "description": "A turret that consumes fluid as ammo."
     },
     {
       "properties": [],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_ResourceCategory",
       "link": "/Prototype/ResourceCategory",
       "description": "A resource category. The built-in categories can be found <a href=\"/Data.raw#resource-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/ResourceEntity#category\" title=\"Prototype/ResourceEntity\">Prototype/ResourceEntity#category</a>. Only 255 instances of this prototype may be defined."
@@ -324,7 +324,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_LandMine",
       "link": "/Prototype/LandMine",
       "description": "A <a href=\"/Land_mine\" title=\"Land mine\">land mine</a>."
@@ -363,7 +363,7 @@
         },
         {
           "name": "filename",
-          "description": "Mandatory if <code>variations</code> is not given.<br>Support sound file formats are `.ogg`, `.wav` and `.voc`.",
+          "description": "Mandatory if <code>variations</code> is not given.<br>Supported sound file formats are `.ogg`, `.wav` and `.voc`.",
           "type": "PT_FileName",
           "optional": true
         },
@@ -407,7 +407,7 @@
           "optional": true
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Sound",
       "link": "/Prototype/Sound",
       "description": "Specifies a sound that can be used with <a rel=\"nofollow\" class=\"external free\" href=\"https://lua-api.factorio.com/latest/Concepts.html#SoundPath\">https://lua-api.factorio.com/latest/Concepts.html#SoundPath</a> during runtime."
@@ -422,7 +422,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DeliverByRobotsAchievement",
       "link": "/Prototype/DeliverByRobotsAchievement",
       "description": "This prototype definition is used for receiving an achievement, when the player requests — and receives — enough items using logistic robots."
@@ -455,7 +455,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DontUseEntityInEnergyProductionAchievement",
       "link": "/Prototype/DontUseEntityInEnergyProductionAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player finishes the game without receiving energy from a specific energy source."
@@ -463,7 +463,7 @@
     {
       "properties": [],
       "parent": "PT_Tool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_MiningTool",
       "link": "/Prototype/MiningTool",
       "description": "Exists only for migration, cannot be used by mods."
@@ -712,7 +712,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Roboport",
       "link": "/Prototype/Roboport",
       "description": "A <a href=\"/Roboport\" title=\"Roboport\">roboport</a>."
@@ -727,15 +727,15 @@
         }
       ],
       "parent": "PT_Turret",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ElectricTurret",
       "link": "/Prototype/ElectricTurret",
       "description": "A turret that consumes electricity as ammo."
     },
     {
       "properties": [],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_FuelCategory",
       "link": "/Prototype/FuelCategory",
       "description": "Each item which has a fuel_value must have a fuel category. The fuel categories are used to allow only certain fuels to be used in <a href=\"/Types/EnergySource\" title=\"Types/EnergySource\">Types/EnergySource</a>. Only 255 instances of this prototype may be defined."
@@ -762,7 +762,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ProducePerHourAchievement",
       "link": "/Prototype/ProducePerHourAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player crafts a specified item a certain amount, in an hour."
@@ -777,7 +777,7 @@
         }
       ],
       "parent": "PT_Pipe",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_InfinityPipe",
       "link": "/Prototype/InfinityPipe",
       "description": "This entity produces or consumes fluids. Its fluid settings can be changed runtime."
@@ -837,7 +837,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SimpleEntity",
       "link": "/Prototype/SimpleEntity",
       "description": "An extremely basic entity with no special functionality. Used for minable rocks."
@@ -898,7 +898,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Radar",
       "link": "/Prototype/Radar",
       "description": "A <a href=\"/Radar\" title=\"Radar\">radar</a>."
@@ -906,7 +906,7 @@
     {
       "properties": [],
       "parent": "PT_RailSignalBase",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RailSignal",
       "link": "/Prototype/RailSignal",
       "description": "A <a href=\"/Rail_signal\" title=\"Rail signal\">rail signal</a>."
@@ -957,7 +957,7 @@
           "optional": true
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Font",
       "link": "/Prototype/Font",
       "description": "Fonts are used in all gui in the game."
@@ -979,7 +979,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ResearchAchievement",
       "link": "/Prototype/ResearchAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player completes a specific research."
@@ -987,7 +987,7 @@
     {
       "properties": [],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ItemEntity",
       "link": "/Prototype/ItemEntity",
       "description": "The entity used for items on the ground."
@@ -1027,7 +1027,7 @@
         }
       ],
       "parent": "PT_TransportBeltConnectable",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Loader1x1",
       "link": "/Prototype/Loader1x1",
       "description": "<p>Continuously loads and unloads machines, as an alternative to inserters.<br>This loader type is identical to <a href=\"/Prototype/Loader1x2\" title=\"Prototype/Loader1x2\">Prototype/Loader1x2</a> with the exception of its hardcoded belt_distance:</p><ul><li>The belt_distance of the loader determines the distance between the position of this loader and the tile of the loader's belt target.</li><li>This loader type always has a belt_distance of 0, meaning by default it is 1 tile long in total.</li><li>For a loader type with a belt_distance of 0.5, see <a href=\"/Prototype/Loader1x2\" title=\"Prototype/Loader1x2\">Prototype/Loader1x2</a>.</li></ul>"
@@ -1067,7 +1067,7 @@
         }
       ],
       "parent": "PT_TransportBeltConnectable",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Loader1x2",
       "link": "/Prototype/Loader1x2",
       "description": "<p>Continuously loads and unloads machines, as an alternative to inserters.<br>This loader type is identical to <a href=\"/Prototype/Loader1x1\" title=\"Prototype/Loader1x1\">Prototype/Loader1x1</a> with the exception of its hardcoded belt_distance:</p><ul><li>The belt_distance of the loader determines the distance between the position of this loader and the tile of the loader's belt target.</li><li>This loader type always has a belt_distance of 0.5, meaning by default it is 2 tiles long in total.</li><li>For a loader type with a belt_distance of 0, see <a href=\"/Prototype/Loader1x1\" title=\"Prototype/Loader1x1\">Prototype/Loader1x1</a>.</li></ul>"
@@ -1081,8 +1081,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification",
+      "prototype": "Prototype",
       "name": "PT_ItemGroup",
       "link": "/Prototype/ItemGroup",
       "description": "An item group. Item groups are shown above the list of craftable items in the player's inventory. The built-in groups are \"logistics\", \"production\", \"intermediate-products\" and \"combat\" but mods can define their own. See also <a href=\"/Prototype/Item#group\" title=\"Prototype/Item\">Prototype/Item#group</a>. Only 255 instances of this prototype may be defined."
@@ -1114,7 +1114,7 @@
         }
       ],
       "parent": "PT_TransportBeltConnectable",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Splitter",
       "link": "/Prototype/Splitter",
       "description": "A <a href=\"/Splitter\" title=\"Splitter\">splitter</a>."
@@ -1130,7 +1130,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FinishTheGameAchievement",
       "link": "/Prototype/FinishTheGameAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player finishes the game."
@@ -1235,7 +1235,7 @@
         }
       ],
       "parent": "PT_RollingStock",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ArtilleryWagon",
       "link": "/Prototype/ArtilleryWagon",
       "description": "An <a href=\"/Artillery_wagon\" title=\"Artillery wagon\">artillery wagon</a>."
@@ -1271,7 +1271,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_NightVisionEquipment",
       "link": "/Prototype/NightVisionEquipment",
       "description": "Used by <a href=\"/Nightvision\" title=\"Nightvision\">nightvision</a>."
@@ -1296,7 +1296,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Arrow",
       "link": "/Prototype/Arrow",
       "description": "The arrows used for example in the campaign, they are literally just arrows."
@@ -1409,7 +1409,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Reactor",
       "link": "/Prototype/Reactor",
       "description": "A <a href=\"/Nuclear_reactor\" title=\"Nuclear reactor\">reactor</a>."
@@ -1443,7 +1443,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SpeechBubble",
       "link": "/Prototype/SpeechBubble",
       "description": "A speech bubble. It floats in the world and can display text."
@@ -1462,7 +1462,7 @@
         }
       ],
       "parent": "PT_Tool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RepairTool",
       "link": "/Prototype/RepairTool",
       "description": "A <a href=\"/Repair_pack\" title=\"Repair pack\">repair pack</a>."
@@ -1614,7 +1614,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_MapSettings",
       "link": "/Prototype/MapSettings",
       "description": "The default map settings. Only 1 instance of this prototype can exist."
@@ -1630,7 +1630,7 @@
         }
       ],
       "parent": "PT_Rail",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_StraightRail",
       "link": "/Prototype/StraightRail",
       "description": "A straight rail."
@@ -1651,7 +1651,7 @@
         }
       ],
       "parent": "PT_RollingStock",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FluidWagon",
       "link": "/Prototype/FluidWagon",
       "description": "A <a href=\"/Fluid_wagon\" title=\"Fluid wagon\">fluid wagon</a>."
@@ -1721,7 +1721,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ParticleSource",
       "link": "/Prototype/ParticleSource",
       "description": "Creates particles."
@@ -2054,7 +2054,7 @@
         }
       ],
       "parent": "PT_AssemblingMachine",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RocketSilo",
       "link": "/Prototype/RocketSilo",
       "description": "A <a href=\"/Rocket_silo\" title=\"Rocket silo\">rocket silo</a>."
@@ -2090,7 +2090,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_BuildEntityAchievement",
       "link": "/Prototype/BuildEntityAchievement",
       "description": "This Prototype definition is used for receiving an achievement when you build an entity."
@@ -2258,7 +2258,7 @@
         }
       ],
       "parent": "PT_ItemWithLabel",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SelectionTool",
       "link": "/Prototype/SelectionTool",
       "description": "Used in the base game as a base for the blueprint item and the deconstruction item."
@@ -2358,7 +2358,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TrainStop",
       "link": "/Prototype/TrainStop",
       "description": "A <a href=\"/Train_stop\" title=\"Train stop\">train stop</a>."
@@ -4231,8 +4231,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_UtilitySprites",
       "link": "/Prototype/UtilitySprites",
       "description": "Sprites used by the game that are not specific to certain prototypes. Only one instance of UtilityConstants can be defined, the base uses <code>\"default\"</code> as the name, so unless the base game definition is completely removed, <code>name</code> will have to be <code>\"default\"</code>."
@@ -4296,7 +4296,7 @@
         }
       ],
       "parent": "PT_Smoke",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SmokeWithTrigger",
       "link": "/Prototype/SmokeWithTrigger",
       "description": "An entity with animation and a trigger."
@@ -4348,7 +4348,7 @@
         }
       ],
       "parent": "PT_Container",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_LogisticContainer",
       "link": "/Prototype/LogisticContainer",
       "description": "A generic container, such as a chest, that interacts with the logistics network."
@@ -4372,7 +4372,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_HeatPipe",
       "link": "/Prototype/HeatPipe",
       "description": "A <a href=\"/Heat_pipe\" title=\"Heat pipe\">heat pipe</a>."
@@ -4431,7 +4431,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_BurnerGenerator",
       "link": "/Prototype/BurnerGenerator",
       "description": "An entity that produces power from a burner energy source."
@@ -4451,7 +4451,7 @@
         }
       ],
       "parent": "PT_Corpse",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RailRemnants",
       "link": "/Prototype/RailRemnants",
       "description": "Used for rail corpses."
@@ -4800,7 +4800,7 @@
         }
       ],
       "parent": "PT_DrawAsAddition",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Animation",
       "link": "/Prototype/Animation",
       "description": "Specifies a animation that can be used by <a rel=\"nofollow\" class=\"external free\" href=\"https://lua-api.factorio.com/latest/LuaRendering.html#LuaRendering.draw_animation\">https://lua-api.factorio.com/latest/LuaRendering.html#LuaRendering.draw_animation</a> during runtime."
@@ -5078,7 +5078,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Turret",
       "link": "/Prototype/Turret",
       "description": "A turret that needs no extra ammunition. See the extensions for turrets that need some kind of ammunition."
@@ -5101,7 +5101,7 @@
         }
       ],
       "parent": "PT_SelectionTool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DeconstructionItem",
       "link": "/Prototype/DeconstructionItem",
       "description": "A <a href=\"/Deconstruction_planner\" title=\"Deconstruction planner\">deconstruction planner</a>."
@@ -5168,7 +5168,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Beacon",
       "link": "/Prototype/Beacon",
       "description": "Entity with the ability to transfer module's effects to its neighboring entities."
@@ -5293,7 +5293,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_OffshorePump",
       "link": "/Prototype/OffshorePump",
       "description": "An <a href=\"/Offshore_pump\" title=\"Offshore pump\">offshore pump</a>."
@@ -5384,7 +5384,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Accumulator",
       "link": "/Prototype/Accumulator",
       "description": "Entity with energy source with specialised animation for charging/decharging."
@@ -5405,8 +5405,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_AutoplaceControl",
       "link": "/Prototype/AutoplaceControl",
       "description": "A setting in the map creation GUI. Used by the <a href=\"/Types/AutoplaceSpecification#control\" title=\"Types/AutoplaceSpecification\">autoplace system</a>. Only 255 instances of this prototype may be defined."
@@ -5421,7 +5421,7 @@
         }
       ],
       "parent": "PT_SelectionTool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_CopyPasteTool",
       "link": "/Prototype/CopyPasteTool",
       "description": "A copy-paste or cut-paste tool."
@@ -5436,7 +5436,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_BeltImmunityEquipment",
       "link": "/Prototype/BeltImmunityEquipment",
       "description": "Used by <a href=\"/Belt_immunity_equipment\" title=\"Belt immunity equipment\">belt immunity equipment</a>."
@@ -5646,7 +5646,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Character",
       "link": "/Prototype/Character",
       "description": "Entity that you move around on the screen during the campaign and freeplay."
@@ -5667,7 +5667,7 @@
         }
       ],
       "parent": "PT_LogisticContainer",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_InfinityContainer",
       "link": "/Prototype/InfinityContainer",
       "description": "A generic container, such as a chest, that can spawn or void items and interact with the logistics network."
@@ -5838,7 +5838,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RocketSiloRocket",
       "link": "/Prototype/RocketSiloRocket",
       "description": "The rocket inside the rocket silo."
@@ -5854,7 +5854,7 @@
         }
       ],
       "parent": "PT_Rail",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_CurvedRail",
       "link": "/Prototype/CurvedRail",
       "description": "A curved rail."
@@ -5873,7 +5873,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_EntityGhost",
       "link": "/Prototype/EntityGhost",
       "description": "The entity used for ghosts of entities. In-game, the inner entity (the entity this is a ghost of) is rendered with a <a href=\"/Prototype/UtilityConstants#ghost_tint\" title=\"Prototype/UtilityConstants\">ghost_tint</a>."
@@ -5887,8 +5887,8 @@
           "optional": false
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_ItemSubGroup",
       "link": "/Prototype/ItemSubGroup",
       "description": "An item subgroup. The built-in subgroups can be found <a href=\"/Data.raw#item-subgroup\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Item#subgroup\" title=\"Prototype/Item\">Prototype/Item#subgroup</a>."
@@ -5949,7 +5949,7 @@
         }
       ],
       "parent": "PT_ItemWithLabel",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ItemWithInventory",
       "link": "/Prototype/ItemWithInventory",
       "description": "The inventory allows setting player defined filters similar to the quickbar and cargo wagon inventories."
@@ -6013,7 +6013,7 @@
         }
       ],
       "parent": "PT_Combinator",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ArithmeticCombinator",
       "link": "/Prototype/ArithmeticCombinator",
       "description": "An <a href=\"/Arithmetic_combinator\" title=\"Arithmetic combinator\">arithmetic combinator</a>."
@@ -6049,7 +6049,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Cliff",
       "link": "/Prototype/Cliff",
       "description": "A <a href=\"/Cliff\" title=\"Cliff\">cliff</a>."
@@ -6086,8 +6086,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification:PT_RecipeData",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification:PT_RecipeData",
+      "prototype": "Prototype",
       "name": "PT_Recipe",
       "link": "/Prototype/Recipe",
       "description": "A recipe. It can be a crafting recipe, a smelting recipe, or a custom type of recipe (see Prototype/RecipeCategory)."
@@ -6101,8 +6101,8 @@
           "optional": false
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_Tutorial",
       "link": "/Prototype/Tutorial",
       "description": "The definition of the tutorial to be used in the tips and tricks, see <a href=\"/Prototype/TipsAndTricksItem\" title=\"Prototype/TipsAndTricksItem\">Prototype/TipsAndTricksItem</a>. The actual tutorial code is defined in the tutorials folder, in the folder that has the name of the scenario property."
@@ -6118,7 +6118,7 @@
         }
       ],
       "parent": "PT_SelectionTool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_UpgradeItem",
       "link": "/Prototype/UpgradeItem",
       "description": "A <a href=\"/Upgrade_planner\" title=\"Upgrade planner\">upgrade planner</a>."
@@ -6145,8 +6145,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification",
+      "prototype": "Prototype",
       "name": "PT_Achievement",
       "link": "/Prototype/Achievement",
       "description": "This prototype definition is used for the in-game achievements."
@@ -6238,7 +6238,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Gate",
       "link": "/Prototype/Gate",
       "description": "A <a href=\"/Gate\" title=\"Gate\">gate</a>."
@@ -6306,7 +6306,7 @@
         }
       ],
       "parent": "PT_FlyingRobot",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_CombatRobot",
       "link": "/Prototype/CombatRobot",
       "description": "A combat robot. Can attack enemies."
@@ -6328,15 +6328,15 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ItemWithLabel",
       "link": "/Prototype/ItemWithLabel",
       "description": "Like a normal item but with the ability to have a colored label."
     },
     {
       "properties": [],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_EquipmentCategory",
       "link": "/Prototype/EquipmentCategory",
       "description": "Defines a category to be available to <a href=\"/Prototype/Equipment\" title=\"Prototype/Equipment\">Prototype/Equipment</a> and <a href=\"/Prototype/EquipmentGrid\" title=\"Prototype/EquipmentGrid\">Prototype/EquipmentGrid</a>. Only 255 instances of this prototype may be defined."
@@ -6344,7 +6344,7 @@
     {
       "properties": [],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TileGhost",
       "link": "/Prototype/TileGhost",
       "description": "The entity used for tile ghosts."
@@ -6475,7 +6475,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_EditorController",
       "link": "/Prototype/EditorController",
       "description": "Properties of the editor controller."
@@ -6495,7 +6495,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ItemRequestProxy",
       "link": "/Prototype/ItemRequestProxy",
       "description": "Entity used to signify that an entity is requesting items, for example modules for an assembling machine after it was blueprinted with modules inside."
@@ -6593,8 +6593,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_TrivialSmoke",
       "link": "/Prototype/TrivialSmoke",
       "description": "Smoke, but it's not an entity for optimization purposes. Only 255 instances of this prototype may be defined."
@@ -6622,7 +6622,7 @@
         }
       ],
       "parent": "PT_CraftingMachine",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_AssemblingMachine",
       "link": "/Prototype/AssemblingMachine",
       "description": "An assembling machine - like the assembling machines 1/2/3 in the game, but you can use your own recipe categories."
@@ -6756,7 +6756,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RoboportEquipment",
       "link": "/Prototype/RoboportEquipment",
       "description": "Used by <a href=\"/Personal_roboport\" title=\"Personal roboport\">personal roboport</a>."
@@ -6865,7 +6865,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Projectile",
       "link": "/Prototype/Projectile",
       "description": "Entity with limited lifetime that can hit other entities and has triggers when this happens."
@@ -6936,8 +6936,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_CustomInput",
       "link": "/Prototype/CustomInput",
       "description": "Used for custom keyboard shortcuts/keybindings in mods. The key associated with the custom input can be changed in the options. This means that <code>key_sequence</code> is simply the default keybinding."
@@ -7101,7 +7101,7 @@
         }
       ],
       "parent": "PT_DrawAsAddition",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Sprite",
       "link": "/Prototype/Sprite",
       "description": "Specifies a picture that can be used with <a rel=\"nofollow\" class=\"external free\" href=\"https://lua-api.factorio.com/latest/Concepts.html#SpritePath\">https://lua-api.factorio.com/latest/Concepts.html#SpritePath</a> during runtime."
@@ -7278,8 +7278,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification",
+      "prototype": "Prototype",
       "name": "PT_Tile",
       "link": "/Prototype/Tile",
       "description": "A <a href=\"/Tile\" title=\"Tile\">tile</a>. Only 255 instances of this prototype may be defined."
@@ -7295,7 +7295,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_GroupAttackAchievement",
       "link": "/Prototype/GroupAttackAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player gets attacked due to pollution."
@@ -7333,7 +7333,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_CharacterCorpse",
       "link": "/Prototype/CharacterCorpse",
       "description": "The corpse of a <a href=\"/Prototype/Character\" title=\"Prototype/Character\">Prototype/Character</a>."
@@ -7341,7 +7341,7 @@
     {
       "properties": [],
       "parent": "PT_Smoke",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SimpleSmoke",
       "link": "/Prototype/SimpleSmoke",
       "description": "<b>Deprecated in 0.16. The type \"simple-smoke\" has been obsoleted and cannot be created. Use <a href=\"/Prototype/TrivialSmoke\" title=\"Prototype/TrivialSmoke\">Prototype/TrivialSmoke</a> or <a href=\"/Prototype/SmokeWithTrigger\" title=\"Prototype/SmokeWithTrigger\">Prototype/SmokeWithTrigger</a> instead.</b>"
@@ -7356,7 +7356,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DontCraftManuallyAchievement",
       "link": "/Prototype/DontCraftManuallyAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player finishes the game without crafting more than a set amount."
@@ -7419,7 +7419,7 @@
         }
       ],
       "parent": "PT_TransportBeltConnectable",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TransportBelt",
       "link": "/Prototype/TransportBelt",
       "description": "A <a href=\"/Transport_belt\" title=\"Transport belt\">transport belt</a>."
@@ -7444,7 +7444,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_HeatInterface",
       "link": "/Prototype/HeatInterface",
       "description": "This entity produces or consumes heat. Its heat settings can be changed runtime."
@@ -7465,15 +7465,15 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DontBuildEntityAchievement",
       "link": "/Prototype/DontBuildEntityAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player finishes the game without building a specific entity."
     },
     {
       "properties": [],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_RecipeCategory",
       "link": "/Prototype/RecipeCategory",
       "description": "A recipe category. The built-in categories can be found <a href=\"/Data.raw#recipe-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Recipe#category\" title=\"Prototype/Recipe\">Prototype/Recipe#category</a>. Recipe categories can be used to specify which machine can craft which recipes."
@@ -7528,7 +7528,7 @@
         },
         {
           "name": "guns",
-          "description": "The guns this car prototype uses.",
+          "description": "The names of the <a href=\"/Prototype/Gun\" title=\"Prototype/Gun\">Prototype/Guns</a> this car prototype uses.",
           "type": "strings[]",
           "optional": true
         },
@@ -7608,7 +7608,7 @@
         }
       ],
       "parent": "PT_Vehicle",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Car",
       "link": "/Prototype/Car",
       "description": "Entity with specialized properties for acceleration, braking, and turning."
@@ -7637,7 +7637,7 @@
         }
       ],
       "parent": "PT_TransportBeltConnectable",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_UndergroundBelt",
       "link": "/Prototype/UndergroundBelt",
       "description": "An <a href=\"/Underground_belt\" title=\"Underground belt\">underground belt</a>."
@@ -7645,15 +7645,15 @@
     {
       "properties": [],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_BatteryEquipment",
       "link": "/Prototype/BatteryEquipment",
       "description": "Used by <a href=\"/Personal_battery\" title=\"Personal battery\">personal battery</a>."
     },
     {
       "properties": [],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_ModuleCategory",
       "link": "/Prototype/ModuleCategory",
       "description": "A module category. The built-in categories can be found <a href=\"/Data.raw#module-category\" title=\"Data.raw\">here</a>. See <a href=\"/Prototype/Module#category\" title=\"Prototype/Module\">Prototype/Module#category</a>. Only 255 instances of this prototype may be defined."
@@ -7768,7 +7768,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ArtilleryFlare",
       "link": "/Prototype/ArtilleryFlare",
       "description": "The entity spawned by the <a href=\"/Artillery_targeting_remote\" title=\"Artillery targeting remote\">artillery targeting remote</a>."
@@ -7839,7 +7839,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ElectricEnergyInterface",
       "link": "/Prototype/ElectricEnergyInterface",
       "description": "Entity with electric energy source with that can have some of its values changed runtime. Useful for modding in energy consumers/producers."
@@ -7965,7 +7965,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Sticker",
       "link": "/Prototype/Sticker",
       "description": "Entity that sticks to another entity, and damages/slows it. Currently stickers can only be attached to <a href=\"/Prototype/Unit\" title=\"Prototype/Unit\">Prototype/Unit</a>, <a href=\"/Prototype/Character\" title=\"Prototype/Character\">Prototype/Character</a> and <a href=\"/Prototype/Car\" title=\"Prototype/Car\">Prototype/Car</a>."
@@ -7978,7 +7978,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TriggerTargetType",
       "link": "/Prototype/TriggerTargetType",
       "description": "Only 56 instances of this prototype may be defined. The base game always internally defines a \"common\" trigger target type."
@@ -7992,8 +7992,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_DamageType",
       "link": "/Prototype/DamageType",
       "description": "A damage type. This is used in the <a href=\"/Damage\" title=\"Damage\">damage system</a>. <a href=\"/Damage#Damage_Types\" title=\"Damage\">A list of built-in damage types can be found here</a>. Only 255 instances of this prototype may be defined."
@@ -8020,7 +8020,7 @@
         }
       ],
       "parent": "PT_Tool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Armor",
       "link": "/Prototype/Armor",
       "description": "Armor to wear on your in-game character for defense, and buffs."
@@ -8038,8 +8038,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification:PT_TechnologyData",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification:PT_TechnologyData",
+      "prototype": "Prototype",
       "name": "PT_Technology",
       "link": "/Prototype/Technology",
       "description": "A <a href=\"/Technologies\" title=\"Technologies\">technology</a>."
@@ -8078,7 +8078,7 @@
         }
       ],
       "parent": "PT_Combinator",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DeciderCombinator",
       "link": "/Prototype/DeciderCombinator",
       "description": "A <a href=\"/Decider_combinator\" title=\"Decider combinator\">decider combinator</a>."
@@ -8086,7 +8086,7 @@
     {
       "properties": [],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_HighlightBoxEntity",
       "link": "/Prototype/HighlightBoxEntity",
       "description": "<p>Used to attach graphics for <a href=\"/Types/CursorBoxType\" title=\"Types/CursorBoxType\">cursor boxes</a> to entities during runtime. HighlightBoxEntity can also be independent from entities so it is simply drawn somewhere in the world. See <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaSurface.html#LuaSurface.create_entity\">LuaSurface.create_entity</a> for the available options for type \"highlight-box\".</p><p>The <code><a href=\"/Prototype/Entity#collision_box\" title=\"Prototype/Entity\">collision_box</a></code> of the highlight box prototype is ignored during runtime, instead the \"bounding_box\" given in create_entity() or the selection box of the target entity is used.</p>"
@@ -8139,7 +8139,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Market",
       "link": "/Prototype/Market",
       "description": "Offers can be added to a market and they are shown when opening the entity. Offers allow to spend items to get research bonuses or items."
@@ -8214,7 +8214,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Lab",
       "link": "/Prototype/Lab",
       "description": "A <a href=\"/Lab\" title=\"Lab\">lab</a>."
@@ -8228,7 +8228,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_MapGenPresets",
       "link": "/Prototype/MapGenPresets",
       "description": "The available map gen presets. Only 1 instance of this prototype can exist."
@@ -8326,7 +8326,7 @@
           "optional": true
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_MouseCursor",
       "link": "/Prototype/MouseCursor",
       "description": "Used by Prototype/SelectionTool#mouse_cursor."
@@ -8459,7 +8459,7 @@
           "optional": true
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TileEffect",
       "link": "/Prototype/TileEffect",
       "description": "Used to define the parameters for the water shader."
@@ -8474,7 +8474,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TrainPathAchievement",
       "link": "/Prototype/TrainPathAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player has a specified train path length."
@@ -8494,8 +8494,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_NamedNoiseExpression",
       "link": "/Prototype/NamedNoiseExpression",
       "description": "<p>A <a href=\"/Types/NoiseExpression\" title=\"Types/NoiseExpression\">NoiseExpression</a> together with a name.</p><p>The base game uses named noise expressions to specify functions for many map properties to be used in map generation; e.g. the \"elevation\" expression is used to calculate elevation for every point on a map. For a list of the built-in named noise expressions, see <a href=\"/Data.raw#noise-expression\" title=\"Data.raw\">Data.raw#noise-expression</a>.</p><p>Named noise expressions can be used by <a rel=\"nofollow\" class=\"external text\" href=\"http://lua-api.factorio.com/latest/Concepts.html#MapGenSettings\">MapGenSettings</a> and <a href=\"/Types/MapGenPreset\" title=\"Types/MapGenPreset\">Types/MapGenPreset</a> to override which named expression is used to calculate a given property by having an entry in <code>property_expression_names</code> e.g. <code>elevation = \"0.16-elevation\"</code>.<br>Alternate expressions can be made available in the map generator GUI by setting their <code>intended_property</code> to the name of the property they should override.<br>Named noise expressions can also be used by <a href=\"/Types/NoiseExpression#variable\" title=\"Types/NoiseExpression\">noise variables</a>, e.g. <code>noise.var(\"my-named-expression\")</code>.</p>"
@@ -8553,7 +8553,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ConstantCombinator",
       "link": "/Prototype/ConstantCombinator",
       "description": "A <a href=\"/Constant_combinator\" title=\"Constant combinator\">constant combinator</a>."
@@ -8568,8 +8568,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification",
+      "prototype": "Prototype",
       "name": "PT_VirtualSignal",
       "link": "/Prototype/VirtualSignal",
       "description": "A <a href=\"/Circuit_network#Virtual_signals\" title=\"Circuit network\">virtual signal</a>."
@@ -8601,7 +8601,7 @@
           "optional": true
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_AmbientSound",
       "link": "/Prototype/AmbientSound",
       "description": "This prototype is used to make sound, while playing the game. This includes the in-game's music, composed by Daniel James Taylor."
@@ -8864,7 +8864,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FireFlame",
       "link": "/Prototype/FireFlame",
       "description": "A fire."
@@ -8885,7 +8885,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_GeneratorEquipment",
       "link": "/Prototype/GeneratorEquipment",
       "description": "Used by <a href=\"/Portable_fusion_reactor\" title=\"Portable fusion reactor\">portable fusion reactor</a>. Provides power in equipment grids. Can produce power for free or use a burner energy source."
@@ -8912,7 +8912,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FlyingText",
       "link": "/Prototype/FlyingText",
       "description": "An upwards flying text that disappears after a certain time (setting active = false stops the flying and the disappearing.)"
@@ -8932,7 +8932,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_MovementBonusEquipment",
       "link": "/Prototype/MovementBonusEquipment",
       "description": "Used by <a href=\"/Exoskeleton\" title=\"Exoskeleton\">exoskeleton</a>. Increases max speed of characters or acceleration of vehicles if they have this equipment in their grid."
@@ -8951,7 +8951,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_EnergyShieldEquipment",
       "link": "/Prototype/EnergyShieldEquipment",
       "description": "Used by <a href=\"/Energy_shield\" title=\"Energy shield\">Energy shield</a>."
@@ -9085,8 +9085,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification",
+      "prototype": "Prototype",
       "name": "PT_Item",
       "link": "/Prototype/Item",
       "description": "Possible configuration for all items."
@@ -9094,7 +9094,7 @@
     {
       "properties": [],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DeconstructibleTileProxy",
       "link": "/Prototype/DeconstructibleTileProxy",
       "description": "Entity used to signify that the tile below it should be deconstructed."
@@ -9122,7 +9122,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ConstructWithRobotsAchievement",
       "link": "/Prototype/ConstructWithRobotsAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player constructs enough entities with construction robots."
@@ -9130,7 +9130,7 @@
     {
       "properties": [],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_EntityParticle",
       "link": "/Prototype/EntityParticle",
       "description": "Deprecated in 0.18. The type \"particle\" has been obsoleted and cannot be created. See <a href=\"/Prototype/Particle\" title=\"Prototype/Particle\">Prototype/Particle</a> for particles."
@@ -9201,8 +9201,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base:PT_IconSpecification",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase:PT_IconSpecification",
+      "prototype": "Prototype",
       "name": "PT_Fluid",
       "link": "/Prototype/Fluid",
       "description": "A fluid."
@@ -9217,7 +9217,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Gun",
       "link": "/Prototype/Gun",
       "description": "A gun. A weapon to deal damage to entities."
@@ -9348,7 +9348,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ArtilleryTurret",
       "link": "/Prototype/ArtilleryTurret",
       "description": "An <a href=\"/Artillery_turret\" title=\"Artillery turret\">artillery turret</a>."
@@ -9401,7 +9401,7 @@
           "optional": true
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_GodController",
       "link": "/Prototype/GodController",
       "description": "Properties of the god controller."
@@ -9420,7 +9420,7 @@
         }
       ],
       "parent": "PT_Explosion",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FlameThrowerExplosion",
       "link": "/Prototype/FlameThrowerExplosion",
       "description": "Explosion that can deal damage."
@@ -9570,7 +9570,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ResourceEntity",
       "link": "/Prototype/ResourceEntity",
       "description": "A mineable/gatherable entity."
@@ -9760,7 +9760,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Explosion",
       "link": "/Prototype/Explosion",
       "description": "Used to play an animation and a sound."
@@ -9786,7 +9786,7 @@
         }
       ],
       "parent": "PT_PrototypeBase",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_GuiStyle",
       "link": "/Prototype/GuiStyle",
       "description": "The available gui styles. Only 1 instance of this prototype can exist."
@@ -9794,7 +9794,7 @@
     {
       "properties": [],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RocketSiloRocketShadow",
       "link": "/Prototype/RocketSiloRocketShadow",
       "description": "The shadow of the rocket inside the rocket silo."
@@ -9832,6 +9832,7 @@
         {
           "name": "maximum_temperature",
           "type": "PT_double",
+          "description": "The maximum temperature to which the efficiency can increase. After this temperature the generator will run at 100% efficiency. Note: higher temperatures can still be consumed.",
           "optional": false
         },
         {
@@ -9878,7 +9879,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Generator",
       "link": "/Prototype/Generator",
       "description": "An entity that produces power from fluids, for example a <a href=\"/Steam_engine\" title=\"Steam engine\">steam engine</a>."
@@ -9899,7 +9900,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SpectatorController",
       "link": "/Prototype/SpectatorController",
       "description": "Properties of the spectator controller."
@@ -9915,7 +9916,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_CombatRobotCountAchievement",
       "link": "/Prototype/CombatRobotCountAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player has a certain robot follower count."
@@ -9929,7 +9930,7 @@
         }
       ],
       "parent": "PT_RollingStock",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_CargoWagon",
       "link": "/Prototype/CargoWagon",
       "description": "A <a href=\"/Cargo_wagon\" title=\"Cargo wagon\">cargo wagon</a>."
@@ -10001,7 +10002,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_PowerSwitch",
       "link": "/Prototype/PowerSwitch",
       "description": "A <a href=\"/Power_switch\" title=\"Power switch\">power switch</a>."
@@ -10027,7 +10028,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_PipeToGround",
       "link": "/Prototype/PipeToGround",
       "description": "A <a href=\"/Pipe_to_ground\" title=\"Pipe to ground\">pipe to ground</a>."
@@ -10093,7 +10094,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Container",
       "link": "/Prototype/Container",
       "description": "A generic container, such as a chest. Can not be rotated."
@@ -10126,7 +10127,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SolarPanel",
       "link": "/Prototype/SolarPanel",
       "description": "A <a href=\"/Solar_panel\" title=\"Solar panel\">solar panel</a>."
@@ -10145,10 +10146,10 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ActiveDefenseEquipment",
       "link": "/Prototype/ActiveDefenseEquipment",
-      "description": "Used by <a href=\"/Discharge_defense\" title=\"Discharge defense\">discharge defense</a>."
+      "description": "Used by <a href=\"/Discharge_defense\" title=\"Discharge defense\">discharge defense</a> and <a href=\"/Personal_laser_defense\" title=\"Personal laser defense\">personal laser defense</a>."
     },
     {
       "properties": [
@@ -10193,7 +10194,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_KillAchievement",
       "link": "/Prototype/KillAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player destroys a certain amount of an entity, with a specific damage type."
@@ -10313,7 +10314,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Lamp",
       "link": "/Prototype/Lamp",
       "description": "A <a href=\"/Lamp\" title=\"Lamp\">lamp</a> to provide light, using energy."
@@ -10393,7 +10394,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Boiler",
       "link": "/Prototype/Boiler",
       "description": "A <a href=\"/Boiler\" title=\"Boiler\">boiler</a>."
@@ -10472,7 +10473,7 @@
         }
       ],
       "parent": "PT_RobotWithLogisticInterface",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_LogisticRobot",
       "link": "/Prototype/LogisticRobot",
       "description": "A <a href=\"/Logistic_robot\" title=\"Logistic robot\">logistic robot</a>."
@@ -10519,7 +10520,7 @@
         }
       ],
       "parent": "PT_RollingStock",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Locomotive",
       "link": "/Prototype/Locomotive",
       "description": "A <a href=\"/Locomotive\" title=\"Locomotive\">locomotive</a>."
@@ -10588,7 +10589,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ProgrammableSpeaker",
       "link": "/Prototype/ProgrammableSpeaker",
       "description": "A <a href=\"/Programmable_speaker\" title=\"Programmable speaker\">programmable speaker</a>."
@@ -10596,7 +10597,7 @@
     {
       "properties": [],
       "parent": "PT_ItemWithInventory",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_BlueprintBook",
       "link": "/Prototype/BlueprintBook",
       "description": "A <a href=\"/Blueprint_book\" title=\"Blueprint book\">blueprint book</a>."
@@ -10617,7 +10618,7 @@
         }
       ],
       "parent": "PT_CraftingMachine",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Furnace",
       "link": "/Prototype/Furnace",
       "description": "A furnace. Normal furnaces only process \"smelting\" category recipes, but you can make furnaces that process other <a href=\"/Prototype/RecipeCategory\" title=\"Prototype/RecipeCategory\">recipe categories</a>. The difference to assembling machines is that furnaces automatically choose their recipe based on input."
@@ -10804,7 +10805,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Inserter",
       "link": "/Prototype/Inserter",
       "description": "An <a href=\"/Inserter\" title=\"Inserter\">inserter</a>."
@@ -10829,7 +10830,7 @@
         }
       ],
       "parent": "PT_RailSignalBase",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RailChainSignal",
       "link": "/Prototype/RailChainSignal",
       "description": "A <a href=\"/Rail_chain_signal\" title=\"Rail chain signal\">rail chain signal</a>."
@@ -10854,7 +10855,7 @@
         }
       ],
       "parent": "PT_Turret",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_AmmoTurret",
       "link": "/Prototype/AmmoTurret",
       "description": "A turret that consumes ammo items."
@@ -10919,7 +10920,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ElectricPole",
       "link": "/Prototype/ElectricPole",
       "description": "An electric pole - part of the <a href=\"/Electric_system\" title=\"Electric system\">electric system</a>."
@@ -10940,7 +10941,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_RailPlanner",
       "link": "/Prototype/RailPlanner",
       "description": "A <a href=\"/Rail_planner\" title=\"Rail planner\">rail planner</a>."
@@ -11000,7 +11001,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SimpleEntityWithOwner",
       "link": "/Prototype/SimpleEntityWithOwner",
       "description": "Has a force, but unlike Prototype/SimpleEntityWithForce it is only attacked if the biters get stuck on it."
@@ -11097,8 +11098,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_Particle",
       "link": "/Prototype/Particle",
       "description": "An entity with a limited lifetime that can use trigger effects."
@@ -11131,7 +11132,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ProduceAchievement",
       "link": "/Prototype/ProduceAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player produces more than the specified amount of items."
@@ -11283,7 +11284,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Corpse",
       "link": "/Prototype/Corpse",
       "description": "Used for corpses, for example the remnants when destroying buildings."
@@ -11296,8 +11297,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_AmmoCategory",
       "link": "/Prototype/AmmoCategory",
       "description": "An ammo category. Each weapon has an ammo category, and can use any ammo with the same ammo category. Ammo categories can also be upgraded by technologies. Only 255 instances of this prototype may be defined."
@@ -11317,7 +11318,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Capsule",
       "link": "/Prototype/Capsule",
       "description": "A capsule, for example a <a href=\"/Combat_robot_capsules\" title=\"Combat robot capsules\">combat robot capsule</a> or the <a href=\"/Raw_fish\" title=\"Raw fish\">raw fish</a>."
@@ -11351,7 +11352,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ItemWithEntityData",
       "link": "/Prototype/ItemWithEntityData",
       "description": "ItemWithEntityData saves data associated with the entity that it represents, for example the content of the equipment grid of a car."
@@ -11385,15 +11386,15 @@
         }
       ],
       "parent": "PT_RobotWithLogisticInterface",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ConstructionRobot",
       "link": "/Prototype/ConstructionRobot",
       "description": "A <a href=\"/Construction_robot\" title=\"Construction robot\">construction robot</a>."
     },
     {
       "properties": [],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_NoiseLayer",
       "link": "/Prototype/NoiseLayer",
       "description": "A noise layer used by the <a href=\"/Types/AutoplaceSpecification#noise_layer\" title=\"Types/AutoplaceSpecification\">autoplace system</a>. For a list of built-in layers, see <a href=\"/Data.raw#noise-layer\" title=\"Data.raw\">Data.raw#noise-layer</a>."
@@ -11461,8 +11462,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_Shortcut",
       "link": "/Prototype/Shortcut",
       "description": "Definition for a shortcut button in the <a href=\"/Shortcut_bar\" title=\"Shortcut bar\">shortcut bar</a>.<br>This is <i>not</i> a custom keybinding (keyboard shortcut), for that see <a href=\"/Prototype/CustomInput\" title=\"Prototype/CustomInput\">Prototype/CustomInput</a>"
@@ -11671,7 +11672,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Wall",
       "link": "/Prototype/Wall",
       "description": "A <a href=\"/Wall\" title=\"Wall\">wall</a>."
@@ -11709,7 +11710,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Tree",
       "link": "/Prototype/Tree",
       "description": "A <a href=\"/Tree\" title=\"Tree\">tree</a>."
@@ -12049,7 +12050,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_FluidStream",
       "link": "/Prototype/FluidStream",
       "description": "Used for example for the handheld flamethrower."
@@ -12154,7 +12155,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_EnemySpawner",
       "link": "/Prototype/EnemySpawner",
       "description": "Can spawn entities. Used for biter/spitter nests."
@@ -12297,7 +12298,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_MiningDrill",
       "link": "/Prototype/MiningDrill",
       "description": "A mining drill."
@@ -12333,7 +12334,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Tool",
       "link": "/Prototype/Tool",
       "description": "Items with a \"durability\". Used for <a href=\"/Science_pack\" title=\"Science pack\">science packs</a>."
@@ -12348,7 +12349,7 @@
         }
       ],
       "parent": "PT_Equipment",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SolarPanelEquipment",
       "link": "/Prototype/SolarPanelEquipment",
       "description": "Used by <a href=\"/Portable_solar_panel\" title=\"Portable solar panel\">portable solar panel</a>."
@@ -12487,8 +12488,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_EquipmentGrid",
       "link": "/Prototype/EquipmentGrid",
       "description": "The prototype of an equipment grid, for example the one used in a <a href=\"/Power_armor\" title=\"Power armor\">power armor</a>. Only 255 instances of this prototype may be defined."
@@ -12496,7 +12497,7 @@
     {
       "properties": [],
       "parent": "PT_EntityParticle",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_LeafParticle",
       "link": "/Prototype/LeafParticle",
       "description": "Deprecated in 0.18. Particles that are exclusively meant for leaves of trees. The type \"leaf-particle\" has been obsoleted and cannot be created. See <a href=\"/Prototype/Particle\" title=\"Prototype/Particle\">Prototype/Particle</a> for particles."
@@ -12557,7 +12558,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Module",
       "link": "/Prototype/Module",
       "description": "A <a href=\"/Module\" title=\"Module\">module</a>."
@@ -12686,7 +12687,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_PlayerDamagedAchievement",
       "link": "/Prototype/PlayerDamagedAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player receives damage."
@@ -12747,8 +12748,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_Decorative",
       "link": "/Prototype/Decorative",
       "description": "Simple decorative purpose objects on the map, they have no health and some of them are removed when the player builds over. Usually used for grass patches, roots, small plants etc. Only 255 instances of this prototype may be defined."
@@ -12778,7 +12779,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Pipe",
       "link": "/Prototype/Pipe",
       "description": "An entity to transport gas and fluids over a distance, and between machines."
@@ -12900,7 +12901,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Beam",
       "link": "/Prototype/Beam",
       "description": "Used as a laser beam."
@@ -13213,8 +13214,8 @@
           "optional": false
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_UtilitySounds",
       "link": "/Prototype/UtilitySounds",
       "description": "Sounds used by the game that are not specific to certain prototypes."
@@ -13288,7 +13289,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_StorageTank",
       "link": "/Prototype/StorageTank",
       "description": "A <a href=\"/Storage_tank\" title=\"Storage tank\">storage tank</a>."
@@ -13341,7 +13342,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SimpleEntityWithForce",
       "link": "/Prototype/SimpleEntityWithForce",
       "description": "This entity will be a priority target for units/turrets, who will choose to attack it even if it does not block their path.  Use <a href=\"/Prototype/SimpleEntityWithOwner\" title=\"Prototype/SimpleEntityWithOwner\">Prototype/SimpleEntityWithOwner</a> for entities that are only attacked when they block enemies."
@@ -13835,8 +13836,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_UtilityConstants",
       "link": "/Prototype/UtilityConstants",
       "description": "Constants used by the game that are not specific to certain prototypes. See <a rel=\"nofollow\" class=\"external text\" href=\"https://github.com/wube/factorio-data/blob/master/core/prototypes/utility-constants.lua\">utility-constants.lua</a> for the values used by the base game."
@@ -13888,7 +13889,7 @@
         }
       ],
       "parent": "PT_Entity",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_ArtilleryProjectile",
       "link": "/Prototype/ArtilleryProjectile",
       "description": "The projectile shot by <a href=\"/Artillery\" title=\"Artillery\">artillery</a>."
@@ -14151,7 +14152,7 @@
     {
       "properties": [],
       "parent": "PT_SelectionTool",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_BlueprintItem",
       "link": "/Prototype/BlueprintItem",
       "description": "A <a href=\"/Blueprint\" title=\"Blueprint\">blueprint</a>."
@@ -14166,7 +14167,7 @@
         }
       ],
       "parent": "PT_Achievement",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_DeconstructWithRobotsAchievement",
       "link": "/Prototype/DeconstructWithRobotsAchievement",
       "description": "This prototype definition is used for receiving an achievement when the player deconstructs enough entities with construction robots."
@@ -14327,7 +14328,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_Unit",
       "link": "/Prototype/Unit",
       "description": "Entity that attacks players."
@@ -14356,7 +14357,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_AmmoItem",
       "link": "/Prototype/AmmoItem",
       "description": "Ammo used for a gun."
@@ -14745,7 +14746,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_EnergySourceBase",
       "prototype": "PT_EnergySource",
       "name": "PT_EnergySourceHeat",
       "link": "/Types/EnergySource"
@@ -14788,7 +14789,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_TriggerDeliveryBase",
       "prototype": "PT_TriggerDelivery",
       "name": "PT_FlameThrowerExplosionTriggerDelivery",
       "link": "/Types/FlameThrowerExplosionTriggerDelivery"
@@ -14926,7 +14927,7 @@
     },
     {
       "properties": [],
-      "parent": "PT_Base",
+      "parent": "PT_TriggerDeliveryBase",
       "prototype": "PT_TriggerDelivery",
       "name": "PT_InstantTriggerDelivery",
       "link": "/Types/InstantTriggerDelivery"
@@ -16340,7 +16341,7 @@
         },
         {
           "name": "tile_restriction",
-          "description": "For entities and decoratives, how many times to attempt to place on each tile (probability and collisions are taken into account each attempt).",
+          "description": "Restricts tiles or tile transitions the entity can appear on.<br>Contains list of specifications. Each specification is a single `string` with the name of an allowed tile, or a list of two tile names for entities allowed on transitions.",
           "type": "string[]",
           "optional": true
         }
@@ -18303,7 +18304,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_TriggerDeliveryBase",
       "prototype": "PT_TriggerDelivery",
       "name": "PT_ProjectileTriggerDelivery",
       "link": "/Types/ProjectileTriggerDelivery"
@@ -18574,7 +18575,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_TriggerDeliveryBase",
       "prototype": "PT_TriggerDelivery",
       "name": "PT_StreamTriggerDelivery",
       "link": "/Types/StreamTriggerDelivery"
@@ -18899,7 +18900,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_EnergySourceBase",
       "prototype": "PT_EnergySource",
       "name": "PT_EnergySourceElectric",
       "link": "/Types/EnergySource"
@@ -19633,7 +19634,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_BaseAttackParameters",
       "prototype": "PT_AttackParameters",
       "name": "PT_BeamAttackParameters",
       "link": "/Types/BeamAttackParameters"
@@ -19733,7 +19734,7 @@
           "optional": false
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_EquipmentShapeBase",
       "prototype": "PT_EquipmentShape",
       "name": "PT_EquipmentShapeManual",
       "link": "/Types/EquipmentShape"
@@ -19742,7 +19743,7 @@
       "properties": [
         {
           "name": "filename",
-          "description": "Support sound file formats are `.ogg`, `.wav` and `.voc`.",
+          "description": "Supported sound file formats are `.ogg`, `.wav` and `.voc`.",
           "type": "PT_FileName",
           "optional": false
         },
@@ -19809,7 +19810,7 @@
         },
         {
           "name": "filename",
-          "description": "Mandatory if <code>variations</code> is not given.<br>Support sound file formats are `.ogg`, `.wav` and `.voc`.",
+          "description": "Mandatory if <code>variations</code> is not given.<br>Supported sound file formats are `.ogg`, `.wav` and `.voc`.",
           "type": "PT_FileName",
           "optional": true
         },
@@ -21066,7 +21067,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_TriggerDeliveryBase",
       "prototype": "PT_TriggerDelivery",
       "name": "PT_ArtilleryTriggerDelivery",
       "link": "/Types/ArtilleryTriggerDelivery"
@@ -21184,7 +21185,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_EnergySourceBase",
       "prototype": "PT_EnergySource",
       "name": "PT_EnergySourceBurner",
       "link": "/Types/EnergySource"
@@ -21486,7 +21487,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_TriggerDeliveryBase",
       "prototype": "PT_TriggerDelivery",
       "name": "PT_BeamTriggerDelivery",
       "link": "/Types/BeamTriggerDelivery"
@@ -22963,7 +22964,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_BaseAttackParameters",
       "prototype": "PT_AttackParameters",
       "name": "PT_ProjectileAttackParameters",
       "link": "/Types/ProjectileAttackParameters"
@@ -23279,7 +23280,7 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
+      "parent": "PT_BaseAttackParameters",
       "prototype": "PT_AttackParameters",
       "name": "PT_StreamAttackParameters",
       "link": "/Types/StreamAttackParameters"
@@ -23332,7 +23333,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_LinkedContainer",
       "link": "/Prototype/LinkedContainer",
       "description": "A container that shares its inventory with containers with the same <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.link_id\">link_id</a>, which can be set via the GUI. The link IDs are per prototype and force, so only containers with the <b>same ID</b>, <b>same prototype name</b> and <b>same force</b> will share inventories."
@@ -23370,7 +23371,7 @@
         }
       ],
       "parent": "PT_TransportBeltConnectable",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_LinkedBelt",
       "link": "/Prototype/LinkedBelt",
       "description": "A belt that can be connected to a belt anywhere else, including on a different surface, see <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.connect_linked_belts\">connect_linked_belts</a> and other runtime functions."
@@ -23421,7 +23422,7 @@
         }
       ],
       "parent": "PT_EntityWithHealth",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SpiderLeg",
       "link": "/Prototype/SpiderLeg",
       "description": "Used by <a href=\"/Types/SpiderLegSpecification\" title=\"Types/SpiderLegSpecification\">Types/SpiderLegSpecification</a> for <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>, also known as <a href=\"/Spidertron\" title=\"Spidertron\">spidertron</a>."
@@ -23503,7 +23504,7 @@
         }
       ],
       "parent": "PT_Vehicle",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SpiderVehicle",
       "link": "/Prototype/SpiderVehicle",
       "description": "The <a href=\"/Spidertron\" title=\"Spidertron\">spidertron</a>."
@@ -23533,7 +23534,7 @@
         }
       ],
       "parent": "PT_Item",
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_SpidertronRemote",
       "link": "/Prototype/SpidertronRemote",
       "description": "The <a href=\"/Spidertron_remote\" title=\"Spidertron remote\">spidertron remote</a>. This remote can only be connected to entities of type <a href=\"/Prototype/SpiderVehicle\" title=\"Prototype/SpiderVehicle\">Prototype/SpiderVehicle</a>."
@@ -23633,8 +23634,8 @@
           "optional": true
         }
       ],
-      "parent": "PT_Base",
-      "prototype": "PT_Prototype",
+      "parent": "PT_PrototypeBase",
+      "prototype": "Prototype",
       "name": "PT_TipsAndTricksItem",
       "link": "/Prototype/TipsAndTricksItem",
       "description": "A tips and tricks entry."
@@ -23653,7 +23654,7 @@
           "optional": false
         }
       ],
-      "prototype": "PT_Prototype",
+      "prototype": "Prototype",
       "name": "PT_TipsAndTricksItemCategory",
       "link": "/Prototype/TipsAndTricksItemCategory",
       "description": "A <a href=\"/Prototype/TipsAndTricksItem\" title=\"Prototype/TipsAndTricksItem\">Prototype/TipsAndTricksItem</a> category, used for sorting of tips and tricks entries: Tips and trick entries are sorted first by category and then by their order within that category."
@@ -25760,7 +25761,7 @@
         "electric": "PT_EnergySourceElectric",
         "burner": "PT_EnergySourceBurner",
         "heat": "PT_EnergySourceHeat",
-        "fluid": "",
+        "fluid": "PT_EnergySourceFluid",
         "void": "PT_EnergySourceBase"
       },
       "name": "PT_EnergySource",
