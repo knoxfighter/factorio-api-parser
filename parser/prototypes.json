@@ -488,7 +488,7 @@
         },
         {
           "name": "charge_approach_distance",
-          "description": "The distance from the roboport at which robots will wait to charge. notablely,if robots are already in range,then it will simplely wait at spot.",
+          "description": "The distance (in tiles) from the roboport at which robots will wait to charge. Notably, if the robot is already in range, then it will simply wait at its current position.",
           "type": "PT_float",
           "optional": false
         },
@@ -541,6 +541,7 @@
         {
           "name": "recharge_minimum",
           "type": "PT_Energy",
+          "description": "Minimum charge that the roboport has to have after a blackout (0 charge/buffered energy) to begin working again. Additionally, freshly placed roboports will have their energy buffer filled with <code>0.25 × recharge_minimum</code> energy.",
           "optional": false
         },
         {
@@ -574,13 +575,13 @@
         },
         {
           "name": "charging_offsets",
-          "description": "The offsets from the centre of the roboport at which robots will charge. Only used if charging_station_count is equal to zero.",
+          "description": "The offsets from the centre of the roboport at which robots will charge. Only used if charging_station_count is equal to 0.",
           "type": "PT_vector[]",
           "optional": true
         },
         {
           "name": "charging_station_count",
-          "description": "How many charging point this roboport has, if value is 0, roboport will try to use charging_offsets to know charging point instead. (in vanilla game, roboport charging point is defined by charging_offsets)",
+          "description": "The offsets from the center of the roboport at which robots will charge. Only used if charging_station_count is equal to 0.",
           "type": "PT_uint32",
           "default": "0",
           "optional": true
@@ -592,7 +593,7 @@
         },
         {
           "name": "charging_threshold_distance",
-          "description": "Unused. (only used in <a href=\"/Prototype/RoboportEquipment\" title=\"Prototype/RoboportEquipment\">personal roboport</a>)",
+          "description": "Unused.",
           "type": "PT_float",
           "default": "1.0",
           "optional": true
@@ -682,7 +683,7 @@
         },
         {
           "name": "robot_limit",
-          "description": "Unused. (only used in <a href=\"/Prototype/RoboportEquipment\" title=\"Prototype/RoboportEquipment\">personal roboport</a>)",
+          "description": "Unused.",
           "type": "PT_ItemCountType",
           "optional": true
         },
@@ -1458,6 +1459,7 @@
         {
           "name": "repair_result",
           "type": "PT_Trigger",
+          "description": "This does nothing, it is never triggered.",
           "optional": true
         }
       ],
@@ -2807,11 +2809,6 @@
         },
         {
           "name": "game_stopped_visualization",
-          "type": "PT_SpriteType",
-          "optional": false
-        },
-        {
-          "name": "pollution_visualization",
           "type": "PT_SpriteType",
           "optional": false
         },
@@ -4543,7 +4540,7 @@
           "name": "match_animation_speed_to_activity",
           "description": "Whether the speed of the animation and working visualization should be based on the machine's speed (boosted or slowed by modules).",
           "type": "PT_bool",
-          "default": "false",
+          "default": "true",
           "optional": true
         },
         {
@@ -6679,6 +6676,7 @@
         {
           "name": "charging_station_count",
           "type": "PT_uint32",
+          "description": "How many charging points this roboport has. If this is 0, the length of the charging_offsets table is used to calculate the charging station count.",
           "default": "0",
           "optional": true
         },
@@ -6689,7 +6687,7 @@
         },
         {
           "name": "charging_threshold_distance",
-          "description": "This defines how far away a robot can be to be charged, however a bot is still required to reach a charging spot and cannot have full battery.",
+          "description": "Distance in tiles. This defines how far away a robot can be from the charging spot and still be charged, however the bot is still required to reach a charging spot in the first place.",
           "type": "PT_float",
           "default": "1.0",
           "optional": true
@@ -8604,7 +8602,7 @@
       "prototype": "Prototype",
       "name": "PT_AmbientSound",
       "link": "/Prototype/AmbientSound",
-      "description": "This prototype is used to make sound, while playing the game. This includes the in-game's music, composed by Daniel James Taylor."
+      "description": "This prototype is used to make sound while playing the game. This includes the game's <a href=\"/Factorio_Soundtrack\" title=\"Factorio Soundtrack\">music</a>, composed by Daniel James Taylor."
     },
     {
       "properties": [
@@ -9816,6 +9814,7 @@
         {
           "name": "fluid_box",
           "type": "PT_FluidBox",
+          "description": "This must have a filter if <code>max_power_output</code> is not defined.",
           "optional": false
         },
         {
@@ -9832,7 +9831,7 @@
         {
           "name": "maximum_temperature",
           "type": "PT_double",
-          "description": "The maximum temperature to which the efficiency can increase. After this temperature the generator will run at 100% efficiency. Note: higher temperatures can still be consumed.",
+          "description": "<p>Used to calculate the <code>max_power_output</code> if it is not defined and <code>burns_fluid</code> is false. Then, the max power output is <code>(min(fluid_max_temp,&nbsp;maximum_temperature)&nbsp;-&nbsp;fluid_default_temp) × fluid_usage_per_tick × fluid_heat_capacity × effectivity</code>, the fluid is the filter specified on the <code>fluid_box</code>. </p> \n<   <p>The maximum temperature to which the efficiency can increase. At this temperature the generator will run at 100% efficiency. Note: Higher temperature fluid can still be consumed.</p><p>The maximum temperature to which the efficiency can increase. At this temperature the generator will run at 100% efficiency. Note: Higher temperature fluid can still be consumed.</p>",
           "optional": false
         },
         {
@@ -9849,6 +9848,7 @@
         {
           "name": "max_power_output",
           "type": "PT_Energy",
+          "description": "The power production of the generator is capped to this value. This is also the value that is shown as the maximum power output in the tooltip of the generator.<br><code>fluid_box</code> must have a filter if this is not defined.",
           "optional": true
         },
         {
@@ -9926,6 +9926,7 @@
         {
           "name": "inventory_size",
           "type": "PT_ItemStackIndex",
+          "description": "Size of the inventory of the wagon. The inventory can be limited using the red bar and filtered. This functionality cannot be turned off.",
           "optional": false
         }
       ],
@@ -13521,6 +13522,11 @@
           "optional": false
         },
         {
+          "name": "gui_remark_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
           "name": "icon_shadow_color",
           "type": "PT_Color",
           "optional": false
@@ -14086,7 +14092,7 @@
         },
         {
           "name": "selection_priority",
-          "description": "The entity with the higher number is selectable before the entity with the lower number.",
+          "description": "The entity with the higher number is selectable before the entity with the lower number. When two entities have the same selection priority, the one with the highest <a href=\"/Types/CollisionMask\" title=\"Types/CollisionMask\">collision mask</a> (as determined by the order on that page) is selected.",
           "type": "PT_uint8",
           "default": "50",
           "optional": true
@@ -15132,7 +15138,7 @@
       "properties": [
         {
           "name": "pipe_connections",
-          "description": "Max number of members is 255.",
+          "description": "<p>Max number of members is 255.</p><p>Connection points to connect to other fluidboxes. This is also marked as blue arrows in alt mode. Fluid may flow in or out depending on the `type` field of each connection. Connection points may depend on the direction the entity is facing.</p>",
           "type": "PT_PipeConnectionDefinition[]",
           "optional": false
         },
@@ -15213,7 +15219,7 @@
       ],
       "name": "PT_FluidBox",
       "link": "/Types/FluidBox",
-      "description": "Used to set the fluid amount an entity can hold, as well as the connection points for pipes leading into and out of the entity."
+      "description": "<p>Used to set the fluid amount an entity can hold, as well as the connection points for pipes leading into and out of the entity.</p><p>Each entity can have multiple fluidboxes. It can come from a fluid_energy_source, any fluidbox or normal property storage tanks and pumps.</p><p>Each fluidbox should store only ONE type of fluid. It accepts to store multiple different fluids, which is fluid mixing and not wanted. To avoid fluid mixing, you can setup a filter for certain fluids. Crafting machines will automatically disable unused fluidboxes.</p>"
     },
     {
       "properties": [
@@ -16155,6 +16161,11 @@
           "optional": false
         },
         {
+          "name": "pollution_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
           "name": "default_friendly_color",
           "type": "PT_Color",
           "optional": false
@@ -16268,6 +16279,31 @@
         },
         {
           "name": "train_current_path_outline_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
+          "name": "chart_logistic_robot_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
+          "name": "chart_construction_robot_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
+          "name": "chart_mobile_construction_robot_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
+          "name": "chart_personal_construction_robot_color",
+          "type": "PT_Color",
+          "optional": false
+        },
+        {
+          "name": "custom_tag_selected_overlay_tint",
           "type": "PT_Color",
           "optional": false
         },
@@ -17342,13 +17378,13 @@
       "properties": [
         {
           "name": "position",
-          "description": "Position of the pipe connection.",
+          "description": "Where pipes can connect to this fluidbox regardless the directions of entity.",
           "type": "PT_vector",
           "optional": true
         },
         {
           "name": "positions",
-          "description": "Table must have 4 members, which are 4 explicit positions for the pipe connection (corresponding to 4 directions). Positions must correspond to directions going one after another.",
+          "description": "Where pipes can connect to this fluidbox, depending on the entity direction.<br>Table must have 4 members, which are 4 explicit positions corresponding to the 4 directions of entity. Positions must correspond to directions going one after another.",
           "type": "PT_vector[]",
           "optional": true
         },
@@ -17368,7 +17404,7 @@
       ],
       "name": "PT_PipeConnectionDefinition",
       "link": "/Types/PipeConnectionDefinition",
-      "description": "<p>Definition of a pipe connection. Used in fluidboxes.</p><p>Either <code>position</code> or <code>positions</code> must be specified. (<code>position</code> takes priority)</p>"
+      "description": "<p>Definition of a pipe connection. Used by <a href=\"/Types/FluidBox\" title=\"Types/FluidBox\">Types/FluidBox</a>.</p><p>Either <code>position</code> or <code>positions</code> must be specified. (<code>position</code> takes priority)</p>"
     },
     {
       "properties": [
