@@ -1910,6 +1910,7 @@
         },
         {
           "name": "lamp_energy_usage",
+          "description": "May be 0.",
           "type": "PT_Energy",
           "optional": false
         },
@@ -4592,7 +4593,7 @@
         },
         {
           "name": "show_recipe_icon_on_map",
-          "description": " Whether the recipe icon should be shown on the map. ",
+          "description": "Whether the recipe icon should be shown on the map.",
           "type": "PT_bool",
           "default": "true",
           "optional": true
@@ -4896,6 +4897,13 @@
         {
           "name": "energy_glow_animation",
           "type": "PT_RotatedAnimation4Way",
+          "optional": true
+        },
+        {
+          "name": "energy_glow_animation_flicker_strength",
+          "description": " The range of the flickering of the alpha of <code>energy_glow_animation</code>. Default is range 0.2, so animation alpha can be anywhere between 0.8 and 1.0.",
+          "type": "PT_float",
+          "default": "0.2",
           "optional": true
         },
         {
@@ -5212,6 +5220,12 @@
           "name": "always_draw_fluid",
           "type": "PT_bool",
           "default": "true",
+          "optional": true
+        },
+        {
+          "name": "check_bounding_box_collides_with_tiles",
+          "description": "If not set (=default), the offshore pump does not collide with tiles if it has none of these collision masks: \"water-tile\", \"ground-tile\", \"resource-layer\", \"player-layer\", \"item-layer\", \"doodad-layer\".<br>If it has at least one of the six collision masks, it does collide with tiles. If set, this specifies whether collision with tiles should (true) or should not (false) be performed on an offshore pump.",
+          "type": "PT_bool",
           "optional": true
         },
         {
@@ -10324,7 +10338,7 @@
       "properties": [
         {
           "name": "burning_cooldown",
-          "description": "<p>Controls for how long the boiler will show the fire and fire_glow after the energy source runs out of energy.</p><p>Note that fire and fire_glow alpha is set to the light intensity of the energy source, so 0 light intensity means the fire is invisible. For burner energy sources, the light intensity will reach zero rather quickly after the boiler runs out of fuel, effectively capping the time that fire and fire_glow will be shown after the boiler runs out of fuel.</p>",
+          "description": "<p>Controls for how many ticks the boiler will show the fire and fire_glow after the energy source runs out of energy.</p><p>Note that fire and fire_glow alpha is set to the light intensity of the energy source, so 0 light intensity means the fire is invisible. For burner energy sources, the light intensity will reach zero rather quickly after the boiler runs out of fuel, effectively capping the time that fire and fire_glow will be shown after the boiler runs out of fuel.</p>",
           "type": "PT_uint32",
           "optional": false
         },
@@ -10340,7 +10354,7 @@
         },
         {
           "name": "fire",
-          "description": "This means the table itself is required, but can be empty.",
+          "description": "This means the table itself is required, but can be empty.<br>Animation that is drawn on top of the <code>structure</code> when <code>burning_cooldown</code> is larger than 1. The animation alpha that be controlled by the energy source light intensity, depending on <code>fire_glow_flicker_enabled</code>.<br>The secondary draw order of this is lower than the secondary draw order of <code>fire</code>, so this is drawn below <code>fire</code>.",
           "type": "PT_AnimationSidesOptional",
           "optional": false
         },
@@ -10353,11 +10367,13 @@
         {
           "name": "fluid_box",
           "type": "PT_FluidBox",
+          "description": "The input fluid box.<br>If <code>mode</code> is \"heat-water-inside\", the fluid is heated up directly in this fluidbox.",
           "optional": false
         },
         {
           "name": "output_fluid_box",
           "type": "PT_FluidBox",
+          "description": "The output fluid box.<br>If <code>mode</code> is \"output-to-separate-pipe\" and this has a <code>filter</code>, the input fluid is converted to the output fluid that is set in the filter (in a 1:1 ratio).<br>If <code>mode</code> is \"heat-water-inside\", this fluidbox is not used.",
           "optional": false
         },
         {
@@ -10368,29 +10384,34 @@
         {
           "name": "target_temperature",
           "type": "PT_double",
+          "description": "When <code>mode</code> is \"output-to-separate-pipe\", this is the temperature that the input fluid must reach to be moved to output fluid box.<br>When <code>mode</code> is \"heat-water-inside\" this is unused. Instead, the fluid <code>max_temperature</code> is the target temperature for heating the fluid.",
           "optional": false
         },
         {
           "name": "fire_flicker_enabled",
           "type": "PT_bool",
+          "description": "If this is set to false, <code>fire</code> alpha is always 1 instead of being controlled by the light intensity of the energy source.",
           "default": "false",
           "optional": true
         },
         {
           "name": "fire_glow_flicker_enabled",
           "type": "PT_bool",
+          "description": "If this is set to false, <code>fire_glow</code> alpha is always 1 instead of being controlled by the light intensity of the energy source.",
           "default": "false",
           "optional": true
         },
         {
           "name": "mode",
           "type": "PT_BoilerMode",
+          "description": "In the \"heat-water-inside\" mode, fluid in the <code>fluid_box</code> is continuously heated from the input temperature up to its <a href=\"/Prototype/Fluid#max_temperature\" title=\"Prototype/Fluid\">max_temperature</a>.<br>In the \"output-to-separate-pipe\" mode, fluid is transferred from the <code>fluid_box</code> to the <code>output_fluid_box</code> when enough energy is available to <a href=\"/Prototype/Fluid#heat_capacity\" title=\"Prototype/Fluid\">heat</a> the fluid to the <code>target_temperature</code>. Setting a filter on the <code>output_fluid_box</code> allows to specify that the input fluid should be converted to the filtered fluid, instead of it simply being transferred when it can be heated.",
           "default": "heat-water-inside",
           "optional": true
         },
         {
           "name": "patch",
           "type": "PT_BoilerPatch",
+          "description": "Drawn above the <code>structure</code>, in the \"higher-object-under\" <a href=\"/Types/RenderLayer\" title=\"Types/RenderLayer\">Types/RenderLayer</a>. May be useful to correct problems with neighboring pipes overlapping the structure graphics.",
           "optional": true
         }
       ],
@@ -14139,7 +14160,7 @@
         },
         {
           "name": "water_reflection",
-          "description": "May also be defined inside <code>graphics_set</code> instead of directly in the entity prototype. This is useful for entities that use the a <code>graphics_set</code> property to define their graphics, becausen then all graphics can be in defined one place.",
+          "description": "May also be defined inside <code>graphics_set</code> instead of directly in the entity prototype. This is useful for entities that use the a <code>graphics_set</code> property to define their graphics, because then all graphics can be defined in one place.<br>Currently only renders for <a href=\"/Prototype/EntityWithHealth\" title=\"Prototype/EntityWithHealth\">Prototype/EntityWithHealth</a>.<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://forums.factorio.com/100703\">[1]</a>",
           "type": "PT_WaterReflectionDefinition",
           "optional": true
         },
@@ -14604,7 +14625,7 @@
       ],
       "name": "PT_WaterReflectionDefinition",
       "link": "/Types/WaterReflectionDefinition",
-      "description": "Entity water reflection."
+      "description": "Entity water reflection. Currently only renders for <a href=\"/Prototype/EntityWithHealth\" title=\"Prototype/EntityWithHealth\">Prototype/EntityWithHealth</a>"
     },
     {
       "properties": [
@@ -24024,7 +24045,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24075,6 +24096,25 @@
           "type": "PT_bool",
           "default": "false",
           "optional": true
+        },
+        {
+          "name": "consecutive",
+          "type": "PT_bool",
+          "description": "Building is considered consecutive when the built entity is the same as the last built entity.",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "linear_power_pole_line",
+          "type": "PT_bool",
+          "default": "false",
+          "optional": true
+        },
+        {
+          "name": "build_in_line",
+          "type": "PT_bool",
+          "default": "false",
+          "optional": true
         }
       ],
       "prototype": "PT_TipTrigger",
@@ -24086,7 +24126,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         }
       ],
@@ -24099,7 +24139,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24117,7 +24157,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24135,7 +24175,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24172,7 +24212,35 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
+          "optional": true
+        }, {
+          "name": "entity",
+          "description": "Name of a <a href=\"/Prototype/Entity\" title=\"Prototype/Entity\">Prototype/Entity</a>.",
+          "type": "string",
+          "optional": true
+        }, {
+          "name": "match_type_only",
+          "type": "PT_bool",
+          "default": "false",
+          "optional": true
+        }, {
+          "name": "consecutive",
+          "type": "PT_bool",
+          "default": "false",
+          "optional": true
+        }
+      ],
+      "prototype": "PT_TipTrigger",
+      "name": "PT_SetFilterTipTrigger",
+      "link": "/Types/TipTrigger"
+    },
+    {
+      "properties": [
+        {
+          "name": "count",
+          "type": "PT_uint32",
+          "default": "1",
           "optional": true
         }
       ],
@@ -24185,7 +24253,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         }
       ],
@@ -24198,7 +24266,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24217,7 +24285,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         }
       ],
@@ -24230,7 +24298,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         }
       ],
@@ -24243,7 +24311,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24274,7 +24342,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         },
         {
@@ -24305,7 +24373,7 @@
         {
           "name": "count",
           "type": "PT_uint32",
-          "default": "0",
+          "default": "1",
           "optional": true
         }
       ],
@@ -25456,7 +25524,7 @@
         "hide-from-bonus-gui": "Item will not appear in the bonus gui.",
         "hide-from-fuel-tooltip": "Item will not appear in the tooltips shown when hovering over a burner inventory with the fuel category the item is in.",
         "not-stackable": "The item can never be stacked. Additionally, the item does not show an item count when in the cursor.<br>This also prevents the item from stacking in assembling machine input slots, which otherwise can exceed the item stack size if required by the recipe. ",
-        "can-extend-inventory": "Has no effect.",
+        "can-extend-inventory": "Must be set on <a href=\"/Prototype/ItemWithInventory\" title=\"Prototype/ItemWithInventory\">Prototype/ItemWithInventory</a> when the item should act as an extension to the inventory that it is placed in. Does nothing for other item types.",
         "primary-place-result": "Item will be preferred by construction bots when building the entity specified by the item's <a href=\"/Prototype/Item#place_result\" title=\"Prototype/Item\">place_result</a>.",
         "mod-openable": "Only works for <a href=\"/Prototype/SelectionTool\" title=\"Prototype/SelectionTool\">Prototype/SelectionTool</a> and derived classes.<br>This property corresponds to the following event in the lua api: <a rel=\"nofollow\" class=\"external text\" href=\"https://lua-api.factorio.com/latest/events.html#on_mod_item_opened\">defines.events.on_mod_item_opened</a>",
         "only-in-cursor": "Item is deleted when removed from the cursor by pressing <code>Q</code> (clear cursor). Used for example by the copy paste tools. ",
@@ -25828,6 +25896,7 @@
         "stack-transfer": "PT_StackTransferTipTrigger",
         "entity-transfer": "PT_EntityTransferTipTrigger",
         "set-recipe": "PT_SetRecipeTipTrigger",
+        "set-filter": "PT_SetFilterTipTrigger",
         "limit-chest": "PT_LimitChestTipTrigger",
         "use-pipette": "PT_UsePipetteTipTrigger",
         "set-logistic-request": "PT_SetLogisticRequestTipTrigger",

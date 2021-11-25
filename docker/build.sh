@@ -11,7 +11,7 @@ cd ../parser/lua-api
 #../gradlew jar -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64/ -Dme.test="$dockerDir"
 # build wiki/prototype parser
 cd ../prototype
-../gradlew jar -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64/ -Dme.test="$dockerDir"
+../gradlew jar -Dorg.gradle.java.home="/home/knox/.jdks/corretto-11.0.13/" -Dme.test="$dockerDir"
 cd ..
 
 # build go webserver
