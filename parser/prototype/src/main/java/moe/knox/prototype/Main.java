@@ -5,10 +5,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.*;
+import java.io.*;
 import java.nio.file.*;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -67,7 +65,7 @@ public class Main {
 		}
 	}
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args) throws IOException {
 		String saveLocation = ((args.length >= 1) ? args[0] : "../files") + "/prototypes";
 
 		Path newPath = Paths.get(saveLocation + "/new/");
@@ -75,150 +73,167 @@ public class Main {
 		Path diffPath = Paths.get(saveLocation + "/wiki/");
 
 		// clear new directory
-		deleteDirectory(newPath);
-		Files.createDirectories(newPath);
+		try {
+			deleteDirectory(newPath);
+			Files.createDirectories(newPath);
 
-		// create old directory if not exists
-		if (!Files.exists(oldPath)) {
-			Files.createDirectories(oldPath);
+			// create old directory if not exists
+			if (!Files.exists(oldPath)) {
+				Files.createDirectories(oldPath);
+			}
+
+			// create diff directory if not exists
+			if (!Files.exists(diffPath)) {
+				Files.createDirectories(diffPath);
+			}
+
+			// download and save main page
+			Document mainPage = Jsoup.connect("https://wiki.factorio.com/Prototype_overview").get();
+
+			Element mainContentText = mainPage.getElementById("mw-content-text");
+			String mainContentHtml = mainContentText.html();
+			String mainContentClean = Jsoup.clean(mainContentHtml, "https://wiki.factorio.com/Prototype_overview", new CustomHtmlWhitelist());
+			Files.writeString(newPath.resolve("overview.html"), mainContentClean, StandardOpenOption.CREATE_NEW);
+
+			// download and save all prototype pages
+			Elements allPrototypeLinks = mainPage.select(".prototype-toc-section-title > a:first-child");
+			parseLinkElementsAndTheirPage(newPath, allPrototypeLinks);
+
+			// download all type pages
+			Elements allTypeLinks = mainPage.select(".prototype-toc-item-info > a");
+			parseLinkElementsAndTheirPage(newPath, allTypeLinks);
+
+			// parse pages that are not linked to by prototypes
+			Set<String> additionalTypes = new HashSet<>() {{
+				add("/Types/ActivateEquipmentCapsuleAction");
+				add("/Types/AreaTriggerItem");
+				add("/Types/ArtilleryRemoteCapsuleAction");
+				add("/Types/AnimationElement");
+				add("/Types/AttackReactionItem");
+				add("/Types/BeaconModuleVisualizations");
+				add("/Types/BeamAttackParameters");
+				add("/Types/CameraEffectTriggerEffectItem");
+				add("/Types/ClusterTriggerItem");
+				add("/Types/CreateEntityTriggerEffectItem");
+				add("/Types/CreateExplosionTriggerEffectItem");
+				add("/Types/CreateFireTriggerEffectItem");
+				add("/Types/CreateParticleTriggerEffectItem");
+				add("/Types/CreateSmokeTriggerEffectItem");
+				add("/Types/CreateStickerTriggerEffectItem");
+				add("/Types/DamageTriggerEffectItem");
+				add("/Types/DestroyCliffsCapsuleAction");
+				add("/Types/DestroyCliffsTriggerEffectItem");
+				add("/Types/DestroyDecorativesTriggerEffectItem");
+				add("/Types/DirectTriggerItem");
+				add("/Types/ElectricUsagePriority");
+				add("/Types/FluidProductPrototype");
+				add("/Types/HeatConnection");
+				add("/Types/InsertItemTriggerEffectItem");
+				add("/Types/InvokeTileEffectTriggerEffectItem");
+				add("/Types/ItemIngredientPrototype");
+				add("/Types/LightFlickeringDefinition");
+				add("/Types/LineTriggerItem");
+				add("/Types/NestedTriggerEffectItem");
+				add("/Types/PipeConnectionDefinition");
+				add("/Types/PlaySoundTriggerEffectItem");
+				add("/Types/Position");
+				add("/Types/ProjectileAttackParameters");
+				add("/Types/PushBackTriggerEffectItem");
+				add("/Types/RealOrientation");
+				add("/Types/ScriptTriggerEffectItem");
+				add("/Types/SetTileTriggerEffectItem");
+				add("/Types/ShowExplosionOnChartTriggerEffectItem");
+				add("/Types/SpawnPoint");
+				add("/Types/SpriteNWaySheet");
+				add("/Types/StreamAttackParameters");
+				add("/Types/TileSprite");
+				add("/Types/TileTransitionSprite");
+				add("/Types/ThrowCapsuleAction");
+				add("/Types/TriggerEffectItem");
+				add("/Types/UseOnSelfCapsuleAction");
+				add("/Types/WirePosition");
+				add("/Types/TriggerItem");
+				add("/Types/BaseAttackParameters");
+				add("/Types/CircularParticleCreationSpecification");
+				add("/Types/CircularProjectileCreationSpecification");
+				add("/Types/DamageTypeFilters");
+				add("/Types/TriggerDelivery");
+				add("/Types/LayeredSound");
+				add("/Types/CyclicSound");
+				add("/Types/InstantTriggerDelivery");
+				add("/Types/ProjectileTriggerDelivery");
+				add("/Types/FlameThrowerExplosionTriggerDelivery");
+				add("/Types/BeamTriggerDelivery");
+				add("/Types/StreamTriggerDelivery");
+				add("/Types/ArtilleryTriggerDelivery");
+				add("/Types/IconData");
+				add("/Types/BoxSpecification");
+				add("/Types/Sprite8Way");
+				add("/Types/RailPieceLayers");
+				add("/Types/SpiderLegSpecification");
+				add("/Types/SpiderLegPart");
+				add("/Prototype_definitions");
+//			add("/Types/ModifierPrototype");
+				add("/Types/SimpleModifierPrototype");
+				add("/Types/TurretAttackModifierPrototype");
+				add("/Types/AmmoDamageModifierPrototype");
+				add("/Types/GiveItemModifierPrototype");
+				add("/Types/GunSpeedModifierPrototype");
+				add("/Types/UnlockRecipeModifierPrototype");
+				add("/Types/BoolModifierPrototype");
+				add("/Types/NothingModifierPrototype");
+//			add("/Types/TipStatus");
+			}};
+			parsePageByLinks(newPath, additionalTypes);
+
+			// save to file named after current timestamp
+			String diffFileName = String.valueOf(System.currentTimeMillis());
+			String diffFilePath = diffPath.resolve(diffFileName).toString();
+			String diffCommand = String.format("diff \"%s\" \"%s\" | tee \"%s\"", newPath, oldPath, diffFilePath);
+
+			// run the difftool to check for changes
+			ProcessBuilder processBuilder = new ProcessBuilder();
+			processBuilder.command("/bin/sh", "-c", diffCommand);
+			Process process = processBuilder.start();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line;
+			boolean someOutput = false;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				someOutput = true;
+			}
+			int processResult = process.waitFor();
+
+			String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(new Date());
+			System.out.println(timeStamp + " -- diff-tool result: " + processResult);
+
+			// post the diff to discord
+			if (someOutput && BuildConfig.DISCORD_WEBHOOK != null && !BuildConfig.DISCORD_WEBHOOK.isEmpty()) {
+				DiscordWebhook discordWebhook = new DiscordWebhook(BuildConfig.DISCORD_WEBHOOK);
+				DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
+				embed.setTitle("Some changes to the prototype definitions happened");
+				embed.setDescription(String.format("https://factorio-api.knox.moe/wiki/%s", diffFileName));
+				discordWebhook.addEmbed(embed);
+				discordWebhook.execute();
+			}
+
+			// move everything from the new directory to the old directory
+			moveDirectory(newPath, oldPath);
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+			if (BuildConfig.DISCORD_WEBHOOK != null && !BuildConfig.DISCORD_WEBHOOK.isEmpty()) {
+				DiscordWebhook discordWebhook = new DiscordWebhook(BuildConfig.DISCORD_WEBHOOK);
+				DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
+				embed.setTitle("Prototype definitions error");
+				StringWriter sw = new StringWriter();
+				PrintWriter pw = new PrintWriter(sw);
+				pw.format("%s\n", e.getMessage());
+				e.printStackTrace(pw);
+				embed.setDescription(sw.toString());
+				embed.setColor(Color.RED);
+				discordWebhook.addEmbed(embed);
+				discordWebhook.execute();
+			}
 		}
-
-		// create diff directory if not exists
-		if (!Files.exists(diffPath)) {
-			Files.createDirectories(diffPath);
-		}
-
-		// download and save main page
-		Document mainPage = Jsoup.connect("https://wiki.factorio.com/Prototype_overview").get();
-
-		Element mainContentText = mainPage.getElementById("mw-content-text");
-		String mainContentHtml = mainContentText.html();
-		String mainContentClean = Jsoup.clean(mainContentHtml, "https://wiki.factorio.com/Prototype_overview", new CustomHtmlWhitelist());
-		Files.writeString(newPath.resolve("overview.html"), mainContentClean, StandardOpenOption.CREATE_NEW);
-
-		// download and save all prototype pages
-		Elements allPrototypeLinks = mainPage.select(".prototype-toc-section-title > a:first-child");
-		parseLinkElementsAndTheirPage(newPath, allPrototypeLinks);
-
-		// download all type pages
-		Elements allTypeLinks = mainPage.select(".prototype-toc-item-info > a");
-		parseLinkElementsAndTheirPage(newPath, allTypeLinks);
-
-		// parse pages that are not linked to by prototypes
-		Set<String> additionalTypes = new HashSet<>() {{
-			add("/Types/ActivateEquipmentCapsuleAction");
-			add("/Types/AreaTriggerItem");
-			add("/Types/ArtilleryRemoteCapsuleAction");
-			add("/Types/AnimationElement");
-			add("/Types/AttackReactionItem");
-			add("/Types/BeaconModuleVisualizations");
-			add("/Types/BeamAttackParameters");
-			add("/Types/CameraEffectTriggerEffectItem");
-			add("/Types/ClusterTriggerItem");
-			add("/Types/CreateEntityTriggerEffectItem");
-			add("/Types/CreateExplosionTriggerEffectItem");
-			add("/Types/CreateFireTriggerEffectItem");
-			add("/Types/CreateParticleTriggerEffectItem");
-			add("/Types/CreateSmokeTriggerEffectItem");
-			add("/Types/CreateStickerTriggerEffectItem");
-			add("/Types/DamageTriggerEffectItem");
-			add("/Types/DestroyCliffsCapsuleAction");
-			add("/Types/DestroyCliffsTriggerEffectItem");
-			add("/Types/DestroyDecorativesTriggerEffectItem");
-			add("/Types/DirectTriggerItem");
-			add("/Types/ElectricUsagePriority");
-			add("/Types/FluidProductPrototype");
-			add("/Types/HeatConnection");
-			add("/Types/InsertItemTriggerEffectItem");
-			add("/Types/InvokeTileEffectTriggerEffectItem");
-			add("/Types/ItemIngredientPrototype");
-			add("/Types/LightFlickeringDefinition");
-			add("/Types/LineTriggerItem");
-			add("/Types/NestedTriggerEffectItem");
-			add("/Types/PipeConnectionDefinition");
-			add("/Types/PlaySoundTriggerEffectItem");
-			add("/Types/Position");
-			add("/Types/ProjectileAttackParameters");
-			add("/Types/PushBackTriggerEffectItem");
-			add("/Types/RealOrientation");
-			add("/Types/ScriptTriggerEffectItem");
-			add("/Types/SetTileTriggerEffectItem");
-			add("/Types/ShowExplosionOnChartTriggerEffectItem");
-			add("/Types/SpawnPoint");
-			add("/Types/SpriteNWaySheet");
-			add("/Types/StreamAttackParameters");
-			add("/Types/TileSprite");
-			add("/Types/TileTransitionSprite");
-			add("/Types/ThrowCapsuleAction");
-			add("/Types/TriggerEffectItem");
-			add("/Types/UseOnSelfCapsuleAction");
-			add("/Types/WirePosition");
-			add("/Types/TriggerItem");
-			add("/Types/BaseAttackParameters");
-			add("/Types/CircularParticleCreationSpecification");
-			add("/Types/CircularProjectileCreationSpecification");
-			add("/Types/DamageTypeFilters");
-			add("/Types/TriggerDelivery");
-			add("/Types/LayeredSound");
-			add("/Types/CyclicSound");
-			add("/Types/InstantTriggerDelivery");
-			add("/Types/ProjectileTriggerDelivery");
-			add("/Types/FlameThrowerExplosionTriggerDelivery");
-			add("/Types/BeamTriggerDelivery");
-			add("/Types/StreamTriggerDelivery");
-			add("/Types/ArtilleryTriggerDelivery");
-			add("/Types/IconData");
-			add("/Types/BoxSpecification");
-			add("/Types/Sprite8Way");
-			add("/Types/RailPieceLayers");
-			add("/Types/SpiderLegSpecification");
-			add("/Types/SpiderLegPart");
-			add("/Prototype_definitions");
-			add("/Types/ModifierPrototype");
-			add("/Types/SimpleModifierPrototype");
-			add("/Types/TurretAttackModifierPrototype");
-			add("/Types/AmmoDamageModifierPrototype");
-			add("/Types/GiveItemModifierPrototype");
-			add("/Types/GunSpeedModifierPrototype");
-			add("/Types/UnlockRecipeModifierPrototype");
-			add("/Types/BoolModifierPrototype");
-			add("/Types/NothingModifierPrototype");
-			add("/Types/TipStatus");
-		}};
-		parsePageByLinks(newPath, additionalTypes);
-
-		// save to file named after current timestamp
-		String diffFileName = String.valueOf(System.currentTimeMillis());
-		String diffFilePath = diffPath.resolve(diffFileName).toString();
-		String diffCommand = String.format("diff \"%s\" \"%s\" | tee \"%s\"", newPath, oldPath, diffFilePath);
-
-		// run the difftool to check for changes
-		ProcessBuilder processBuilder = new ProcessBuilder();
-		processBuilder.command("/bin/sh", "-c", diffCommand);
-		Process process = processBuilder.start();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-		String line;
-		boolean someOutput = false;
-		while ((line = reader.readLine()) != null) {
-			System.out.println(line);
-			someOutput = true;
-		}
-		int processResult = process.waitFor();
-
-		String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(new Date());
-		System.out.println(timeStamp + " -- diff-tool result: " + processResult);
-
-		// post the diff to discord
-		if (someOutput && BuildConfig.DISCORD_WEBHOOK != null && !BuildConfig.DISCORD_WEBHOOK.isEmpty()) {
-			DiscordWebhook discordWebhook = new DiscordWebhook(BuildConfig.DISCORD_WEBHOOK);
-			DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
-			embed.setTitle("Some changes to the prototype definitions happened");
-			embed.setDescription(String.format("https://factorio-api.knox.moe/wiki/%s", diffFileName));
-			discordWebhook.addEmbed(embed);
-			discordWebhook.execute();
-		}
-
-		// move everything from the new directory to the old directory
-		moveDirectory(newPath, oldPath);
 	}
 }
